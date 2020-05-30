@@ -1,0 +1,16 @@
+/*
+    切换样式
+*/
+
+.ant-switch {
+    background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
+    &:after {
+        background-color: #0A0D14;
+    }
+    &:focus {
+        box-shadow: 0 0 0 5px rgba(249, 118, 71, 0.2) !important;
+    }
+    &:active {
+        box-shadow: 0 0 0 5px rgba(249, 118, 71, 0.2);
+    }
+}

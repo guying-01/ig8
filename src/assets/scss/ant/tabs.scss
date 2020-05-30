@@ -1,0 +1,84 @@
+/*
+    tabs组件样式
+*/
+
+.ant-tabs {
+    .ant-tabs-top-bar {
+        border: none;
+        .ant-tabs-nav-container {
+            .ant-tabs-tab-arrow-show {
+                width: 14px !important;
+                height: 24px !important;
+                color: rgba(255, 255, 255, .5);
+                top: 12.5px !important;
+                overflow: hidden;
+                cursor: pointer !important;
+                &.ant-tabs-tab-prev {
+                    background: url("../images/tab-left.png") no-repeat center;
+                    background-size: 100%;
+                    &:hover {
+                        background: url("../images/tab-left-hover.png") no-repeat center;
+                        background-size: 100%;
+                    }
+                    &:active {
+                        background: url("../images/tab-left-select.png") no-repeat center;
+                        background-size: 100%;
+                    }
+                }
+                &.ant-tabs-tab-next {
+                    background: url("../images/tab-right.png") no-repeat center;
+                    background-size: 100%;
+                    &:hover {
+                        background: url("../images/tab-right-hover.png") no-repeat center;
+                        background-size: 100%;
+                    }
+                    &:active {
+                        background: url("../images/tab-right-select.png") no-repeat center;
+                        background-size: 100%;
+                    }
+                }
+                span {
+                    margin-top: 100px;
+                }
+            }
+            .ant-tabs-nav-wrap {
+                .ant-tabs-nav {
+                    .ant-tabs-tab {
+                        width: 172px;
+                        height: 48px;
+                        line-height: 48px;
+                        background: url("../images/btn-tab.png") no-repeat center;
+                        background-size: 100%;
+                        border-radius: 36px;
+                        font-size: 20px;
+                        font-family: 'PingFang-SC-Regular' !important;
+                        font-weight: 400;
+                        color: rgba(255, 255, 255, .8);
+                        text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+                        text-align: center;
+                        padding: 0px 50px;
+                        margin-right: 23px;
+                        &:last-child {
+                            margin-right: 0px;
+                        }
+                        &:hover {
+                            background: url("../images/btn-tab-hover.png") no-repeat center;
+                            background-size: 100%;
+                            color: rgba(255, 255, 255, .9);
+                        }
+                        &:active,
+                        &.ant-tabs-tab-active {
+                            background: url("../images/btn-tab-select.png") no-repeat center;
+                            background-size: 100%;
+                            color: rgba(255, 142, 49, 1);
+                            font-family: "PingFang-SC-MediumCoarse" !important;
+                        }
+                    }
+                    .ant-tabs-ink-bar {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+}

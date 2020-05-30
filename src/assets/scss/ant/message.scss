@@ -1,0 +1,63 @@
+.ant-message-notice-content {
+    border-radius: 4px;
+    background: rgba(0, 0, 0, .7);
+    width: 240px;
+    height: 56px;
+    line-height: 56px;
+    padding: 0px !important;
+    .ant-message-custom-content {
+        padding: 0px !important;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            &::after {
+                content: " ";
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: 999999;
+            }
+        }
+        &.ant-message-info {
+            i {
+                display: none;
+            }
+        }
+        &.ant-message-success {
+            i {
+                &::after {
+                    background: rgba(0, 0, 0, .7) url("../images/message-success.png") no-repeat center;
+                    background-size: 100%;
+                }
+            }
+        }
+        &.ant-message-loading {
+            i {
+                &::after {
+                    background: rgba(0, 0, 0, .7) url("../images/message-load.png") no-repeat center;
+                    background-size: 100%;
+                }
+            }
+        }
+        &.ant-message-error {
+            i {
+                &::after {
+                    background: rgba(0, 0, 0, .7) url("../images/message-error.png") no-repeat center;
+                    background-size: 100%;
+                }
+            }
+        }
+        span {
+            color: rgba(255, 255, 255, .8);
+            font-size: 16px;
+        }
+    }
+}

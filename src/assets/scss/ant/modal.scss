@@ -1,0 +1,158 @@
+/*
+    模态窗样式
+*/
+
+.ant-modal-root {
+    .ant-modal {
+        padding: 0px !important;
+        .ant-modal-content {
+            .ant-modal-body {
+                padding: 0px !important;
+            }
+        }
+    }
+}
+
+
+/*
+    登录、注册、修改密码、验证码、输入密码  模态窗
+*/
+
+.login-modal {
+    .ant-modal-content {
+        background: transparent !important;
+        .ant-modal-body {
+            position: relative;
+            width: 420px;
+            height: 600px;
+            background: transparent url("../images/box-bg0.png") no-repeat center !important;
+            background-size: cover !important;
+            .top-right-close {
+                width: 18px;
+                height: 18px;
+                background: url("../images/icon-modal-close.png") no-repeat center;
+                background-size: 100%;
+                position: absolute;
+                right: 26px;
+                top: 24px;
+                z-index: 999999999999999 !important;
+                cursor: pointer;
+                &:hover {
+                    background: url("../images/icon-modal-close-hover.png") no-repeat center;
+                    background-size: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+/*
+    分享模态窗样式
+*/
+
+.share-modal {
+    z-index: 9999999999999999 !important;
+    .ant-modal-content {
+        background: transparent !important;
+        .ant-modal-body {
+            position: relative;
+            width: 800px;
+            height: 720px;
+            background: transparent url("../images/box-bg1.png") no-repeat center !important;
+            background-size: cover !important;
+            .top-right-close {
+                width: 18px;
+                height: 18px;
+                background: url("../images/icon-modal-close.png") no-repeat center;
+                background-size: 100%;
+                position: absolute;
+                right: 26px;
+                top: 24px;
+                z-index: 999999999999999 !important;
+                cursor: pointer;
+                &:hover {
+                    background: url("../images/icon-modal-close-hover.png") no-repeat center;
+                    background-size: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+/*
+    我的信息模态窗样式
+*/
+
+.my-info-modal,
+.deposit-modal {
+    .ant-modal-content {
+        background: transparent !important;
+        .ant-modal-body {
+            position: relative;
+            width: 687px;
+            height: 440px;
+            background: rgba(42, 45, 69, 1);
+            box-shadow: 0px 9px 21px rgba(0, 0, 0, 0.07);
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+            .top-right-close {
+                width: 18px;
+                height: 18px;
+                background: url("../images/icon-modal-close.png") no-repeat center;
+                background-size: 100%;
+                position: absolute;
+                right: 26px;
+                top: 24px;
+                z-index: 999999999999999 !important;
+                cursor: pointer;
+                &:hover {
+                    background: url("../images/icon-modal-close-hover.png") no-repeat center;
+                    background-size: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+/*
+    修改密码模态窗样式
+*/
+
+.igb-pages-forget-modal {
+    .form-list-item-input {
+        .ant-input {
+            text-indent: 0em !important;
+        }
+    }
+}
+
+
+/*
+    开通模态窗样式
+*/
+
+.deposit-modal {
+    .ant-modal-content {
+        .ant-modal-body {
+            width: 800px !important;
+            height: 510.05px !important;
+        }
+    }
+}
+
+.pass-modal {
+    .ant-modal-content {
+        .ant-modal-body {
+            border-radius: 8px;
+            background-color: rgba(42, 45, 69, 1) !important;
+            background-image: none !important;
+            box-shadow: 0px 9px 21px rgba(0, 0, 0, 0.2);
+        }
+    }
+}

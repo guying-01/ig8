@@ -1,0 +1,26 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html,
+body {
+    font-family: "PingFang-SC-Regular";
+    position: relative;
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div {
+    font-family: "PingFang-SC-Regular";
+}
+
+@import "./mixin.scss";
+@import "./variable.scss";

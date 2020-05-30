@@ -1,0 +1,28 @@
+.order-family-popover,
+.order-ktv-popover {
+    width: 920px;
+    height: 920px;
+    left: initial !important;
+    right: 17px;
+    top: 61px !important;
+    background: url("../images/k/yd-bg.png") no-repeat center;
+    background-size: 920px 920px;
+    .ant-popover-content {
+        background: transparent;
+        .ant-popover-arrow {
+            display: none;
+        }
+        .ant-popover-inner {
+            background: transparent;
+            border-radius: 0px;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            -ms-border-radius: 0px;
+            -o-border-radius: 0px;
+            box-shadow: none;
+            .ant-popover-inner-content {
+                padding: 0px;
+            }
+        }
+    }
+}

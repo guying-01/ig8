@@ -1,0 +1,69 @@
+/*
+    按鈕樣式
+*/
+
+.ant-btn {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family: 'PingFang-SC-Regular';
+    // &:focus,
+    // &:hover {
+    //     background: linear-gradient(315deg, rgba(255, 197, 41, 1) 0%, rgba(255, 125, 108, 1) 100%);
+    // }
+}
+
+.ant-btn-primary {
+    background: linear-gradient(90deg, rgba(255, 109, 87, 1) 0%, rgba(255, 183, 3, 1)100%);
+    border: 1px solid rgb(255, 183, 3);
+    color: #2F3A4D;
+    opacity: 1;
+    &:hover,
+    &:focus {
+        background: linear-gradient(315deg, rgba(255, 197, 41, 1) 0%, rgba(255, 125, 108, 1) 100%);
+        border: 1px solid rgb(255, 197, 41);
+        color: #2F3A4D;
+        opacity: 1;
+    }
+    &:active,
+    &.active {
+        background: linear-gradient(315deg, rgba(235, 173, 6, 1) 0%, rgba(239, 99, 81, 1) 100%);
+        border: 1px solid rgb(255, 109, 87);
+        color: #2F3A4D;
+        opacity: 1;
+    }
+    &[disabled] {
+        background: linear-gradient(315deg, rgba(255, 186, 0, 1) 0%, rgba(255, 107, 88, 1) 100%);
+        border: 1px solid rgb(255, 186, 0);
+        color: #2F3A4D;
+        opacity: 0.6;
+    }
+}
+
+.ant-btn-background-ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .2);
+    color: rgba(255, 255, 255, .7);
+    &:hover,
+    &:focus {
+        background: rgba(253, 129, 74, 0.33) !important;
+        border: 1px solid rgba(255, 139, 53, .3);
+        color: rgba(255, 139, 53, 1);
+    }
+    &:active,
+    &.active {
+        background: rgba(214, 105, 23, 0.33);
+        border: 1px solid rgba(214, 105, 23, .3);
+        color: rgba(214, 105, 23, 1);
+    }
+    &[disabled] {
+        background: linear-gradient(315deg, rgba(255, 186, 0, 1) 0%, rgba(255, 107, 88, 1) 100%);
+        border: 1px solid rgb(255, 186, 0);
+        color: #2F3A4D;
+        opacity: 0.6;
+    }
+}

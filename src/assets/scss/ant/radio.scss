@@ -1,0 +1,46 @@
+/*
+    单选样式
+*/
+
+.ant-radio-group {
+    .ant-radio-wrapper {
+        &:hover {
+            .ant-radio {
+                border-color: rgba(249, 118, 71, 1) !important;
+            }
+        }
+        .ant-radio {
+            &:hover {
+                .ant-radio-inner {
+                    border-color: rgba(249, 118, 71, 1) !important;
+                }
+            }
+        }
+        .ant-radio-input:focus+.ant-radio-inner {
+            border-color: rgba(249, 118, 71, 1) !important;
+        }
+        >span {
+            &.ant-radio-checked {
+                &::after {
+                    border: 1px solid rgba(249, 118, 71, 1) !important;
+                }
+                .ant-radio-input:focus+.ant-radio-inner {
+                    box-shadow: 0 0 0 3px rgba(249, 118, 71, .08) !important;
+                }
+                .ant-radio-inner {
+                    border-color: rgba(249, 118, 71, 1) !important;
+                    &::after {
+                        background-color: rgba(249, 118, 71, 1) !important;
+                    }
+                }
+            }
+            &:last-child {
+                font-size: 14px;
+                font-family: 'PingFang-SC-Regular';
+                font-weight: 400;
+                color: rgba(255, 255, 255, 1);
+                opacity: 0.7;
+            }
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.tip-vom {
+    .ant-tooltip-content {
+        .ant-tooltip-arrow {
+            display: none;
+        }
+        .ant-tooltip-inner {
+            width: 35px;
+            height: 162px;
+            background: url("../images/k/vom-bg.png") no-repeat center;
+            background-size: 35px 162px;
+            padding: 0px;
+            position: relative;
+            .vom-box {
+                width: 35px;
+                height: 50px;
+                position: absolute;
+                bottom: 12px;
+                left: 0px;
+                background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
+            }
+            .vom-b {
+                width: 35px;
+                height: 12px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background: url("../images/k/vom-b.png") no-repeat center;
+                background-size: 35px 12px;
+            }
+        }
+    }
+}

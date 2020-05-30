@@ -1,0 +1,91 @@
+/*
+    920*907
+*/
+
+
+/*
+    登录  模态窗  表单样式
+*/
+
+.form-list-item-input {
+    position: relative;
+    &.ant-input-affix-wrapper .ant-input:not(:last-child) {
+        padding-right: 0px !important;
+    }
+    .ant-input-suffix {
+        i {
+            color: rgba(255, 255, 255, .3);
+            font-size: 18px;
+        }
+    }
+    .ant-input-wrapper {
+        position: relative !important;
+    }
+    .ant-input-group-addon {
+        z-index: 999999;
+        border: none;
+        background: transparent !important;
+        position: absolute;
+        padding: 0px;
+        &:first-child {
+            top: 12px;
+            left: 0px;
+        }
+        &:last-child {
+            display: block;
+            width: auto !important;
+            right: 0px !important;
+            top: 12px;
+            span {
+                font-size: 14px;
+                font-weight: 400;
+                color: rgba(255, 128, 66, 1);
+                cursor: pointer;
+                &:hover {
+                    color: #E55712;
+                }
+            }
+        }
+    }
+    .ant-input {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        border-radius: 0px !important;
+        outline: none !important;
+        border-top: none !important;
+        border-right: none !important;
+        border-left: none !important;
+        border-bottom: 1px solid #405167 !important;
+        background: transparent;
+        text-indent: 2.2em;
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(190, 194, 199, 1);
+        padding: 0px !important;
+        background-clip: content-box;
+        &::-webkit-input-placeholder {
+            color: rgba(190, 194, 199, .7);
+        }
+        &:hover,
+        &:focus {
+            border-bottom: 1px solid rgba(255, 130, 62, 1) !important;
+        }
+        &:focus {
+            color: rgba(190, 194, 199, 1) !important;
+        }
+    }
+}
+
+@import "./popover.scss";
+@import "./tip.scss";
+@import "./dropdown.scss";
+@import "./modal.scss";
+@import "./slider.scss";
+@import "./input.scss";
+@import "./switch.scss";
+@import "./radio.scss";
+@import "./tabs.scss";
+@import "./button.scss";
+@import "./progress.scss";
+@import "./message.scss";

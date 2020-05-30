@@ -1,0 +1,30 @@
+@import "./font.scss";
+@import "./ddd/index.scss";
+@import "./ant/index.scss";
+@import "./layout/index.scss";
+.app-recommend,
+.app-index {
+    background: url('../images/app-recommend-bg.png') no-repeat;
+    background-size: 100% 100%;
+    cursor: default;
+}
+
+.app-singer,
+.app-songByAlbum,
+.app-songByList {
+    background: url('../images/app-singer-bg.png') no-repeat;
+    background-size: 100% 100%;
+    cursor: default;
+}
+
+.app-classification {
+    background: url('../images/app-classification-bg.png') no-repeat;
+    background-size: 100% 100%;
+    cursor: default;
+}
+
+.app-collect {
+    background: url('../images/app-collect-bg.png') no-repeat;
+    background-size: 100% 100%;
+    cursor: default;
+}

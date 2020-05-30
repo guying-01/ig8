@@ -1,23 +1,23 @@
 .igb-layout-container {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    padding-left: 238px;
-    height: calc(100% - 109px);
-    min-height: 100%;
-    color: #fff;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding-left: 238px;
+  height: calc(100% - 109px);
+  min-height: 100%;
+  color: #fff;
+  overflow: hidden;
+  .igb-wrapper {
+    height: calc(100% - 109px - 72px);
+    margin: 0 auto;
     overflow: hidden;
-    .igb-wrapper {
-        height: calc(100% - 109px - 72px);
-        margin: 0 auto;
-        overflow: hidden;
-        overflow-y: auto;
-        @include scroll-bar(0px);
-        .igb-main-page {
-            width: calc(100% - 72px);
-            height: auto;
-            margin: 0 auto;
-        }
+    overflow-y: auto;
+    @include scroll-bar(0px);
+    .igb-main-page {
+      width: calc(100% - 72px);
+      height: auto;
+      margin: 0 auto;
     }
+  }
 }

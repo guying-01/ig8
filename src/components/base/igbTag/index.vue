@@ -1,8 +1,8 @@
 <!--
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors: gy
- * @LastEditTime: 2020-05-30 14:56:43
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-06-01 22:40:20
 -->
 <template>
   <span class="tag tag-yellow">
@@ -11,58 +11,56 @@
 </template>
 
 <script>
-import { GET_TAGS } from "@/api/api";
+import { GET_TAGS } from '@/api/api'
 export default {
-  name: "IgbTagBaseComponent",
+  name: 'IgbTagBaseComponent',
   props: {
     type: {
       type: Number,
       default: 0
     }
   },
-  data() {
+  data () {
     return {
       list: [
         {
           key: 0,
-          label: "人物",
-          color: "blue"
+          label: '人物',
+          color: 'blue'
         },
         {
           key: 1,
-          label: "Live",
-          color: "yellow"
+          label: 'Live',
+          color: 'yellow'
         },
         {
           key: 2,
-          label: "故事",
-          color: "green"
+          label: '故事',
+          color: 'green'
         },
         {
           key: 3,
-          label: "Movie",
-          color: "red"
+          label: 'Movie',
+          color: 'red'
         },
         {
           key: 4,
-          label: "Flash",
-          color: "purple"
+          label: 'Flash',
+          color: 'purple'
         }
       ]
-    };
+    }
   },
-  created() {
+  created () {
     // GET_TAGS({ CMD: "GET_TAGS" }).then(res => {
     //   this.list = res["List"];
     // });
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .tag {
-  height: 16px;
-  line-height: 16px;
   font-size: 12px;
   border-radius: 2px;
   padding: 0 2px;

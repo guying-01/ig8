@@ -50,8 +50,8 @@
             <li v-for="(item,index) in sidebar" :key="index" :class="{'sidebar-curr':item.current}">
                 <a href="javascript:void(0);" @click="toHandller(item);">
                     <div class="icon">
-                        <img :src="`${require(`../assets/images/${item.icon}.png`)}`" :width="item.width" v-if="!item.current" />
-                        <img :src="`${require(`../assets/images/${item.icon}_curr.png`)}`" :height="item.height" v-if="item.current" />
+                        <img :src="`${require(`../assets/images/${item.icon}.png`)}`" class="item-img" v-if="!item.current" />
+                        <img :src="`${require(`../assets/images/${item.icon}_curr.png`)}`" class="item-img" v-if="item.current" />
                     </div>
                     <img src="../assets/images/sidebar_curr.png" class="sidebar-bg-curr" v-if="item.current" />
                     <span>{{item.label}}</span>
@@ -63,258 +63,257 @@
 </template>
 
 <script>
-import localStorageService from "../ddd/localStorage.service";
-import IgbPagesModalLoginLayoutComponent from "../pages/modalLoginLayout/index.vue";
-import IgbPagesMyInfoComponent from "../pages/modal/my/index.vue";
-import IgbPagesDepositComponent from "../pages/modal/deposit/index.vue";
+import localStorageService from '../ddd/localStorage.service'
+import IgbPagesModalLoginLayoutComponent from '../pages/modalLoginLayout/index.vue'
+import IgbPagesMyInfoComponent from '../pages/modal/my/index.vue'
+import IgbPagesDepositComponent from '../pages/modal/deposit/index.vue'
 export default {
-    name: "IgbLayoutSidebarComponent",
-    data() {
-        return {
-            settingList: [{
-                    id: 1,
-                    label: "设置",
-                    icon: "user-setting",
-                    url: "/pages/setting/index"
-                },
-                {
-                    id: 2,
-                    label: "换肤",
-                    icon: "user-skinning",
-                    url: ""
-                },
-                {
-                    id: 3,
-                    label: "我的信息",
-                    icon: "user-info",
-                    url: "/pages/user/index"
-                },
-                {
-                    id: 4,
-                    label: "当前模式",
-                    icon: "user-mode",
-                    url: "",
-                    childers: [{
-                            id: 6,
-                            label: "K歌模式"
-                        },
-                        {
-                            id: 7,
-                            label: "家庭模式"
-                        }
-                    ]
-                },
-                {
-                    id: 5,
-                    label: "退出",
-                    icon: "user-out",
-                    url: ""
-                }
-            ],
-            sidebar: [{
-                    id: 1,
-                    label: "推荐",
-                    icon: "sidebar1",
-                    width: "30.11",
-                    height: "27.27",
-                    url: "/recommend/index",
-                    current: true
-                },
-                {
-                    id: 2,
-                    label: "歌星",
-                    icon: "sidebar2",
-                    width: "28.53",
-                    height: "29.25",
-                    url: "/singer/index",
-                    current: false
-                },
-                {
-                    id: 3,
-                    label: "分类",
-                    icon: "sidebar3",
-                    width: "28.5",
-                    height: "28.46",
-                    url: "/classification/index",
-                    current: false
-                },
-                {
-                    id: 4,
-                    label: "收藏",
-                    icon: "sidebar4",
-                    width: "29.98",
-                    height: "28.86",
-                    url: "/collect/index",
-                    current: false
-                }
-            ],
-            mode: 0,
-            defaultSelectedKeys: ['3-0']
-        };
-    },
-    mounted() {
-        let m = localStorageService.getItem("CONTR-MODE");
-        if (!m) {
-            localStorageService.removeItem("CONTR-MODE");
-            localStorageService.setItem("CONTR-MODE", this.mode);
-        } else {
-            this.mode = parseInt(localStorageService.getItem("CONTR-MODE"));
-        }
-
-        if (this.mode === 0) {
-            this.defaultSelectedKeys = [];
-            this.defaultSelectedKeys = ['3-0'];
-        } else {
-            this.defaultSelectedKeys = [];
-            this.defaultSelectedKeys = ['3-1'];
-        }
-
-        this.$emit('modeChange', {
-            mode: this.mode
-        });
-
-        let hasPath = this.sidebar.find(
-            e => e.url === window.location.hash.replace("#", "")
-        );
-        if (hasPath) {
-            hasPath.current = true;
-            this.sidebar
-                .filter(e => e.id !== hasPath.id)
-                .forEach(e => (e.current = false));
-        }
-    },
-    watch: {
-        $route(to, from) {
-            let hasPath = this.sidebar.find(e => e.url == to.path);
-            if (hasPath) {
-                hasPath.current = true;
-                this.sidebar
-                    .filter(e => e.id !== hasPath.id)
-                    .forEach(e => (e.current = false));
-            }
-        }
-    },
-    methods: {
-        menuClickHandller(event) {
-            if (event.key === "3-0") {
-                this.mode = 0;
-                this.defaultSelectedKeys = [];
-                this.defaultSelectedKeys = ['3-0'];
-                localStorageService.removeItem("CONTR-MODE");
-                localStorageService.setItem("CONTR-MODE", 0);
-                this.$emit('modeChange', {
-                    mode: 0
-                });
-                return;
-            }
-
-            if (event.key === "3-1") {
-                this.mode = 1;
-                this.defaultSelectedKeys = [];
-                this.defaultSelectedKeys = ['3-1'];
-                localStorageService.removeItem("CONTR-MODE");
-                localStorageService.setItem("CONTR-MODE", 1);
-                this.$emit('modeChange', {
-                    mode: 1
-                });
-                return;
-            }
-            let KEY = "BACK-URL";
-            let URL = window.location.hash.replace("#", "");
-            localStorageService.removeItem(KEY);
-            localStorageService.setItem(KEY, URL);
-
-            let index = parseInt(event.key) + 1;
-
-            let item = this.settingList.find(e => e.id === index);
-
-            if (item.id === 1) {
-                this.igbModal$({
-                    visible: true,
-                    wrapClassName: "login-modal",
-                    width: 420,
-                    componentName: IgbPagesModalLoginLayoutComponent,
-                    params: {},
-                    okHandller: (options, close) => {
-                        let okResult = options.output.okResult;
-                        if (okResult.key === "ok") {
-                            close();
-                            setTimeout(() => {
-                                this.$router.push({
-                                    path: this.settingList.find(e => e.id === index).url
-                                });
-                            }, 0);
-                        }
-                    }
-                });
-            }
-
-            if (item.id === 5) {
-                this.igbModal$({
-                    visible: true,
-                    wrapClassName: "login-modal pass-modal",
-                    width: 420,
-                    componentName: IgbPagesModalLoginLayoutComponent,
-                    params: {
-                        page: "pass"
-                    },
-                    okHandller: (options, close) => {
-                        let okResult = options.output.okResult;
-                        if (okResult.key === "ok") {
-                            close();
-                            setTimeout(() => {
-                                this.$router.push({
-                                    path: this.settingList.find(e => e.id === index).url
-                                });
-                            }, 0);
-                        }
-                    }
-                });
-            }
-
-            if (item.id === 3) {
-                setTimeout(() => {
-                    this.$router.push({
-                        path: this.settingList.find(e => e.id === index).url
-                    });
-                }, 0);
-            }
-
+  name: 'IgbLayoutSidebarComponent',
+  data () {
+    return {
+      settingList: [{
+        id: 1,
+        label: '设置',
+        icon: 'user-setting',
+        url: '/pages/setting/index'
+      },
+      {
+        id: 2,
+        label: '换肤',
+        icon: 'user-skinning',
+        url: ''
+      },
+      {
+        id: 3,
+        label: '我的信息',
+        icon: 'user-info',
+        url: '/pages/user/index'
+      },
+      {
+        id: 4,
+        label: '当前模式',
+        icon: 'user-mode',
+        url: '',
+        childers: [{
+          id: 6,
+          label: 'K歌模式'
         },
-        toHandller(item) {
-            item.current = true;
-            this.sidebar
-                .filter(e => e.id !== item.id)
-                .forEach(e => (e.current = false));
-            this.$router.push({
-                path: item.url
-            });
-        },
-        myInfoHandller() {
-            this.igbModal$({
-                visible: true,
-                wrapClassName: "my-info-modal",
-                width: 687,
-                componentName: IgbPagesMyInfoComponent,
-                params: {},
-                okHandller: (options, close) => {
-                    let okResult = options.output.okResult;
-                    if (okResult.key === "deposit") {
-                        close();
-                        this.depositHandller();
-                    }
-                }
-            });
-        },
-        depositHandller() {
-            this.igbModal$({
-                visible: true,
-                width: 800,
-                wrapClassName: "deposit-modal",
-                componentName: IgbPagesDepositComponent,
-                params: {}
-            });
+        {
+          id: 7,
+          label: '家庭模式'
         }
+        ]
+      },
+      {
+        id: 5,
+        label: '退出',
+        icon: 'user-out',
+        url: ''
+      }
+      ],
+      sidebar: [{
+        id: 1,
+        label: '推荐',
+        icon: 'sidebar1',
+        width: '30.11',
+        height: '27.27',
+        url: '/recommend/index',
+        current: true
+      },
+      {
+        id: 2,
+        label: '歌星',
+        icon: 'sidebar2',
+        width: '28.53',
+        height: '29.25',
+        url: '/singer/index',
+        current: false
+      },
+      {
+        id: 3,
+        label: '分类',
+        icon: 'sidebar3',
+        width: '28.5',
+        height: '28.46',
+        url: '/classification/index',
+        current: false
+      },
+      {
+        id: 4,
+        label: '收藏',
+        icon: 'sidebar4',
+        width: '29.98',
+        height: '28.86',
+        url: '/collect/index',
+        current: false
+      }
+      ],
+      mode: 0,
+      defaultSelectedKeys: ['3-0']
     }
-};
+  },
+  mounted () {
+    let m = localStorageService.getItem('CONTR-MODE')
+    if (!m) {
+      localStorageService.removeItem('CONTR-MODE')
+      localStorageService.setItem('CONTR-MODE', this.mode)
+    } else {
+      this.mode = parseInt(localStorageService.getItem('CONTR-MODE'))
+    }
+
+    if (this.mode === 0) {
+      this.defaultSelectedKeys = []
+      this.defaultSelectedKeys = ['3-0']
+    } else {
+      this.defaultSelectedKeys = []
+      this.defaultSelectedKeys = ['3-1']
+    }
+
+    this.$emit('modeChange', {
+      mode: this.mode
+    })
+
+    let hasPath = this.sidebar.find(
+      e => e.url === window.location.hash.replace('#', '')
+    )
+    if (hasPath) {
+      hasPath.current = true
+      this.sidebar
+        .filter(e => e.id !== hasPath.id)
+        .forEach(e => (e.current = false))
+    }
+  },
+  watch: {
+    $route (to, from) {
+      let hasPath = this.sidebar.find(e => e.url == to.path)
+      if (hasPath) {
+        hasPath.current = true
+        this.sidebar
+          .filter(e => e.id !== hasPath.id)
+          .forEach(e => (e.current = false))
+      }
+    }
+  },
+  methods: {
+    menuClickHandller (event) {
+      if (event.key === '3-0') {
+        this.mode = 0
+        this.defaultSelectedKeys = []
+        this.defaultSelectedKeys = ['3-0']
+        localStorageService.removeItem('CONTR-MODE')
+        localStorageService.setItem('CONTR-MODE', 0)
+        this.$emit('modeChange', {
+          mode: 0
+        })
+        return
+      }
+
+      if (event.key === '3-1') {
+        this.mode = 1
+        this.defaultSelectedKeys = []
+        this.defaultSelectedKeys = ['3-1']
+        localStorageService.removeItem('CONTR-MODE')
+        localStorageService.setItem('CONTR-MODE', 1)
+        this.$emit('modeChange', {
+          mode: 1
+        })
+        return
+      }
+      let KEY = 'BACK-URL'
+      let URL = window.location.hash.replace('#', '')
+      localStorageService.removeItem(KEY)
+      localStorageService.setItem(KEY, URL)
+
+      let index = parseInt(event.key) + 1
+
+      let item = this.settingList.find(e => e.id === index)
+
+      if (item.id === 1) {
+        this.igbModal$({
+          visible: true,
+          wrapClassName: 'login-modal',
+          width: 420,
+          componentName: IgbPagesModalLoginLayoutComponent,
+          params: {},
+          okHandller: (options, close) => {
+            let okResult = options.output.okResult
+            if (okResult.key === 'ok') {
+              close()
+              setTimeout(() => {
+                this.$router.push({
+                  path: this.settingList.find(e => e.id === index).url
+                })
+              }, 0)
+            }
+          }
+        })
+      }
+
+      if (item.id === 5) {
+        this.igbModal$({
+          visible: true,
+          wrapClassName: 'login-modal pass-modal',
+          width: 420,
+          componentName: IgbPagesModalLoginLayoutComponent,
+          params: {
+            page: 'pass'
+          },
+          okHandller: (options, close) => {
+            let okResult = options.output.okResult
+            if (okResult.key === 'ok') {
+              close()
+              setTimeout(() => {
+                this.$router.push({
+                  path: this.settingList.find(e => e.id === index).url
+                })
+              }, 0)
+            }
+          }
+        })
+      }
+
+      if (item.id === 3) {
+        setTimeout(() => {
+          this.$router.push({
+            path: this.settingList.find(e => e.id === index).url
+          })
+        }, 0)
+      }
+    },
+    toHandller (item) {
+      item.current = true
+      this.sidebar
+        .filter(e => e.id !== item.id)
+        .forEach(e => (e.current = false))
+      this.$router.push({
+        path: item.url
+      })
+    },
+    myInfoHandller () {
+      this.igbModal$({
+        visible: true,
+        wrapClassName: 'my-info-modal',
+        width: 687,
+        componentName: IgbPagesMyInfoComponent,
+        params: {},
+        okHandller: (options, close) => {
+          let okResult = options.output.okResult
+          if (okResult.key === 'deposit') {
+            close()
+            this.depositHandller()
+          }
+        }
+      })
+    },
+    depositHandller () {
+      this.igbModal$({
+        visible: true,
+        width: 800,
+        wrapClassName: 'deposit-modal',
+        componentName: IgbPagesDepositComponent,
+        params: {}
+      })
+    }
+  }
+}
 </script>

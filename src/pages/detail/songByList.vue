@@ -50,235 +50,234 @@
 
 <script>
 export default {
-    name: "IgbPagesDetailSongByListComponent",
-    data() {
-        return {
-            mode: "list",
-            show: false,
-            btnExp: false,
-            baseHeight: 0,
-            textHeight: 0,
-            list: [{
-                    value: "01",
-                    label: "千面",
-                    name: "逍遥乐队",
-                    lan: "国语",
-                    tag: 1
-                },
-                {
-                    value: "02",
-                    label: "桥边姑娘",
-                    name: "垂耳兔",
-                    lan: "国语",
-                    tag: 1
-                },
-                {
-                    value: "03",
-                    label: "世界这么大还是遇见你",
-                    name: "程响",
-                    lan: "国语",
-                    tag: 0,
-                    current: true
-                },
-                {
-                    value: "04",
-                    label: "你的答案",
-                    name: "酷",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "05",
-                    label: "桥边姑娘",
-                    name: "垂耳兔",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "06",
-                    label: "千面",
-                    name: "逍遥乐队",
-                    lan: "国语",
-                    tag: 1
-                },
-                {
-                    value: "07",
-                    label: "世界这么大还会遇见你",
-                    name: "程响",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "08",
-                    label: "世界这么大还会遇见你",
-                    name: "垂耳兔",
-                    lan: "程响",
-                    tag: 1
-                },
-                {
-                    value: "09",
-                    label: "你的答案",
-                    name: "酷",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "10",
-                    label: "桥边姑娘",
-                    name: "垂耳兔",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "11",
-                    label: "千面",
-                    name: "逍遥乐队",
-                    lan: "国语",
-                    tag: 1
-                },
-                {
-                    value: "12",
-                    label: "桥边姑娘",
-                    name: "垂耳兔",
-                    lan: "国语",
-                    tag: 1
-                },
-                {
-                    value: "13",
-                    label: "世界这么大还是遇见你",
-                    name: "程响",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "14",
-                    label: "你的答案",
-                    name: "酷",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "15",
-                    label: "桥边姑娘",
-                    name: "垂耳兔",
-                    lan: "国语",
-                    tag: 0
-                }
-            ],
-            tableData: [{
-                    num: "01",
-                    label: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    singerType: "国语",
-                    name: "专辑名称",
-                    time: "02:00"
-                }, {
-                    num: "02",
-                    label: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    singerType: "国语",
-                    name: "专辑名称",
-                    time: "02:00"
-                },
-                {
-                    num: "03",
-                    label: "成都",
-                    tag: 0,
-                    singerName: "赵雪",
-                    singerType: "国语",
-                    name: "专辑名称",
-                    time: "02:00",
-                    current: true
-                },
-                {
-                    num: "04",
-                    label: "我不是真正的快乐",
-                    tag: 1,
-                    singerName: "阿信",
-                    singerType: "国语",
-                    name: "专辑名称",
-                    time: "02:00"
-                },
-                {
-                    num: "05",
-                    label: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    singerType: "国语",
-                    name: "专辑名称",
-                    time: "02:00",
-                    play: true
-                },
-                {
-                    num: "06",
-                    label: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    singerType: "国语",
-                    name: "专辑名称",
-                    time: "02:00"
-                }
-            ],
-        }
-    },
-    mounted() {
-
-        this.$nextTick(() => {
-            this.baseHeight = 0;
-            this.textHeight = 0;
-
-            let contentEl = document.getElementsByClassName("content");
-
-            if (contentEl.length > 0) {
-                contentEl.forEach(element => {
-                    this.baseHeight = element.offsetHeight;
-                });
-            }
-
-            let textEl = document.getElementsByClassName("text");
-            if (textEl.length > 0) {
-                textEl.forEach(element => {
-                    this.textHeight = element.scrollHeight;
-                });
-            }
-
-            if (this.textHeight > this.baseHeight) {
-                this.btnExp = true;
-            }
-        });
-    },
-    methods: {
-        modeChangeHandller(type) {
-            this.mode = type;
-        },
-        opshen() {
-            if (!this.btnExp) {
-                return;
-            }
-
-            this.show = !this.show;
-
-            if (this.show) {
-                let contentEl = document.getElementsByClassName("content");
-
-                if (contentEl.length > 0) {
-                    contentEl.forEach(element => {
-                        element.style.height = `${this.textHeight}px`;
-                    });
-                }
-            } else {
-                let contentEl = document.getElementsByClassName("content");
-
-                if (contentEl.length > 0) {
-                    contentEl.forEach(element => {
-                        element.style.height = `23px`;
-                    });
-                }
-            }
-        }
+  name: 'IgbPagesDetailSongByListComponent',
+  data () {
+    return {
+      mode: 'list',
+      show: false,
+      btnExp: false,
+      baseHeight: 0,
+      textHeight: 0,
+      list: [{
+        value: '01',
+        label: '千面',
+        name: '逍遥乐队',
+        lan: '国语',
+        tag: 1
+      },
+      {
+        value: '02',
+        label: '桥边姑娘',
+        name: '垂耳兔',
+        lan: '国语',
+        tag: 1
+      },
+      {
+        value: '03',
+        label: '世界这么大还是遇见你',
+        name: '程响',
+        lan: '国语',
+        tag: 0,
+        current: true
+      },
+      {
+        value: '04',
+        label: '你的答案',
+        name: '酷',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '05',
+        label: '桥边姑娘',
+        name: '垂耳兔',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '06',
+        label: '千面',
+        name: '逍遥乐队',
+        lan: '国语',
+        tag: 1
+      },
+      {
+        value: '07',
+        label: '世界这么大还会遇见你',
+        name: '程响',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '08',
+        label: '世界这么大还会遇见你',
+        name: '垂耳兔',
+        lan: '程响',
+        tag: 1
+      },
+      {
+        value: '09',
+        label: '你的答案',
+        name: '酷',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '10',
+        label: '桥边姑娘',
+        name: '垂耳兔',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '11',
+        label: '千面',
+        name: '逍遥乐队',
+        lan: '国语',
+        tag: 1
+      },
+      {
+        value: '12',
+        label: '桥边姑娘',
+        name: '垂耳兔',
+        lan: '国语',
+        tag: 1
+      },
+      {
+        value: '13',
+        label: '世界这么大还是遇见你',
+        name: '程响',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '14',
+        label: '你的答案',
+        name: '酷',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '15',
+        label: '桥边姑娘',
+        name: '垂耳兔',
+        lan: '国语',
+        tag: 0
+      }
+      ],
+      tableData: [{
+        num: '01',
+        label: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        singerType: '国语',
+        name: '专辑名称',
+        time: '02:00'
+      }, {
+        num: '02',
+        label: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        singerType: '国语',
+        name: '专辑名称',
+        time: '02:00'
+      },
+      {
+        num: '03',
+        label: '成都',
+        tag: 0,
+        singerName: '赵雪',
+        singerType: '国语',
+        name: '专辑名称',
+        time: '02:00',
+        current: true
+      },
+      {
+        num: '04',
+        label: '我不是真正的快乐',
+        tag: 1,
+        singerName: '阿信',
+        singerType: '国语',
+        name: '专辑名称',
+        time: '02:00'
+      },
+      {
+        num: '05',
+        label: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        singerType: '国语',
+        name: '专辑名称',
+        time: '02:00',
+        play: true
+      },
+      {
+        num: '06',
+        label: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        singerType: '国语',
+        name: '专辑名称',
+        time: '02:00'
+      }
+      ]
     }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.baseHeight = 0
+      this.textHeight = 0
+
+      let contentEl = document.getElementsByClassName('content')
+
+      if (contentEl.length > 0) {
+        contentEl.forEach(element => {
+          this.baseHeight = element.offsetHeight
+        })
+      }
+
+      let textEl = document.getElementsByClassName('text')
+      if (textEl.length > 0) {
+        textEl.forEach(element => {
+          this.textHeight = element.scrollHeight
+        })
+      }
+
+      if (this.textHeight > this.baseHeight) {
+        this.btnExp = true
+      }
+    })
+  },
+  methods: {
+    modeChangeHandller (type) {
+      this.mode = type
+    },
+    opshen () {
+      if (!this.btnExp) {
+        return
+      }
+
+      this.show = !this.show
+
+      if (this.show) {
+        let contentEl = document.getElementsByClassName('content')
+
+        if (contentEl.length > 0) {
+          contentEl.forEach(element => {
+            element.style.height = `${this.textHeight}px`
+          })
+        }
+      } else {
+        let contentEl = document.getElementsByClassName('content')
+
+        if (contentEl.length > 0) {
+          contentEl.forEach(element => {
+            element.style.height = `23px`
+          })
+        }
+      }
+    }
+  }
 }
 </script>
 
@@ -339,7 +338,6 @@ export default {
 
                 >span {
                     &:first-child {
-                        width: 40px;
                         height: 20px;
                         line-height: 18px;
                         text-align: center;
@@ -411,12 +409,12 @@ export default {
             .tag,
             .info {
                 div {
-                    height: 23px;
+                    // height: 23px;
                     overflow: hidden;
                     color: rgba(255, 255, 255, .7);
 
                     &:first-child {
-                        width: 45px;
+                        // width: 45px;
                     }
 
                     &:last-child {
@@ -432,9 +430,8 @@ export default {
                             align-items: flex-start;
 
                             span {
-                                width: 32px;
-                                height: 18px;
-                                line-height: 18px;
+                                // height: 18px;
+                                // line-height: 18px;
                                 text-align: center;
                                 background: rgba(253, 129, 74, .2);
                                 border-radius: 2px;

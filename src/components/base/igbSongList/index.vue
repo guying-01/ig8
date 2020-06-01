@@ -19,27 +19,27 @@
 
 <script>
 export default {
-    name: "IgbSongListBaseComponent",
-    props: {
-        dataSource: {
-            type: Array,
-            default: () => []
-        }
-    },
-    mounted() {
-        // let itemList = document.getElementsByClassName("song-list-item");
-        // if (itemList.length > 0) {
-        //     itemList.forEach(element => {
-        //         let itemWidth = element.offsetWidth / 0.76;
-        //         element.style.height = `${parseFloat(itemWidth).toFixed(0)}px`;
-        //     });
-        // }
-    },
-    methods: {
-        changeHandller() {
-            this.$emit('change', {});
-        }
+  name: 'IgbSongListBaseComponent',
+  props: {
+    dataSource: {
+      type: Array,
+      default: () => []
     }
+  },
+  mounted () {
+    // let itemList = document.getElementsByClassName("song-list-item");
+    // if (itemList.length > 0) {
+    //     itemList.forEach(element => {
+    //         let itemWidth = element.offsetWidth / 0.76;
+    //         element.style.height = `${parseFloat(itemWidth).toFixed(0)}px`;
+    //     });
+    // }
+  },
+  methods: {
+    changeHandller () {
+      this.$emit('change', {})
+    }
+  }
 }
 </script>
 
@@ -48,8 +48,8 @@ export default {
     width: 100%;
     margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    // align-items: center;
+    // justify-content: space-between;
     flex-wrap: wrap;
 
     .song-list-item {
@@ -61,6 +61,7 @@ export default {
         cursor: pointer;
         margin-bottom: 25px;
         position: relative;
+        margin-right:10px;
 
         &:nth-child(7),
         &:nth-child(8),
@@ -190,7 +191,7 @@ export default {
                 margin-top: 10px;
 
                 span {
-                    width: 32px;
+                    // width: 32px;
                     height: 16px;
                     line-height: 16px;
                     background: rgba(253, 129, 74, .2);
@@ -206,200 +207,200 @@ export default {
     }
 }
 
-@media (max-width : 1680px) {
-    .igb-song-list-base-component {
+// @media (max-width : 1680px) {
+//     .igb-song-list-base-component {
 
-        .song-list-item {
-            .card-info {
+//         .song-list-item {
+//             .card-info {
 
-                h3,
-                p {
-                    padding: 0px;
-                    width: calc(100% - 30px);
-                    margin: 0 auto;
-                }
+//                 h3,
+//                 p {
+//                     padding: 0px;
+//                     width: calc(100% - 30px);
+//                     margin: 0 auto;
+//                 }
 
-                h3 {
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 14px;
-                    margin: 8px auto;
-                }
+//                 h3 {
+//                     height: 20px;
+//                     line-height: 20px;
+//                     font-size: 14px;
+//                     margin: 8px auto;
+//                 }
 
-                p {
-                    span {
-                        font-size: 12px;
-                        margin-right: 5px;
-                        padding: 0px 4px;
-                    }
-                }
-            }
-        }
-    }
-}
+//                 p {
+//                     span {
+//                         font-size: 12px;
+//                         margin-right: 5px;
+//                         padding: 0px 4px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1600px) {
-    .igb-song-list-base-component {
+// @media (max-width : 1600px) {
+//     .igb-song-list-base-component {
 
-        .song-list-item {
-            .card-info {
+//         .song-list-item {
+//             .card-info {
 
-                h3,
-                p {
-                    padding: 0px;
-                    width: calc(100% - 30px);
-                    margin: 0 auto;
-                }
+//                 h3,
+//                 p {
+//                     padding: 0px;
+//                     width: calc(100% - 30px);
+//                     margin: 0 auto;
+//                 }
 
-                h3 {
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 14px;
-                    margin: 5px auto;
-                }
+//                 h3 {
+//                     height: 20px;
+//                     line-height: 20px;
+//                     font-size: 14px;
+//                     margin: 5px auto;
+//                 }
 
-                p {
-                    span {
-                        font-size: 12px;
-                        margin-right: 5px;
-                        padding: 0px 4px;
-                    }
-                }
-            }
-        }
-    }
-}
+//                 p {
+//                     span {
+//                         font-size: 12px;
+//                         margin-right: 5px;
+//                         padding: 0px 4px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1440px) {
-    .igb-song-list-base-component {
-        .song-list-item {
-            width: calc(18% - 30px);
+// @media (max-width : 1440px) {
+//     .igb-song-list-base-component {
+//         .song-list-item {
+//             width: calc(18% - 30px);
 
-            .card-info {
+//             .card-info {
 
-                h3,
-                p {
-                    padding: 0px;
-                    width: calc(100% - 30px);
-                    margin: 0 auto;
-                }
+//                 h3,
+//                 p {
+//                     padding: 0px;
+//                     width: calc(100% - 30px);
+//                     margin: 0 auto;
+//                 }
 
-                h3 {
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 14px;
-                    margin: 3px auto;
-                }
+//                 h3 {
+//                     height: 20px;
+//                     line-height: 20px;
+//                     font-size: 14px;
+//                     margin: 3px auto;
+//                 }
 
-                p {
-                    span {
-                        font-size: 12px;
-                        margin-right: 5px;
-                        padding: 0px 4px;
-                    }
-                }
-            }
-        }
-    }
-}
+//                 p {
+//                     span {
+//                         font-size: 12px;
+//                         margin-right: 5px;
+//                         padding: 0px 4px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1366px) {
-    .igb-song-list-base-component {
+// @media (max-width : 1366px) {
+//     .igb-song-list-base-component {
 
-        .song-list-item {
-            width: calc(18% - 30px);
+//         .song-list-item {
+//             width: calc(18% - 30px);
 
-            .card-info {
+//             .card-info {
 
-                h3,
-                p {
-                    padding: 0px;
-                    width: calc(100% - 30px);
-                    margin: 0 auto;
-                }
+//                 h3,
+//                 p {
+//                     padding: 0px;
+//                     width: calc(100% - 30px);
+//                     margin: 0 auto;
+//                 }
 
-                h3 {
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 14px;
-                    margin: 2.5px auto;
-                }
+//                 h3 {
+//                     height: 20px;
+//                     line-height: 20px;
+//                     font-size: 14px;
+//                     margin: 2.5px auto;
+//                 }
 
-                p {
-                    span {
-                        font-size: 12px;
-                        margin-right: 5px;
-                        padding: 0px 4px;
-                    }
-                }
-            }
-        }
-    }
-}
+//                 p {
+//                     span {
+//                         font-size: 12px;
+//                         margin-right: 5px;
+//                         padding: 0px 4px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1280px) {
-    .igb-song-list-base-component {
-        .song-list-item {
-            width: calc(18% - 30px);
+// @media (max-width : 1280px) {
+//     .igb-song-list-base-component {
+//         .song-list-item {
+//             width: calc(18% - 30px);
 
-            .card-info {
+//             .card-info {
 
-                h3,
-                p {
-                    padding: 0px;
-                    width: calc(100% - 30px);
-                    margin: 0 auto;
-                }
+//                 h3,
+//                 p {
+//                     padding: 0px;
+//                     width: calc(100% - 30px);
+//                     margin: 0 auto;
+//                 }
 
-                h3 {
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 14px;
-                    margin: 2px auto;
-                }
+//                 h3 {
+//                     height: 20px;
+//                     line-height: 20px;
+//                     font-size: 14px;
+//                     margin: 2px auto;
+//                 }
 
-                p {
-                    span {
-                        font-size: 12px;
-                        margin-right: 5px;
-                        padding: 0px 4px;
-                    }
-                }
-            }
-        }
-    }
-}
+//                 p {
+//                     span {
+//                         font-size: 12px;
+//                         margin-right: 5px;
+//                         padding: 0px 4px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1024px) {
-    .igb-song-list-base-component {
-        .song-list-item {
-            width: calc(23% - 30px);
+// @media (max-width : 1024px) {
+//     .igb-song-list-base-component {
+//         .song-list-item {
+//             width: calc(23% - 30px);
 
-            .card-info {
+//             .card-info {
 
-                h3,
-                p {
-                    padding: 0px;
-                    width: calc(100% - 30px);
-                    margin: 0 auto;
-                }
+//                 h3,
+//                 p {
+//                     padding: 0px;
+//                     width: calc(100% - 30px);
+//                     margin: 0 auto;
+//                 }
 
-                h3 {
-                    height: 20px;
-                    line-height: 20px;
-                    font-size: 14px;
-                    margin: 2px auto auto auto;
-                }
+//                 h3 {
+//                     height: 20px;
+//                     line-height: 20px;
+//                     font-size: 14px;
+//                     margin: 2px auto auto auto;
+//                 }
 
-                p {
-                    span {
-                        font-size: 12px;
-                        margin-right: 5px;
-                        padding: 0px 4px;
-                    }
-                }
-            }
-        }
-    }
-}
+//                 p {
+//                     span {
+//                         font-size: 12px;
+//                         margin-right: 5px;
+//                         padding: 0px 4px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 </style>

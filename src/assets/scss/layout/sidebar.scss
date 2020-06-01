@@ -115,6 +115,10 @@
                 line-height: 64px;
                 cursor: pointer;
                 position: relative;
+                .item-img{
+                  width: 25px;
+                  height: 25px;
+                }
                 a {
                     display: flex;
                     align-items: center;

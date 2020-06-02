@@ -97,207 +97,207 @@
 
 <script>
 export default {
-    name: "IgbOrderListBaseComponent",
-    data() {
-        return {
-            current: 0,
-            tabs: [{
-                value: 0,
-                label: "已点(20)"
-            }, {
-                value: 1,
-                label: "已唱(20)"
-            }],
-            tableList: [{
-                    value: "01",
-                    songName: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    time: "01:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "02",
-                    songName: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "03",
-                    songName: "成都",
-                    tag: 0,
-                    singerName: "赵雷",
-                    time: "02:00",
-                    current: true,
-                    play: true
-                },
-                {
-                    value: "04",
-                    songName: "我不是真正的快乐",
-                    tag: 0,
-                    singerName: "阿信",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "05",
-                    songName: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    time: "02:00",
-                    current: false,
-                    play: false,
-                    collect: true
-                },
-                {
-                    value: "06",
-                    songName: "我不是真正的快乐",
-                    tag: 0,
-                    singerName: "阿信",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "07",
-                    songName: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "08",
-                    songName: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    time: "02:00",
-                    current: false,
-                    play: false,
-                    collect: true
-                },
-                {
-                    value: "09",
-                    songName: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "10",
-                    songName: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                }
-            ],
-            tableList1: [{
-                    value: "01",
-                    songName: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    time: "01:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "02",
-                    songName: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "03",
-                    songName: "成都",
-                    tag: 0,
-                    singerName: "赵雷",
-                    time: "02:00",
-                    current: true,
-                    play: true
-                },
-                {
-                    value: "04",
-                    songName: "我不是真正的快乐",
-                    tag: 0,
-                    singerName: "阿信",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "05",
-                    songName: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    time: "02:00",
-                    current: false,
-                    play: false,
-                    collect: false
-                },
-                {
-                    value: "06",
-                    songName: "我不是真正的快乐",
-                    tag: 0,
-                    singerName: "阿信",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "07",
-                    songName: "你的答案",
-                    tag: 0,
-                    singerName: "郭富城",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                },
-                {
-                    value: "08",
-                    songName: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    time: "02:00",
-                    current: false,
-                    play: false,
-                    collect: false
-                },
-                {
-                    value: "09",
-                    songName: "死了都要爱",
-                    tag: 0,
-                    singerName: "信乐团",
-                    time: "02:00",
-                    current: false,
-                    play: false
-                }
-            ]
-        }
-    },
-    methods: {
-        btnShareHandller() {
-            this.$emit('share', {});
-        },
-        closeHandller() {
-            this.$emit('close', {});
-        },
-        changeHandller(item) {
-            this.current = item.value;
-        }
+  name: 'IgbOrderListBaseComponent',
+  data () {
+    return {
+      current: 0,
+      tabs: [{
+        value: 0,
+        label: '已点(20)'
+      }, {
+        value: 1,
+        label: '已唱(20)'
+      }],
+      tableList: [{
+        value: '01',
+        songName: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        time: '01:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '02',
+        songName: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '03',
+        songName: '成都',
+        tag: 0,
+        singerName: '赵雷',
+        time: '02:00',
+        current: true,
+        play: true
+      },
+      {
+        value: '04',
+        songName: '我不是真正的快乐',
+        tag: 0,
+        singerName: '阿信',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '05',
+        songName: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        time: '02:00',
+        current: false,
+        play: false,
+        collect: true
+      },
+      {
+        value: '06',
+        songName: '我不是真正的快乐',
+        tag: 0,
+        singerName: '阿信',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '07',
+        songName: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '08',
+        songName: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        time: '02:00',
+        current: false,
+        play: false,
+        collect: true
+      },
+      {
+        value: '09',
+        songName: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '10',
+        songName: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        time: '02:00',
+        current: false,
+        play: false
+      }
+      ],
+      tableList1: [{
+        value: '01',
+        songName: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        time: '01:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '02',
+        songName: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '03',
+        songName: '成都',
+        tag: 0,
+        singerName: '赵雷',
+        time: '02:00',
+        current: true,
+        play: true
+      },
+      {
+        value: '04',
+        songName: '我不是真正的快乐',
+        tag: 0,
+        singerName: '阿信',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '05',
+        songName: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        time: '02:00',
+        current: false,
+        play: false,
+        collect: false
+      },
+      {
+        value: '06',
+        songName: '我不是真正的快乐',
+        tag: 0,
+        singerName: '阿信',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '07',
+        songName: '你的答案',
+        tag: 0,
+        singerName: '郭富城',
+        time: '02:00',
+        current: false,
+        play: false
+      },
+      {
+        value: '08',
+        songName: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        time: '02:00',
+        current: false,
+        play: false,
+        collect: false
+      },
+      {
+        value: '09',
+        songName: '死了都要爱',
+        tag: 0,
+        singerName: '信乐团',
+        time: '02:00',
+        current: false,
+        play: false
+      }
+      ]
     }
+  },
+  methods: {
+    btnShareHandller () {
+      this.$emit('share', {})
+    },
+    closeHandller () {
+      this.$emit('close', {})
+    },
+    changeHandller (item) {
+      this.current = item.value
+    }
+  }
 }
 </script>
 
@@ -433,6 +433,7 @@ export default {
 
     .list-order {
         height: calc(100vh - 340px);
+        overflow-y: auto;
         @include scroll-bar(5px);
         .table {
             width: 100%;

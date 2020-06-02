@@ -2,17 +2,13 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
  * @LastEditors: gy
- * @LastEditTime: 2020-05-30 14:45:39
+ * @LastEditTime: 2020-06-01 14:07:51
 -->
 <template>
   <div class="igb-modules-recommend-page">
     <igb-swiper style="margin-top:41.5px;"></igb-swiper>
 
-    <igb-song-card-list
-      style="margin-top:33.5px;"
-      showType
-      :dataSource="list"
-    ></igb-song-card-list>
+    <igb-song-card-list style="margin-top:33.5px;" showType :dataSource="list"></igb-song-card-list>
 
     <igb-line style="margin-top:18.5px;"></igb-line>
 
@@ -21,7 +17,7 @@
       showType
       :type="1"
       :dataSource="list1"
-    ></igb-song-card-list> -->
+    ></igb-song-card-list>-->
   </div>
 </template>
 

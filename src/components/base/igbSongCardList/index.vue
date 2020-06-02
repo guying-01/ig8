@@ -1,37 +1,41 @@
 <template>
   <div class="igb-song-card-list-base-component">
-    <div
-      v-if="showType"
-      class="song-card-list-item item-first"
-      :class="`item-first-${type}`"
-    >
-      <div class="item-box"></div>
-    </div>
-    <div
-      class="song-card-list-item"
-      v-for="(item, index) in dataSource"
-      :key="index"
-      :class="{ current: item.current, play: item.play }"
-      @click="changeHandller(item)"
-    >
-      <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
-        <div class="number" v-if="showNum">
-          <span>{{ (index + 1) | indexNum }}</span>
-          <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+    <a-row :gutter="2">
+      <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-if="showType">
+        <div
+          class="song-card-list-item item-first"
+          :class="`item-first-${type}`"
+        >
+          <div class="item-box"></div>
         </div>
-        <div class="info">
-          <h3>{{ item.SongName }}</h3>
-          <p>
-            <span>{{ item.SingerName }}</span
-            ><span>|</span>{{ item.LanguageName }}
-          </p>
-          <igb-tag>{{ item.MtvStyle }}</igb-tag>
-          <i class="icon icon-collect"></i>
+      </a-col>
+      <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-for="(item, index) in dataSource" :key="index">
+        <div
+          class="song-card-list-item"
+          :class="{ current: item.current, play: item.play }"
+          @click="changeHandller(item)"
+        >
+          <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
+            <div class="number" v-if="showNum">
+              <span>{{ (index + 1) | indexNum }}</span>
+              <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+            </div>
+            <div class="info">
+              <h3>{{ item.SongName }}</h3>
+              <p>
+                <span>{{ item.SingerName }}</span>
+                <span>|</span>
+                {{ item.LanguageName }}
+              </p>
+              <igb-tag>{{ item.MtvStyle }}</igb-tag>
+              <i class="icon icon-collect"></i>
+            </div>
+          </div>
+          <i class="icon-leing"></i>
+          <div class="box"></div>
         </div>
-      </div>
-      <i class="icon-leing"></i>
-      <div class="box"></div>
-    </div>
+      </a-col>
+    </a-row>
   </div>
 </template>
 
@@ -71,6 +75,8 @@ export default {
     }
   },
   mounted () {
+    this.calcuHeight()
+    window.addEventListener('resize', this.calcuHeight)
     // let itemList = document.getElementsByClassName("song-card-list-item");
     // if (itemList.length > 0) {
     //   itemList.forEach(element => {
@@ -81,12 +87,20 @@ export default {
   },
   methods: {
     changeHandller (item) {
-      console.log(22)
       this.$emit('change', item)
     },
+    calcuHeight () {
+      let siblingH = document.querySelectorAll('.song-card-list-item')[1] ? document.querySelectorAll('.song-card-list-item')[1].offsetHeight : 70
+      if (siblingH) {
+        document.querySelector('.item-first').style.height = (siblingH - 1) + 'px'
+      }
+    },
     aa () {
-      console.log(11)
+      console.log(1)
     }
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.calcuHeight)
   }
 }
 </script>
@@ -97,17 +111,16 @@ export default {
 .igb-song-card-list-base-component {
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  // flex-direction: row;
+  // flex-wrap: wrap;
 
-  > div {
-    width: calc(20% - 2px);
+  .song-card-list-item {
     height: auto;
     margin-bottom: 2px;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(24, 21, 21, 0.06);
     opacity: 1;
 
     h2,
@@ -120,11 +133,12 @@ export default {
     &.item-first-0 {
       background: url("../../../assets/images/bg1.png") no-repeat center;
       background-size: cover;
-
+      display: flex;
+      justify-content: center;
       .item-box {
         width: calc(100% - 71px) !important;
-        height: 48px;
-        margin: 37px auto auto auto !important;
+        align-items: center;
+        margin: 0;
         background: url("../../../assets/images/xingepaihangbang.png") no-repeat
           center;
         background-size: 100%;
@@ -134,11 +148,12 @@ export default {
     &.item-first-1 {
       background: url("../../../assets/images/bg1-1.png") no-repeat center;
       background-size: cover;
-
+      display: flex;
+      justify-content: center;
       .item-box {
         width: calc(100% - 71px) !important;
-        height: 48px;
-        margin: 37px auto auto auto !important;
+        align-items: center;
+        margin: 0;
         background: url("../../../assets/images/huayubang.png") no-repeat center;
         background-size: 100%;
       }
@@ -217,7 +232,7 @@ export default {
 
       .item-box {
         width: calc(100% - 32px);
-        margin: 25px auto auto auto;
+        // margin: 25px auto auto auto;
         display: flex;
         position: relative;
         padding-bottom: 25px;

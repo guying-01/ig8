@@ -14,6 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ant-design-vue": "^1.5.0-rc.6",
     "antd-theme-generator": "^1.1.9",
     "axios": "^0.19.2",
     "font-awesome": "^4.7.0",
@@ -110,6 +111,10 @@
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
+  },
+  "prettier": {
+    "stylelintIntegration": true,
+    "eslintIntegration": true
   },
   "browserslist": [
     "> 1%",

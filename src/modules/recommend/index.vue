@@ -1,8 +1,8 @@
 <!--
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors: gy
- * @LastEditTime: 2020-06-01 14:07:51
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-06-02 23:17:59
 -->
 <template>
   <div class="igb-modules-recommend-page">
@@ -22,28 +22,28 @@
 </template>
 
 <script>
-import { GET_TAGS, GET_SONGS } from "@/api/api";
+import { GET_TAGS, GET_SONGS } from '@/api/api'
 export default {
-  name: "IgbModulesRecommendPage",
-  data() {
+  name: 'IgbModulesRecommendPage',
+  data () {
     return {
       list: [
         {
-          value: "01",
-          label: "桥边姑娘",
-          name: "垂耳兔",
-          lan: "国语",
-          tag: 1,
+          value: '01',
+          SongName: '桥边姑娘',
+          SingerName: '垂耳兔',
+          LanguageName: '国语',
+          MtvStyle: '人物',
           seal: true,
           collect: true
         }
       ]
-    };
+    }
   },
-  mounted() {
-    GET_SONGS({ CMD: "GET_SONGS" }).then(res => {
-      this.list = res["List"];
-    });
+  mounted () {
+    GET_SONGS({ CMD: 'GET_SONGS' }).then(res => {
+      this.list = res['List']
+    })
   }
-};
+}
 </script>

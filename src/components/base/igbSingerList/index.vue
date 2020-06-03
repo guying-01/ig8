@@ -14,30 +14,30 @@
 
 <script>
 export default {
-    name: "IgbSingerListBaseComponent",
-    props: {
-        /**
+  name: 'IgbSingerListBaseComponent',
+  props: {
+    /**
          * 数据源
          */
-        dataSource: {
-            type: Array,
-            default: () => []
-        }
-    },
-    mounted() {
-        let itemList = document.getElementsByClassName("singer-list-item");
-        if (itemList.length > 0) {
-            itemList.forEach(element => {
-                let itemWidth = element.offsetWidth / 3.39;
-                element.style.height = `${itemWidth}px`;
-            });
-        }
-    },
-    methods: {
-        changeHandller(item) {
-            this.$emit('change', item);
-        }
+    dataSource: {
+      type: Array,
+      default: () => []
     }
+  },
+  mounted () {
+    // let itemList = document.getElementsByClassName("singer-list-item");
+    // if (itemList.length > 0) {
+    //     itemList.forEach(element => {
+    //         let itemWidth = element.offsetWidth / 3.39;
+    //         element.style.height = `${itemWidth}px`;
+    //     });
+    // }
+  },
+  methods: {
+    changeHandller (item) {
+      this.$emit('change', item)
+    }
+  }
 }
 </script>
 
@@ -54,7 +54,7 @@ export default {
     >div {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        width: calc(20% - 24px);
+        width: 195PX;
         height: 88px;
         background: rgba(255, 255, 255, .06);
         border-radius: 49px;
@@ -167,236 +167,236 @@ export default {
     }
 }
 
-@media (max-width : 1680px) {
-    .igb-singer-list-base-component {
+// @media (max-width : 1680px) {
+//     .igb-singer-list-base-component {
 
-        >div {
-            height: auto;
-            background: rgba(255, 255, 255, .06);
-            border-radius: 49px;
-            cursor: pointer;
-            margin-bottom: 24px;
-            position: relative;
+//         >div {
+//             height: auto;
+//             background: rgba(255, 255, 255, .06);
+//             border-radius: 49px;
+//             cursor: pointer;
+//             margin-bottom: 24px;
+//             position: relative;
 
-            span {
-                position: absolute;
-                right: 30px;
-                top: 25px;
-            }
+//             span {
+//                 position: absolute;
+//                 right: 30px;
+//                 top: 25px;
+//             }
 
-            h3,
-            p {
-                font-weight: normal;
-                width: 150px;
-                padding: 0px;
-                margin: 0px 0px 0px 41px;
-            }
+//             h3,
+//             p {
+//                 font-weight: normal;
+//                 width: 150px;
+//                 padding: 0px;
+//                 margin: 0px 0px 0px 41px;
+//             }
 
-            h3 {
-                font-size: 18px;
-                margin-top: 10px;
-            }
+//             h3 {
+//                 font-size: 18px;
+//                 margin-top: 10px;
+//             }
 
-            p {
-                font-size: 13px;
-                margin-top: 0px;
-            }
-        }
-    }
-}
+//             p {
+//                 font-size: 13px;
+//                 margin-top: 0px;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1600px) {
-    .igb-singer-list-base-component {
+// @media (max-width : 1600px) {
+//     .igb-singer-list-base-component {
 
-        >div {
-            height: auto;
-            background: rgba(255, 255, 255, .06);
-            border-radius: 49px;
-            cursor: pointer;
-            margin-bottom: 24px;
-            position: relative;
+//         >div {
+//             height: auto;
+//             background: rgba(255, 255, 255, .06);
+//             border-radius: 49px;
+//             cursor: pointer;
+//             margin-bottom: 24px;
+//             position: relative;
 
-            span {
-                position: absolute;
-                right: 30px;
-                top: 25px;
-            }
+//             span {
+//                 position: absolute;
+//                 right: 30px;
+//                 top: 25px;
+//             }
 
-            h3,
-            p {
-                font-weight: normal;
-                width: 130px;
-                padding: 0px;
-                margin: 0px 0px 0px 41px;
-            }
+//             h3,
+//             p {
+//                 font-weight: normal;
+//                 width: 130px;
+//                 padding: 0px;
+//                 margin: 0px 0px 0px 41px;
+//             }
 
-            h3 {
-                font-size: 18px;
-                margin-top: 10px;
-            }
+//             h3 {
+//                 font-size: 18px;
+//                 margin-top: 10px;
+//             }
 
-            p {
-                font-size: 12px;
-                margin-top: 0px;
-            }
-        }
-    }
-}
+//             p {
+//                 font-size: 12px;
+//                 margin-top: 0px;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1440px) {
-    .igb-singer-list-base-component {
+// @media (max-width : 1440px) {
+//     .igb-singer-list-base-component {
 
-        >div {
-            height: auto;
-            background: rgba(255, 255, 255, .06);
-            border-radius: 49px;
-            cursor: pointer;
-            margin-bottom: 24px;
-            position: relative;
+//         >div {
+//             height: auto;
+//             background: rgba(255, 255, 255, .06);
+//             border-radius: 49px;
+//             cursor: pointer;
+//             margin-bottom: 24px;
+//             position: relative;
 
-            span {
-                position: absolute;
-                right: 30px;
-                top: 20px;
-            }
+//             span {
+//                 position: absolute;
+//                 right: 30px;
+//                 top: 20px;
+//             }
 
-            h3,
-            p {
-                font-weight: normal;
-                width: 100px;
-                padding: 0px;
-                margin: 0px 0px 0px 30px;
-            }
+//             h3,
+//             p {
+//                 font-weight: normal;
+//                 width: 100px;
+//                 padding: 0px;
+//                 margin: 0px 0px 0px 30px;
+//             }
 
-            h3 {
-                font-size: 18px;
-                margin-top: 5px;
-            }
+//             h3 {
+//                 font-size: 18px;
+//                 margin-top: 5px;
+//             }
 
-            p {
-                font-size: 12px;
-                margin-top: 0px;
-            }
-        }
-    }
-}
+//             p {
+//                 font-size: 12px;
+//                 margin-top: 0px;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1366px) {
-    .igb-singer-list-base-component {
+// @media (max-width : 1366px) {
+//     .igb-singer-list-base-component {
 
-        >div {
-            height: auto;
-            background: rgba(255, 255, 255, .06);
-            border-radius: 49px;
-            cursor: pointer;
-            margin-bottom: 24px;
-            position: relative;
+//         >div {
+//             height: auto;
+//             background: rgba(255, 255, 255, .06);
+//             border-radius: 49px;
+//             cursor: pointer;
+//             margin-bottom: 24px;
+//             position: relative;
 
-            span {
-                position: absolute;
-                right: 30px;
-                top: 17px;
-            }
+//             span {
+//                 position: absolute;
+//                 right: 30px;
+//                 top: 17px;
+//             }
 
-            h3,
-            p {
-                font-weight: normal;
-                width: 100px;
-                padding: 0px;
-                margin: 0px 0px 0px 30px;
-            }
+//             h3,
+//             p {
+//                 font-weight: normal;
+//                 width: 100px;
+//                 padding: 0px;
+//                 margin: 0px 0px 0px 30px;
+//             }
 
-            h3 {
-                font-size: 18px;
-                margin-top: 3px;
-            }
+//             h3 {
+//                 font-size: 18px;
+//                 margin-top: 3px;
+//             }
 
-            p {
-                font-size: 12px;
-                margin-top: 0px;
-            }
-        }
-    }
-}
+//             p {
+//                 font-size: 12px;
+//                 margin-top: 0px;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1280px) {
-    .igb-singer-list-base-component {
+// @media (max-width : 1280px) {
+//     .igb-singer-list-base-component {
 
-        >div {
-            height: auto;
-            background: rgba(255, 255, 255, .06);
-            border-radius: 49px;
-            cursor: pointer;
-            margin-bottom: 24px;
-            position: relative;
+//         >div {
+//             height: auto;
+//             background: rgba(255, 255, 255, .06);
+//             border-radius: 49px;
+//             cursor: pointer;
+//             margin-bottom: 24px;
+//             position: relative;
 
-            span {
-                position: absolute;
-                right: 30px;
-                top: 13px;
-            }
+//             span {
+//                 position: absolute;
+//                 right: 30px;
+//                 top: 13px;
+//             }
 
-            h3,
-            p {
-                font-weight: normal;
-                width: 85px;
-                padding: 0px;
-                margin: 0px 0px 0px 25px;
-            }
+//             h3,
+//             p {
+//                 font-weight: normal;
+//                 width: 85px;
+//                 padding: 0px;
+//                 margin: 0px 0px 0px 25px;
+//             }
 
-            h3 {
-                height: 18px;
-                line-height: 18px;
-                font-size: 14px;
-                margin-top: 7px;
-            }
+//             h3 {
+//                 height: 18px;
+//                 line-height: 18px;
+//                 font-size: 14px;
+//                 margin-top: 7px;
+//             }
 
-            p {
-                font-size: 12px;
-                margin-top: 0px;
-            }
-        }
-    }
-}
+//             p {
+//                 font-size: 12px;
+//                 margin-top: 0px;
+//             }
+//         }
+//     }
+// }
 
-@media (max-width : 1024px) {
-    .igb-singer-list-base-component {
+// @media (max-width : 1024px) {
+//     .igb-singer-list-base-component {
 
-        >div {
-            width: calc(26% - 30px);
-            height: auto;
-            background: rgba(255, 255, 255, .06);
-            border-radius: 49px;
-            cursor: pointer;
-            margin-bottom: 24px;
-            position: relative;
+//         >div {
+//             width: calc(26% - 30px);
+//             height: auto;
+//             background: rgba(255, 255, 255, .06);
+//             border-radius: 49px;
+//             cursor: pointer;
+//             margin-bottom: 24px;
+//             position: relative;
 
-            span {
-                position: absolute;
-                right: 25px;
-                top: 13px;
-            }
+//             span {
+//                 position: absolute;
+//                 right: 25px;
+//                 top: 13px;
+//             }
 
-            h3,
-            p {
-                font-weight: normal;
-                width: 80px;
-                padding: 0px;
-                margin: 0px 0px 0px 25px;
-            }
+//             h3,
+//             p {
+//                 font-weight: normal;
+//                 width: 80px;
+//                 padding: 0px;
+//                 margin: 0px 0px 0px 25px;
+//             }
 
-            h3 {
-                height: 18px;
-                line-height: 18px;
-                font-size: 14px;
-                margin-top: 6px;
-            }
+//             h3 {
+//                 height: 18px;
+//                 line-height: 18px;
+//                 font-size: 14px;
+//                 margin-top: 6px;
+//             }
 
-            p {
-                font-size: 12px;
-                margin-top: 0px;
-            }
-        }
-    }
-}
+//             p {
+//                 font-size: 12px;
+//                 margin-top: 0px;
+//             }
+//         }
+//     }
+// }
 </style>

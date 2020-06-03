@@ -2,20 +2,20 @@
   <div class="igb-song-list-base-component">
     <div
       class="song-list-item"
-      v-for="(item,index) in dataSource"
+      v-for="(item, index) in dataSource"
       :key="index"
-      :class="{'current':item.current}"
-      @click="changeHandller();"
+      :class="{ current: item.current }"
+      @click="changeHandller()"
     >
       <div class="cover">
         <img :src="`${require(`../../../assets/images/${item.src}.png`)}`" />
-        <p class="name">{{item.singerName}}</p>
+        <p class="name">{{ item.singerName }}</p>
       </div>
       <div class="card-info">
         <div>
-          <h3>{{item.songName}}</h3>
+          <h3>{{ item.songName }}</h3>
           <p>
-            <span v-for="(items,j) in item.tags" :key="j">{{items}}</span>
+            <span v-for="(items, j) in item.tags" :key="j">{{ items }}</span>
           </p>
           <i class="icon-collect"></i>
         </div>
@@ -27,14 +27,14 @@
 
 <script>
 export default {
-  name: "IgbSongListBaseComponent",
+  name: 'IgbSongListBaseComponent',
   props: {
     dataSource: {
       type: Array,
       default: () => []
     }
   },
-  mounted() {
+  mounted () {
     // let itemList = document.getElementsByClassName("song-list-item");
     // if (itemList.length > 0) {
     //     itemList.forEach(element => {
@@ -44,11 +44,11 @@ export default {
     // }
   },
   methods: {
-    changeHandller() {
-      this.$emit("change", {});
+    changeHandller () {
+      this.$emit('change', {})
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -61,7 +61,7 @@ export default {
   flex-wrap: wrap;
 
   .song-list-item {
-    width: 244PX;
+    width: 244px;
     height: 320px;
     background: rgba(253, 253, 253, 0.05);
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);

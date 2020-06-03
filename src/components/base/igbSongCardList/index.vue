@@ -1,48 +1,42 @@
 <template>
   <div class="igb-song-card-list-base-component">
-    <a-row :gutter="2">
+    <!-- <a-row :gutter="2">
       <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-if="showType">
-        <div
-          class="song-card-list-item item-first"
-          :class="`item-first-${type}`"
-        >
-          <div class="item-box"></div>
-        </div>
+
       </a-col>
-      <a-col
-        :span="6"
-        :lg="6"
-        :xl="4"
-        :xxl="4"
-        v-for="(item, index) in dataSource"
-        :key="index"
-      >
-        <div
-          class="song-card-list-item"
-          :class="{ current: item.current, play: item.play }"
-          @click="changeHandller(item)"
-        >
-          <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
-            <div class="number" v-if="showNum">
-              <span>{{ (index + 1) | indexNum }}</span>
-              <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-            </div>
-            <div class="info">
-              <h3>{{ item.SongName }}</h3>
-              <p>
-                <span>{{ item.SingerName }}</span>
-                <span>|</span>
-                {{ item.LanguageName }}
-              </p>
-              <igb-tag>{{ item.MtvStyle }}</igb-tag>
-              <i class="icon icon-collect"></i>
-            </div>
-          </div>
-          <i class="icon-leing"></i>
-          <div class="box"></div>
+      <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-for="(item, index) in dataSource" :key="index"> -->
+
+    <div class="song-card-list-item item-first" :class="`item-first-${type}`" v-if="showNum">
+      <div class="item-box"></div>
+    </div>
+    <div
+      class="song-card-list-item"
+      :class="{ current: item.current, play: item.play }"
+      @click="changeHandller(item)"
+      v-for="(item, index) in dataSource"
+      :key="index"
+    >
+      <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
+        <div class="number" v-if="showNum">
+          <span>{{ (index + 1) | indexNum }}</span>
+          <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
         </div>
-      </a-col>
-    </a-row>
+        <div class="info">
+          <h3>{{ item.SongName }}</h3>
+          <p>
+            <span>{{ item.SingerName }}</span>
+            <span>|</span>
+            {{ item.LanguageName }}
+          </p>
+          <igb-tag>{{ item.MtvStyle }}</igb-tag>
+          <i class="icon icon-collect"></i>
+        </div>
+      </div>
+      <i class="icon-leing"></i>
+      <div class="box"></div>
+    </div>
+    <!-- </a-col>
+    </a-row> -->
   </div>
 </template>
 
@@ -121,17 +115,23 @@ export default {
 .igb-song-card-list-base-component {
   width: 100%;
   margin: 0 auto;
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  // flex-direction: row;
-  // flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   .song-card-list-item {
     height: auto;
-    margin-bottom: 2px;
-    background: rgba(24, 21, 21, 0.06);
-    opacity: 1;
+    margin-bottom: 2PX;
+    width: 180PX;
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 25px 20px;
+    position: relative;
+    background:rgba(255,255,255,0.06);
+    margin-right:2PX;
 
     h2,
     h3,
@@ -169,67 +169,63 @@ export default {
       }
     }
 
-    &.song-card-list-item {
-      cursor: pointer;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      position: relative;
+    // &.song-card-list-item {
 
-      .icon-leing {
-        display: none;
-        position: absolute;
-        top: -60px;
-        left: -40px;
-        z-index: 1;
-        width: 200px;
-        height: 200px;
-        background: url("../../../assets/images/singer-hover-bg.png") no-repeat
-          center;
-        background-size: cover;
-        pointer-events: none;
-      }
+    .icon-leing {
+      display: none;
+      position: absolute;
+      top: -60px;
+      left: -40px;
+      z-index: 1;
+      width: 200px;
+      height: 200px;
+      background: url("../../../assets/images/singer-hover-bg.png") no-repeat
+        center;
+      background-size: cover;
+      pointer-events: none;
+    }
 
+    .box {
+      display: none;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid rgba(254, 131, 74, 0.5019607843137255);
+    }
+
+    &:hover {
       .box {
-        display: none;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        border: 2px solid rgba(254, 131, 74, 0.5019607843137255);
+        display: block;
       }
+      .item-box .info .icon-collect {
+        display: block;
+      }
+    }
+    &.current {
+      background: rgba(255, 255, 255, 0.06)
+        url("../../../assets/images/icon-duigou.png") no-repeat;
+      background-size: 23px 23px;
+      .icon-leing {
+        display: block;
+      }
+      .item-box {
+        .number {
+          color: rgba(253, 129, 74, 1);
+        }
+      }
+    }
+    &.play {
+      .item-box .number span {
+        color: rgba(255, 255, 255, 0);
+        background: url("../../../assets/images/icon-play-lide.png") no-repeat
+          center center;
+        background-size: 15.77px 16.95px;
+      }
+    }
 
-      &:hover {
-        .box {
-          display: block;
-        }
-        .item-box .info .icon-collect {
-          display: block;
-        }
-      }
-      &.current {
-        background: rgba(255, 255, 255, 0.06)
-          url("../../../assets/images/icon-duigou.png") no-repeat;
-        background-size: 23px 23px;
-        .icon-leing {
-          display: block;
-        }
-        .item-box {
-          .number {
-            color: rgba(253, 129, 74, 1);
-          }
-        }
-      }
-      &.play {
-        .item-box .number span {
-          color: rgba(255, 255, 255, 0);
-          background: url("../../../assets/images/icon-play-lide.png") no-repeat
-            center center;
-          background-size: 15.77px 16.95px;
-        }
-      }
-
-      /*&.seal {
+    /*&.seal {
                 background: rgba(255, 255, 255, 0.06) url("../../../assets/images/icon-duigou.png") no-repeat;
                 background-size: 23px 23px;
 
@@ -240,112 +236,111 @@ export default {
                 }
             }*/
 
-      .item-box {
-        width: calc(100% - 32px);
-        // margin: 25px auto auto auto;
-        display: flex;
-        position: relative;
-        padding-bottom: 25px;
+    .item-box {
+      width: calc(100% - 32px);
+      // margin: 25px auto auto auto;
+      display: flex;
+      position: relative;
 
-        &.item-box-not-num {
-          width: calc(100% - 58px);
+      &.item-box-not-num {
+        width: calc(100% - 58px);
+      }
+
+      .number {
+        font-size: 18px;
+        font-family: "PingFang-SC-Regular";
+        font-weight: 400;
+        height: 27px;
+        line-height: 27px;
+        color: rgba(255, 255, 255, 0.4);
+        padding-right: 11px;
+
+        img {
+          width: 15.77px;
+          height: 16.95px;
         }
+      }
 
-        .number {
-          font-size: 18px;
+      .info {
+        h3 {
+          font-size: 20px;
           font-family: "PingFang-SC-Regular";
-          font-weight: 400;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.8);
+          width: 135px;
           height: 27px;
           line-height: 27px;
-          color: rgba(255, 255, 255, 0.4);
-          padding-right: 11px;
-
-          img {
-            width: 15.77px;
-            height: 16.95px;
-          }
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
-        .info {
-          h3 {
-            font-size: 20px;
-            font-family: "PingFang-SC-Regular";
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            width: 135px;
-            height: 27px;
-            line-height: 27px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
+        p {
+          font-size: 14px;
+          font-family: "PingFang-SC-Regular";
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.7);
+          //opacity: 0.7;
+          margin-top: 6px;
+          display: flex;
+          align-items: center;
+          height: 19px;
+          line-height: 19px;
 
-          p {
-            font-size: 14px;
-            font-family: "PingFang-SC-Regular";
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.7);
-            //opacity: 0.7;
-            margin-top: 6px;
-            display: flex;
-            align-items: center;
+          span {
             height: 19px;
             line-height: 19px;
 
-            span {
-              height: 19px;
-              line-height: 19px;
+            &:first-child {
+              width: auto;
+              max-width: 65px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
 
-              &:first-child {
-                width: auto;
-                max-width: 65px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-
-              &:last-child {
-                width: 12px;
-                height: 16px;
-                line-height: 16px;
-                text-align: center;
-                margin: 0px 10.3px;
-                font-size: 12px;
-                color: rgba(255, 255, 255, 0.3);
-              }
+            &:last-child {
+              width: 12px;
+              height: 16px;
+              line-height: 16px;
+              text-align: center;
+              margin: 0px 10.3px;
+              font-size: 12px;
+              color: rgba(255, 255, 255, 0.3);
             }
           }
+        }
 
-          .tag {
-            display: inline-block;
-            margin-top: 5px;
-          }
+        .tag {
+          display: inline-block;
+          margin-top: 5px;
+        }
 
-          .icon-collect {
-            display: none;
-            width: 18px;
-            height: 17px;
-            background: url("../../../assets/images/icon1.png") no-repeat center;
+        .icon-collect {
+          display: none;
+          width: 18px;
+          height: 17px;
+          background: url("../../../assets/images/icon1.png") no-repeat center;
+          background-size: 100%;
+
+          position: absolute;
+          right: 0px;
+          bottom: 20px;
+          z-index: 10;
+          opacity: 0.5;
+
+          &:hover {
+            background: url("../../../assets/images/icon1_hover.png") no-repeat
+              center;
             background-size: 100%;
-
-            position: absolute;
-            right: 0px;
-            bottom: 20px;
-            z-index: 10;
-            opacity: 0.5;
-
-            &:hover {
-              background: url("../../../assets/images/icon1_hover.png")
-                no-repeat center;
-              background-size: 100%;
-              opacity: 1;
-            }
+            opacity: 1;
           }
         }
       }
     }
   }
 }
+// }
 
 // @media (max-width: 1680px) {
 //   .igb-song-card-list-base-component {

@@ -58,131 +58,131 @@
 </template>
 
 <script>
-import IgbPagesModalShareLayoutComponent from "../../../pages/modalShareLayout/index.vue";
+import IgbPagesModalShareLayoutComponent from '../../../pages/modalShareLayout/index.vue'
 export default {
-    name: "IgbAudioFamilyControlBaseComponent",
-    data() {
-        return {
-            visible: false,
-            isPlay: false,
-            totalProgress: "80%",
-            progress: "0%",
-            btnProgress: false,
-            btnWidth: 0,
-            totalTime: "00:00",
-            currentTotalTime: "00:00",
-            audioSrc: require(`../../../assets/media/ChR47FvOAl6AUfeaAEOgDYbe6sw219.mp3`),
-            sw: true,
-            switchSize: false
-        };
+  name: 'IgbAudioFamilyControlBaseComponent',
+  data () {
+    return {
+      visible: false,
+      isPlay: false,
+      totalProgress: '80%',
+      progress: '0%',
+      btnProgress: false,
+      btnWidth: 0,
+      totalTime: '00:00',
+      currentTotalTime: '00:00',
+      audioSrc: require(`../../../assets/media/ChR47FvOAl6AUfeaAEOgDYbe6sw219.mp3`),
+      sw: true,
+      switchSize: false
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      let w = window.screen.width
+      if (w < 1440) {
+        this.switchSize = true
+      }
+      this.initPlayer()
+    })
+  },
+  methods: {
+    btnSwitch () {
+      this.sw = !this.sw
     },
-    mounted() {
-        this.$nextTick(() => {
-            let w = window.screen.width;
-            if (w < 1440) {
-                this.switchSize = true;
-            }
-            this.initPlayer();
-        });
+    btnCloseHandller () {
+      this.visible = false
     },
-    methods: {
-        btnSwitch() {
-            this.sw = !this.sw;
-        },
-        btnCloseHandller() {
-            this.visible = false;
-        },
-        /**
+    /**
          * 音量回调事件
          */
-        volumeHandller(event) {
-            const player = document.getElementById("musicMp3");
-            player.volume = event;
-        },
-        /**
+    volumeHandller (event) {
+      const player = document.getElementById('musicMp3')
+      player.volume = event
+    },
+    /**
          * 播放
          */
-        playHandller() {
-            this.isPlay = !this.isPlay;
-            const player = document.getElementById("musicMp3");
-            if (this.isPlay) {
-                player.play();
-            } else {
-                player.pause();
-            }
-        },
-        /**
+    playHandller () {
+      this.isPlay = !this.isPlay
+      const player = document.getElementById('musicMp3')
+      if (this.isPlay) {
+        player.play()
+      } else {
+        player.pause()
+      }
+    },
+    /**
          * 获取播放时长
          */
-        initPlayer() {
-            const player = document.getElementById("musicMp3");
-            //初始化音频信息
-            player.addEventListener("canplay", () => {
-                let time = player.duration;
-                this.getPlayerTime(time);
-            });
-            //音频正在播放
-            player.addEventListener("timeupdate", () => {
-                let musicTime = player.duration;
-                let currTime = player.currentTime;
-                let playWidth = this.$refs.playProgress.offsetWidth;
-                let btnWidth = this.$refs.btnProgress.offsetWidth;
-                let progress = (currTime / musicTime) * 100;
-                this.progress = `${progress}%`;
-                if (playWidth > btnWidth) {
-                    this.btnProgress = true;
-                }
-                this.getPlayerTime(currTime, "curr");
-                if (this.totalTime === this.currentTotalTime) {
-                    this.isPlay = false;
-                    this.btnProgress = false;
-                    this.totalProgress = "0%";
-                    this.progress = "0%";
-                    this.currentTotalTime = "00:00";
-                }
-            });
-        },
-        /**
-         * 获取播放时长
-         */
-        getPlayerTime(playTime, type = "all") {
-            let time = playTime;
-
-            //计算分钟
-            let minute = time / 60;
-            let minutes = parseInt(minute);
-            if (minutes < 10) {
-                minutes = `0${minutes}`;
-            }
-
-            //计算秒
-            let second = time % 60;
-            let seconds = Math.round(second);
-            if (seconds < 10) {
-                seconds = `0${seconds}`;
-            }
-
-            if (type === "all") {
-                this.totalTime = `${minutes}:${seconds}`;
-            } else {
-                this.currentTotalTime = `${minutes}:${seconds}`;
-            }
-        },
-        btnShareHandller() {
-            this.visible = false;
-            this.igbModal$({
-                visible: true,
-                wrapClassName: "share-modal",
-                width: 800,
-                componentName: IgbPagesModalShareLayoutComponent,
-                params: {},
-                okHandller: (options, close) => {
-                    close();
-                }
-            });
+    initPlayer () {
+      const player = document.getElementById('musicMp3')
+      // 初始化音频信息
+      player.addEventListener('canplay', () => {
+        let time = player.duration
+        this.getPlayerTime(time)
+      })
+      // 音频正在播放
+      player.addEventListener('timeupdate', () => {
+        let musicTime = player.duration
+        let currTime = player.currentTime
+        let playWidth = this.$refs.playProgress.offsetWidth
+        let btnWidth = this.$refs.btnProgress.offsetWidth
+        let progress = (currTime / musicTime) * 100
+        this.progress = `${progress}%`
+        if (playWidth > btnWidth) {
+          this.btnProgress = true
         }
+        this.getPlayerTime(currTime, 'curr')
+        if (this.totalTime === this.currentTotalTime) {
+          this.isPlay = false
+          this.btnProgress = false
+          this.totalProgress = '0%'
+          this.progress = '0%'
+          this.currentTotalTime = '00:00'
+        }
+      })
+    },
+    /**
+         * 获取播放时长
+         */
+    getPlayerTime (playTime, type = 'all') {
+      let time = playTime
+
+      // 计算分钟
+      let minute = time / 60
+      let minutes = parseInt(minute)
+      if (minutes < 10) {
+        minutes = `0${minutes}`
+      }
+
+      // 计算秒
+      let second = time % 60
+      let seconds = Math.round(second)
+      if (seconds < 10) {
+        seconds = `0${seconds}`
+      }
+
+      if (type === 'all') {
+        this.totalTime = `${minutes}:${seconds}`
+      } else {
+        this.currentTotalTime = `${minutes}:${seconds}`
+      }
+    },
+    btnShareHandller () {
+      this.visible = false
+      this.igbModal$({
+        visible: true,
+        wrapClassName: 'share-modal',
+        width: 800,
+        componentName: IgbPagesModalShareLayoutComponent,
+        params: {},
+        okHandller: (options, close) => {
+          close()
+        }
+      })
     }
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -509,7 +509,7 @@ export default {
             }
 
             .contr-cc {
-                margin-right: 48px;
+                padding-right: 20px;
 
                 i {
                     width: 24.82px;
@@ -531,7 +531,7 @@ export default {
             }
 
             .contr-ly {
-                margin-right: 49px;
+                padding-right: 20px;
 
                 i {
                     width: 26.97px;
@@ -552,7 +552,7 @@ export default {
             }
 
             .contr-sc {
-                margin-right: 50px;
+                padding-right: 20px;
 
                 i {
                     width: 27.35px;
@@ -573,7 +573,7 @@ export default {
             }
 
             .contr-xh {
-                margin-right: 45px;
+                padding-right: 20px;
 
                 i {
                     width: 26.97px;

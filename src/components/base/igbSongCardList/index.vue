@@ -132,6 +132,15 @@ export default {
 @mixin calc-bottom($b){
  bottom: calc(100vw/1920 * #{$b})
 };
+@mixin calc-font-size($fs){
+  font-size:calc(100vw/1920 * #{$fs})
+};
+@mixin calc-pad-top($pt){
+  padding-top:calc(100vw/1920 * #{$pt})
+};
+@mixin calc-pad-left($pl){
+  padding-left:calc(100vw/1920 * #{$pl})
+};
 .igb-song-card-list-base-component {
   width: 100%;
   margin: 0 auto;
@@ -145,6 +154,8 @@ export default {
    @include calc-width(320);
    @include calc-height(136);
     // height :calc-height(320);
+   @include calc-pad-top(26);
+   @include calc-pad-left(27);
 
     // height: calc(100vw /1920 * 136);
     margin-bottom: 2px;
@@ -152,7 +163,7 @@ export default {
     cursor: pointer;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    padding: 25px 20px;
+    // padding: 25px 20px;
     position: relative;
     background: rgba(255, 255, 255, 0.06);
     margin-right: 2px;
@@ -271,7 +282,7 @@ export default {
       }
 
       .number {
-        font-size: 18px;
+        @include calc-font-size(18);
         font-family: "PingFang-SC-Regular";
         font-weight: 400;
         @include calc-height(27);
@@ -287,7 +298,7 @@ export default {
 
       .info {
         h3 {
-          font-size: 20px;
+          @include calc-font-size(20);
           font-family: "PingFang-SC-Regular";
           font-weight: 500;
           color: rgba(255, 255, 255, 0.8);
@@ -300,7 +311,7 @@ export default {
         }
 
         p {
-          font-size: 14px;
+          @include calc-font-size(14);
           font-family: "PingFang-SC-Regular";
           font-weight: 400;
           color: rgba(255, 255, 255, 0.7);
@@ -331,6 +342,7 @@ export default {
 
               text-align: center;
               margin: 0px 10.3px;
+
               font-size: 12px;
               color: rgba(255, 255, 255, 0.3);
             }

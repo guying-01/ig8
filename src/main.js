@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors: gy
- * @LastEditTime: 2020-06-03 13:27:39
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-06-03 22:17:41
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -11,7 +11,7 @@ import '@babel/polyfill'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 // import 'lib-flexible'
-import '@/utils/rem'
+// import '@/utils/rem'
 import Vue from 'vue'
 import App from './App'
 import router from './router'

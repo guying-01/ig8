@@ -2,7 +2,7 @@
  * @Author       : gy
  * @Date         : 2019-11-25 10:54:53
  * @LastEditors: gy
- * @LastEditTime: 2020-05-30 13:50:05
+ * @LastEditTime: 2020-06-03 11:47:15
  * @FilePath     : \code\src\utils\request.js
  * @Description  : axios 封装
  */
@@ -14,7 +14,7 @@ import {
 
 // 创建 axios 实例
 const service = axios.create({
-  baseURL: process.env.NODE_ENV == 'production' ? 'http://app.ig8.net/' : '/api', // api base_url
+  baseURL: process.env.NODE_ENV == 'production' ? 'http://app.ige8.net/' : '/api', // api base_url
   timeout: 60000 // 请求超时时间
 })
 
@@ -69,7 +69,7 @@ service.interceptors.response.use(response => {
 
 const installer = {
   vm: {},
-  install(Vue, router = {}) {
+  install (Vue, router = {}) {
     Vue.use(VueAxios, router, service)
   }
 }

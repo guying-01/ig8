@@ -2,40 +2,49 @@
   <div class="igb-song-card-list-base-component">
     <!-- <a-row :gutter="2">
       <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-if="showType">
-
+        <div
+          class="song-card-list-item item-first"
+          :class="`item-first-${type}`"
+          v-if="showNum"
+        >
+          <div class="item-box"></div>
+        </div>
       </a-col>
-      <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-for="(item, index) in dataSource" :key="index"> -->
-
-    <div class="song-card-list-item item-first" :class="`item-first-${type}`" v-if="showNum">
-      <div class="item-box"></div>
-    </div>
-    <div
-      class="song-card-list-item"
-      :class="{ current: item.current, play: item.play }"
-      @click="changeHandller(item)"
-      v-for="(item, index) in dataSource"
-      :key="index"
-    >
-      <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
-        <div class="number" v-if="showNum">
-          <span>{{ (index + 1) | indexNum }}</span>
-          <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+      <a-col
+        :span="6"
+        :lg="6"
+        :xl="4"
+        :xxl="4"
+        v-for="(item, index) in dataSource"
+        :key="index"
+      > -->
+        <div
+          class="song-card-list-item"
+          :class="{ current: item.current, play: item.play }"
+          @click="changeHandller(item)"
+                  v-for="(item, index) in dataSource"
+        :key="index"
+        >
+          <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
+            <div class="number" v-if="showNum">
+              <span>{{ (index + 1) | indexNum }}</span>
+              <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+            </div>
+            <div class="info">
+              <h3>{{ item.SongName }}</h3>
+              <p>
+                <span>{{ item.SingerName }}</span>
+                <span>|</span>
+                {{ item.LanguageName }}
+              </p>
+              <igb-tag>{{ item.MtvStyle }}</igb-tag>
+              <i class="icon icon-collect"></i>
+            </div>
+          </div>
+          <i class="icon-leing"></i>
+          <div class="box"></div>
         </div>
-        <div class="info">
-          <h3>{{ item.SongName }}</h3>
-          <p>
-            <span>{{ item.SingerName }}</span>
-            <span>|</span>
-            {{ item.LanguageName }}
-          </p>
-          <igb-tag>{{ item.MtvStyle }}</igb-tag>
-          <i class="icon icon-collect"></i>
-        </div>
-      </div>
-      <i class="icon-leing"></i>
-      <div class="box"></div>
-    </div>
-    <!-- </a-col>
+      <!-- </a-col>
     </a-row> -->
   </div>
 </template>
@@ -96,7 +105,7 @@ export default {
         : 70
       if (siblingH) {
         document.querySelector('.item-first').style.height =
-          siblingH - 1 + 'px'
+          siblingH - 2 + 'px'
       }
     },
     aa () {
@@ -111,7 +120,18 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../assets/scss/ddd/variable.scss";
-
+@mixin calc-width($w){
+  width: calc(100vw/1920 * #{$w})
+};
+@mixin calc-height($h){
+ height: calc(100vw/1920 * #{$h})
+};
+@mixin calc-line-height($lh){
+ height: calc(100vw/1920 * #{$lh})
+};
+@mixin calc-bottom($b){
+ bottom: calc(100vw/1920 * #{$b})
+};
 .igb-song-card-list-base-component {
   width: 100%;
   margin: 0 auto;
@@ -122,16 +142,20 @@ export default {
   flex-wrap: wrap;
 
   .song-card-list-item {
-    height: auto;
-    margin-bottom: 2PX;
-    width: 180PX;
+   @include calc-width(320);
+   @include calc-height(136);
+    // height :calc-height(320);
+
+    // height: calc(100vw /1920 * 136);
+    margin-bottom: 2px;
+    // width: calc(100vw /1920 * 320);
     cursor: pointer;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding: 25px 20px;
     position: relative;
-    background:rgba(255,255,255,0.06);
-    margin-right:2PX;
+    background: rgba(255, 255, 255, 0.06);
+    margin-right: 2px;
 
     h2,
     h3,
@@ -237,27 +261,27 @@ export default {
             }*/
 
     .item-box {
-      width: calc(100% - 32px);
+      // width: calc(100% - 32px);
       // margin: 25px auto auto auto;
       display: flex;
       position: relative;
 
       &.item-box-not-num {
-        width: calc(100% - 58px);
+        // width: calc(100% - 58px);
       }
 
       .number {
         font-size: 18px;
         font-family: "PingFang-SC-Regular";
         font-weight: 400;
-        height: 27px;
-        line-height: 27px;
+        @include calc-height(27);
+        @include calc-line-height(27);
         color: rgba(255, 255, 255, 0.4);
         padding-right: 11px;
 
         img {
-          width: 15.77px;
-          height: 16.95px;
+          @include calc-height(15.77);
+          @include calc-width(16.95);
         }
       }
 
@@ -267,9 +291,9 @@ export default {
           font-family: "PingFang-SC-Regular";
           font-weight: 500;
           color: rgba(255, 255, 255, 0.8);
-          width: 135px;
-          height: 27px;
-          line-height: 27px;
+                    @include calc-height(27);
+        @include calc-width(135);
+        @include calc-line-height(27);
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -284,12 +308,13 @@ export default {
           margin-top: 6px;
           display: flex;
           align-items: center;
-          height: 19px;
-          line-height: 19px;
+                    @include calc-height(19);
+        @include calc-line-height(19);
 
+        }
           span {
-            height: 19px;
-            line-height: 19px;
+                    @include calc-height(19);
+        @include calc-line-height(19);
 
             &:first-child {
               width: auto;
@@ -300,9 +325,10 @@ export default {
             }
 
             &:last-child {
-              width: 12px;
-              height: 16px;
-              line-height: 16px;
+                                  @include calc-height(16);
+        @include calc-width(12);
+        @include calc-line-height(16);
+
               text-align: center;
               margin: 0px 10.3px;
               font-size: 12px;
@@ -318,14 +344,16 @@ export default {
 
         .icon-collect {
           display: none;
-          width: 18px;
-          height: 17px;
+                                            @include calc-height(17);
+        @include calc-width(18);
           background: url("../../../assets/images/icon1.png") no-repeat center;
           background-size: 100%;
 
           position: absolute;
           right: 0px;
-          bottom: 20px;
+        @include calc-bottom(20);
+
+          // bottom: 20px;
           z-index: 10;
           opacity: 0.5;
 
@@ -338,7 +366,7 @@ export default {
         }
       }
     }
-  }
+
 }
 // }
 

@@ -9,7 +9,14 @@
           <div class="item-box"></div>
         </div>
       </a-col>
-      <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-for="(item, index) in dataSource" :key="index">
+      <a-col
+        :span="6"
+        :lg="6"
+        :xl="4"
+        :xxl="4"
+        v-for="(item, index) in dataSource"
+        :key="index"
+      >
         <div
           class="song-card-list-item"
           :class="{ current: item.current, play: item.play }"
@@ -90,9 +97,12 @@ export default {
       this.$emit('change', item)
     },
     calcuHeight () {
-      let siblingH = document.querySelectorAll('.song-card-list-item')[1] ? document.querySelectorAll('.song-card-list-item')[1].offsetHeight : 70
+      let siblingH = document.querySelectorAll('.song-card-list-item')[1]
+        ? document.querySelectorAll('.song-card-list-item')[1].offsetHeight
+        : 70
       if (siblingH) {
-        document.querySelector('.item-first').style.height = (siblingH - 1) + 'px'
+        document.querySelector('.item-first').style.height =
+          siblingH - 1 + 'px'
       }
     },
     aa () {

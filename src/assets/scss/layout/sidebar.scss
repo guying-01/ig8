@@ -7,7 +7,7 @@
     left: 0px;
     top: 0px;
     z-index: 1000;
-    width: 238px;
+    width: calc-attr(238);
     height: 100%;
     min-height: 100%;
     background: $igb-sidebar-bg-color;
@@ -15,13 +15,13 @@
     opacity: 0.8;
     color: #fff;
     .msg {
-        width: 18.32px;
-        height: 13.91px;
+        width:calc-attr(18.32);
+        height:calc-attr(13.91);
         background: url("../images/icon-msg.png") no-repeat center;
         background-size: 100%;
         position: absolute;
-        left: 209px;
-        top: 22px;
+        left:calc-attr(209);
+        top:calc-attr(22);
         cursor: pointer;
         &:after {
             position: absolute;
@@ -29,8 +29,8 @@
             top: -2px;
             content: " ";
             display: block;
-            width: 7px;
-            height: 7px;
+            width:calc-attr(7);
+            height:calc-attr(7);
             background: url("../images/email-point.png") no-repeat center;
             background-size: 100%;
             border-radius: 50%;
@@ -47,14 +47,14 @@
     .user {
         width: 100%;
         text-align: center;
-        padding-top: 40.6px;
+        padding-top:calc-attr(40.6);
         .avatar {
             width: 100%;
-            height: 80px;
-            line-height: 80px;
+            height:calc-attr(80);
+            line-height:calc-attr(80);
             img {
-                width: 80px;
-                height: 80px;
+                width:calc-attr(80);
+                height:calc-attr(80);
                 border: 3px solid rgba(255, 255, 255, 0.09803921568627452);
                 border-radius: 50%;
                 -webkit-border-radius: 50%;
@@ -63,37 +63,37 @@
                 -o-border-radius: 50%;
                 cursor: pointer;
                 &:hover {
-                    width: 75px;
-                    height: 75px;
+                    width:calc-attr(75);
+                    height:calc-attr(75);
                     border: 3px solid rgba(255, 255, 255, 0.30196078431372547);
                 }
             }
         }
         .user-name {
-            height: 32px;
-            line-height: 32px;
-            font-size: 24px;
+            height:calc-attr(32);
+            line-height:calc-attr(32);
+            font-size:calc-attr(24);
             font-family: 'PingFang-SC-Regular';
             font-weight: 400;
             color: rgba(255, 255, 255, 1);
             opacity: 1;
-            margin-top: 14.5px;
+            margin-top:calc-attr(14.5);
             cursor: default;
         }
         p {
             padding: 0px;
             margin: 0px;
             &.user-vip {
-                margin-top: 7px;
+                margin-top:calc-attr(7);
             }
             &.user-setting {
-                margin-top: 7px;
+                margin-top:calc-attr(7);
                 cursor: pointer;
                 a {
                     padding: 0px !important;
                     display: block;
-                    width: 24px;
-                    height: 24px;
+                    width:calc-attr(24);
+                    height:calc-attr(24);
                     margin: 0 auto !important;
                     background: url("../images/setting-more.png") no-repeat center;
                     background-size: 100%;
@@ -107,32 +107,32 @@
     }
     .sidebar-list {
         width: 100%;
-        margin-top: 32px;
+        margin-top:calc-attr(32);
         ul {
             li {
                 list-style: none;
-                height: 64px;
-                line-height: 64px;
+                height:calc-attr(64);
+                line-height:calc-attr(64);
                 cursor: pointer;
                 position: relative;
                 .item-img{
-                  width: 25px;
-                  height: 25px;
+                  width:calc-attr(25);
+                  height:calc-attr(25);
                 }
                 a {
                     display: flex;
                     align-items: center;
                     .icon {
-                        width: 36px;
-                        height: 36px;
+                        width:calc-attr(36);
+                        height:calc-attr(36);
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        margin-right: 13px;
-                        margin-left: 67px;
+                        margin-right:calc-attr(13);
+                        margin-left:calc-attr(67);
                     }
                     span {
-                        font-size: 20px;
+                        font-size:calc-attr(20);
                         font-family: 'PingFang-SC-Regular';
                         font-weight: 400;
                         color: rgba(255, 255, 255, .7);
@@ -140,10 +140,10 @@
                     }
                     .sidebar-bg-curr {
                         position: absolute;
-                        left: 210px;
-                        top: -35px;
-                        width: 53px;
-                        height: 70px;
+                        left:calc-attr(210);
+                        top:calc-attr(-35);
+                        width:calc-attr(53);
+                        height:calc-attr(70);
                     }
                 }
                 &:hover {
@@ -166,38 +166,3 @@
     }
 }
 
-@media (max-width:1600) {
-    .igb-layout-sidebar {
-        .sidebar-list {
-            width: 100%;
-            padding-top: 30px;
-            ul {
-                li {
-                    a {
-                        span {
-                            font-size: 18px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width:1680) {
-    .igb-layout-sidebar {
-        .sidebar-list {
-            width: 100%;
-            padding-top: 30px;
-            ul {
-                li {
-                    a {
-                        span {
-                            font-size: 18px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}

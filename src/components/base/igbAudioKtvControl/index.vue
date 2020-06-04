@@ -310,10 +310,10 @@ export default {
         opacity: 1;
         border-radius: 12px;
         text-align: center;
-        font-size: 12px;
+        font-size:calc-attr(12);
         font-family: "PingFang-SC-Regular";
         color: rgba(34, 42, 55, 1);
-        margin-top: -9px;
+        margin-top:calc-attr(-9);
         -webkit-border-radius: 12px;
         -moz-border-radius: 12px;
         -ms-border-radius: 12px;
@@ -323,9 +323,9 @@ export default {
 
     .progress-time {
       position: absolute;
-      right: 23px;
-      top: 10px;
-      font-size: 12px;
+      right:calc-attr(23);
+      top:calc-attr(10);
+      font-size:calc-attr(12);
       font-family: "PingFang-SC-Regular";
       color: rgba(255, 255, 255, 1);
       opacity: 0.5;
@@ -355,7 +355,7 @@ export default {
     }
 
     .singer-info {
-      width: 515px;
+      width:calc-attr(515);
 
       img {
         border: 2px solid rgba(255, 255, 255, 0.09803921568627452);
@@ -373,10 +373,10 @@ export default {
       }
 
       h2 {
-        max-width: 200px;
-        height: 25px;
-        line-height: 25px;
-        font-size: 18px;
+        max-width:calc-attr(200);
+        height:calc-attr(25);
+        line-height:calc-attr(25);
+        font-size:calc-attr(18);
         font-family: "PingFang-SC-Regular";
         font-weight: 400;
         color: rgba(255, 255, 255, 1);
@@ -388,7 +388,7 @@ export default {
       }
 
       a {
-        font-size: 14px;
+        font-size:calc-attr(14);
         font-family: "PingFang-SC-Regular";
         font-weight: 400;
         color: rgba(255, 255, 255, 1);
@@ -401,8 +401,8 @@ export default {
     /* 播放控制 */
     .player-controller {
       .contr {
-        width: 40px;
-        margin-right: 45px;
+        width:calc-attr(40);
+        margin-right:calc-attr(45);
         cursor: pointer;
 
         &:last-child {
@@ -416,10 +416,10 @@ export default {
 
         span {
           display: block;
-          font-size: 14px;
+          font-size:calc-attr(14);
           font-weight: 500;
           color: rgba(255, 153, 37, 1);
-          padding-top: 9px;
+          padding-top:calc-attr(9);
         }
 
         &:hover {
@@ -431,8 +431,8 @@ export default {
 
       .contr-play {
         i {
-          width: 19.77px;
-          height: 27px;
+          width:calc-attr(19.77);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-play.png") no-repeat
             center center;
           background-size: 100%;
@@ -449,8 +449,8 @@ export default {
 
       .contr-pause {
         i {
-          width: 19.77px;
-          height: 27px;
+          width:calc-attr(19.77);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-pause.png") no-repeat
             center center;
           background-size: 100%;
@@ -467,8 +467,8 @@ export default {
 
       .contr-reset {
         i {
-          width: 24.82px;
-          height: 27px;
+          width:calc-attr(24.82);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-reset.png") no-repeat
             center;
           background-size: 100%;
@@ -485,8 +485,8 @@ export default {
 
       .contr-cut {
         i {
-          width: 21.87px;
-          height: 27px;
+          width:calc-attr(21.87);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-cut.png") no-repeat center;
           background-size: 100%;
         }
@@ -503,11 +503,11 @@ export default {
 
     /* 音量控制 */
     .volume-controller {
-      margin-left: 120px;
+      margin-left:calc-attr(120);
 
       .contr {
-        width: 40px;
-        margin-right: 45px;
+        width:calc-attr(40);
+        margin-right:calc-attr(45);
         cursor: pointer;
 
         &:last-child {
@@ -521,10 +521,10 @@ export default {
 
         span {
           display: block;
-          font-size: 14px;
+          font-size:calc-attr(14);
           font-weight: 500;
           color: rgba(255, 153, 37, 1);
-          padding-top: 9px;
+          padding-top:calc-attr(9);
         }
 
         &:hover {
@@ -536,8 +536,8 @@ export default {
 
       .contr-nov {
         i {
-          width: 26.44px;
-          height: 27px;
+          width:calc-attr(26.44);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-nov.png") no-repeat center
             center;
           background-size: 100%;
@@ -558,8 +558,8 @@ export default {
         }
 
         i {
-          width: 30.85px;
-          height: 27px;
+          width:calc-attr(30.85);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-ova.png") no-repeat center;
           background-size: 100%;
         }
@@ -579,8 +579,8 @@ export default {
         }
 
         i {
-          width: 30.85px;
-          height: 27px;
+          width:calc-attr(30.85);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-ovd.png") no-repeat center;
           background-size: 100%;
         }
@@ -597,25 +597,25 @@ export default {
 
     /* 歌曲控制 */
     .song-controller {
-      margin-left: 120px;
+      margin-left:calc-attr(120);
 
       .contr {
-        width: 40px;
-        margin-right: 45px;
+        width:calc-attr(40);
+        margin-right:calc-attr(45);
         position: relative;
         cursor: pointer;
 
         .d {
-          width: 24px;
-          height: 24px;
-          line-height: 24px;
+          width:calc-attr(24);
+          height:calc-attr(24);
+          line-height:calc-attr(24);
           text-align: center;
           position: absolute;
-          right: -15px;
-          top: -15px;
+          right:calc-attr(-15);
+          top:calc-attr(-15);
           background: url("../../../assets/images/d.png") no-repeat center;
           background-size: 100% 100%;
-          font-size: 14px;
+          font-size:calc-attr(14);
           font-family: Arial;
           font-weight: 400;
           font-style: normal !important;
@@ -633,10 +633,10 @@ export default {
 
         span {
           display: block;
-          font-size: 14px;
+          font-size:calc-attr(14);
           font-weight: 500;
           color: rgba(255, 153, 37, 1);
-          padding-top: 9px;
+          padding-top:calc-attr(9);
         }
 
         &:hover {
@@ -648,8 +648,8 @@ export default {
 
       .contr-ly {
         i {
-          width: 26.97px;
-          height: 27px;
+          width:calc-attr(26.97);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-ly.png") no-repeat center
             center;
           background-size: 100%;
@@ -666,8 +666,8 @@ export default {
 
       .contr-sc {
         i {
-          width: 27.35px;
-          height: 27px;
+          width:calc-attr(27.35);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-sc.png") no-repeat center;
           background-size: 100%;
         }
@@ -683,8 +683,8 @@ export default {
 
       .contr-qf {
         i {
-          width: 27.09px;
-          height: 27px;
+          width:calc-attr(27.09);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-qf.png") no-repeat center;
           background-size: 100%;
         }
@@ -704,8 +704,8 @@ export default {
         }
 
         i {
-          width: 24.49px;
-          height: 27px;
+          width:calc-attr(24.49);
+          height:calc-attr(27);
           background: url("../../../assets/images/k/k-yd.png") no-repeat center;
           background-size: 100%;
         }
@@ -722,7 +722,7 @@ export default {
 
     .song-switch {
       align-items: center;
-      margin-left: 70px;
+      margin-left:calc-attr(70);
 
       &:hover {
         span {
@@ -731,8 +731,8 @@ export default {
       }
 
       .btn-switch {
-        width: 48px;
-        height: 24px;
+        width:calc-attr(48);
+        height:calc-attr(24);
         margin: 0px;
         padding: 0px;
         cursor: pointer;
@@ -741,37 +741,37 @@ export default {
         &.btn-switch-on {
           background: url("../../../assets/images/p/btn-switch-on.png")
             no-repeat center;
-          background-size: 48px 24px;
+          background-size:calc-attr(48)calc-attr(24);
 
           &:hover {
             box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.16);
             background: url("../../../assets/images/p/btn-switch-on-h.png")
               no-repeat center;
-            background-size: 48px 24px;
+            background-size:calc-attr(48)calc-attr(24);
           }
         }
 
         &.btn-switch-off {
           background: url("../../../assets/images/p/btn-switch-off.png")
             no-repeat center;
-          background-size: 48px 24px;
+          background-size:calc-attr(48)calc-attr(24);
 
           &:hover {
             box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.16);
             background: url("../../../assets/images/p/btn-switch-off-h.png")
               no-repeat center;
-            background-size: 48px 24px;
+            background-size:calc-attr(48)calc-attr(24);
           }
         }
       }
 
       span {
-        width: 40px;
-        height: 24px;
-        line-height: 24px;
-        font-size: 16px;
+        width:calc-attr(40);
+        height:calc-attr(24);
+        line-height:calc-attr(24);
+        font-size:calc-attr(16);
         color: rgba(255, 255, 255, 0.7);
-        margin-left: 14px;
+        margin-left:calc-attr(14);
       }
     }
   }

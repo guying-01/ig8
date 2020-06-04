@@ -3,15 +3,17 @@
   top: 0px;
   left: 0px;
   width: 100%;
-  padding-left: 238px;
+  padding-left:calc-attr(238);
+  /*TODO*/
   height: calc(100% - 109px);
   min-height: 100%;
   color: #fff;
-  overflow: hidden;
+  overflow: auto;
   .igb-wrapper {
-    height: calc(100% - 109px - 72px);
+  /*TODO*/
+    // height: calc(100% - 109px - 72px);
     margin: 0 auto;
-    overflow: hidden;
+    // overflow: hidden;
     overflow-y: auto;
     @include scroll-bar(0px);
     .igb-main-page {

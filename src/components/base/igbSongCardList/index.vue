@@ -73,6 +73,18 @@ export default {
     //     element.style.height = `${parseFloat(itemWidth).toFixed(0)}px`
     //   })
     // }
+
+    // setInterval(function () {
+    //   let designWidth = 1920
+    //   let docWidth = document.documentElement.clientWidth
+
+    //   let scaleW = docWidth / designWidth// 宽比例
+
+    //   document.body.style.transform = `scale(${scaleW})`
+    // }, 200)
+
+    var phoneScale = parseInt(window.screen.width) / 1920
+    document.write('<meta name="viewport" content="width=375, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', user-scalable=no">')
   },
   methods: {
     changeHandller (item) {

@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
  * @LastEditors: gy
- * @LastEditTime: 2020-06-04 11:40:16
+ * @LastEditTime: 2020-06-04 19:41:23
 -->
 <template>
 <span class="tag" :class="`tag-${list[type].color}`">{{list[type].label}}</span>
@@ -53,10 +53,10 @@ export default {
 <style lang="scss" scoped>
 .tag {
     display: block;
-    @include calc-width(28);
-    @include calc-height(16);
-    @include calc-line-height(16);
-    font-size: 12px;
+    width:calc-attr(28);
+    height:calc-attr(16);
+    line-height:calc-attr(16);
+    font-size:calc-attr(12);
     border-radius: 2px;
     text-align: center;
 

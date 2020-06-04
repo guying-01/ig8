@@ -99,12 +99,11 @@ export default {
   flex-wrap: wrap;
 
   > div {
-    @include calc-width(320);
-    @include calc-height(136);
-    @include calc-pad-top(26);
-    @include calc-pad-left(27);
+    height: calc-attr(136);
+    padding-top: calc-attr(26);
+    padding-left: calc-attr(27);
+    width: calc-attr(320);
     // width: calc(20% - 2px);
-    // height: auto;
     margin-bottom: 2px;
     margin-right: 2px;
     background: rgba(255, 255, 255, 0.06);
@@ -123,9 +122,9 @@ export default {
 
       .item-box {
         width: calc(100% - 71px) !important;
-        @include calc-height(48);
+        height: calc-attr(48);
         margin: 0 auto auto auto !important;
-        @include calc-marg-top(37);
+        margin-top: calc-attr(37);
         background: url("../../../assets/images/xingepaihangbang.png") no-repeat
           center;
         background-size: 100%;
@@ -138,9 +137,9 @@ export default {
 
       .item-box {
         width: calc(100% - 71px) !important;
-        @include calc-height(48);
-
-        margin: 37px auto auto auto !important;
+        height: calc-attr(48);
+        margin: 0 auto auto auto !important;
+        margin-top: calc-attr(37);
         background: url("../../../assets/images/huayubang.png") no-repeat center;
         background-size: 100%;
       }
@@ -155,11 +154,11 @@ export default {
       .icon-leing {
         display: none;
         position: absolute;
-        top: -60px;
-        left: -40px;
+        top: calc-attr(-60);
+        left: calc-attr(-40);
         z-index: 1;
-        @include calc-height(200);
-        @include calc-width(200);
+        height: calc-attr(200);
+        width: calc-attr(200);
         background: url("../../../assets/images/singer-hover-bg.png") no-repeat
           center;
         background-size: cover;
@@ -169,8 +168,8 @@ export default {
       .box {
         display: none;
         position: absolute;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         border: 2px solid rgba(254, 131, 74, 0.5019607843137255);
@@ -228,44 +227,36 @@ export default {
         }
 
         .number {
-          @include calc-font-size(18);
-          // font-size: 18px;
+          font-size: calc-attr(18);
           font-family: "PingFang-SC-Regular";
           font-weight: 400;
-          @include calc-height(27);
-          @include calc-width(27);
+          height: calc-attr(27);
+          width: calc-attr(27);
           color: rgba(255, 255, 255, 0.4);
-          @include calc-pad-right(11);
+          padding-right: calc-attr(11);
 
           img {
-            width: 15.77px;
-            height: 16.95px;
+            width: calc-attr(15.77);
+            height: calc-attr(16.95);
           }
         }
 
         .info {
           h3 {
-            @include calc-height(27);
-            @include calc-width(135);
-            @include calc-line-height(27);
-            @include calc-font-size(20);
-
-            // font-size: 20px;
+            height: calc-attr(27);
+            width: calc-attr(135);
+            line-height: calc-attr(27);
+            font-size: calc-attr(20);
             font-family: "PingFang-SC-Regular";
             font-weight: 500;
             color: rgba(255, 255, 255, 0.8);
-            // width: 135px;
-            // height: 27px;
-            // line-height: 27px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
           }
 
           p {
-            @include calc-font-size(14);
-
-            // font-size: 14px;
+            font-size: calc-attr(14);
             font-family: "PingFang-SC-Regular";
             font-weight: 400;
             color: rgba(255, 255, 255, 0.7);
@@ -273,17 +264,12 @@ export default {
             margin-top: 6px;
             display: flex;
             align-items: center;
-            @include calc-height(19);
-            @include calc-line-height(19);
-
-            // height: 19px;
-            // line-height: 19px;
+            height: calc-attr(19);
+            line-height: calc-attr(19);
 
             span {
-              // height: 19px;
-              // line-height: 19px;
-              @include calc-height(19);
-              @include calc-line-height(19);
+              height: calc-attr(19);
+              line-height: calc-attr(19);
               &:first-child {
                 width: auto;
                 max-width: 65px;
@@ -293,32 +279,26 @@ export default {
               }
 
               &:last-child {
-                @include calc-width(12);
-                @include calc-line-height(16);
-                @include calc-line-height(16);
-
-                // width: 12px;
-                // height: 16px;
-                // line-height: 16px;
+                width: calc-attr(12);
+                height: calc-attr(16);
+                line-height: calc-attr(16);
                 text-align: center;
-                margin: 0px 10.3px;
-                font-size: 12px;
+                margin-left: calc-attr(10.3);
+                margin-right: calc-attr(10.3);
+                font-size: calc-attr(12);
                 color: rgba(255, 255, 255, 0.3);
               }
             }
           }
 
           .tag {
-            @include calc-marg-top(17.5);
-            // margin-top: 17.5px;
+            margin-top: calc-attr(17.5);
           }
 
           .icon-collect {
             display: none;
-            @include calc-width(18);
-            @include calc-height(17);
-            // width: 18px;
-            // height: 17px;
+            width: calc-attr(18);
+            height: calc-attr(17);
             background: url("../../../assets/images/icon1.png") no-repeat center;
             background-size: 100%;
 

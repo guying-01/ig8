@@ -36,9 +36,32 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  const sassResourcesLoader = {
+    loader: 'sass-resources-loader',
+    options:{
+      resources:[path.resolve(__dirname,'../src/assets/scss/ddd/calc.scss')]
+    }
+  }
+
+  function generateSassResourceLoader() {
+    var loaders = [
+      cssLoader,
+      'sass-loader',
+      sassResourcesLoader
+      ];
+      if (options.extract) {
+        return ExtractTextPlugin.extract({
+          use: loaders,
+          fallback: 'vue-style-loader'
+        })
+      } else {
+        return ['vue-style-loader'].concat(loaders)
+      }
+    }
+
   // generate loader string to be used with extract text plugin
   function generateLoaders(loader, loaderOptions) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    const loaders = options.usePostCSS ? [cssLoader, postcssLoader,sassResourcesLoader] : [cssLoader,sassResourcesLoader]
 
     if (loader) {
       loaders.push({
@@ -67,10 +90,8 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', {
-      indentedSyntax: true
-    }),
-    scss: generateLoaders('sass'),
+    sass: generateSassResourceLoader(),
+    scss: generateSassResourceLoader(),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }

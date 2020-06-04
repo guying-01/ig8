@@ -1,0 +1,28 @@
+@mixin calc-width($w){
+  width: calc(100vw/1920 * #{$w})
+};
+@mixin calc-height($h){
+ height: calc(100vw/1920 * #{$h})
+};
+@mixin calc-line-height($lh){
+ line-height: calc(100vw/1920 * #{$lh})
+};
+@mixin calc-bottom($b){
+ bottom: calc(100vw/1920 * #{$b})
+};
+@mixin calc-font-size($fs){
+  font-size:calc(100vw/1920 * #{$fs})
+};
+@mixin calc-pad-top($pt){
+  padding-top:calc(100vw/1920 * #{$pt})
+};
+@mixin calc-pad-left($pl){
+  padding-left:calc(100vw/1920 * #{$pl})
+};
+@mixin calc-pad-right($pr){
+  padding-right:calc(100vw/1920 * #{$pr})
+};
+
+@mixin calc-marg-top($mt){
+  margin-top:calc(100vw/1920 * #{$mt})
+};

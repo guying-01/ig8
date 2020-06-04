@@ -1,51 +1,37 @@
 <template>
   <div class="igb-song-card-list-base-component">
-    <!-- <a-row :gutter="2">
-      <a-col :span="6" :lg="6" :xl="4" :xxl="4" v-if="showType">
-        <div
-          class="song-card-list-item item-first"
-          :class="`item-first-${type}`"
-          v-if="showNum"
-        >
-          <div class="item-box"></div>
+    <div
+      v-if="showType"
+      class="song-card-list-item item-first"
+      :class="`item-first-${type}`"
+    >
+      <div class="item-box"></div>
+    </div>
+    <div
+      class="song-card-list-item"
+      v-for="(item, index) in dataSource"
+      :key="index"
+      :class="{ current: item.current, play: item.play }"
+      @click="changeHandller(item)"
+    >
+      <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
+        <div class="number" v-if="showNum">
+          <span>{{ item.value }}</span>
+          <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
         </div>
-      </a-col>
-      <a-col
-        :span="6"
-        :lg="6"
-        :xl="4"
-        :xxl="4"
-        v-for="(item, index) in dataSource"
-        :key="index"
-      > -->
-        <div
-          class="song-card-list-item"
-          :class="{ current: item.current, play: item.play }"
-          @click="changeHandller(item)"
-                  v-for="(item, index) in dataSource"
-        :key="index"
-        >
-          <div class="item-box" :class="{ 'item-box-not-num': !showNum }">
-            <div class="number" v-if="showNum">
-              <span>{{ (index + 1) | indexNum }}</span>
-              <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-            </div>
-            <div class="info">
-              <h3>{{ item.SongName }}</h3>
-              <p>
-                <span>{{ item.SingerName }}</span>
-                <span>|</span>
-                {{ item.LanguageName }}
-              </p>
-              <igb-tag>{{ item.MtvStyle }}</igb-tag>
-              <i class="icon icon-collect"></i>
-            </div>
-          </div>
-          <i class="icon-leing"></i>
-          <div class="box"></div>
+        <div class="info">
+          <h3>{{ item.label }}</h3>
+          <p>
+            <span>{{ item.name }}</span
+            ><span>|</span>{{ item.lan }}
+          </p>
+          <igb-tag :type="item.tag"></igb-tag>
+          <i class="icon icon-collect"></i>
         </div>
-      <!-- </a-col>
-    </a-row> -->
+      </div>
+      <i class="icon-leing"></i>
+      <div class="box"></div>
+    </div>
   </div>
 </template>
 
@@ -79,68 +65,30 @@ export default {
       default: () => []
     }
   },
-  filters: {
-    indexNum (val) {
-      return val < 10 ? '0' + val : val
-    }
-  },
   mounted () {
-    this.calcuHeight()
-    window.addEventListener('resize', this.calcuHeight)
-    // let itemList = document.getElementsByClassName("song-card-list-item");
+    // let itemList = document.getElementsByClassName('song-card-list-item')
     // if (itemList.length > 0) {
     //   itemList.forEach(element => {
-    //     let itemWidth = element.offsetWidth / 2.35;
-    //     element.style.height = `${parseFloat(itemWidth).toFixed(0)}px`;
-    //   });
+    //     let itemWidth = element.offsetWidth / 2.35
+    //     element.style.height = `${parseFloat(itemWidth).toFixed(0)}px`
+    //   })
     // }
   },
   methods: {
     changeHandller (item) {
+      console.log(22)
       this.$emit('change', item)
     },
-    calcuHeight () {
-      let siblingH = document.querySelectorAll('.song-card-list-item')[1]
-        ? document.querySelectorAll('.song-card-list-item')[1].offsetHeight
-        : 70
-      if (siblingH) {
-        document.querySelector('.item-first').style.height =
-          siblingH - 2 + 'px'
-      }
-    },
     aa () {
-      console.log(1)
+      console.log(11)
     }
-  },
-  beforeDestroy () {
-    window.removeEventListener('resize', this.calcuHeight)
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "../../../assets/scss/ddd/variable.scss";
-@mixin calc-width($w){
-  width: calc(100vw/1920 * #{$w})
-};
-@mixin calc-height($h){
- height: calc(100vw/1920 * #{$h})
-};
-@mixin calc-line-height($lh){
- height: calc(100vw/1920 * #{$lh})
-};
-@mixin calc-bottom($b){
- bottom: calc(100vw/1920 * #{$b})
-};
-@mixin calc-font-size($fs){
-  font-size:calc(100vw/1920 * #{$fs})
-};
-@mixin calc-pad-top($pt){
-  padding-top:calc(100vw/1920 * #{$pt})
-};
-@mixin calc-pad-left($pl){
-  padding-left:calc(100vw/1920 * #{$pl})
-};
+
 .igb-song-card-list-base-component {
   width: 100%;
   margin: 0 auto;
@@ -150,23 +98,17 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 
-  .song-card-list-item {
-   @include calc-width(320);
-   @include calc-height(136);
-    // height :calc-height(320);
-   @include calc-pad-top(26);
-   @include calc-pad-left(27);
-
-    // height: calc(100vw /1920 * 136);
+  > div {
+    @include calc-width(320);
+    @include calc-height(136);
+    @include calc-pad-top(26);
+    @include calc-pad-left(27);
+    // width: calc(20% - 2px);
+    // height: auto;
     margin-bottom: 2px;
-    // width: calc(100vw /1920 * 320);
-    cursor: pointer;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    // padding: 25px 20px;
-    position: relative;
-    background: rgba(255, 255, 255, 0.06);
     margin-right: 2px;
+    background: rgba(255, 255, 255, 0.06);
+    opacity: 1;
 
     h2,
     h3,
@@ -178,12 +120,12 @@ export default {
     &.item-first-0 {
       background: url("../../../assets/images/bg1.png") no-repeat center;
       background-size: cover;
-      display: flex;
-      justify-content: center;
+
       .item-box {
         width: calc(100% - 71px) !important;
-        align-items: center;
-        margin: 0;
+        @include calc-height(48);
+        margin: 0 auto auto auto !important;
+        @include calc-marg-top(37);
         background: url("../../../assets/images/xingepaihangbang.png") no-repeat
           center;
         background-size: 100%;
@@ -193,74 +135,78 @@ export default {
     &.item-first-1 {
       background: url("../../../assets/images/bg1-1.png") no-repeat center;
       background-size: cover;
-      display: flex;
-      justify-content: center;
+
       .item-box {
         width: calc(100% - 71px) !important;
-        align-items: center;
-        margin: 0;
+        @include calc-height(48);
+
+        margin: 37px auto auto auto !important;
         background: url("../../../assets/images/huayubang.png") no-repeat center;
         background-size: 100%;
       }
     }
 
-    // &.song-card-list-item {
+    &.song-card-list-item {
+      cursor: pointer;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      position: relative;
 
-    .icon-leing {
-      display: none;
-      position: absolute;
-      top: -60px;
-      left: -40px;
-      z-index: 1;
-      width: 200px;
-      height: 200px;
-      background: url("../../../assets/images/singer-hover-bg.png") no-repeat
-        center;
-      background-size: cover;
-      pointer-events: none;
-    }
-
-    .box {
-      display: none;
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-      border: 2px solid rgba(254, 131, 74, 0.5019607843137255);
-    }
-
-    &:hover {
-      .box {
-        display: block;
-      }
-      .item-box .info .icon-collect {
-        display: block;
-      }
-    }
-    &.current {
-      background: rgba(255, 255, 255, 0.06)
-        url("../../../assets/images/icon-duigou.png") no-repeat;
-      background-size: 23px 23px;
       .icon-leing {
-        display: block;
+        display: none;
+        position: absolute;
+        top: -60px;
+        left: -40px;
+        z-index: 1;
+        @include calc-height(200);
+        @include calc-width(200);
+        background: url("../../../assets/images/singer-hover-bg.png") no-repeat
+          center;
+        background-size: cover;
+        pointer-events: none;
       }
-      .item-box {
-        .number {
-          color: rgba(253, 129, 74, 1);
+
+      .box {
+        display: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid rgba(254, 131, 74, 0.5019607843137255);
+      }
+
+      &:hover {
+        .box {
+          display: block;
+        }
+        .item-box .info .icon-collect {
+          display: block;
         }
       }
-    }
-    &.play {
-      .item-box .number span {
-        color: rgba(255, 255, 255, 0);
-        background: url("../../../assets/images/icon-play-lide.png") no-repeat
-          center center;
-        background-size: 15.77px 16.95px;
+      &.current {
+        background: rgba(255, 255, 255, 0.06)
+          url("../../../assets/images/icon-duigou.png") no-repeat;
+        background-size: 23px 23px;
+        .icon-leing {
+          display: block;
+        }
+        .item-box {
+          .number {
+            color: rgba(253, 129, 74, 1);
+          }
+        }
       }
-    }
+      &.play {
+        .item-box .number span {
+          color: rgba(255, 255, 255, 0);
+          background: url("../../../assets/images/icon-play-lide.png") no-repeat
+            center center;
+          background-size: 15.77px 16.95px;
+        }
+      }
 
-    /*&.seal {
+      /*&.seal {
                 background: rgba(255, 255, 255, 0.06) url("../../../assets/images/icon-duigou.png") no-repeat;
                 background-size: 23px 23px;
 
@@ -271,116 +217,129 @@ export default {
                 }
             }*/
 
-    .item-box {
-      // width: calc(100% - 32px);
-      // margin: 25px auto auto auto;
-      display: flex;
-      position: relative;
+      .item-box {
+        width: calc(100% - 32px);
+        // margin: 25px auto auto auto;
+        display: flex;
+        position: relative;
 
-      &.item-box-not-num {
-        // width: calc(100% - 58px);
-      }
-
-      .number {
-        @include calc-font-size(18);
-        font-family: "PingFang-SC-Regular";
-        font-weight: 400;
-        @include calc-height(27);
-        @include calc-line-height(27);
-        color: rgba(255, 255, 255, 0.4);
-        padding-right: 11px;
-
-        img {
-          @include calc-height(15.77);
-          @include calc-width(16.95);
-        }
-      }
-
-      .info {
-        h3 {
-          @include calc-font-size(20);
-          font-family: "PingFang-SC-Regular";
-          font-weight: 500;
-          color: rgba(255, 255, 255, 0.8);
-                    @include calc-height(27);
-        @include calc-width(135);
-        @include calc-line-height(27);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+        &.item-box-not-num {
+          width: calc(100% - 58px);
         }
 
-        p {
-          @include calc-font-size(14);
+        .number {
+          @include calc-font-size(18);
+          // font-size: 18px;
           font-family: "PingFang-SC-Regular";
           font-weight: 400;
-          color: rgba(255, 255, 255, 0.7);
-          //opacity: 0.7;
-          margin-top: 6px;
-          display: flex;
-          align-items: center;
-                    @include calc-height(19);
-        @include calc-line-height(19);
+          @include calc-height(27);
+          @include calc-width(27);
+          color: rgba(255, 255, 255, 0.4);
+          @include calc-pad-right(11);
 
-        }
-          span {
-                    @include calc-height(19);
-        @include calc-line-height(19);
-
-            &:first-child {
-              width: auto;
-              max-width: 65px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-
-            &:last-child {
-                                  @include calc-height(16);
-        @include calc-width(12);
-        @include calc-line-height(16);
-
-              text-align: center;
-              margin: 0px 10.3px;
-
-              font-size: 12px;
-              color: rgba(255, 255, 255, 0.3);
-            }
+          img {
+            width: 15.77px;
+            height: 16.95px;
           }
         }
 
-        .tag {
-          display: inline-block;
-          margin-top: 5px;
-        }
+        .info {
+          h3 {
+            @include calc-height(27);
+            @include calc-width(135);
+            @include calc-line-height(27);
+            @include calc-font-size(20);
 
-        .icon-collect {
-          display: none;
-                                            @include calc-height(17);
-        @include calc-width(18);
-          background: url("../../../assets/images/icon1.png") no-repeat center;
-          background-size: 100%;
+            // font-size: 20px;
+            font-family: "PingFang-SC-Regular";
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            // width: 135px;
+            // height: 27px;
+            // line-height: 27px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
 
-          position: absolute;
-          right: 0px;
-        @include calc-bottom(20);
+          p {
+            @include calc-font-size(14);
 
-          // bottom: 20px;
-          z-index: 10;
-          opacity: 0.5;
+            // font-size: 14px;
+            font-family: "PingFang-SC-Regular";
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            //opacity: 0.7;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            @include calc-height(19);
+            @include calc-line-height(19);
 
-          &:hover {
-            background: url("../../../assets/images/icon1_hover.png") no-repeat
-              center;
+            // height: 19px;
+            // line-height: 19px;
+
+            span {
+              // height: 19px;
+              // line-height: 19px;
+              @include calc-height(19);
+              @include calc-line-height(19);
+              &:first-child {
+                width: auto;
+                max-width: 65px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+
+              &:last-child {
+                @include calc-width(12);
+                @include calc-line-height(16);
+                @include calc-line-height(16);
+
+                // width: 12px;
+                // height: 16px;
+                // line-height: 16px;
+                text-align: center;
+                margin: 0px 10.3px;
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.3);
+              }
+            }
+          }
+
+          .tag {
+            @include calc-marg-top(17.5);
+            // margin-top: 17.5px;
+          }
+
+          .icon-collect {
+            display: none;
+            @include calc-width(18);
+            @include calc-height(17);
+            // width: 18px;
+            // height: 17px;
+            background: url("../../../assets/images/icon1.png") no-repeat center;
             background-size: 100%;
-            opacity: 1;
+
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            opacity: 0.5;
+
+            &:hover {
+              background: url("../../../assets/images/icon1_hover.png")
+                no-repeat center;
+              background-size: 100%;
+              opacity: 1;
+            }
           }
         }
       }
     }
-
+  }
 }
-// }
 
 // @media (max-width: 1680px) {
 //   .igb-song-card-list-base-component {

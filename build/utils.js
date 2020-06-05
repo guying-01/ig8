@@ -29,13 +29,6 @@ exports.cssLoaders = function (options) {
     }
   }
 
-  const px2remLoader = {
-    loader: 'px2rem-loader',
-    options: {
-      remUnit: 102.4
-    }
-  }
-
   const sassResourcesLoader = {
     loader: 'sass-resources-loader',
     options:{
@@ -43,25 +36,9 @@ exports.cssLoaders = function (options) {
     }
   }
 
-  function generateSassResourceLoader() {
-    var loaders = [
-      cssLoader,
-      'sass-loader',
-      sassResourcesLoader
-      ];
-      if (options.extract) {
-        return ExtractTextPlugin.extract({
-          use: loaders,
-          fallback: 'vue-style-loader'
-        })
-      } else {
-        return ['vue-style-loader'].concat(loaders)
-      }
-    }
-
   // generate loader string to be used with extract text plugin
   function generateLoaders(loader, loaderOptions) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader,sassResourcesLoader] : [cssLoader,sassResourcesLoader]
+    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
       loaders.push({
@@ -70,6 +47,10 @@ exports.cssLoaders = function (options) {
           sourceMap: options.sourceMap
         })
       })
+    }
+
+    if (loader === 'sass') {
+      loaders.push(sassResourcesLoader);
     }
 
     // Extract CSS when that option is specified
@@ -90,8 +71,8 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateSassResourceLoader(),
-    scss: generateSassResourceLoader(),
+    sass: generateLoaders('scss'),
+    scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }

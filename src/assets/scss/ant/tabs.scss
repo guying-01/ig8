@@ -7,10 +7,10 @@
         border: none;
         .ant-tabs-nav-container {
             .ant-tabs-tab-arrow-show {
-                width: 14px !important;
-                height: 24px !important;
+                width: calc-attr(14) !important;
+                height: calc-attr(24) !important;
                 color: rgba(255, 255, 255, .5);
-                top: 12.5px !important;
+                top: calc-attr(12.5) !important;
                 overflow: hidden;
                 cursor: pointer !important;
                 &.ant-tabs-tab-prev {
@@ -38,26 +38,26 @@
                     }
                 }
                 span {
-                    margin-top: 100px;
+                    margin-top: calc-attr(100);
                 }
             }
             .ant-tabs-nav-wrap {
                 .ant-tabs-nav {
                     .ant-tabs-tab {
-                        width: 172px;
-                        height: 48px;
-                        line-height: 48px;
+                        width: calc-attr(172);
+                        height: calc-attr(48);
+                        line-height: calc-attr(48);
                         background: url("../images/btn-tab.png") no-repeat center;
                         background-size: 100%;
                         border-radius: 36px;
-                        font-size: 20px;
+                        font-size: calc-attr(20);
                         font-family: 'PingFang-SC-Regular' !important;
                         font-weight: 400;
                         color: rgba(255, 255, 255, .8);
                         text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
                         text-align: center;
-                        padding: 0px 50px;
-                        margin-right: 23px;
+                        padding: 0px calc-attr(50);
+                        margin-right: calc-attr(23);
                         &:last-child {
                             margin-right: 0px;
                         }

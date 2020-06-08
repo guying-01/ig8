@@ -20,9 +20,9 @@
         .ant-slider-handle {
             background-color: #F97647;
             border: solid 2px #F97647 !important;
-            width: 18px;
-            height: 18px;
-            margin-top: -7px;
+            width: calc-attr(18);
+            height: calc-attr(18);
+            margin-top: calc-attr(-7);
         }
     }
 }

@@ -20,75 +20,75 @@
 
 <script>
 export default {
-    name: "IgbPopoverBaseComponent",
-    props: {
-        title: {
-            type: String,
-            default: ''
-        },
-        content: {
-            type: String,
-            default: ''
-        },
-        /**
+  name: 'IgbPopoverBaseComponent',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    content: {
+      type: String,
+      default: ''
+    },
+    /**
          * 可选值  top \ bottom
          */
-        placement: {
-            type: String,
-            default: 'bottom'
-        },
-        top: {
-            type: Number,
-            default: 0
-        },
-        left: {
-            type: Number,
-            default: 0
-        },
-        arrLeft: {
-            type: Number,
-            default: 0
-        },
-        className: {
-            type: String,
-            default: ""
-        }
+    placement: {
+      type: String,
+      default: 'bottom'
     },
-    data() {
-        return {
-            show: false,
-            arrowLeft: 0,
-            x: 0,
-            y: 0
-        }
+    top: {
+      type: Number,
+      default: 0
     },
-    methods: {
-        pop(e) {
-            if (this.show) {
-                this.show = false;
-                return;
-            }
-            var target = e.target;
-            this.arrowLeft = (this.$refs.pop.offsetWidth / 2) + this.arrLeft;
-            this.x = target.offsetLeft + this.left;
-            if (this.placement == 'top') {
-                this.y = target.offsetTop - target.offsetHeight - this.top;
-            } else {
-                this.y = target.offsetTop + target.offsetHeight + this.top;
-            }
-            this.show = true;
-        },
-        outHandller() {
-            this.show = false;
-        }
+    left: {
+      type: Number,
+      default: 0
+    },
+    arrLeft: {
+      type: Number,
+      default: 0
+    },
+    className: {
+      type: String,
+      default: ''
     }
+  },
+  data () {
+    return {
+      show: false,
+      arrowLeft: 0,
+      x: 0,
+      y: 0
+    }
+  },
+  methods: {
+    pop (e) {
+      if (this.show) {
+        this.show = false
+        return
+      }
+      var target = e.target
+      this.arrowLeft = (this.$refs.pop.offsetWidth / 2) + this.arrLeft
+      this.x = target.offsetLeft + this.left
+      if (this.placement == 'top') {
+        this.y = target.offsetTop - target.offsetHeight - this.top
+      } else {
+        this.y = target.offsetTop + target.offsetHeight + this.top
+      }
+      this.show = true
+    },
+    outHandller () {
+      this.show = false
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .igb-popover-base-component {
     .igb-popover-tag {
-        padding: 10px 0px;
+        padding: calc-attr(10) 0px;
     }
 
     .igb-popover-wrap {
@@ -96,7 +96,7 @@ export default {
 
         .igb-popover-box {
             box-sizing: border-box;
-            width: 177px;
+            width: calc-attr(177);
             background-color: #fff;
             background-clip: padding-box;
             border: 1px solid #d9d9d9;
@@ -106,15 +106,15 @@ export default {
             z-index: 30000;
 
             .igb-popover-title {
-                padding: 0 16px;
-                line-height: 32px;
-                height: 32px;
+                padding: 0 calc-attr(16);
+                line-height: calc-attr(32);
+                height: calc-attr(32);
                 border-bottom: 1px solid #e9e9e9;
                 color: #666;
             }
 
             .igb-popover-content {
-                padding: 8px 16px;
+                padding: calc-attr(8) calc-attr(16);
                 color: #666;
                 word-break: break-all;
             }
@@ -125,11 +125,11 @@ export default {
                 height: 0;
                 border: 10px solid transparent;
                 // left: 50%;
-                margin-left: -10px;
+                margin-left: calc-attr(-10);
 
                 &:after {
                     content: " ";
-                    margin-left: -4px;
+                    margin-left: calc-attr(-4);
                     border: 4px solid transparent;
                     position: absolute;
                     width: 0;
@@ -151,11 +151,11 @@ export default {
             .igb-popover-arrow-bottom {
                 border-top-width: 0;
                 border-bottom-color: #d9d9d9;
-                top: -10px;
+                top: calc-attr(-10);
 
                 &:after {
                     border-bottom-color: #fff;
-                    top: -3px;
+                    top: calc-attr(-3);
                 }
             }
         }

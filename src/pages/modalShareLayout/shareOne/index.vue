@@ -20,16 +20,16 @@
 
 <script>
 export default {
-    name: "IgbPagesShareOneModalComponent",
-    methods: {
-        nextHandller(page) {
-            this.$emit('next', {
-                key: page,
-                value: true
-            });
-        }
+  name: 'IgbPagesShareOneModalComponent',
+  methods: {
+    nextHandller (page) {
+      this.$emit('next', {
+        key: page,
+        value: true
+      })
     }
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -37,11 +37,11 @@ export default {
     cursor: default;
     h1 {
         width: 100%;
-        height: 144px;
-        line-height: 144px;
+        height: calc-attr(144);
+        line-height: calc-attr(144);
         text-align: center;
 
-        font-size: 36px;
+        font-size: calc-attr(36);
         font-weight: 600;
         color: rgba(255, 128, 66, 1);
     }
@@ -53,21 +53,21 @@ export default {
         }
 
         .msg {
-            padding-top: 32px;
+            padding-top: calc-attr(32);
 
             p {
                 text-align: center;
 
-                font-size: 18px;
+                font-size: calc-attr(18);
                 font-weight: 400;
                 color: rgba(248, 72, 72, 1);
             }
         }
 
         .sub-title {
-            padding-top: 33px !important;
-            padding-bottom: 14px !important;
-            font-size: 14px;
+            padding-top: calc-attr(33) !important;
+            padding-bottom: calc-attr(14) !important;
+            font-size: calc-attr(14);
             font-weight: 400;
             color: rgba(255, 255, 255, .7);
             opacity: 0.7;
@@ -78,13 +78,13 @@ export default {
             >>>.igb-upload-box {
                 .btn-bg {
                     img {
-                        width: 48px !important;
-                        height: 48px !important;
+                        width: calc-attr(48) !important;
+                        height: calc-attr(48) !important;
                     }
                 }
 
                 .btn-txt {
-                    font-size: 16px !important;
+                    font-size: calc-attr(16) !important;
                 }
             }
         }
@@ -95,33 +95,33 @@ export default {
         left: 0px;
         bottom: 0px;
         width: 100%;
-        height: 100px;
+        height: calc-attr(100);
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding-right: 65px;
+        padding-right: calc-attr(65);
 
         span {
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-weight: 400;
             color: rgba(255, 255, 255, 0.7);
-            padding-right: 30px;
+            padding-right: calc-attr(30);
         }
 
         button {
             outline: none;
             border: none;
-            width: 160px;
-            height: 48px;
+            width: calc-attr(160);
+            height: calc-attr(48);
             background: linear-gradient(315deg,
                     rgba(255, 186, 0, 1) 0%,
                     rgba(255, 107, 88, 1) 100%);
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            box-shadow: 0px calc-attr(3) calc-attr(6) rgba(0, 0, 0, 0.16);
             opacity: 1;
             border-radius: 24px;
             cursor: pointer;
 
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-weight: 400;
             color: rgba(39, 50, 67, 1);
 

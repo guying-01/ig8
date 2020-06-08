@@ -54,27 +54,28 @@ export default {
     >div {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        width: 195PX;
-        height: 88px;
+        width: calc-attr(195);
+        height: calc-attr(88);
         background: rgba(255, 255, 255, .06);
-        border-radius: 49px;
+        border-radius: calc-attr(49);
         cursor: pointer;
         position: relative;
-        margin-bottom: 24px;
+        margin-bottom: calc-attr(24);
 
         .icon-leing {
             display: none;
             position: absolute;
-            top: -60px;
-            left: -40px;
-            width: 200px;
-            height: 200px;
+            top: calc-attr(-60);
+            left: calc-attr(-40);
+            width: calc-attr(200);
+            height: calc-attr(200);
             background: url("../../../assets/images/singer-hover-bg.png") no-repeat center;
             background-size: cover;
         }
 
         >div {
-            width: calc(100% - 70px);
+            // width: calc(100% - 70px);
+            padding:0 calc-attr(35);
             margin: 0 auto;
         }
 
@@ -108,11 +109,11 @@ export default {
 
         span {
             display: none;
-            width: 18px;
-            height: 17px;
+            width: calc-attr(18);
+            height: calc-attr(17);
             position: absolute;
-            right: 30px;
-            top: 35px;
+            right: calc-attr(30);
+            top: calc-attr(35);
             background: url("../../../assets/images/icon1.png") no-repeat center;
             opacity: 0.5;
             background-size: 100%;
@@ -125,41 +126,41 @@ export default {
             }
 
             &.icon-collect-search{
-                top: 51px;
+                top: calc-attr(51);
             }
         }
 
         h3,
         p {
             font-weight: normal;
-            width: 190px;
-            padding: 0px;
-            margin: 0px;
+            width: calc-attr(190);
+            padding: 0;
+            margin: 0;
         }
 
         h3 {
-            height: 28px;
-            line-height: 28px;
-            font-size: 20px;
+            height: calc-attr(28);
+            line-height: calc-attr(28);
+            font-size: calc-attr(20);
             font-family: 'PingFang-SC-Regular';
             font-weight: 500;
             color: rgba(255, 255, 255, 1);
             opacity: 0.8;
-            margin-top: 18px;
+            margin-top: calc-attr(18);
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
         p {
-            height: 20px;
-            line-height: 20px;
-            font-size: 14px;
+            height: calc-attr(20);
+            line-height: calc-attr(20);
+            font-size: calc-attr(14);
             font-family: 'PingFang-SC-Regular';
             font-weight: 200;
             color: rgba(255, 255, 255, 1);
             opacity: 0.7;
-            margin-top: 5px;
+            margin-top: calc-attr(5);
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

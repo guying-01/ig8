@@ -19,97 +19,97 @@
 
 <script>
 export default {
-    name: "IgbPagesSearchComponent",
-    data() {
-        return {
-            show: false,
-            model: 0,
-            singerList: [{
-                    name: "郭富城",
-                    type: "华语男星",
-                    search: true
-                },
-                {
-                    name: "周杰伦",
-                    type: "华语男星",
-                    search: true
-                },
-                {
-                    name: "韩红",
-                    type: "华语女星",
-                    search: true
-                },
-                {
-                    name: "李文文",
-                    type: "华语男星",
-                    search: true
-                },
-                {
-                    name: "周杰伦",
-                    type: "华语男星",
-                    search: true
-                }
-            ],
-            songList: [{
-                    value: "01",
-                    label: "千面",
-                    name: "逍遥乐队",
-                    lan: "国语",
-                    tag: 1
-                },
-                {
-                    value: "02",
-                    label: "桥边姑娘",
-                    name: "垂耳兔",
-                    lan: "国语",
-                    tag: 1,
-                    collect: true,
-                    seal: true
-                },
-                {
-                    value: "03",
-                    label: "世界这么大还是遇见你",
-                    name: "程响",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "04",
-                    label: "你的答案",
-                    name: "酷",
-                    lan: "国语",
-                    tag: 0
-                },
-                {
-                    value: "05",
-                    label: "桥边姑娘",
-                    name: "垂耳兔",
-                    lan: "国语",
-                    tag: 0
-                }
-            ]
-        }
-    },
-    mounted() {
-        //软键盘显示动画
-        this.$nextTick(() => {
-            setTimeout(() => {
-                this.show = !this.show;
-            }, 0);
-        });
-    },
-    methods: {
-        modelHandller(event) {
-            this.show = false;
-            //软键盘显示动画
-            this.$nextTick(() => {
-                setTimeout(() => {
-                    this.show = !this.show;
-                    this.model = event.model;
-                }, 0);
-            });
-        }
+  name: 'IgbPagesSearchComponent',
+  data () {
+    return {
+      show: false,
+      model: 0,
+      singerList: [{
+        name: '郭富城',
+        type: '华语男星',
+        search: true
+      },
+      {
+        name: '周杰伦',
+        type: '华语男星',
+        search: true
+      },
+      {
+        name: '韩红',
+        type: '华语女星',
+        search: true
+      },
+      {
+        name: '李文文',
+        type: '华语男星',
+        search: true
+      },
+      {
+        name: '周杰伦',
+        type: '华语男星',
+        search: true
+      }
+      ],
+      songList: [{
+        value: '01',
+        label: '千面',
+        name: '逍遥乐队',
+        lan: '国语',
+        tag: 1
+      },
+      {
+        value: '02',
+        label: '桥边姑娘',
+        name: '垂耳兔',
+        lan: '国语',
+        tag: 1,
+        collect: true,
+        seal: true
+      },
+      {
+        value: '03',
+        label: '世界这么大还是遇见你',
+        name: '程响',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '04',
+        label: '你的答案',
+        name: '酷',
+        lan: '国语',
+        tag: 0
+      },
+      {
+        value: '05',
+        label: '桥边姑娘',
+        name: '垂耳兔',
+        lan: '国语',
+        tag: 0
+      }
+      ]
     }
+  },
+  mounted () {
+    // 软键盘显示动画
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.show = !this.show
+      }, 0)
+    })
+  },
+  methods: {
+    modelHandller (event) {
+      this.show = false
+      // 软键盘显示动画
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.show = !this.show
+          this.model = event.model
+        }, 0)
+      })
+    }
+  }
 }
 </script>
 
@@ -135,17 +135,17 @@ export default {
 
 .igb-pages-search {
     .singer-main {
-        padding-top: 43px;
-        padding-bottom: 38px;
+        padding-top: calc-attr(43);
+        padding-bottom: calc-attr(38);
         border-bottom: 1px solid rgba(255, 255, 255, .1);
 
         h3 {
-            font-size: 20px;
+            font-size: calc-attr(20);
             font-family: 'PingFang-SC-Regular';
             font-weight: 500;
             color: rgba(255, 255, 255, 1);
             margin: 0px;
-            padding: 0px 0px 22px 0px;
+            padding: 0px 0px calc-attr(22) 0px;
         }
 
         .btn-more {
@@ -155,9 +155,9 @@ export default {
 
             margin: 0 auto;
 
-            width: 98px;
-            height: 32px;
-            line-height: 32px;
+            width: calc-attr(98);
+            height: calc-attr(32);
+            line-height: calc-attr(32);
 
             text-align: center;
 
@@ -165,16 +165,16 @@ export default {
             opacity: 1;
             border-radius: 49px;
 
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-family: 'PingFang-SC-Regular';
             color: rgba(255, 255, 255, .7);
 
             cursor: pointer;
 
             img {
-                width: 12px;
-                height: 12px;
-                margin-left: 5px;
+                width: calc-attr(12);
+                height: calc-attr(12);
+                margin-left: calc-attr(5);
             }
 
             &:hover {
@@ -186,15 +186,15 @@ export default {
     }
 
     .song-main {
-        padding-top: 32px;
+        padding-top: calc-attr(32);
 
         h3 {
-            font-size: 20px;
+            font-size: calc-attr(20);
             font-family: 'PingFang-SC-Regular';
             font-weight: 500;
             color: rgba(255, 255, 255, 1);
             margin: 0px;
-            padding: 0px 0px 20px 0px;
+            padding: 0px 0px calc-attr(20) 0px;
         }
     }
 }

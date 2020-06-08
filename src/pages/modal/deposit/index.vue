@@ -30,7 +30,7 @@
         </div>
 
         <p class="txt">
-            <igb-check-box v-model="check"><span style="font-size:12px !important">到期自动续费1年，可随时取消</span></igb-check-box>
+            <igb-check-box v-model="check"><span class="title">到期自动续费1年，可随时取消</span></igb-check-box>
         </p>
     </div>
 
@@ -55,12 +55,12 @@
 
 <script>
 export default {
-    name: "IgbPagesDepositComponent",
-    data() {
-        return {
-            check: true
-        }
+  name: 'IgbPagesDepositComponent',
+  data () {
+    return {
+      check: true
     }
+  }
 }
 </script>
 
@@ -71,25 +71,25 @@ export default {
         display: flex;
         align-items: center;
         width: 100%;
-        height: 96px;
+        height: calc-attr(96);
         border-bottom: 1px solid rgba(255, 255, 255, .05);
 
         h1,
         p {
             margin: 0px;
             padding: 0px;
-            padding-left: 15px !important;
-            padding-right: 36px;
+            padding-left: calc-attr(15) !important;
+            padding-right: calc-attr(36);
             position: relative;
         }
 
         .header {
-            padding-left: 35px;
+            padding-left: calc-attr(35);
 
             img {
                 border: 2px solid rgba(67, 77, 94, 1);
-                width: 60px;
-                height: 60px;
+                width: calc-attr(60);
+                height: calc-attr(60);
                 cursor: pointer;
                 border-radius: 50%;
 
@@ -100,14 +100,14 @@ export default {
             flex: 1;
 
             h1 {
-                font-size: 18px;
+                font-size: calc-attr(18);
                 font-weight: 600;
                 color: #fff;
             }
 
             p {
 
-                font-size: 12px;
+                font-size: calc-attr(12);
                 font-weight: 400;
                 color: rgba(255, 255, 255, .5);
             }
@@ -116,13 +116,13 @@ export default {
 
     .my-pack {
         width: 100%;
-        height: 199px;
+        height: calc-attr(199);
         background: rgba(39, 50, 70, .5);
         border-bottom: 1px solid rgba(255, 255, 255, .05);
 
         .list {
-            padding-top: 29px;
-            width: 734px;
+            padding-top: calc-attr(29);
+            width: calc-attr(734);
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -130,7 +130,7 @@ export default {
 
             .my-pack-item {
                 width: calc(33.33% - 13px);
-                height: 120px;
+                height: calc-attr(120);
 
                 background: rgba(255, 255, 255, .05);
                 border-radius: 4px;
@@ -146,7 +146,6 @@ export default {
                     background: rgba(255, 255, 255, .1);
                 }
 
-
                 &.current {
                     background: linear-gradient(225deg, rgba(255, 185, 1, 1) 0%, rgba(255, 108, 87, 1) 100%);
 
@@ -158,7 +157,7 @@ export default {
                         color: rgba(47, 58, 77, 1);
 
                         span {
-                            font-size: 17px;
+                            font-size: calc-attr(17);
                             color: rgba(47, 58, 77, 1) !important;
                         }
                     }
@@ -172,11 +171,11 @@ export default {
                     // background-size: 57.55px 53.41px;
                     .icon-tuij {
                         display: block;
-                        width: 57.55px;
-                        height: 53.41px;
+                        width: calc-attr(57.55);
+                        height: calc-attr(53.41);
                         background-image: url("../../../assets/images/float-tuijian.png");
                         background-repeat: no-repeat;
-                        background-size: 57.55px 53.41px;
+                        background-size: calc-attr(57.55) calc-attr(53.41);
                         position: absolute;
                         top: 0px;
                         left: 0px;
@@ -194,31 +193,31 @@ export default {
                 }
 
                 h2 {
-                    font-size: 18px;
+                    font-size: calc-attr(18);
                     font-weight: 500;
                     color: rgba(255, 255, 255, 1);
-                    margin-top: 25px;
-                    margin-left: 26px;
+                    margin-top: calc-attr(25);
+                    margin-left: calc-attr(26);
                 }
 
                 h3 {
-                    font-size: 30px;
+                    font-size: calc-attr(30);
                     font-weight: 600;
                     color: rgba(255, 128, 66, 1);
-                    margin-top: 6px;
-                    margin-left: 26px;
+                    margin-top: calc-attr(6);
+                    margin-left: calc-attr(26);
                     position: relative;
 
                     span {
-                        font-size: 16px;
+                        font-size: calc-attr(16);
 
                         &:last-child {
-                            font-size: 12px !important;
+                            font-size: calc-attr(12) !important;
                             color: rgba(255, 255, 255, .7);
                             position: absolute;
-                            bottom: 8px;
+                            bottom: calc-attr(8);
                             right: 0px;
-                            padding-right: 24px;
+                            padding-right: calc-attr(24);
                         }
                     }
                 }
@@ -226,15 +225,18 @@ export default {
         }
 
         .txt {
-            width: 734px;
-            margin: 15px auto auto auto;
+            width: calc-attr(734);
+            margin: calc-attr(15) auto auto auto;
+            .title{
+                font-size: calc-attr(12);
+            }
         }
 
     }
 
     .ply-box {
-        padding-top: 15px;
-        width: 734px;
+        padding-top: calc-attr(15);
+        width: calc-attr(734);
         margin: 0 auto;
 
         h2,
@@ -244,15 +246,15 @@ export default {
         }
 
         h2 {
-            font-size: 12px;
+            font-size: calc-attr(12);
             font-weight: 400;
             color: rgba(255, 255, 255, .8);
-            padding-bottom: 6px;
+            padding-bottom: calc-attr(6);
         }
 
         .box {
             width: 100%;
-            height: 158px;
+            height: calc-attr(158);
             border: 1px solid rgba(213, 213, 213, .1);
             border-radius: 4px;
 
@@ -264,40 +266,40 @@ export default {
                 text-align: right;
 
                 img {
-                    width: 120px;
-                    height: 120px;
+                    width: calc-attr(120);
+                    height: calc-attr(120);
                 }
             }
 
             .info {
                 width: 50%;
-                padding-left: 15px !important;
+                padding-left: calc-attr(15) !important;
 
                 p {
                     &:first-child {
-                        font-size: 24px;
+                        font-size: calc-attr(24);
                         font-weight: 600;
                         color: rgba(255, 128, 66, 1);
                         position: relative;
 
                         span {
-                            font-size: 18px;
+                            font-size: calc-attr(18);
                             font-weight: 400 !important;
                         }
                     }
 
                     &:nth-child(2) {
-                        font-size: 12px;
+                        font-size: calc-attr(12);
                         font-weight: 400;
                         color: rgba(255, 255, 255, .7);
                     }
 
                     &:last-child {
-                        padding-top: 14px !important;
+                        padding-top: calc-attr(14) !important;
 
                         img {
-                            width: 22px;
-                            height: 22px;
+                            width: calc-attr(22);
+                            height: calc-attr(22);
                         }
                     }
                 }

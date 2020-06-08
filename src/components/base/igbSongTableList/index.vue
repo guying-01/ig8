@@ -32,19 +32,19 @@
 
 <script>
 export default {
-    name: "IgbSongTableListBaseComponent",
-    props: {
-        dataSource: {
-            type: Array,
-            default: () => []
-        }
-    },
-    methods: {
-        changeHandller() {
-            this.$emit('change', {});
-        }
+  name: 'IgbSongTableListBaseComponent',
+  props: {
+    dataSource: {
+      type: Array,
+      default: () => []
     }
-};
+  },
+  methods: {
+    changeHandller () {
+      this.$emit('change', {})
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -78,7 +78,7 @@ export default {
                 td {
                     &:nth-child(1) {
                         background: url("../../../assets/images/icon-duigou.png") no-repeat;
-                        background-size: 23px 23px;
+                        background-size: calc-attr(23) calc-attr(23);
                     }
 
                     /*&:nth-child(2) {
@@ -97,7 +97,7 @@ export default {
                         span {
                             color: rgba(255, 255, 255, 0);
                             background: url("../../../assets/images/icon-play-lide.png") no-repeat;
-                            background-size: 16px 17px;
+                            background-size: calc-attr(16) calc-attr(17);
                         }
                     }
                 }
@@ -107,9 +107,9 @@ export default {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 16px;
+                font-size: calc-attr(16);
                 font-weight: 400;
-                height: 80px;
+                height: calc-attr(80);
                 font-family: 'PingFang-SC-Regular';
                 text-align: center;
 
@@ -126,11 +126,11 @@ export default {
                 .icon-leing {
                     display: none;
                     position: absolute;
-                    top: -60px;
-                    left: -60px;
+                    top: calc-attr(-60);
+                    left: calc-attr(-60);
                     z-index: 1;
-                    width: 200px !important;
-                    height: 200px !important;
+                    width: calc-attr(200) !important;
+                    height: calc-attr(200) !important;
                     background: url("../../../assets/images/singer-hover-bg.png") no-repeat center;
                     background-size: cover;
                     pointer-events: none;
@@ -145,13 +145,13 @@ export default {
                     }
 
                     img {
-                        width: 14.27px;
-                        height: 15.54px;
+                        width: calc-attr(14.27);
+                        height: calc-attr(15.54);
                     }
 
                     &.seal {
                         background: url("../../../assets/images/icon-duigou.png") no-repeat;
-                        background-size: 23px 23px;
+                        background-size: calc-attr(23) calc-attr(23);
                     }
                 }
 
@@ -162,10 +162,10 @@ export default {
                     flex: 1;
 
                     h3 {
-                        max-width: 200px;
-                        height: 24px;
-                        line-height: 24px;
-                        font-size: 18px;
+                        max-width: calc-attr(200);
+                        height: calc-attr(24);
+                        line-height: calc-attr(24);
+                        font-size: calc-attr(18);
                         font-weight: 500;
                         color: rgba(255, 255, 255, .8);
                         padding: 0px;
@@ -177,17 +177,17 @@ export default {
                     }
 
                     span {
-                        margin-left: 8px;
+                        margin-left: calc-attr(8);
                     }
 
                     div {
                         visibility: hidden;
                         position: absolute;
-                        left: 418px;
+                        left: calc-attr(418);
                         top: 0px;
                         display: flex;
                         align-items: center;
-                        height: 80px;
+                        height: calc-attr(80);
 
                         i {
                             display: block;
@@ -197,8 +197,8 @@ export default {
                             }
 
                             &.icon-collect {
-                                width: 22.87px;
-                                height: 21.96px;
+                                width: calc-attr(22.87);
+                                height: calc-attr(21.96);
                                 background: url("../../../assets/images/ic.png") no-repeat center;
                                 background-size: 100%;
 
@@ -221,9 +221,9 @@ export default {
                     color: rgba(255, 255, 255, .7) !important;
 
                     p {
-                        width: 80px;
-                        height: 20px;
-                        line-height: 20px;
+                        width: calc-attr(80);
+                        height: calc-attr(20);
+                        line-height: calc-attr(20);
                         padding: 0px;
                         margin: 0px auto;
                         overflow: hidden;
@@ -235,7 +235,7 @@ export default {
                 &:nth-child(4) {
                     width: 15%;
                     color: rgba(255, 255, 255, .7);
-                    font-size: 14px;
+                    font-size: calc-attr(14);
                 }
 
                 &:nth-child(5) {
@@ -243,9 +243,9 @@ export default {
                     color: rgba(255, 255, 255, .7);
 
                     p {
-                        width: 80px;
-                        height: 20px;
-                        line-height: 20px;
+                        width: calc-attr(80);
+                        height: calc-attr(20);
+                        line-height: calc-attr(20);
                         padding: 0px;
                         margin: 0px auto;
                         overflow: hidden;
@@ -257,7 +257,7 @@ export default {
 
                 &:last-child {
                     width: 15%;
-                    font-size: 14px;
+                    font-size: calc-attr(14);
                     color: rgba(255, 255, 255, .5);
                 }
             }

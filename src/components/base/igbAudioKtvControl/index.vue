@@ -301,7 +301,7 @@ export default {
         width: auto;
         height: auto;
         min-height: auto;
-        padding: 0px 8px;
+        padding: 0px calc-attr(8);
         background: linear-gradient(
           45deg,
           rgba(255, 183, 4, 1) 0%,
@@ -364,8 +364,8 @@ export default {
         -moz-border-radius: 4px;
         -ms-border-radius: 4px;
         -o-border-radius: 4px;
-        margin-right: 20px;
-        margin-left: 40px;
+        margin-right: calc-attr(20);
+        margin-left: calc-attr(40);
 
         &:hover {
           border: 2px solid rgba(255, 255, 255, 0.2);

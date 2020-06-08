@@ -23,36 +23,36 @@
 </template>
 
 <script>
-import IgbPagesDepositComponent from "../modal/deposit/index.vue";
-import IgbLayoutFooterComponent from "../../layout/footer.vue";
+import IgbPagesDepositComponent from '../modal/deposit/index.vue'
+import IgbLayoutFooterComponent from '../../layout/footer.vue'
 export default {
-    name: "IgbPagesVideoComponent",
-    components: {
-        'igb-footer': IgbLayoutFooterComponent
-    },
-    data() {
-        return {
-            close: true,
-            plan: 70
-        }
-    },
-    mounted() {
-        this.igbModal$({
-            visible: true,
-            width: 800,
-            wrapClassName: "deposit-modal",
-            componentName: IgbPagesDepositComponent,
-            params: {}
-        });
-    },
-    methods: {
-        closeHandller() {
-            this.close = false;
-        },
-        hideVideoHandller() {
-            this.$router.go(-1);
-        }
+  name: 'IgbPagesVideoComponent',
+  components: {
+    'igb-footer': IgbLayoutFooterComponent
+  },
+  data () {
+    return {
+      close: true,
+      plan: 70
     }
+  },
+  mounted () {
+    this.igbModal$({
+      visible: true,
+      width: 800,
+      wrapClassName: 'deposit-modal',
+      componentName: IgbPagesDepositComponent,
+      params: {}
+    })
+  },
+  methods: {
+    closeHandller () {
+      this.close = false
+    },
+    hideVideoHandller () {
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 
@@ -64,12 +64,12 @@ export default {
         width: 100%;
         height: calc(100vh - 111px);
         background: rgba(34, 34, 55, .7);
-        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
-        padding-top: 34px;
+        box-shadow: 0px calc-attr(3) calc-attr(6) rgba(0, 0, 0, 0.5);
+        padding-top: calc-attr(34);
 
         .header {
             width: calc(100% - 42px - 37px);
-            height: 28px;
+            height: calc-attr(28);
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -77,7 +77,7 @@ export default {
             div {
 
                 &:first-child {
-                    font-size: 20px;
+                    font-size: calc-attr(20);
                     font-weight: 500;
                     color: rgba(255, 255, 255, 1);
                 }
@@ -88,23 +88,23 @@ export default {
                     align-items: center;
 
                     span {
-                        font-size: 18px;
+                        font-size: calc-attr(18);
                         font-weight: 500;
                         color: rgba(255, 255, 255, .6);
 
                         &:nth-child(2) {
-                            margin: 0px 18px;
+                            margin: calc-attr(0) calc-attr(18);
                         }
                     }
 
                     &.right-one {
                         .icon-close {
                             display: block;
-                            width: 16px;
-                            height: 16px;
+                            width: calc-attr(16);
+                            height: calc-attr(16);
                             background: url("../../assets/images/video-close.png") no-repeat center;
                             background-size: 100%;
-                            margin-left: 24px;
+                            margin-left: calc-attr(24);
                             cursor: pointer;
                             opacity: .8;
 
@@ -117,8 +117,8 @@ export default {
                     &.right-two {
                         .icon-close {
                             display: block;
-                            width: 24px;
-                            height: 12px;
+                            width: calc-attr(24);
+                            height: calc-attr(12);
                             background: url("../../assets/images/video-hide.png") no-repeat center;
                             background-size: 100%;
                             cursor: pointer;
@@ -137,17 +137,17 @@ export default {
         .vide-loader {
             width: 100%;
             position: fixed;
-            top: 394px;
+            top: calc-attr(394);
             left: 0px;
             text-align: center;
 
             p {
-                height: 22px;
-                line-height: 22px;
-                font-size: 16px;
+                height: calc-attr(22);
+                line-height: calc-attr(22);
+                font-size: calc-attr(16);
                 font-weight: 400;
                 color: rgba(255, 255, 255, .8);
-                margin: 13px 0px 0px 0px;
+                margin: calc-attr(13) 0px 0px 0px;
                 padding: 0px;
             }
         }
@@ -166,22 +166,22 @@ export default {
         .igb-audio-family-control-base-component {
             .foo-controller {
                 .singer-info {
-                    width: 490px !important;
+                    width: calc-attr(490) !important;
                 }
 
                 .volume-controller {
 
                     .contr-vom {
-                        margin-left: 279px !important;
+                        margin-left: calc-attr(279) !important;
                     }
                 }
 
                 .song-controller {
-                    margin-left: 239px !important;
+                    margin-left: calc-attr(239) !important;
                 }
 
                 .song-switch {
-                    margin-left: 70px;
+                    margin-left: calc-attr(70);
                 }
             }
         }

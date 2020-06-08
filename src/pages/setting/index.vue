@@ -22,43 +22,43 @@
 </template>
 
 <script>
-import IgbPagesSettingLoginComponent from "./login/index.vue";
-import IgbPagesSettingUseScenesComponent from "./useScenes/index.vue";
+import IgbPagesSettingLoginComponent from './login/index.vue'
+import IgbPagesSettingUseScenesComponent from './useScenes/index.vue'
 export default {
-    name: "IgbPagesSettingComponent",
-    components: {
-        'igb-setting-login': IgbPagesSettingLoginComponent,
-        'igb-setting-use-scenes': IgbPagesSettingUseScenesComponent
-    },
-    data() {
-        return {
-            menuList: [{
-                    value: 0,
-                    label: "登录设置",
-                    url: "/pages/setting/login",
-                    current: true
-                },
-                {
-                    value: 1,
-                    label: "使用场景",
-                    url: "/pages/setting/useScenes",
-                    current: false
-                }
-            ]
-        }
-    },
-    methods: {
-        /**
+  name: 'IgbPagesSettingComponent',
+  components: {
+    'igb-setting-login': IgbPagesSettingLoginComponent,
+    'igb-setting-use-scenes': IgbPagesSettingUseScenesComponent
+  },
+  data () {
+    return {
+      menuList: [{
+        value: 0,
+        label: '登录设置',
+        url: '/pages/setting/login',
+        current: true
+      },
+      {
+        value: 1,
+        label: '使用场景',
+        url: '/pages/setting/useScenes',
+        current: false
+      }
+      ]
+    }
+  },
+  methods: {
+    /**
          * 点击菜单跳转路由
          */
-        toMenuHandller(item) {
-            item.current = true;
-            this.menuList.filter(e => e.value !== item.value).forEach(e => e.current = false);
-            this.$router.push({
-                path: item.url
-            });
-        }
+    toMenuHandller (item) {
+      item.current = true
+      this.menuList.filter(e => e.value !== item.value).forEach(e => e.current = false)
+      this.$router.push({
+        path: item.url
+      })
     }
+  }
 }
 </script>
 
@@ -70,25 +70,24 @@ export default {
         .main-sidebar,
         .main-content {
             position: relative;
-            height: calc(100vh - 72px - 109px - 72px - 27.5px - 40px);
         }
 
         .main-sidebar {
-            width: 210px;
+            width: calc-attr(210);
             border-right: 1px solid rgba(255, 255, 255, .05);
 
             ul {
                 list-style: none;
 
                 li {
-                    height: 25px;
-                    line-height: 25px;
+                    height: calc-attr(25);
+                    line-height: calc-attr(25);
                     position: relative;
                     text-align: right;
                     cursor: pointer;
 
                     &:first-child {
-                        margin: 41px 0px 54px 0px;
+                        margin: calc-attr(41) 0px calc-attr(54) 0px;
                     }
 
                     &.current {
@@ -102,24 +101,24 @@ export default {
                     }
 
                     span {
-                        font-size: 18px;
+                        font-size: calc-attr(18);
                         font-family: 'PingFang-SC-Regular';
                         color: rgba(255, 255, 255, .5);
-                        padding-right: 37px;
+                        padding-right: calc-attr(37);
                     }
 
                     i {
                         visibility: hidden;
                         display: block;
-                        width: 11px;
-                        height: 11px;
+                        width: calc-attr(11);
+                        height: calc-attr(11);
                         background: rgba(249, 118, 71, 1);
                         border: 2px solid rgba(255, 255, 255, 0.050980392156862744);
                         border-radius: 50%;
 
                         position: absolute;
-                        top: 6px;
-                        right: -5.5px;
+                        top: calc-attr(6);
+                        right: calc-attr(-5.5);
                     }
                 }
             }

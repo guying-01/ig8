@@ -44,33 +44,33 @@
 
 <script>
 export default {
-    name: "IgbPagesShareTwoModalComponent",
-    data() {
-        return {
-            params: {
-                des: "",
-                desError: false,
-                tag: "",
-                tagFocus: false,
-                tagError: false
-            }
-        }
-    },
-    methods: {
-        inputFocusHandller(event) {
-            this.params.tagFocus = true;
-        },
-        inputBlurHandller(event) {
-            this.params.tagFocus = false;
-        },
-        nextHandller(page) {
-            this.$emit('next', {
-                key: page,
-                value: true
-            });
-        }
+  name: 'IgbPagesShareTwoModalComponent',
+  data () {
+    return {
+      params: {
+        des: '',
+        desError: false,
+        tag: '',
+        tagFocus: false,
+        tagError: false
+      }
     }
-};
+  },
+  methods: {
+    inputFocusHandller (event) {
+      this.params.tagFocus = true
+    },
+    inputBlurHandller (event) {
+      this.params.tagFocus = false
+    },
+    nextHandller (page) {
+      this.$emit('next', {
+        key: page,
+        value: true
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -78,11 +78,11 @@ export default {
     cursor: default;
     h1 {
         width: 100%;
-        height: 144px;
-        line-height: 144px;
+        height: calc-attr(144);
+        line-height: calc-attr(144);
         text-align: center;
 
-        font-size: 36px;
+        font-size: calc-attr(36);
         font-weight: 600;
         color: rgba(255, 128, 66, 1);
     }
@@ -94,25 +94,25 @@ export default {
         }
 
         .msg {
-            padding-top: 32px;
+            padding-top: calc-attr(32);
 
             p {
                 text-align: center;
 
-                font-size: 18px;
+                font-size: calc-attr(18);
                 font-weight: 400;
                 color: rgba(248, 72, 72, 1);
             }
         }
 
         .form-list {
-            padding-top: 33px;
-            width: 640px;
+            padding-top: calc-attr(33);
+            width: calc-attr(640);
             margin: 0 auto;
 
             .form-list-item {
                 p {
-                    font-size: 16px;
+                    font-size: calc-attr(16);
                     font-weight: 500;
                     color: rgba(255, 255, 255, .7);
                 }
@@ -123,12 +123,12 @@ export default {
                             outline: none;
                             border: 1px solid rgba(255, 255, 255, 0.10196078431372549);
                             width: 100%;
-                            height: 162px;
-                            line-height: 36px;
+                            height: calc-attr(162);
+                            line-height: calc-attr(36);
                             background: rgba(0, 0, 0, 0.1);
                             border-radius: 4px;
 
-                            font-size: 14px;
+                            font-size: calc-attr(14);
                             color: rgba(255, 255, 255, 1);
 
                             text-indent: .9em;
@@ -152,11 +152,11 @@ export default {
                 }
 
                 &:last-child {
-                    padding-top: 23px;
+                    padding-top: calc-attr(23);
 
                     .form-list-item-control {
                         .ant-input {
-                            height: 46px;
+                            height: calc-attr(46);
                         }
 
                         >>>.ant-input-group-wrapper {
@@ -182,13 +182,13 @@ export default {
 
                                     span {
                                         display: inline-block;
-                                        width: 59px;
-                                        height: 24px;
-                                        line-height: 24px;
+                                        width: calc-attr(59);
+                                        height: calc-attr(24);
+                                        line-height: calc-attr(24);
                                         background: rgba(255, 128, 66, .2);
                                         border-radius: 4px;
 
-                                        font-size: 14px;
+                                        font-size: calc-attr(14);
                                         font-weight: 400;
                                         color: rgba(255, 128, 66, 1);
 
@@ -196,20 +196,20 @@ export default {
 
                                         i {
                                             display: inline-block;
-                                            width: 8px;
-                                            height: 8px;
+                                            width: calc-attr(8);
+                                            height: calc-attr(8);
                                             background: url("../../../assets/images/icon-small-close.png") no-repeat center;
                                             background-size: cover;
-                                            margin-left: 6px;
+                                            margin-left: calc-attr(6);
                                         }
                                     }
 
                                     .line {
                                         position: absolute;
                                         right: 0px;
-                                        top: 9px;
+                                        top: calc-attr(9);
                                         width: 1px;
-                                        height: 18px;
+                                        height: calc-attr(18);
                                         border: 1px solid rgba(176, 178, 183, .5);
                                     }
                                 }
@@ -226,28 +226,28 @@ export default {
                         }
 
                         .tag-list {
-                            padding-top: 10px;
+                            padding-top: calc-attr(10);
 
                             span {
                                 display: inline-block;
 
-                                font-size: 14px;
+                                font-size: calc-attr(14);
                                 font-weight: 400;
                                 color: rgba(255, 255, 255, .5);
 
-                                margin-right: 10px;
+                                margin-right: calc-attr(10);
 
                                 cursor: pointer;
 
                                 &.current {
-                                    width: 40px;
-                                    height: 24px;
-                                    line-height: 24px;
+                                    width: calc-attr(40);
+                                    height: calc-attr(24);
+                                    line-height: calc-attr(24);
                                     border: 1px solid rgba(151, 92, 69, 1);
                                     border-radius: 4px;
 
                                     text-align: center;
-                                    font-size: 14px;
+                                    font-size: calc-attr(14);
                                     font-weight: 400;
                                     color: rgba(255, 128, 66, 1);
 
@@ -258,7 +258,7 @@ export default {
                 }
 
                 .form-list-item-control {
-                    margin-top: 6px;
+                    margin-top: calc-attr(6);
 
                 }
             }
@@ -270,33 +270,33 @@ export default {
         left: 0px;
         bottom: 0px;
         width: 100%;
-        height: 100px;
+        height: calc-attr(100);
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding-right: 65px;
+        padding-right: calc-attr(65);
 
         span {
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-weight: 400;
             color: rgba(255, 255, 255, 0.7);
-            padding-right: 30px;
+            padding-right: calc-attr(30);
         }
 
         button {
             outline: none;
             border: none;
-            width: 160px;
-            height: 48px;
+            width: calc-attr(160);
+            height: calc-attr(48);
             background: linear-gradient(315deg,
                     rgba(255, 186, 0, 1) 0%,
                     rgba(255, 107, 88, 1) 100%);
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            box-shadow: 0px calc-attr(3) calc-attr(6) rgba(0, 0, 0, 0.16);
             opacity: 1;
             border-radius: 24px;
             cursor: pointer;
 
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-weight: 400;
             color: rgba(39, 50, 67, 1);
 

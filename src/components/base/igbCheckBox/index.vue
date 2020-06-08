@@ -9,21 +9,21 @@
 
 <script>
 export default {
-    name: "IgbCheckBoxBaseComponent",
-    props: {
-        value: [Boolean]
-    },
-    data() {
-        return {
-            val: this.value
-        }
-    },
-    methods: {
-        changeHandller() {
-            this.val = !this.val;
-            this.$emit('input', this.val);
-        }
+  name: 'IgbCheckBoxBaseComponent',
+  props: {
+    value: [Boolean]
+  },
+  data () {
+    return {
+      val: this.value
     }
+  },
+  methods: {
+    changeHandller () {
+      this.val = !this.val
+      this.$emit('input', this.val)
+    }
+  }
 }
 </script>
 
@@ -31,7 +31,7 @@ export default {
 .igb-checkbox-base-component {
     display: flex;
     align-items: center;
-    height: 20px;
+    height: calc-attr(20);
     cursor: pointer;
 
     p {
@@ -40,8 +40,8 @@ export default {
 
         span {
             display: block;
-            width: 14px;
-            height: 14px;
+            width: calc-attr(14);
+            height: calc-attr(14);
 
             border-radius: 2px;
 
@@ -60,10 +60,10 @@ export default {
 
     .igb-checkbox-text {
         flex: 1;
-        font-size: 14px;
+        font-size: calc-attr(14);
         font-weight: 400;
         color: rgba(255, 255, 255, .7);
-        padding-left: 10px;
+        padding-left: calc-attr(10);
     }
 
     &:hover {

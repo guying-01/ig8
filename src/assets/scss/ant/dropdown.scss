@@ -3,26 +3,26 @@
 */
 
 .sidebar-user-setting-menu {
-    left: 15px !important;
+    left: calc-attr(15) !important;
     z-index: 3999 !important;
     .icon-triangle {
         position: absolute;
-        top: -25px;
-        left: 97px;
+        top: calc-attr(-25);
+        left: calc-attr(97);
         i {
             color: rgba(42, 45, 69, 1);
-            font-size: 25px;
+            font-size: calc-attr(25);
         }
     }
     .ant-dropdown-menu,
     .ant-dropdown-menu-submenu-active {
-        width: 285px;
+        width: calc-attr(285);
         height: auto;
         background: rgba(42, 45, 69, 1);
         border: none;
         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.5);
-        padding-top: 20px;
-        padding-bottom: 10px;
+        padding-top: calc-attr(20);
+        padding-bottom: calc-attr(10);
         .ant-dropdown-menu-submenu-open {
             border: none;
         }
@@ -43,24 +43,24 @@
             outline: none;
             padding: 0px;
             width: 100%;
-            height: 60px;
-            line-height: 60px;
-            font-size: 16px;
+            height: calc-attr(60);
+            line-height: calc-attr(60);
+            font-size: calc-attr(16);
             font-family: 'PingFang-SC-Regular';
             font-weight: 400;
             color: rgba(255, 255, 255, .5);
             img {
-                width: 30px;
-                margin-right: 10px;
-                margin-left: 25px;
+                width: calc-attr(30);
+                margin-right: calc-attr(10);
+                margin-left: calc-attr(25);
             }
             .ant-dropdown-menu-submenu-title {
                 outline: none;
                 padding: 0px;
                 width: 100%;
-                height: 60px;
-                line-height: 60px;
-                font-size: 16px;
+                height: calc-attr(60);
+                line-height: calc-attr(60);
+                font-size: calc-attr(16);
                 font-family: 'PingFang-SC-Regular';
                 font-weight: 400;
                 color: rgba(255, 255, 255, .5);
@@ -68,32 +68,32 @@
                     i {
                         color: rgba(255, 255, 255, 1);
                         opacity: 0.5;
-                        font-size: 20px;
+                        font-size: calc-attr(20);
                     }
                 }
             }
         }
     }
     .ant-dropdown-menu-submenu-popup {
-        left: 280px !important;
+        left: calc-attr(280) !important;
         ul {
-            width: 180px !important;
-            padding-top: 10px !important;
+            width: calc-attr(180) !important;
+            padding-top: calc-attr(10) !important;
             li {
                 text-indent: 2em;
-                height: 40px !important;
-                line-height: 40px !important;
+                height: calc-attr(40) !important;
+                line-height: calc-attr(40) !important;
                 position: relative;
                 &.ant-dropdown-menu-item-selected {
                     background: rgba(255, 255, 255, .05);
                 }
                 i {
                     display: block;
-                    width: 11.91px;
-                    height: 8.29px;
+                    width: calc-attr(11.91);
+                    height: calc-attr(8.29);
                     position: absolute;
-                    right: 25.4px;
-                    top: 18px;
+                    right: calc-attr(25.4);
+                    top: calc-attr(18);
                     background: url("../images/mode-curr.png") no-repeat center;
                     background-size: 11.91px 8.29px;
                 }

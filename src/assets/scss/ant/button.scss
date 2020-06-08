@@ -8,8 +8,8 @@
     -moz-border-radius: 30px;
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: calc-attr(30);
+    padding-right: calc-attr(30);
     font-family: 'PingFang-SC-Regular';
     // &:focus,
     // &:hover {

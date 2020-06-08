@@ -24,89 +24,90 @@
 
 <script>
 import {
-    DigitalChangeEnum
-} from "../../../enum/key.board.enum";
+  DigitalChangeEnum
+} from '../../../enum/key.board.enum'
 export default {
-    name: "IgbKeyBoardDigitalBaseComponent",
-    data() {
-        return {
-            list: {
-                one: [],
-                two: [],
-                three: []
-            }
-        };
-    },
-    mounted() {
-        this.list.one = [];
-        this.list.two = [];
-        this.list.three = [];
-
-        //初始化
-        DigitalChangeEnum.forEach(element => {
-            if (element.icon) {
-                element.label = "";
-            }
-
-            if (!element.width) {
-                element.width = 108;
-            }
-
-            if (element.type === 0) {
-                this.list.one.push(element);
-            }
-
-            if (element.type === 1) {
-                this.list.two.push(element);
-            }
-
-            if (element.type === 2) {
-                this.list.three.push(element);
-            }
-        });
-
-        this.$nextTick(() => {
-            let height = 0;
-            let itemList = document.getElementsByClassName("key-item");
-            if (itemList.length > 0) {
-                itemList.forEach(element => {
-                    let itemWidth = element.offsetWidth / parseFloat((element.offsetWidth / 72)).toFixed(2);
-                    element.style.height = `${itemWidth}px`;
-                    height = element.offsetHeight;
-                });
-            }
-            let itemList1 = document.getElementsByClassName("key-item-icon");
-            if (itemList1.length > 0) {
-                itemList1.forEach(element => {
-                    element.style.height = `${height}px`;
-                });
-            }
-        });
-    },
-    methods: {
-        digitalChange(item) {
-            switch (item.value) {
-                case 13:
-                    this.$emit('model', {
-                        item: item,
-                        model: 0
-                    });
-                    break;
-                case 20:
-                    this.$emit('model', {
-                        item: item,
-                        model: 2
-                    });
-                    break;
-            }
-        }
+  name: 'IgbKeyBoardDigitalBaseComponent',
+  data () {
+    return {
+      list: {
+        one: [],
+        two: [],
+        three: []
+      }
     }
-};
+  },
+  mounted () {
+    this.list.one = []
+    this.list.two = []
+    this.list.three = []
+
+    // 初始化
+    DigitalChangeEnum.forEach(element => {
+      if (element.icon) {
+        element.label = ''
+      }
+
+      if (!element.width) {
+        element.width = 108
+      }
+
+      if (element.type === 0) {
+        this.list.one.push(element)
+      }
+
+      if (element.type === 1) {
+        this.list.two.push(element)
+      }
+
+      if (element.type === 2) {
+        this.list.three.push(element)
+      }
+    })
+
+    this.$nextTick(() => {
+      let height = 0
+      let itemList = document.getElementsByClassName('key-item')
+      if (itemList.length > 0) {
+        itemList.forEach(element => {
+          let itemWidth = element.offsetWidth / parseFloat((element.offsetWidth / 72)).toFixed(2)
+          element.style.height = `${itemWidth}px`
+          height = element.offsetHeight
+        })
+      }
+      let itemList1 = document.getElementsByClassName('key-item-icon')
+      if (itemList1.length > 0) {
+        itemList1.forEach(element => {
+          element.style.height = `${height}px`
+        })
+      }
+    })
+  },
+  methods: {
+    digitalChange (item) {
+      switch (item.value) {
+        case 13:
+          this.$emit('model', {
+            item: item,
+            model: 0
+          })
+          break
+        case 20:
+          this.$emit('model', {
+            item: item,
+            model: 2
+          })
+          break
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .igb-key-board-digital-base-component {
-    width: calc(100% - 186px);
+    padding: 0 calc-attr(93);
+    // width: calc(100% - 186px);
     margin: 0 auto;
 
     .digital {
@@ -116,8 +117,8 @@ export default {
         justify-content: center;
 
         &.digital-one {
-            margin-top: 31px;
-            margin-bottom: 15px;
+            margin-top: calc-attr(31);
+            margin-bottom: calc-attr(15);
 
             span {
                 &:first-child {
@@ -142,9 +143,9 @@ export default {
                         background: rgba(36, 40, 67, .98);
                         border: 2px solid rgba(54, 66, 88, .98);
                         border-radius: 18px;
-                        padding: 0px 31px;
+                        padding: 0px calc-attr(31);
 
-                        font-size: 30px;
+                        font-size: calc-attr(30);
                         font-weight: 400;
                         color: rgba(255, 142, 50, 1);
                         letter-spacing: 0.1em;
@@ -158,14 +159,14 @@ export default {
                 }
 
                 img {
-                    width: 30.65px;
-                    height: 20.81px;
+                    width: calc-attr(30.65);
+                    height: calc-attr(20.81);
                 }
             }
         }
 
         &.digital-two {
-            margin-bottom: 15px;
+            margin-bottom: calc-attr(15);
 
             span {
                 width: calc(8% - 12px);
@@ -175,15 +176,15 @@ export default {
                 }
 
                 img {
-                    width: 25px;
-                    height: 18.89px;
+                    width: calc-attr(25);
+                    height: calc-attr(18.89);
                 }
             }
 
         }
 
         &.digital-three {
-            margin-bottom: 27px;
+            margin-bottom: calc-attr(27);
 
             span {
                 width: calc(8% - 12px);
@@ -209,8 +210,8 @@ export default {
                 }
 
                 img {
-                    width: 30.16px;
-                    height: 15.08px;
+                    width: calc-attr(30.16);
+                    height: calc-attr(15.08);
                 }
             }
         }
@@ -225,9 +226,9 @@ export default {
             box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
             border-radius: 18px;
             text-align: center;
-            margin-right: 12px;
+            margin-right: calc-attr(12);
 
-            font-size: 24px;
+            font-size: calc-attr(24);
             font-family: "PingFang-SC-Regular";
             font-weight: 400;
             color: rgba(255, 142, 50, 1);

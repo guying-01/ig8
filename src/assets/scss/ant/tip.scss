@@ -4,28 +4,28 @@
             display: none;
         }
         .ant-tooltip-inner {
-            width: 35px;
-            height: 162px;
+            width: calc-attr(35);
+            height: calc-attr(162);
             background: url("../images/k/vom-bg.png") no-repeat center;
-            background-size: 35px 162px;
+            background-size: calc-attr(35) calc-attr(162);
             padding: 0px;
             position: relative;
             .vom-box {
-                width: 35px;
-                height: 50px;
+                width: calc-attr(35);
+                height: calc-attr(50);
                 position: absolute;
-                bottom: 12px;
+                bottom: calc-attr(12);
                 left: 0px;
                 background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
             }
             .vom-b {
-                width: 35px;
-                height: 12px;
+                width: calc-attr(35);
+                height: calc-attr(12);
                 position: absolute;
                 bottom: 0px;
                 left: 0px;
                 background: url("../images/k/vom-b.png") no-repeat center;
-                background-size: 35px 12px;
+                background-size: calc-attr(35) calc-attr(12);
             }
         }
     }

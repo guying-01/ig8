@@ -34,93 +34,96 @@
 
 <script>
 import {
-    LetterEnum
-} from "../../../enum/key.board.enum";
+  LetterEnum
+} from '../../../enum/key.board.enum'
 export default {
-    name: "IgbKeyBoardLetterBaseComponent",
-    data() {
-        return {
-            list: {
-                one: [],
-                two: [],
-                three: []
-            }
-        };
-    },
-    mounted() {
-        this.list.one = [];
-        this.list.two = [];
-        this.list.three = [];
-
-        //拼音數據初始化
-        LetterEnum.forEach(element => {
-            if (element.icon) {
-                element.label = "";
-            }
-
-            if (!element.width) {
-                element.width = 108;
-            }
-
-            if (element.type === 0) {
-                this.list.one.push(element);
-            }
-
-            if (element.type === 1) {
-                this.list.two.push(element);
-            }
-
-            if (element.type === 2) {
-                this.list.three.push(element);
-            }
-        });
-
-        this.$nextTick(() => {
-            let height = 0;
-            let itemList = document.getElementsByClassName("key-item");
-            if (itemList.length > 0) {
-                itemList.forEach(element => {
-                    let itemWidth = element.offsetWidth / parseFloat((element.offsetWidth / 72)).toFixed(2);
-                    element.style.height = `${itemWidth}px`;
-                    height = element.offsetHeight;
-                });
-            }
-            let itemList1 = document.getElementsByClassName("key-item-icon");
-            if (itemList1.length > 0) {
-                itemList1.forEach(element => {
-                    element.style.height = `${height}px`;
-                });
-            }
-        });
-    },
-    methods: {
-        letterChange(item) {
-            switch (item.value) {
-                case 21:
-                    this.$emit('model', {
-                        item: item,
-                        model: 1
-                    });
-                    break;
-                case 29:
-                    this.$emit('model', {
-                        item: item,
-                        model: 2
-                    });
-                    break;
-            };
-        }
+  name: 'IgbKeyBoardLetterBaseComponent',
+  data () {
+    return {
+      list: {
+        one: [],
+        two: [],
+        three: []
+      }
     }
-};
+  },
+  mounted () {
+    this.list.one = []
+    this.list.two = []
+    this.list.three = []
+
+    // 拼音數據初始化
+    LetterEnum.forEach(element => {
+      if (element.icon) {
+        element.label = ''
+      }
+
+      if (!element.width) {
+        element.width = 108
+      }
+
+      if (element.type === 0) {
+        this.list.one.push(element)
+      }
+
+      if (element.type === 1) {
+        this.list.two.push(element)
+      }
+
+      if (element.type === 2) {
+        this.list.three.push(element)
+      }
+    })
+
+    this.$nextTick(() => {
+      let height = 0
+      let itemList = document.getElementsByClassName('key-item')
+      if (itemList.length > 0) {
+        itemList.forEach(element => {
+          let itemWidth = element.offsetWidth / parseFloat((element.offsetWidth / 72)).toFixed(2)
+          element.style.height = `${itemWidth}px`
+          height = element.offsetHeight
+        })
+      }
+      let itemList1 = document.getElementsByClassName('key-item-icon')
+      if (itemList1.length > 0) {
+        itemList1.forEach(element => {
+          element.style.height = `${height}px`
+        })
+      }
+    })
+  },
+  methods: {
+    letterChange (item) {
+      switch (item.value) {
+        case 21:
+          this.$emit('model', {
+            item: item,
+            model: 1
+          })
+          break
+        case 29:
+          this.$emit('model', {
+            item: item,
+            model: 2
+          })
+          break
+      };
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .igb-key-board-letter-base-component {
-    width: calc(100% - 186px);
+    padding:0 calc-attr(93);
+    width: 100%;
+    // width: calc(100% - 186px);
     margin: 0 auto;
+    box-sizing: border-box;
 
     .letter-key-board-result {
-        height: 65px;
+        height: calc-attr(65);
         display: flex;
         align-items: center;
 
@@ -129,30 +132,30 @@ export default {
         border-radius: 4px;
 
         position: absolute;
-        top: -76px;
-        left: 98px;
+        top: calc-attr(-76);
+        left: calc-attr(98);
 
         .result-input,
         .result-list {
-            font-size: 24px;
+            font-size: calc-attr(24);
             font-weight: 400;
             color: rgba(255, 142, 50, 1);
             opacity: 1;
         }
 
         .result-input {
-            padding-left: 59px;
+            padding-left: calc-attr(59);
         }
 
         .result-list {
-            padding-right: 54px;
+            padding-right: calc-attr(54);
             display: flex;
             align-items: center;
 
             span {
-                width: 48px;
-                height: 48px;
-                line-height: 48px;
+                width: calc-attr(48);
+                height: calc-attr(48);
+                line-height: calc-attr(48);
                 text-align: center;
                 margin-right: 1px;
 
@@ -171,9 +174,9 @@ export default {
 
         .result-line {
             width: 0px;
-            height: 24px;
+            height: calc-attr(24);
             border: 2px solid rgba(255, 255, 255, .1);
-            margin: 0px 45px 0px 50px;
+            margin: 0px calc-attr(45) 0px calc-attr(50);
         }
     }
 
@@ -184,8 +187,8 @@ export default {
         justify-content: flex-end;
 
         &.letter-one {
-            margin-top: 27px;
-            margin-bottom: 12px;
+            margin-top: calc-attr(27);
+            margin-bottom: calc-attr(12);
 
             span {
                 width: calc(8% - 12px);
@@ -202,14 +205,14 @@ export default {
                 }
 
                 img {
-                    width: 30.65px;
-                    height: 20.81px;
+                    width: calc-attr(30.65);
+                    height: calc-attr(20.81);
                 }
             }
         }
 
         &.letter-two {
-            margin-bottom: 12px;
+            margin-bottom: calc-attr(12);
 
             span {
                 width: calc(8% - 12px);
@@ -226,14 +229,14 @@ export default {
                 }
 
                 img {
-                    width: 25px;
-                    height: 18.89px;
+                    width: calc-attr(25);
+                    height: calc-attr(18.89);
                 }
             }
         }
 
         &.letter-three {
-            margin-bottom: 27px;
+            margin-bottom: calc-attr(27);
 
             span {
                 width: calc(8% - 12px);
@@ -260,8 +263,8 @@ export default {
                 }
 
                 img {
-                    width: 30.16px;
-                    height: 15.08px;
+                    width: calc-attr(30.16);
+                    height: calc-attr(15.08);
                 }
 
             }
@@ -277,9 +280,9 @@ export default {
             box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
             border-radius: 18px;
             text-align: center;
-            margin-right: 12px;
+            margin-right: calc-attr(12);
 
-            font-size: 24px;
+            font-size: calc-attr(24);
             font-family: "PingFang-SC-Regular";
             font-weight: 400;
             color: rgba(255, 142, 50, 1);

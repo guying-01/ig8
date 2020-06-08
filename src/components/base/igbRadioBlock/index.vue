@@ -8,23 +8,23 @@
 
 <script>
 export default {
-    name: "IgbRadioBlockBaseComponent",
-    props: {
-        dataSource: {
-            type: Array,
-            default: () => []
-        }
-    },
-    methods: {
-        /**
+  name: 'IgbRadioBlockBaseComponent',
+  props: {
+    dataSource: {
+      type: Array,
+      default: () => []
+    }
+  },
+  methods: {
+    /**
          * 改變回調事件
          */
-        changeHandller(item) {
-            item.check = true;
-            this.dataSource.filter(e => e.value !== item.value).forEach(e => e.check = false);
-            this.$emit('change', item);
-        }
+    changeHandller (item) {
+      item.check = true
+      this.dataSource.filter(e => e.value !== item.value).forEach(e => e.check = false)
+      this.$emit('change', item)
     }
+  }
 }
 </script>
 
@@ -35,14 +35,14 @@ export default {
         align-items: center;
 
         .igb-radio-list-item {
-            width: 168px;
-            height: 36px;
-            line-height: 36px;
+            width: calc-attr(168);
+            height: calc-attr(36);
+            line-height: calc-attr(36);
             border: 1px solid rgba(255, 255, 255, .2);
             border-radius: 4px;
-            margin-right: 20px;
+            margin-right: calc-attr(20);
             text-align: center;
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-family: 'PingFang-SC-Regular';
             font-weight: 400;
             color: rgba(255, 255, 255, .8);
@@ -51,7 +51,7 @@ export default {
             &.current {
                 border: 1px solid rgba(255, 128, 66, 1);
                 color: rgba(255, 128, 66, 1);
-                background: url('../../../assets/images/icon-current.png') no-repeat 146px 14px;
+                background: url('../../../assets/images/icon-current.png') no-repeat calc-attr(146) calc-attr(14);
             }
 
             &:hover {

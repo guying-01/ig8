@@ -23,60 +23,60 @@
 
 <script>
 export default {
-    name: "IgbSwiperBaseComponent",
-    mounted() {
-        new Swiper("#certify .swiper-container", {
-            watchSlidesProgress: true,
-            slidesPerView: "auto",
-            centeredSlides: true,
-            loop: true,
-            loopedSlides: 5,
-            autoplay: 3000,
-            prevButton: ".swiper-button-prev",
-            nextButton: ".swiper-button-next",
-            pagination: ".swiper-pagination",
-            paginationClickable :true,
-            autoplayDisableOnInteraction : false,
-            onProgress: function (swiper, progress) {
-                for (let i = 0; i < swiper.slides.length; i++) {
-                    let slide = swiper.slides.eq(i);
-                    let slideProgress = swiper.slides[i].progress;
-                    let modify = 1;
-                    if (Math.abs(slideProgress) > 1) {
-                        modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
-                    }
-                    /**
+  name: 'IgbSwiperBaseComponent',
+  mounted () {
+    new Swiper('#certify .swiper-container', {
+      watchSlidesProgress: true,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      loop: true,
+      loopedSlides: 5,
+      autoplay: 3000,
+      prevButton: '.swiper-button-prev',
+      nextButton: '.swiper-button-next',
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      autoplayDisableOnInteraction: false,
+      onProgress: function (swiper, progress) {
+        for (let i = 0; i < swiper.slides.length; i++) {
+          let slide = swiper.slides.eq(i)
+          let slideProgress = swiper.slides[i].progress
+          let modify = 1
+          if (Math.abs(slideProgress) > 1) {
+            modify = (Math.abs(slideProgress) - 1) * 0.3 + 1
+          }
+          /**
                      * zoom为缩放
                      */
 
-                    let zoom = 100;
+          let zoom = 100
 
-                    let translate = slideProgress * modify * zoom + "px";
-                    let scale = 1 - Math.abs(slideProgress) / 5;
-                    let zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
-                    slide.transform("translateX(" + translate + ") scale(" + scale + ")");
-                    slide.css("zIndex", zIndex);
-                    slide.css("opacity", 1);
-                    if (Math.abs(slideProgress) > 3) {
-                        slide.css("opacity", 0);
-                    }
-                }
-            },
-            onSetTransition: function (swiper, transition) {
-                for (let i = 0; i < swiper.slides.length; i++) {
-                    let slide = swiper.slides.eq(i);
-                    slide.transition(transition);
-                }
-            },
-            //处理分页器bug
-            onSlideChangeStart: function (swiper) {
-                if (swiper.activeIndex == 4) {
-                    swiper.bullets.eq(9).addClass("swiper-pagination-bullet-active");
-                }
-            }
-        });
-    }
-};
+          let translate = slideProgress * modify * zoom + 'px'
+          let scale = 1 - Math.abs(slideProgress) / 5
+          let zIndex = 999 - Math.abs(Math.round(10 * slideProgress))
+          slide.transform('translateX(' + translate + ') scale(' + scale + ')')
+          slide.css('zIndex', zIndex)
+          slide.css('opacity', 1)
+          if (Math.abs(slideProgress) > 3) {
+            slide.css('opacity', 0)
+          }
+        }
+      },
+      onSetTransition: function (swiper, transition) {
+        for (let i = 0; i < swiper.slides.length; i++) {
+          let slide = swiper.slides.eq(i)
+          slide.transition(transition)
+        }
+      },
+      // 处理分页器bug
+      onSlideChangeStart: function (swiper) {
+        if (swiper.activeIndex == 4) {
+          swiper.bullets.eq(9).addClass('swiper-pagination-bullet-active')
+        }
+      }
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -84,7 +84,7 @@ export default {
     #certify {
         position: relative;
         width: 100%;
-        height: 358px;
+        height: calc-attr(358);
         margin: 0 auto;
         overflow: hidden;
 
@@ -93,10 +93,10 @@ export default {
 
                 .swiper-slide {
                     overflow: hidden;
-                    width: 800px;
-                    height: 344.5px;
+                    width: calc-attr(800);
+                    height: calc-attr(344.5);
                     background: transparent;
-                    top: -12px !important;
+                    top: calc-attr(-12) !important;
 
                     img {
                         display: block;
@@ -105,7 +105,7 @@ export default {
                     }
 
                     &.swiper-slide-active {
-                        height: 322px !important;
+                        height: calc-attr(322) !important;
                         top: 0px !important;
 
                         img {
@@ -126,15 +126,14 @@ export default {
 
         .swiper-button-prev,
         .swiper-button-next{
-            top: 159px;
+            top: calc-attr(159);
         }
-
 
         .swiper-button-prev {
             left: 0px;
             z-index: 2000;
-            width: 48px;
-            height: 48px;
+            width: calc-attr(48);
+            height: calc-attr(48);
             background: rgba(33, 45, 60, 0.8) url("../../../assets/images/swiper-left.png") no-repeat center;
             background-size: 100%;
 
@@ -146,8 +145,8 @@ export default {
 
         .swiper-button-next {
             right: 0px;
-            width: 48px;
-            height: 48px;
+            width: calc-attr(48);
+            height: calc-attr(48);
             background: rgba(33, 45, 60, 0.8) url("../../../assets/images/swiper-right.png") no-repeat center;
             background-size: 100%;
 

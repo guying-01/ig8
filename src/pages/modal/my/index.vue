@@ -21,28 +21,28 @@
 
 <script>
 export default {
-    name: "IgbPagesMyInfoComponent",
-    methods: {
-        okHandller(page) {
-            this.$emit('ok', {
-                key: page,
-                value: true
-            });
-        }
+  name: 'IgbPagesMyInfoComponent',
+  methods: {
+    okHandller (page) {
+      this.$emit('ok', {
+        key: page,
+        value: true
+      })
     }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .igb-pages-my-info {
-    padding-top: 60px;
+    padding-top: calc-attr(60);
     cursor: default;
 
     .my-info {
         display: flex;
         align-items: center;
         width: 100%;
-        height: 120px;
+        height: calc-attr(120);
         background: rgba(30, 32, 52, .5);
         border-top: 1px solid rgba(255, 255, 255, .05);
         border-bottom: 1px solid rgba(255, 255, 255, .05);
@@ -51,13 +51,13 @@ export default {
         p {
             margin: 0px;
             padding: 0px;
-            padding-left: 23px !important;
-            padding-right: 36px;
+            padding-left: calc-attr(23) !important;
+            padding-right: calc-attr(36);
             position: relative;
         }
 
         .header {
-            padding-left: 41px;
+            padding-left: calc-attr(41);
             position: relative;
 
             &:hover {
@@ -67,8 +67,8 @@ export default {
             }
 
             img {
-                width: 88px;
-                height: 88px;
+                width: calc-attr(88);
+                height: calc-attr(88);
                 cursor: pointer;
 
             }
@@ -77,19 +77,19 @@ export default {
                 display: none;
                 margin: 0px !important;
                 padding: 0px !important;
-                width: 80px;
-                height: 80px;
-                line-height: 80px;
+                width: calc-attr(80);
+                height: calc-attr(80);
+                line-height: calc-attr(80);
 
                 position: absolute;
-                top: 4px;
-                right: 4px;
+                top: calc-attr(4);
+                right: calc-attr(4);
                 z-index: 999999;
                 border-radius: 50%;
                 background: rgba(0, 0, 0, .4);
 
                 text-align: center;
-                font-size: 12px;
+                font-size: calc-attr(12);
                 font-weight: 400;
                 color: rgba(255, 255, 255, 1);
                 cursor: pointer;
@@ -100,7 +100,7 @@ export default {
             flex: 1;
 
             h1 {
-                font-size: 24px;
+                font-size: calc-attr(24);
                 font-weight: 600;
                 color: rgba(255, 255, 255, .8);
                 display: flex;
@@ -108,7 +108,7 @@ export default {
 
                 span {
                     margin-left: auto;
-                    font-size: 14px;
+                    font-size: calc-attr(14);
                     font-weight: 400;
                     color: rgba(255, 255, 255, .5);
                     cursor: pointer;
@@ -121,10 +121,10 @@ export default {
 
             p {
 
-                font-size: 14px;
+                font-size: calc-attr(14);
                 font-weight: 400;
                 color: rgba(255, 255, 255, .5);
-                margin-top: 8px;
+                margin-top: calc-attr(8);
                 display: flex;
                 align-items: center;
 
@@ -147,18 +147,18 @@ export default {
     }
 
     .other-info {
-        padding-top: 47px;
-        padding-left: 41px;
-        padding-right: 36px;
+        padding-top: calc-attr(47);
+        padding-left: calc-attr(41);
+        padding-right: calc-attr(36);
 
         p {
             padding: 0px;
             margin: 0px;
-            padding-bottom: 31px;
+            padding-bottom: calc-attr(31);
             display: flex;
             align-items: center;
 
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-weight: 400;
             color: rgba(255, 255, 255, .5);
 
@@ -172,14 +172,14 @@ export default {
 
             .btn {
                 outline: none;
-                width: 60px;
-                height: 30px;
+                width: calc-attr(60);
+                height: calc-attr(30);
                 border: 1px solid rgba(191, 103, 66, 1);
                 border-radius: 30px;
 
                 background: transparent;
 
-                font-size: 14px;
+                font-size: calc-attr(14);
                 font-weight: 400;
                 color: rgba(255, 128, 66, 1);
 

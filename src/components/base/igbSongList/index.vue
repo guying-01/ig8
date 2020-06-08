@@ -61,15 +61,15 @@ export default {
   flex-wrap: wrap;
 
   .song-list-item {
-    width: 244px;
-    height: 320px;
+    width: calc-attr(244);
+    height: calc-attr(320);
     background: rgba(253, 253, 253, 0.05);
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 25px;
+    margin-bottom: calc-attr(25);
     position: relative;
-    margin-right: 10px;
+    margin-right: calc-attr(10);
 
     &:nth-child(7),
     &:nth-child(8),
@@ -117,7 +117,7 @@ export default {
     }
 
     .cover {
-      height: 243.27px;
+      height: calc-attr(243.27);
       overflow: hidden;
       position: relative;
 
@@ -130,26 +130,27 @@ export default {
         bottom: 0px;
         left: 0px;
         width: 100%;
-        height: 63px;
-        line-height: 90px;
+        height: calc-attr(63);
+        line-height: calc-attr(90);
         background: linear-gradient(
           360deg,
           rgba(28, 34, 46, 1) 0%,
           rgba(0, 0, 0, 0) 100%
         );
-        font-size: 12px;
+        font-size: calc-attr(12);
         font-family: "PingFang-SC-Regular";
         color: rgba(255, 255, 255, 0.7);
         margin: 0px;
-        padding: 0px 0px 0px 15px;
+        padding: 0px 0px 0px calc-attr(15);
       }
     }
 
     .card-info {
-      height: 76px;
+      height: calc-attr(76);
 
       > div {
-        width: calc(100% - 32px);
+        // width: calc(100% - 32px);
+        padding:0 calc-attr(16);
         position: relative;
         margin: 0 auto;
 
@@ -159,8 +160,8 @@ export default {
           right: 0px;
           bottom: 0px;
           display: block;
-          width: 18.18px;
-          height: 17.46px;
+          width: calc-attr(18.18);
+          height: calc-attr(17.46);
           background: url("../../../assets/images/ic.png") no-repeat center;
           background-size: 100%;
           z-index: 9;
@@ -185,13 +186,13 @@ export default {
       }
 
       h3 {
-        font-size: 16px;
-        height: 22px;
-        line-height: 22px;
+        font-size: calc-attr(16);
+        height: calc-attr(22);
+        line-height: calc-attr(22);
         font-family: "PingFang-SC-Regular";
         font-weight: 500;
         color: rgba(255, 255, 255, 0.8);
-        margin: 12px auto auto auto;
+        margin: calc-attr(12) auto auto auto;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -200,19 +201,19 @@ export default {
       p {
         display: flex;
         align-items: center;
-        margin-top: 10px;
+        margin-top: calc-attr(10);
 
         span {
           // width: 32px;
-          height: 16px;
-          line-height: 16px;
+          height: calc-attr(16);
+          line-height: calc-attr(16);
           background: rgba(253, 129, 74, 0.2);
           border-radius: 2px;
           text-align: center;
-          font-size: 12px;
+          font-size: calc-attr(12);
           font-family: "PingFang-SC-Regular";
           color: rgba(253, 129, 74, 1);
-          margin-right: 6px;
+          margin-right: calc-attr(6);
         }
       }
     }

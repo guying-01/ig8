@@ -27,46 +27,47 @@
 
 <script>
 export default {
-    name: "IgbPagesCaptchaModalComponent",
-    data() {
-        return {
-            params: {
-                code: "",
-                codeError: false
-            }
-        }
-    },
-    methods: {
-        inputChangeHandller(event) {
-            if (event.target.dataset.tag === "user-code") {
-                this.params.codeError = this.params.code.length === 0;
-            }
-        },
-        inputBlurHandller(event) {
-            if (event.target.dataset.tag === "user-code") {
-                this.params.codeError = this.params.code.length === 0;
-            }
-        },
-        clickHandller(page) {
-            this.$emit('next', {
-                key: page,
-                value: true
-            });
-        }
+  name: 'IgbPagesCaptchaModalComponent',
+  data () {
+    return {
+      params: {
+        code: '',
+        codeError: false
+      }
     }
+  },
+  methods: {
+    inputChangeHandller (event) {
+      if (event.target.dataset.tag === 'user-code') {
+        this.params.codeError = this.params.code.length === 0
+      }
+    },
+    inputBlurHandller (event) {
+      if (event.target.dataset.tag === 'user-code') {
+        this.params.codeError = this.params.code.length === 0
+      }
+    },
+    clickHandller (page) {
+      this.$emit('next', {
+        key: page,
+        value: true
+      })
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .igb-pages-captcha-modal {
     .form-list {
-        padding-top: 164px;
-        width: calc(100% - 100px);
+        padding: 0 calc-attr(50);
+        padding-top: calc-attr(164);
+        // width: calc(100% - 100px);
         margin: 0 auto;
 
         .form-list-item {
             position: relative;
-            padding: 18px 0px;
+            padding: calc-attr(18) 0px;
 
             &:first-child {
                 padding-top: 0px;
@@ -77,23 +78,23 @@ export default {
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
-                height: 20px;
-                line-height: 20px;
-                margin-top: 8px;
+                height: calc-attr(20);
+                line-height: calc-attr(20);
+                margin-top: calc-attr(8);
                 position: absolute;
                 right: 0px;
-                bottom: -15px;
+                bottom: calc-attr(-15);
 
                 i {
                     flex: 1;
-                    width: 14px;
-                    height: 14px;
+                    width: calc-attr(14);
+                    height: calc-attr(14);
                     background: url("../../../assets/images/form-error.png") no-repeat center right;
-                    background-size: 14px 14px;
-                    margin-right: 9px;
+                    background-size: calc-attr(14) calc-attr(14);
+                    margin-right: calc-attr(9);
                 }
 
-                font-size:14px;
+                font-size:calc-attr(14);
                 font-weight:400;
                 color:rgba(255, 75, 75, 1);
             }
@@ -105,14 +106,14 @@ export default {
             }
 
             .auto-login {
-                margin-top: 11px;
+                margin-top: calc-attr(11);
             }
 
             &.form-list-title {
-                font-size: 14px;
+                font-size: calc-attr(14);
                 font-weight: 400;
                 color: rgba(255, 255, 255, .3);
-                padding-bottom: 11px;
+                padding-bottom: calc-attr(11);
             }
 
             &.form-list-item-button,
@@ -121,12 +122,12 @@ export default {
             }
 
             &.form-list-item-button {
-                padding-top: 51px;
+                padding-top: calc-attr(51);
             }
 
             &.form-list-item-other {
-                padding-top: 28px;
-                font-size: 16px;
+                padding-top: calc-attr(28);
+                font-size: calc-attr(16);
                 font-weight: 400;
                 color: rgba(255, 255, 255, .5);
                 text-align: center;
@@ -143,15 +144,15 @@ export default {
             button {
                 outline: none;
                 border: none;
-                width: 320px;
-                height: 48px;
+                width: calc-attr(320);
+                height: calc-attr(48);
                 background: linear-gradient(315deg, rgba(255, 186, 0, 1) 0%, rgba(255, 107, 88, 1) 100%);
-                box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+                box-shadow: 0px calc-attr(3) calc-attr(6) rgba(0, 0, 0, 0.16);
                 opacity: 1;
                 border-radius: 24px;
                 cursor: pointer;
 
-                font-size: 18px;
+                font-size: calc-attr(18);
                 font-weight: 400;
                 color: rgba(39, 50, 67, 1);
 

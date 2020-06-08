@@ -293,9 +293,9 @@ export default {
     }
 
     .no-more {
-        margin-top: 34px;
+        margin-top: calc-attr(34);
         width: 100%;
-        font-size: 14px;
+        font-size: calc-attr(14);
         font-weight: 400;
         color: rgba(255, 255, 255, .5);
         text-align: center;
@@ -304,12 +304,12 @@ export default {
     .page-header {
         display: flex;
         border-bottom: 1px solid rgba(255, 255, 255, .1);
-        padding-top: 43px;
-        padding-bottom: 30px;
+        padding-top: calc-attr(43);
+        padding-bottom: calc-attr(30);
 
         .page-left {
-            width: 184px;
-            height: 184px;
+            width: calc-attr(184);
+            height: calc-attr(184);
 
             img {
                 width: 100%;
@@ -319,7 +319,7 @@ export default {
 
         .page-right {
             flex: 1;
-            padding-left: 20px;
+            padding-left: calc-attr(20);
 
             h1,
             p {
@@ -328,9 +328,9 @@ export default {
             }
 
             h1 {
-                height: 42px;
-                line-height: 42px;
-                font-size: 30px;
+                height: calc-attr(42);
+                line-height: calc-attr(42);
+                font-size: calc-attr(30);
                 font-weight: 500;
                 color: rgba(255, 255, 255, .9);
                 display: flex;
@@ -338,22 +338,22 @@ export default {
 
                 >span {
                     &:first-child {
-                        height: 20px;
-                        line-height: 18px;
+                        height: calc-attr(20);
+                        line-height: calc-attr(18);
                         text-align: center;
                         background: rgba(253, 129, 74, .2);
                         border-radius: 2px;
 
-                        font-size: 14px;
+                        font-size: calc-attr(14);
                         color: rgba(253, 129, 74, 1);
 
-                        margin-left: 6px;
-                        margin-top: 9px;
+                        margin-left: calc-attr(6);
+                        margin-top: calc-attr(9);
                     }
                 }
 
                 p {
-                    font-size: 14px;
+                    font-size: calc-attr(14);
                     font-weight: 400;
                     color: rgba(237, 239, 242, 1);
                     margin-left: auto !important;
@@ -362,14 +362,14 @@ export default {
                     align-items: center;
 
                     span {
-                        margin-top: 9px;
-                        height: 20px;
-                        line-height: 20px;
+                        margin-top: calc-attr(9);
+                        height: calc-attr(20);
+                        line-height: calc-attr(20);
 
                         &:nth-child(2) {
                             color: #676767;
-                            margin-left: 20px;
-                            margin-right: 20px;
+                            margin-left: calc-attr(20);
+                            margin-right: calc-attr(20);
                         }
                     }
                 }
@@ -378,19 +378,19 @@ export default {
             >div {
                 display: flex;
                 align-items: flex-start;
-                font-size: 14px;
+                font-size: calc-attr(14);
             }
 
             .time {
                 color: rgba(255, 255, 255, .9);
-                margin-top: 9px;
-                height: 20px;
-                line-height: 20px;
+                margin-top: calc-attr(9);
+                height: calc-attr(20);
+                line-height: calc-attr(20);
 
                 img {
-                    width: 18px;
-                    height: 18px;
-                    margin-right: 10px;
+                    width: calc-attr(18);
+                    height: calc-attr(18);
+                    margin-right: calc-attr(10);
                     cursor: pointer;
                 }
                 span {
@@ -399,11 +399,11 @@ export default {
             }
 
             .tag {
-                margin-top: 43px;
+                margin-top: calc-attr(43);
             }
 
             .info {
-                margin-top: 10px;
+                margin-top: calc-attr(10);
             }
 
             .tag,
@@ -436,42 +436,42 @@ export default {
                                 background: rgba(253, 129, 74, .2);
                                 border-radius: 2px;
 
-                                font-size: 12px;
+                                font-size: calc-attr(12);
                                 color: rgba(253, 129, 74, 1);
                                 opacity: 1;
 
-                                margin-right: 18px;
+                                margin-right: calc-attr(18);
                             }
                         }
 
                         &.content {
                             span {
-                                margin-left: 80px;
+                                margin-left: calc-attr(80);
                                 color: rgba(255, 155, 36, 1);
-                                padding-right: 20px;
+                                padding-right: calc-attr(20);
                                 cursor: pointer;
 
                                 &.zk {
                                     background: url("../../assets/images/icon-zhankai.png") no-repeat top right;
-                                    background-position-y: 4px;
-                                    background-size: 14px;
+                                    background-position-y: calc-attr(4);
+                                    background-size: calc-attr(14);
 
                                     &:hover {
                                         background: url("../../assets/images/icon-zhankai-hover.png") no-repeat top right;
-                                        background-position-y: 4px;
-                                        background-size: 14px;
+                                        background-position-y: calc-attr(4);
+                                        background-size: calc-attr(14);
                                     }
                                 }
 
                                 &.sq {
                                     background: url("../../assets/images/icon-shouqi.png") no-repeat top right;
-                                    background-position-y: 4px;
-                                    background-size: 14px;
+                                    background-position-y: calc-attr(4);
+                                    background-size: calc-attr(14);
 
                                     &:hover {
                                         background: url("../../assets/images/icon-shouqi-hover.png") no-repeat top right;
-                                        background-position-y: 4px;
-                                        background-size: 14px;
+                                        background-position-y: calc-attr(4);
+                                        background-size: calc-attr(14);
                                     }
                                 }
 
@@ -491,14 +491,14 @@ export default {
     .title {
         display: flex;
         align-items: center;
-        height: 30px;
-        line-height: 30px;
+        height: calc-attr(30);
+        line-height: calc-attr(30);
 
-        font-size: 20px;
+        font-size: calc-attr(20);
         font-weight: 500;
         color: rgba(255, 255, 255, .8);
         padding: 0px;
-        margin: 23px 0 20px 0;
+        margin: calc-attr(23) 0 calc-attr(20) 0;
 
         .tab-mode {
             flex: 1;
@@ -509,14 +509,14 @@ export default {
 
             .tab-mode-refresh {
                 background: url('../../assets/images/icon-refresh.png') no-repeat 0px center;
-                background-size: 20px;
-                font-size: 14px;
+                background-size: calc-attr(20);
+                font-size: calc-attr(14);
                 font-family: 'PingFang-SC-Regular';
                 font-weight: 400;
                 color: rgba(255, 255, 255, 1);
                 text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-                padding-left: 25px;
-                padding-right: 35px;
+                padding-left: calc-attr(25);
+                padding-right: calc-attr(35);
                 opacity: .5;
                 cursor: pointer;
 
@@ -527,9 +527,9 @@ export default {
 
             .tab-mode-item {
                 display: block;
-                width: 48px;
-                height: 30px;
-                line-height: 30px;
+                width: calc-attr(48);
+                height: calc-attr(30);
+                line-height: calc-attr(30);
                 text-align: center;
                 background: rgba(255, 255, 255, .1);
                 position: relative;
@@ -544,10 +544,10 @@ export default {
                 }
 
                 img {
-                    width: 16px;
+                    width: calc-attr(16);
                     position: absolute;
-                    top: 8px;
-                    left: 16px
+                    top: calc-attr(8);
+                    left: calc-attr(16)
                 }
 
                 &.tab-mode-current {
@@ -562,7 +562,7 @@ export default {
                     border-radius: 0px 15px 15px 0px;
 
                     img {
-                        top: 7px !important;
+                        top: calc-attr(7) !important;
                     }
                 }
 

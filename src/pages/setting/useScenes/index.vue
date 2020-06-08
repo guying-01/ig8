@@ -20,34 +20,35 @@
 
 <script>
 export default {
-    name: "IgbPagesSettingUseScenesComponent",
-    data() {
-        return {}
-    }
+  name: 'IgbPagesSettingUseScenesComponent',
+  data () {
+    return {}
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .igb-pages-setting-use-scenes {
-    width: calc(100% - 145px);
+    padding: 0 calc-attr(72.5);
+    // width: calc(100% - 145px);
     margin: 0 auto;
 
     h2 {
-        height: 22px;
-        line-height: 22px;
-        font-size: 16px;
+        height: calc-attr(22);
+        line-height: calc-attr(22);
+        font-size: calc-attr(16);
         font-family: 'PingFang-SC-Regular';
         color: rgba(255, 255, 255, .9);
-        margin: 61px auto auto auto;
+        margin: calc-attr(61) auto auto auto;
         padding: 0px;
     }
 
     .form-list {
-        margin-top: 21px;
+        margin-top: calc-attr(21);
         .form-list-item {
             .des {
-                margin-top: 10px;
-                font-size: 14px;
+                margin-top: calc-attr(10);
+                font-size: calc-attr(14);
                 font-family: 'PingFang-SC-Regular';
                 font-weight: 400;
                 color: #98A2B1;

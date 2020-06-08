@@ -1,7 +1,7 @@
 .ant-progress-circle {
     border: 1px solid #f00;
     .ant-progress-inner {
-        width: 126.8px !important;
-        height: 126.8px !important;
+        width: calc-attr(126.8) !important;
+        height: calc-attr(126.8) !important;
     }
 }

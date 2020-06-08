@@ -136,41 +136,41 @@
 
 <script>
 export default {
-    name: "IgbModifyAvatarBaseComponent",
-    data() {
-        return {
-            isModify: false
-        }
-    },
-    methods: {
-        /**
+  name: 'IgbModifyAvatarBaseComponent',
+  data () {
+    return {
+      isModify: false
+    }
+  },
+  methods: {
+    /**
          * 修改頭像按鈕回調事件
          */
-        modifyHandller() {
-            this.isModify = true;
-            this.$emit('modify', {
-                isModify: this.isModify
-            });
-        },
-        /**
+    modifyHandller () {
+      this.isModify = true
+      this.$emit('modify', {
+        isModify: this.isModify
+      })
+    },
+    /**
          * 保存按鈕回調事件
          */
-        saveHandller() {
-            this.isModify = false;
-            this.$emit('save', {
-                isModify: this.isModify
-            });
-        },
-        /**
+    saveHandller () {
+      this.isModify = false
+      this.$emit('save', {
+        isModify: this.isModify
+      })
+    },
+    /**
          * 取消按鈕回調事件
          */
-        cancelHandller() {
-            this.isModify = false;
-            this.$emit('cancel', {
-                isModify: this.isModify
-            });
-        }
+    cancelHandller () {
+      this.isModify = false
+      this.$emit('cancel', {
+        isModify: this.isModify
+      })
     }
+  }
 }
 </script>
 
@@ -182,11 +182,11 @@ export default {
         text-align: center;
 
         .avatar {
-            padding-bottom: 17px;
+            padding-bottom: calc-attr(17);
 
             img {
-                width: 98px;
-                height: 98px;
+                width: calc-attr(98);
+                height: calc-attr(98);
                 background: rgba(0, 0, 0, 0);
                 border: 2px solid rgba(255, 255, 255, 0.10196078431372549);
                 border-radius: 65px;
@@ -194,15 +194,18 @@ export default {
         }
 
         .ant-btn {
-            height: 28px;
-            padding-left: 20px;
-            padding-right: 20px;
+            height: calc-attr(28);
+            padding-left: calc-attr(20);
+            padding-right: calc-attr(20);
+            >>>span{
+                font-size: calc-attr(14);
+            }
         }
     }
 
     .igb-avatar-modify {
         width: 100%;
-        height: 334px;
+        height: calc-attr(334);
         background: rgba(0, 0, 0, .1);
         border: 1px solid rgba(255, 255, 255, .1);
         border-radius: 4px;
@@ -212,14 +215,14 @@ export default {
             display: flex;
             align-items: center;
             width: 90%;
-            height: 130px;
+            height: calc-attr(130);
             margin: 0 auto;
             border-bottom: 1px solid rgba(255, 255, 255, .05);
 
             .avatar {
                 img {
-                    width: 88px;
-                    height: 88px;
+                    width: calc-attr(88);
+                    height: calc-attr(88);
                     background: rgba(0, 0, 0, .1);
                     border: 1px solid rgba(255, 255, 255, .1);
                     border-radius: 44px;
@@ -228,13 +231,13 @@ export default {
 
             .info {
                 flex: 1;
-                padding-left: 20px;
+                padding-left: calc-attr(20);
 
                 >.ant-btn {
                     border-radius: 4px;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    margin-top: 10px;
+                    padding-left: calc-attr(10);
+                    padding-right: calc-attr(10);
+                    margin-top: calc-attr(10);
 
                     &:hover,
                     &:focus {
@@ -249,10 +252,10 @@ export default {
 
                 div {
 
-                    padding-top: 12px;
+                    padding-top: calc-attr(12);
 
                     p {
-                        font-size: 12px;
+                        font-size: calc-attr(12);
                         font-family: 'PingFang-SC-Regular';
                         font-weight: 400;
                         color: rgba(255, 255, 255, .5);
@@ -261,10 +264,10 @@ export default {
 
                     .ant-btn {
                         float: right;
-                        padding-left: 15px;
-                        padding-right: 15px;
-                        margin-left: 20px;
-                        margin-top: -4px;
+                        padding-left: calc-attr(15);
+                        padding-right: calc-attr(15);
+                        margin-left: calc-attr(20);
+                        margin-top: calc-attr(-4);
                     }
                 }
             }
@@ -275,16 +278,16 @@ export default {
             margin: 0 auto;
 
             h3 {
-                font-size: 14px;
+                font-size: calc-attr(14);
                 font-family: 'PingFang-SC-Regular';
                 font-weight: 400;
                 color: rgba(255, 255, 255, .7);
                 margin: 0px;
-                padding: 10px 0px;
+                padding: calc-attr(10) 0px;
             }
 
             ul {
-                height: 140px;
+                height: calc-attr(140);
                 list-style: none;
                 display: flex;
                 align-items: center;
@@ -297,11 +300,11 @@ export default {
                     cursor: pointer;
                     width: 14%;
                     text-align: center;
-                    margin-bottom: 10px;
+                    margin-bottom: calc-attr(10);
 
                     img {
-                        width: 60px;
-                        height: 60px;
+                        width: calc-attr(60);
+                        height: calc-attr(60);
                         background: rgba(0, 0, 0, 1);
                         border: 1px solid rgba(255, 255, 255, 0.10196078431372549);
                         border-radius: 65px;

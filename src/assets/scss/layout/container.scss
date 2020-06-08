@@ -4,20 +4,21 @@
   left: 0px;
   width: 100%;
   padding-left:calc-attr(238);
-  /*TODO*/
-  height: calc(100% - 109px);
+  height:100%;
   min-height: 100%;
   color: #fff;
-  overflow: auto;
+  overflow: hidden;
   .igb-wrapper {
-  /*TODO*/
-    // height: calc(100% - 109px - 72px);
+    padding-bottom:calc-attr(109 + 72);
+    height:100%;
+    // height: calc(100% - 72px);
     margin: 0 auto;
     // overflow: hidden;
     overflow-y: auto;
-    @include scroll-bar(0px);
+    @include scroll-bar(0);
     .igb-main-page {
-      width: calc(100% - 72px);
+      padding: 0 calc-attr(36);
+      // width: calc(100% - 72px);
       height: auto;
       margin: 0 auto;
     }

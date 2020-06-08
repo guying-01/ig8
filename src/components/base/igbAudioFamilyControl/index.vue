@@ -248,15 +248,15 @@ export default {
                 width: auto;
                 height: auto;
                 min-height: auto;
-                padding: 0px 8px;
+                padding: 0px calc-attr(8);
                 background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
                 opacity: 1;
                 border-radius: 12px;
                 text-align: center;
-                font-size: 12px;
+                font-size: calc-attr(12);
                 font-family: 'PingFang-SC-Regular';
                 color: rgba(34, 42, 55, 1);
-                margin-top: -9px;
+                margin-top: calc-attr(-9);
                 -webkit-border-radius: 12px;
                 -moz-border-radius: 12px;
                 -ms-border-radius: 12px;
@@ -266,8 +266,8 @@ export default {
 
         .progress-time {
             position: absolute;
-            right: 23px;
-            top: 10px;
+            right: calc-attr(23);
+            top: calc-attr(10);
             font-size:calc-attr(12);
             font-family: 'PingFang-SC-Regular';
             color: rgba(255, 255, 255, 1);
@@ -391,7 +391,7 @@ export default {
                             width:calc-attr(60);
                             height:calc-attr(60);
                             border: 1px solid transparent;
-                            box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.45);
+                            box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.45);
                             position: absolute;
                             top: 0px;
                             left: 0px;
@@ -424,7 +424,7 @@ export default {
                     background-size: 100%;
 
                     &:hover {
-                        box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.45);
+                        box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.45);
                         background: rgba(255, 136, 56, 0.1) url("../../../assets/images/p/play-right-hover.png") no-repeat center;
                         background-size: 100%;
                     }
@@ -645,7 +645,7 @@ export default {
                     background-size:calc-attr(48)calc-attr(24);
 
                     &:hover {
-                        box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.16);
+                        box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.16);
                         background: url("../../../assets/images/p/btn-switch-on-h.png") no-repeat center;
                         background-size:calc-attr(48)calc-attr(24);
                     }
@@ -656,7 +656,7 @@ export default {
                     background-size:calc-attr(48)calc-attr(24);
 
                     &:hover {
-                        box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.16);
+                        box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.16);
                         background: url("../../../assets/images/p/btn-switch-off-h.png") no-repeat center;
                         background-size:calc-attr(48)calc-attr(24);
                     }

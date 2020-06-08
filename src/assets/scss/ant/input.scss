@@ -4,12 +4,12 @@
 
 .ant-input {
     width: 100%;
-    height: 36px;
-    line-height: 36px;
+    height: calc-attr(36);
+    line-height: calc-attr(36);
     border: 1px solid rgba(255, 255, 255, .1);
     border-radius: 4px;
     background-color: transparent;
-    font-size: 14px;
+    font-size: calc-attr(14);
     font-family: 'PingFang-SC-Regular';
     color: rgba(255, 255, 255, 1);
     &:focus,
@@ -20,7 +20,7 @@
 }
 
 textarea.ant-input {
-    height: 92px;
+    height: calc-attr(92);
 }
 
 .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {

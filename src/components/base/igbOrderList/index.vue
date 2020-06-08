@@ -1,6 +1,7 @@
 <template>
 <div class="igb-order-list-base-component">
     <p class="btn-close" @click="closeHandller"></p>
+    <div>
     <div class="order-tabs-list">
         <span v-for="(item,index) in tabs" :key="index" :class="{'current':item.value===current}" @click="changeHandller(item)">{{item.label}}</span>
     </div>
@@ -12,7 +13,9 @@
         <span class="btn btn-loop dis" v-if="current===0"></span>
         <span class="icon icon-del"></span>
     </div>
+    </div>
 
+    <div class="order-content">
     <div class="list-order" v-if="current===0">
         <table class="table">
             <tbody>
@@ -92,6 +95,8 @@
             </tbody>
         </table>
     </div>
+    </div>
+
 </div>
 </template>
 
@@ -306,30 +311,39 @@ export default {
 
 .igb-order-list-base-component {
     position: relative;
-    padding-top: 39px;
-
+    padding-top: calc-attr(39);
+    height:100vh;
+    overflow: hidden;
+    padding-bottom:calc-attr(109 + 61);
+    background: url("../../../assets/images/k/yd-bg.png") no-repeat center;
+    background-size: calc-attr(920) calc-attr(920);
+    // display: flex;
+    // flex-direction: column;
+    .order-content{
+        flex: 1;
+    }
     .btn-close {
         position: absolute;
-        top: 21px;
-        right: 28px;
-        width: 18px;
-        height: 18px;
+        top: calc-attr(21);
+        right: calc-attr(28);
+        width: calc-attr(18);
+        height: calc-attr(18);
         background: url("../../../assets/images/icon-modal-close.png") no-repeat center;
-        background-size: 18px 18px;
+        background-size: calc-attr(18) calc-attr(18);
         margin: 0px;
         padding: 0px;
         cursor: pointer;
 
         &:hover {
             background: url("../../../assets/images/icon-modal-close-hover.png") no-repeat center;
-            background-size: 18px 18px;
+            background-size: calc-attr(18) calc-attr(18);
         }
     }
 
     .order-tabs-list {
-        width: 272px;
-        height: 44px;
-        line-height: 44px;
+        width: calc-attr(272);
+        height: calc-attr(44);
+        line-height: calc-attr(44);
         margin: 0px auto;
         display: flex;
         align-items: center;
@@ -339,7 +353,7 @@ export default {
         span {
             width: 50%;
             text-align: center;
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-weight: 400;
             color: rgba(255, 255, 255, .7);
             cursor: pointer;
@@ -359,16 +373,16 @@ export default {
     .order-button-list {
         display: flex;
         align-items: center;
-        height: 32px;
-        padding-left: 31px;
-        margin-top: 38px;
-        margin-bottom: 13px;
+        height: calc-attr(32);
+        padding-left: calc-attr(31);
+        margin-top: calc-attr(38);
+        margin-bottom: calc-attr(13);
 
         .btn {
-            width: 108px;
-            height: 32px;
+            width: calc-attr(108);
+            height: calc-attr(32);
             cursor: pointer;
-            margin-right: 16px;
+            margin-right: calc-attr(16);
 
             &:last-child {
                 margin-right: 0px;
@@ -416,12 +430,12 @@ export default {
         }
 
         span.icon {
-            width: 32px;
-            height: 32px;
+            width: calc-attr(32);
+            height: calc-attr(32);
             background: url("../../../assets/images/btn-del.png") no-repeat center;
             background-size: cover;
             margin-left: auto;
-            margin-right: 31px;
+            margin-right: calc-attr(31);
             cursor: pointer;
 
             &:hover {
@@ -432,7 +446,8 @@ export default {
     }
 
     .list-order {
-        height: calc(100vh - 340px);
+        // height: calc(100vh - 340px);
+        // height:100%;
         overflow-y: auto;
         @include scroll-bar(5px);
         .table {
@@ -440,8 +455,8 @@ export default {
 
             tbody {
                 tr {
-                    height: 79px;
-                    line-height: 79px;
+                    height: calc-attr(79);
+                    line-height: calc-attr(79);
                     cursor: pointer;
 
                     &:nth-child(7) {
@@ -449,7 +464,7 @@ export default {
                     }
 
                     &:nth-child(8) {
-                        outline: 10px solid rgba(49, 52, 78, 1);
+                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
                         background: rgba(49, 52, 78, 1);
                         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
                     }
@@ -512,7 +527,7 @@ export default {
                                 span {
                                     color: rgba(255, 255, 255, 0);
                                     background: url("../../../assets/images/icon-play-lide.png") no-repeat center center;
-                                    background-size: 16px 17px;
+                                    background-size: calc-attr(16) calc-attr(17);
                                 }
                             }
                         }
@@ -550,18 +565,18 @@ export default {
                         .icon-leing {
                             display: none;
                             position: absolute;
-                            top: -60px;
-                            left: -60px;
+                            top: calc-attr(-60);
+                            left: calc-attr(-60);
                             z-index: 1;
-                            width: 200px;
-                            height: 200px;
+                            width: calc-attr(200);
+                            height: calc-attr(200);
                             background: url("../../../assets/images/singer-hover-bg.png") no-repeat center;
                             background-size: cover;
                             pointer-events: none;
                         }
 
                         &:first-child {
-                            width: 70.3px;
+                            width: calc-attr(70.3);
                             position: relative;
 
                             /*i {
@@ -575,31 +590,31 @@ export default {
                             }*/
 
                             span {
-                                font-size: 18px;
+                                font-size: calc-attr(18);
                                 font-weight: 400;
                                 color: rgba(255, 255, 255, .4);
-                                margin-left: 31px;
+                                margin-left: calc-attr(31);
                             }
 
                             img {
-                                width: 14.27px;
-                                height: 15.54px;
-                                margin-left: 29px;
+                                width: calc-attr(14.27);
+                                height: calc-attr(15.54);
+                                margin-left: calc-attr(29);
                             }
                         }
 
                         &:nth-child(2) {
-                            width: 260px;
+                            width: calc-attr(260);
 
                             div {
                                 display: flex;
                                 align-items: center;
 
                                 h2 {
-                                    max-width: 150px;
-                                    height: 24px;
-                                    line-height: 24px;
-                                    font-size: 18px;
+                                    max-width: calc-attr(150);
+                                    height: calc-attr(24);
+                                    line-height: calc-attr(24);
+                                    font-size: calc-attr(18);
                                     font-weight: 500;
                                     color: rgba(255, 255, 255, .8);
                                     padding: 0px;
@@ -610,13 +625,13 @@ export default {
                                 }
 
                                 span {
-                                    margin-left: 7px;
+                                    margin-left: calc-attr(7);
                                 }
                             }
                         }
 
                         &:nth-child(3) {
-                            width: 185px;
+                            width: calc-attr(185);
 
                             div {
                                 visibility: hidden;
@@ -624,15 +639,15 @@ export default {
                                 align-items: center;
 
                                 i {
-                                    height: 25px;
-                                    margin-right: 23.4px;
+                                    height: calc-attr(25);
+                                    margin-right: calc-attr(23.4);
 
                                     &:last-child {
                                         margin-right: 0px;
                                     }
 
                                     &.icon-collect {
-                                        width: 22.87px;
+                                        width: calc-attr(22.87);
                                         background: url("../../../assets/images/table/t-c.png") no-repeat center;
                                         background-size: 100%;
 
@@ -643,7 +658,7 @@ export default {
                                     }
 
                                     &.icon-collect-ok {
-                                        width: 22.87px;
+                                        width: calc-attr(22.87);
                                         background: url("../../../assets/images/table/t-c-s.png") no-repeat center;
                                         background-size: 100%;
 
@@ -654,7 +669,7 @@ export default {
                                     }
 
                                     &.icon-order-by-desc {
-                                        width: 23.41px;
+                                        width: calc-attr(23.41);
                                         background: url("../../../assets/images/table/t-od.png") no-repeat center;
                                         background-size: 100%;
 
@@ -665,7 +680,7 @@ export default {
                                     }
 
                                     &.icon-order-by-aes {
-                                        width: 23.41px;
+                                        width: calc-attr(23.41);
                                         background: url("../../../assets/images/table/t-oa.png") no-repeat center;
                                         background-size: 100%;
 
@@ -680,8 +695,8 @@ export default {
 
                         &:nth-child(4) {
                             span {
-                                height: 20px;
-                                font-size: 14px;
+                                height: calc-attr(20);
+                                font-size: calc-attr(14);
                                 color: rgba(255, 255, 255, .7);
                             }
                         }
@@ -696,9 +711,9 @@ export default {
                                 justify-content: center;
 
                                 i {
-                                    width: 21px;
-                                    height: 25px;
-                                    margin-right: 23.4px;
+                                    width: calc-attr(21);
+                                    height: calc-attr(25);
+                                    margin-right: calc-attr(23.4);
 
                                     &:last-child {
                                         margin-right: 0px;
@@ -709,7 +724,7 @@ export default {
 
                                     &:hover {
                                         background: url("../../../assets/images/table/t-link-h.png") no-repeat center;
-                                        background-size: 20.67px 20.67px;
+                                        background-size: calc-attr(20.67) calc-attr(20.67);
                                     }
                                 }
                             }
@@ -724,20 +739,20 @@ export default {
 
                                 span {
                                     display: block;
-                                    font-size: 14px;
+                                    font-size: calc-attr(14);
                                     color: rgba(255, 255, 255, .5);
                                 }
 
                                 i {
                                     display: none;
-                                    width: 19.39px;
-                                    height: 25px;
+                                    width: calc-attr(19.39);
+                                    height: calc-attr(25);
                                     background: url("../../../assets/images/table/t-del.png") no-repeat center;
                                     background-size: 100%;
 
                                     &:hover {
                                         background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
-                                        background-size: 19.39px 20.67px;
+                                        background-size: calc-attr(19.39) calc-attr(20.67);
                                     }
                                 }
                             }
@@ -749,7 +764,9 @@ export default {
     }
 
     .list-song {
-        height: calc(100vh - 340px);
+        // height: 100%;
+        // height:calc(100vh - 340px);
+        // padding: calc-attr(170) 0;
         overflow-x: hidden;
         overflow-y: auto;
         @include scroll-bar(8px);
@@ -763,8 +780,8 @@ export default {
             tbody {
                 tr {
                     border-top: 1px solid rgba(49, 54, 78, 1);
-                    height: 80px;
-                    line-height: 80px;
+                    height: calc-attr(80);
+                    line-height: calc-attr(80);
                     cursor: pointer;
 
                     &:hover {
@@ -828,7 +845,7 @@ export default {
                                 span {
                                     color: rgba(255, 255, 255, 0);
                                     background: url("../../../assets/images/icon-play-lide.png") no-repeat center center;
-                                    background-size: 16px 17px;
+                                    background-size: calc-attr(16) calc-attr(17);
                                 }
                             }
                         }
@@ -840,17 +857,17 @@ export default {
                         .icon-leing {
                             display: none;
                             position: absolute;
-                            top: -60px;
-                            left: -60px;
+                            top: calc-attr(-60);
+                            left: calc-attr(-60);
                             z-index: 1;
-                            width: 200px;
-                            height: 200px;
+                            width: calc-attr(200);
+                            height: calc-attr(200);
                             background: url("../../../assets/images/singer-hover-bg.png") no-repeat center;
                             background-size: cover;
                         }
 
                         &:first-child {
-                            width: 70.3px;
+                            width: calc-attr(70.3);
                             position: relative;
 
                             i {
@@ -858,35 +875,35 @@ export default {
                                 position: absolute;
                                 left: 0px;
                                 top: 0px;
-                                width: 4px;
-                                height: 80px;
+                                width: calc-attr(4);
+                                height: calc-attr(80);
                                 background: rgba(253, 129, 74, 1);
                             }
 
                             span {
-                                font-size: 18px;
+                                font-size: calc-attr(18);
                                 font-weight: 400;
                                 color: rgba(255, 255, 255, .4);
-                                margin-left: 31px;
+                                margin-left: calc-attr(31);
                             }
 
                             img {
-                                width: 14.27px;
-                                height: 15.54px;
-                                margin-left: 29px;
+                                width: calc-attr(14.27);
+                                height: calc-attr(15.54);
+                                margin-left: calc-attr(29);
                             }
                         }
 
                         &:nth-child(2) {
-                            width: 260px;
+                            width: calc-attr(260);
 
                             div {
                                 display: flex;
                                 align-items: center;
 
                                 h2 {
-                                    max-width: 150px;
-                                    font-size: 18px;
+                                    max-width: calc-attr(150);
+                                    font-size: calc-attr(18);
                                     font-weight: 500;
                                     color: rgba(255, 255, 255, .8);
                                     padding: 0px;
@@ -897,13 +914,13 @@ export default {
                                 }
 
                                 span {
-                                    margin-left: 7px;
+                                    margin-left: calc-attr(7);
                                 }
                             }
                         }
 
                         &:nth-child(3) {
-                            width: 185px;
+                            width: calc-attr(185);
 
                             div {
                                 visibility: hidden;
@@ -911,15 +928,15 @@ export default {
                                 align-items: center;
 
                                 i {
-                                    height: 25px;
-                                    margin-right: 23.4px;
+                                    height: calc-attr(25);
+                                    margin-right: calc-attr(23.4);
 
                                     &:last-child {
                                         margin-right: 0px;
                                     }
 
                                     &.icon-collect {
-                                        width: 22.87px;
+                                        width: calc-attr(22.87);
                                         background: url("../../../assets/images/table/t-c.png") no-repeat center;
                                         background-size: 100%;
 
@@ -930,7 +947,7 @@ export default {
                                     }
 
                                     &.icon-collect-ok {
-                                        width: 22.87px;
+                                        width: calc-attr(22.87);
                                         background: url("../../../assets/images/table/t-c-s.png") no-repeat center;
                                         background-size: 100%;
 
@@ -945,8 +962,8 @@ export default {
 
                         &:nth-child(4) {
                             span {
-                                height: 20px;
-                                font-size: 14px;
+                                height: calc-attr(20);
+                                font-size: calc-attr(14);
                                 color: rgba(255, 255, 255, .7);
                             }
                         }
@@ -961,9 +978,9 @@ export default {
                                 justify-content: center;
 
                                 i {
-                                    width: 21px;
-                                    height: 25px;
-                                    margin-right: 23.4px;
+                                    width: calc-attr(21);
+                                    height: calc-attr(25);
+                                    margin-right: calc-attr(23.4);
 
                                     &:last-child {
                                         margin-right: 0px;
@@ -974,7 +991,7 @@ export default {
 
                                     &:hover {
                                         background: url("../../../assets/images/table/t-link-h.png") no-repeat center;
-                                        background-size: 20.67px 20.67px;
+                                        background-size: calc-attr(20.67) calc-attr(20.67);
                                     }
                                 }
                             }
@@ -989,20 +1006,20 @@ export default {
 
                                 span {
                                     display: block;
-                                    font-size: 14px;
+                                    font-size: calc-attr(14);
                                     color: rgba(255, 255, 255, .5);
                                 }
 
                                 i {
                                     display: none;
-                                    width: 19.39px;
-                                    height: 25px;
+                                    width: calc-attr(19.39);
+                                    height: calc-attr(25);
                                     background: url("../../../assets/images/table/t-del.png") no-repeat center;
                                     background-size: 100%;
 
                                     &:hover {
                                         background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
-                                        background-size: 19.39px 20.67px;
+                                        background-size: calc-attr(19.39) calc-attr(20.67);
                                     }
                                 }
                             }

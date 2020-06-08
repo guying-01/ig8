@@ -30,106 +30,107 @@
 
 <script>
 import {
-    HandwritingEnum
-} from "../../../enum/key.board.enum";
+  HandwritingEnum
+} from '../../../enum/key.board.enum'
 export default {
-    name: "IgbKeyBoardHandwritingBaseComponent",
-    data() {
-        return {
-            list: {
-                one: [],
-                two: [],
-                three: []
-            }
-        };
-    },
-    mounted() {
-        this.list.one = [];
-        this.list.two = [];
-        this.list.three = [];
-
-        //初始化
-        HandwritingEnum.forEach(element => {
-            if (element.icon && element.value !== 11) {
-                element.label = "";
-            }
-
-            if (!element.width) {
-                element.width = 108;
-            }
-
-            if (element.type === 0) {
-                this.list.one.push(element);
-            }
-
-            if (element.type === 1) {
-                this.list.two.push(element);
-            }
-
-            if (element.type === 2) {
-                this.list.three.push(element);
-            }
-        });
-
-        this.$nextTick(() => {
-            let itemList2 = document.getElementsByClassName("handwriting-panel");
-            if (itemList2.length > 0) {
-                itemList2.forEach(element => {
-                    let itemWidth = element.offsetWidth / 2.83;
-                    element.style.height = `${itemWidth}px`;
-                });
-            }
-
-            let height = 0;
-            let itemList = document.getElementsByClassName("key-item");
-            if (itemList.length > 0) {
-                itemList.forEach(element => {
-                    let itemWidth = element.offsetWidth / parseFloat((element.offsetWidth / 72)).toFixed(2);
-                    element.style.height = `${itemWidth}px`;
-                    height = element.offsetHeight;
-                });
-            }
-            let itemList1 = document.getElementsByClassName("key-item-icon");
-            if (itemList1.length > 0) {
-                itemList1.forEach(element => {
-                    element.style.height = `${height}px`;
-                });
-            }
-        });
-    },
-    methods: {
-        handwritingChange(item) {
-            switch (item.value) {
-                case 12:
-                    this.model = 1;
-                    this.$emit('model', {
-                        item: item,
-                        model: this.model
-                    });
-                    break;
-                case 13:
-                    this.model = 0;
-                    this.$emit('model', {
-                        item: item,
-                        model: this.model
-                    });
-                    break;
-            }
-        }
+  name: 'IgbKeyBoardHandwritingBaseComponent',
+  data () {
+    return {
+      list: {
+        one: [],
+        two: [],
+        three: []
+      }
     }
-};
+  },
+  mounted () {
+    this.list.one = []
+    this.list.two = []
+    this.list.three = []
+
+    // 初始化
+    HandwritingEnum.forEach(element => {
+      if (element.icon && element.value !== 11) {
+        element.label = ''
+      }
+
+      if (!element.width) {
+        element.width = 108
+      }
+
+      if (element.type === 0) {
+        this.list.one.push(element)
+      }
+
+      if (element.type === 1) {
+        this.list.two.push(element)
+      }
+
+      if (element.type === 2) {
+        this.list.three.push(element)
+      }
+    })
+
+    this.$nextTick(() => {
+      let itemList2 = document.getElementsByClassName('handwriting-panel')
+      if (itemList2.length > 0) {
+        itemList2.forEach(element => {
+          let itemWidth = element.offsetWidth / 2.83
+          element.style.height = `${itemWidth}px`
+        })
+      }
+
+      let height = 0
+      let itemList = document.getElementsByClassName('key-item')
+      if (itemList.length > 0) {
+        itemList.forEach(element => {
+          let itemWidth = element.offsetWidth / parseFloat((element.offsetWidth / 72)).toFixed(2)
+          element.style.height = `${itemWidth}px`
+          height = element.offsetHeight
+        })
+      }
+      let itemList1 = document.getElementsByClassName('key-item-icon')
+      if (itemList1.length > 0) {
+        itemList1.forEach(element => {
+          element.style.height = `${height}px`
+        })
+      }
+    })
+  },
+  methods: {
+    handwritingChange (item) {
+      switch (item.value) {
+        case 12:
+          this.model = 1
+          this.$emit('model', {
+            item: item,
+            model: this.model
+          })
+          break
+        case 13:
+          this.model = 0
+          this.$emit('model', {
+            item: item,
+            model: this.model
+          })
+          break
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .igb-key-board-handwriting-base-component {
-    width: calc(100% - 186px);
+    padding: 0 calc-attr(93);
+    // width: calc(100% - 186px);
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .handwriting-key-board-result {
-        height: 65px;
+        height: calc-attr(65);
         display: flex;
         align-items: center;
 
@@ -137,16 +138,16 @@ export default {
         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.35);
         border-radius: 4px;
 
-        padding: 0px 35px;
+        padding: 0px calc-attr(35);
 
         position: absolute;
-        top: -76px;
-        left: 98px;
+        top: calc-attr(-76);
+        left: calc-attr(98);
 
         span {
-            margin-right: 35px;
+            margin-right: calc-attr(35);
 
-            font-size: 24px;
+            font-size: calc-attr(24);
             font-weight: 400;
             color: rgba(255, 142, 50, 1);
 
@@ -160,12 +161,13 @@ export default {
 
     //680
     .handwriting-panel {
-        width: calc(45.46% - 21px);
+        // width: calc(45.46% - 21px);
+        padding: 0 calc-attr(10.5);
         background: rgba(36, 40, 67, 1);
         border: 2px solid rgba(54, 58, 90, 1);
         border-radius: 18px;
 
-        font-size: 80px;
+        font-size: calc-attr(80);
         font-weight: 400;
         color: rgba(255, 255, 255, .07);
 
@@ -176,7 +178,7 @@ export default {
 
     .handwriting-keys {
         width: 54.54%;
-        margin-left: 21px;
+        margin-left: calc-attr(21);
 
         .handwriting {
             margin: 0 auto;
@@ -185,8 +187,8 @@ export default {
             justify-content: center;
 
             &.handwriting-one {
-                margin-top: 31px;
-                margin-bottom: 15px;
+                margin-top: calc-attr(31);
+                margin-bottom: calc-attr(15);
 
                 span {
                     width: calc(15.48% - 12px);
@@ -197,14 +199,14 @@ export default {
                     }
 
                     img {
-                        width: 30.65px;
-                        height: 20.81px;
+                        width: calc-attr(30.65);
+                        height: calc-attr(20.81);
                     }
                 }
             }
 
             &.handwriting-two {
-                margin-bottom: 15px;
+                margin-bottom: calc-attr(15);
 
                 span {
                     width: calc(15.67% - 12px);
@@ -215,15 +217,15 @@ export default {
                     }
 
                     img {
-                        width: 25px;
-                        height: 18.89px;
+                        width: calc-attr(25);
+                        height: calc-attr(18.89);
                     }
                 }
 
             }
 
             &.handwriting-three {
-                margin-bottom: 27px;
+                margin-bottom: calc-attr(27);
 
                 span {
 
@@ -232,9 +234,9 @@ export default {
                         width: calc(29.47% - 12px);
 
                         img {
-                            margin-right: 11px;
-                            width: 22.8px;
-                            height: 22.8px;
+                            margin-right: calc-attr(11);
+                            width: calc-attr(22.8);
+                            height: calc-attr(22.8);
                         }
                     }
 
@@ -253,8 +255,8 @@ export default {
                         width: 36.83%;
 
                         img {
-                            width: 30.16px;
-                            height: 15.08px;
+                            width: calc-attr(30.16);
+                            height: calc-attr(15.08);
                         }
                     }
 
@@ -272,9 +274,9 @@ export default {
                 box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
                 border-radius: 18px;
                 text-align: center;
-                margin-right: 12px;
+                margin-right: calc-attr(12);
 
-                font-size: 24px;
+                font-size: calc-attr(24);
                 font-family: "PingFang-SC-Regular";
                 font-weight: 400;
                 color: rgba(255, 142, 50, 1);

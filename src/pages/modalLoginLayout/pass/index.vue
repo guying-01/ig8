@@ -35,28 +35,28 @@
 
 <script>
 export default {
-    name: "IgbPagesPassModalComponent",
-    data() {
-        return {
-            pass: "123456"
-        }
-    },
-    methods: {
-        clickHandller(page) {
-            this.$emit('next', {
-                key: page,
-                value: true
-            });
-        }
+  name: 'IgbPagesPassModalComponent',
+  data () {
+    return {
+      pass: '123456'
     }
+  },
+  methods: {
+    clickHandller (page) {
+      this.$emit('next', {
+        key: page,
+        value: true
+      })
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .igb-pages-pass-modal {
     .title {
-        padding-top: 81px;
-        font-size: 18px;
+        padding-top: calc-attr(81);
+        font-size: calc-attr(18);
         font-weight: 400;
         color: rgba(255, 255, 255, .5);
         text-align: center;
@@ -64,15 +64,16 @@ export default {
     }
 
     .form-list {
-        padding-top: 25px;
-        width: calc(100% - 100px);
+        padding: 0 calc-attr(50);
+        padding-top: calc-attr(25);
+        // width: calc(100% - 100px);
         margin: 0 auto;
 
         .form-list-item {
             >>>.ant-input {
                 width: 100%;
-                height: 48px;
-                line-height: 48px;
+                height: calc-attr(48);
+                line-height: calc-attr(48);
                 border-radius: 0px !important;
                 outline: none !important;
                 border-top: none !important;
@@ -80,7 +81,7 @@ export default {
                 border-left: none !important;
                 border-bottom: 1px solid #405167 !important;
                 background: transparent;
-                font-size: 35px;
+                font-size: calc-attr(35);
                 font-weight: 400;
                 color: rgba(190, 194, 199, 1);
                 padding: 0px !important;
@@ -88,7 +89,7 @@ export default {
 
                 &::-webkit-input-placeholder {
                     color: rgba(190, 194, 199, .7);
-                    font-size: 18px;
+                    font-size: calc-attr(18);
                 }
 
                 &:hover,
@@ -105,9 +106,9 @@ export default {
     }
 
     .key-list {
-        width: 320px;
+        width: calc-attr(320);
         margin: 0 auto;
-        padding-top: 52px;
+        padding-top: calc-attr(52);
 
         span {
             cursor: pointer;
@@ -118,26 +119,26 @@ export default {
             display: flex;
 
             .left {
-                width: 252px;
+                width: calc-attr(252);
                 display: flex;
                 align-items: center;
                 flex-wrap: wrap;
 
                 span {
                     width: calc(33.33% - 12px);
-                    height: 72px;
-                    line-height: 72px;
+                    height: calc-attr(72);
+                    line-height: calc-attr(72);
                     text-align: center;
 
                     background: rgba(54, 58, 90, 1);
-                    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                     border-radius: 12px;
 
-                    margin-right: 12px;
+                    margin-right: calc-attr(12);
 
-                    margin-bottom: 12px;
+                    margin-bottom: calc-attr(12);
 
-                    font-size: 24px;
+                    font-size: calc-attr(24);
                     font-weight: 400;
                     color: rgba(255, 142, 50, 1);
 
@@ -147,12 +148,12 @@ export default {
 
                     &:hover {
                         background: rgba(49, 53, 88, 1);
-                        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                        box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                     }
 
                     &:active {
                         background: rgba(32, 36, 67, .5);
-                        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                        box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                     }
                 }
             }
@@ -161,12 +162,12 @@ export default {
                 display: flex;
 
                 span {
-                    width: 72px;
-                    height: 156px;
-                    line-height: 156px;
+                    width: calc-attr(72);
+                    height: calc-attr(156);
+                    line-height: calc-attr(156);
 
                     background: rgba(54, 58, 90, 1);
-                    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                     border-radius: 12px;
 
                     text-align: center;
@@ -177,12 +178,12 @@ export default {
 
                     &:hover {
                         background: rgba(49, 53, 88, 1);
-                        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                        box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                     }
 
                     &:active {
                         background: rgba(32, 36, 67, .5);
-                        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                        box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                     }
                 }
             }
@@ -194,19 +195,19 @@ export default {
 
             span {
                 width: calc(33.33% - 12px);
-                height: 72px;
-                line-height: 72px;
+                height: calc-attr(72);
+                line-height: calc-attr(72);
                 text-align: center;
 
                 background: rgba(54, 58, 90, 1);
-                box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                 border-radius: 12px;
 
-                margin-right: 12px;
+                margin-right: calc-attr(12);
 
-                margin-bottom: 12px;
+                margin-bottom: calc-attr(12);
 
-                font-size: 24px;
+                font-size: calc-attr(24);
                 font-weight: 400;
                 color: rgba(255, 142, 50, 1);
 
@@ -216,29 +217,29 @@ export default {
 
                 &:hover {
                     background: rgba(49, 53, 88, 1);
-                    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                 }
 
                 &:active {
                     background: rgba(32, 36, 67, .5);
-                    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
                 }
             }
         }
     }
 
     .btn {
-        width: 320px;
-        height: 74px;
-        line-height: 74px;
+        width: calc-attr(320);
+        height: calc-attr(74);
+        line-height: calc-attr(74);
         margin: 10px auto auto auto;
         background: rgba(54, 58, 90, 1);
-        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
         border-radius: 12px;
 
         text-align: center;
 
-        font-size: 24px;
+        font-size: calc-attr(24);
         font-weight: 400;
         color: rgba(255, 142, 50, 1);
 
@@ -246,12 +247,12 @@ export default {
 
         &:hover {
             background: rgba(49, 53, 88, 1);
-            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
         }
 
         &:active {
             background: rgba(32, 36, 67, .5);
-            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px calc-attr(2) 0px rgba(0, 0, 0, 0.15);
         }
     }
 }

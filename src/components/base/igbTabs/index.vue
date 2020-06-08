@@ -15,44 +15,44 @@
 
 <script>
 export default {
-    name: "IgbTabsBaseComponent",
-    props: {
-        mode: {
-            type: String,
-            default: "list"
-        },
-        dataSource: {
-            type: Array,
-            default: () => []
-        },
-        refresh: {
-            type: Boolean,
-            default: false
-        }
+  name: 'IgbTabsBaseComponent',
+  props: {
+    mode: {
+      type: String,
+      default: 'list'
     },
-    data() {
-        return {
-
-            tabIndex: 0,
-            operation: false
-        }
+    dataSource: {
+      type: Array,
+      default: () => []
     },
-    mounted() {
-        this.tabItemClick(this.dataSource[0], 0);
-    },
-    methods: {
-        tabItemClick(item, index) {
-            this.tabIndex = index;
-            this.operation = item.operation;
-            this.$emit('tabChange', item);
-        },
-        modeChange(type) {
-            this.mode = type;
-            this.$emit('modeChange', {
-                type: type
-            });
-        }
+    refresh: {
+      type: Boolean,
+      default: false
     }
+  },
+  data () {
+    return {
+
+      tabIndex: 0,
+      operation: false
+    }
+  },
+  mounted () {
+    this.tabItemClick(this.dataSource[0], 0)
+  },
+  methods: {
+    tabItemClick (item, index) {
+      this.tabIndex = index
+      this.operation = item.operation
+      this.$emit('tabChange', item)
+    },
+    modeChange (type) {
+      this.mode = type
+      this.$emit('modeChange', {
+        type: type
+      })
+    }
+  }
 }
 </script>
 
@@ -65,17 +65,17 @@ export default {
     align-items: center;
 
     .tab-item {
-        font-size: 20px;
+        font-size: calc-attr(20);
         font-family: 'PingFang-SC-Regular';
         font-weight: 400;
         color: rgba(255, 255, 255, .7);
-        padding-bottom: 17px;
-        margin-right: 72px;
+        padding-bottom: calc-attr(17);
+        margin-right: calc-attr(72);
         position: relative;
         cursor: pointer;
 
         &:first-child {
-            margin-left: 20px;
+            margin-left: calc-attr(20);
         }
 
         &:hover {
@@ -107,27 +107,27 @@ export default {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        margin-top: -11px;
+        margin-top: calc-attr(-11);
 
         .tab-mode-refresh {
 
-            font-size: 14px;
+            font-size: calc-attr(14);
             font-family: 'PingFang-SC-Regular';
             font-weight: 400;
             color: rgba(255, 255, 255, .5);
             text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
-            padding-right: 29px;
+            padding-right: calc-attr(29);
             cursor: pointer;
             display: flex;
             align-items: center;
 
             i {
                 display: block;
-                width: 15.57px;
-                height: 16.47px;
+                width: calc-attr(15.57);
+                height: calc-attr(16.47);
                 background: url('../../../assets/images/icon-refresh.png') no-repeat center;
                 background-size: 100%;
-                margin-right: 8.5px;
+                margin-right: calc-attr(8.5);
             }
 
             &:hover {
@@ -137,9 +137,9 @@ export default {
 
         .tab-mode-item {
             display: block;
-            width: 48px;
-            height: 30px;
-            line-height: 30px;
+            width: calc-attr(48);
+            height: calc-attr(30);
+            line-height: calc-attr(30);
             text-align: center;
             background: rgba(255, 255, 255, .1);
             position: relative;
@@ -150,10 +150,10 @@ export default {
             }
 
             img {
-                width: 16px;
+                width: calc-attr(16);
                 position: absolute;
-                top: 8px;
-                left: 16px
+                top: calc-attr(8);
+                left: calc-attr(16)
             }
 
             &.tab-mode-current {
@@ -168,7 +168,7 @@ export default {
                 border-radius: 0px 15px 15px 0px;
 
                 img {
-                    top: 7px !important;
+                    top: calc-attr(7) !important;
                 }
             }
 

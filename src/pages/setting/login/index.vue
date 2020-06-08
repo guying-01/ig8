@@ -26,33 +26,34 @@
 
 <script>
 export default {
-    name: "IgbPagesSettingLoginComponent",
-    data() {
-        return {
-            sw: true,
-            switchSize: false
-        }
-    },
-    methods: {
-        btnSwitch() {
-            this.sw = !this.sw;
-        }
+  name: 'IgbPagesSettingLoginComponent',
+  data () {
+    return {
+      sw: true,
+      switchSize: false
     }
+  },
+  methods: {
+    btnSwitch () {
+      this.sw = !this.sw
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .igb-pages-setting-login {
-    width: calc(100% - 145px);
+    padding: 0 calc-attr(72.5);
+    // width: calc(100% - 145px);
     margin: 0 auto;
 
     h2 {
-        height: 22px;
-        line-height: 22px;
-        font-size: 16px;
+        height: calc-attr(22);
+        line-height: calc-attr(22);
+        font-size: calc-attr(16);
         font-family: 'PingFang-SC-Regular';
         color: rgba(255, 255, 255, .9);
-        margin: 44px auto auto auto;
+        margin: calc-attr(44) auto auto auto;
         padding: 0px;
     }
 
@@ -69,32 +70,32 @@ export default {
             align-items: center;
 
             &:first-child {
-                height: 20px;
-                line-height: 20px;
-                margin-top: 21px;
+                height: calc-attr(20);
+                line-height: calc-attr(20);
+                margin-top: calc-attr(21);
             }
 
             &:last-child {
-                height: 32px;
-                line-height: 32px;
-                margin-top: 28px;
+                height: calc-attr(32);
+                line-height: calc-attr(32);
+                margin-top: calc-attr(28);
             }
 
             >div {
                 &:first-child {
-                    font-size: 14px;
+                    font-size: calc-attr(14);
                     font-family: 'PingFang-SC-Regular';
                     font-weight: 400;
                     color: rgba(255, 255, 255, .9);
                 }
 
                 &:last-child {
-                    padding-left: 10px;
+                    padding-left: calc-attr(10);
 
                     p {
                         &.btn-switch {
-                            width: 36px;
-                            height: 18px;
+                            width: calc-attr(36);
+                            height: calc-attr(18);
                             margin: 0px;
                             padding: 0px;
                             cursor: pointer;
@@ -102,39 +103,39 @@ export default {
 
                             &.btn-switch-on {
                                 background: url("../../../assets/images/p/btn-switch-on.png") no-repeat center;
-                                background-size: 36px 18px;
+                                background-size: calc-attr(36) calc-attr(18);
 
                                 &:hover {
-                                    box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.16);
+                                    box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.16);
                                     background: url("../../../assets/images/p/btn-switch-on-h.png") no-repeat center;
-                                    background-size: 36px 18px;
+                                    background-size: calc-attr(36) calc-attr(18);
                                 }
                             }
 
                             &.btn-switch-off {
                                 background: url("../../../assets/images/p/btn-switch-off.png") no-repeat center;
-                                background-size: 36px 18px;
+                                background-size: calc-attr(36) calc-attr(18);
 
                                 &:hover {
-                                    box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.16);
+                                    box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.16);
                                     background: url("../../../assets/images/p/btn-switch-off-h.png") no-repeat center;
-                                    background-size: 36px 18px;
+                                    background-size: calc-attr(36) calc-attr(18);
                                 }
                             }
                         }
                     }
 
                     span {
-                        margin-right: 20px;
+                        margin-right: calc-attr(20);
 
                         &.phone {
-                            font-size: 16px;
+                            font-size: calc-attr(16);
                             font-family: 'PingFang-SC-Regular';
                             color: rgba(255, 255, 255, 1);
                         }
 
                         &.reset-phone {
-                            font-size: 14px;
+                            font-size: calc-attr(14);
                             font-family: 'PingFang-SC-Regular';
                             font-weight: 400;
                             color: rgba(0, 159, 244, .9);
@@ -144,8 +145,8 @@ export default {
                         &.btn {
                             border: 1px solid rgba(255, 255, 255, .2);
                             border-radius: 17px;
-                            padding: 5px 20px;
-                            font-size: 14px;
+                            padding: calc-attr(5) calc-attr(20);
+                            font-size: calc-attr(14);
                             font-family: 'PingFang-SC-Regular';
                             font-weight: 400;
                             color: rgba(255, 255, 255, .8);
@@ -161,7 +162,7 @@ export default {
                                 background: rgba(214, 105, 23, 0.33);
                                 border: 1px solid rgba(214, 105, 23, .3);
                                 color: rgba(214, 105, 23, 1);
-                                box-shadow: 0 0 0 3px rgba(214, 105, 23, .01) !important;
+                                box-shadow: 0 0 0 calc-attr(3) rgba(214, 105, 23, .01) !important;
                             }
                         }
                     }

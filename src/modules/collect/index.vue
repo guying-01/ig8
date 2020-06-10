@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { GET_TAGS, GET_SONGS } from '@/api/api'
+// import { GET_TAGS, GET_SONGS } from '@/api/api'
 export default {
   name: 'IgbModulesCollectPage',
   data () {
@@ -307,9 +307,9 @@ export default {
     }
   },
   mounted () {
-    GET_SONGS({ CMD: 'GET_SONGS' }).then(res => {
-      this.list = res['List']
-    })
+    // GET_SONGS({ CMD: 'GET_SONGS' }).then(res => {
+    //   this.list = res['List']
+    // })
   }
 }
 </script>

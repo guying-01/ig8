@@ -47,14 +47,13 @@ export default {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
 
     >div {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        width: calc-attr(195);
+        width: calc-attr(346);
         height: calc-attr(88);
         background: rgba(255, 255, 255, .06);
         border-radius: calc-attr(49);

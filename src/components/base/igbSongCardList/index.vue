@@ -73,18 +73,6 @@ export default {
     //     element.style.height = `${parseFloat(itemWidth).toFixed(0)}px`
     //   })
     // }
-
-    // setInterval(function () {
-    //   let designWidth = 1920
-    //   let docWidth = document.documentElement.clientWidth
-
-    //   let scaleW = docWidth / designWidth// 宽比例
-
-    //   document.body.style.transform = `scale(${scaleW})`
-    // }, 200)
-
-    var phoneScale = parseInt(window.screen.width) / 1920
-    document.write('<meta name="viewport" content="width=375, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', user-scalable=no">')
   },
   methods: {
     changeHandller (item) {
@@ -117,9 +105,13 @@ export default {
     width: calc-attr(320);
     // width: calc(20% - 2px);
     margin-bottom: 2px;
-    margin-right: 2px;
+    margin-right: calc-attr(2);
     background: rgba(255, 255, 255, 0.06);
     opacity: 1;
+
+    &:nth-of-type(5n){
+      margin-right: 0;
+    }
 
     h2,
     h3,

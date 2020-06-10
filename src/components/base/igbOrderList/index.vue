@@ -312,15 +312,17 @@ export default {
 .igb-order-list-base-component {
     position: relative;
     padding-top: calc-attr(39);
-    height:100vh;
+    height:100%;
+    box-sizing: border-box;
     overflow: hidden;
-    padding-bottom:calc-attr(109 + 61);
     background: url("../../../assets/images/k/yd-bg.png") no-repeat center;
-    background-size: calc-attr(920) calc-attr(920);
-    // display: flex;
-    // flex-direction: column;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
     .order-content{
         flex: 1;
+        overflow-y: auto;
+        @include scroll-bar(5px);
     }
     .btn-close {
         position: absolute;
@@ -448,8 +450,8 @@ export default {
     .list-order {
         // height: calc(100vh - 340px);
         // height:100%;
-        overflow-y: auto;
-        @include scroll-bar(5px);
+        // overflow-y: auto;
+        // @include scroll-bar(5px);
         .table {
             width: 100%;
 
@@ -767,9 +769,9 @@ export default {
         // height: 100%;
         // height:calc(100vh - 340px);
         // padding: calc-attr(170) 0;
-        overflow-x: hidden;
-        overflow-y: auto;
-        @include scroll-bar(8px);
+        // overflow-x: hidden;
+        // overflow-y: auto;
+        // @include scroll-bar(8px);
 
         /*
                         表格样式

@@ -1,5 +1,7 @@
 //根据分辨率动态计算比例
 @function calc-attr($value){
+  // $res: calc(100vw / 1920 * #{$value});
+  // @return $res;
   $res:  round($value / 1920 * 10000) /100 * 1vw;
   @return #{$res};
 }

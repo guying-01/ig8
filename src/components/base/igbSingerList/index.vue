@@ -53,13 +53,18 @@ export default {
     >div {
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        width: calc-attr(346);
+        width: calc-attr(298);
         height: calc-attr(88);
         background: rgba(255, 255, 255, .06);
         border-radius: calc-attr(49);
         cursor: pointer;
         position: relative;
         margin-bottom: calc-attr(24);
+        margin-right:calc-attr(30);
+
+        &:nth-of-type(5n){
+            margin-right:0;
+        }
 
         .icon-leing {
             display: none;

@@ -195,6 +195,7 @@ export default {
 
         .ant-btn {
             height: calc-attr(28);
+            line-height:calc-attr(28);
             padding-left: calc-attr(20);
             padding-right: calc-attr(20);
             >>>span{

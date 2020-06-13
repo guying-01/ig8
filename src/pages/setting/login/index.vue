@@ -2,7 +2,7 @@
 <div class="igb-pages-setting-login">
     <h2>登录设置</h2>
 
-    <igb-line style="margin-top:11px;"></igb-line>
+    <igb-line class="line"></igb-line>
 
     <div class="form-list">
         <div class="form-list-item">
@@ -46,7 +46,9 @@ export default {
     padding: 0 calc-attr(72.5);
     // width: calc(100% - 145px);
     margin: 0 auto;
-
+    .line{
+      margin-top:calc-attr(11);
+    }
     h2 {
         height: calc-attr(22);
         line-height: calc-attr(22);

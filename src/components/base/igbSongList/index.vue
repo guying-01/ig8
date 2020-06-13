@@ -155,10 +155,10 @@ export default {
         margin: 0 auto;
 
         .icon-collect {
-          visibility: hidden;
+          // visibility: hidden;
           position: absolute;
-          right: 0px;
-          bottom: 0px;
+          right: calc-attr(16);
+          bottom: calc-attr(0);
           display: block;
           width: calc-attr(18.18);
           height: calc-attr(17.46);

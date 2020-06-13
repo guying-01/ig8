@@ -62,10 +62,11 @@ export default {
 
     .video-main {
         width: 100%;
-        height: calc(100vh - 111px);
+        height: 100vh;
         background: rgba(34, 34, 55, .7);
         box-shadow: 0px calc-attr(3) calc-attr(6) rgba(0, 0, 0, 0.5);
         padding-top: calc-attr(34);
+        padding-bottom:calc-attr(109);
 
         .header {
             width: calc(100% - 42px - 37px);

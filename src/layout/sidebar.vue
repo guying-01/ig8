@@ -227,12 +227,11 @@ export default {
       let index = parseInt(event.key) + 1
 
       let item = this.settingList.find(e => e.id === index)
-
       if (item.id === 1) {
         this.igbModal$({
           visible: true,
           wrapClassName: 'login-modal',
-          width: 420,
+          // width: 420,
           componentName: IgbPagesModalLoginLayoutComponent,
           params: {},
           okHandller: (options, close) => {
@@ -253,7 +252,7 @@ export default {
         this.igbModal$({
           visible: true,
           wrapClassName: 'login-modal pass-modal',
-          width: 420,
+          // width: 420,
           componentName: IgbPagesModalLoginLayoutComponent,
           params: {
             page: 'pass'

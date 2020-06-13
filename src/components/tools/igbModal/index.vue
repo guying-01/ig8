@@ -8,170 +8,170 @@
 
 <script>
 export default {
-    name: "IgbModalToolComponent",
-    data() {
-        return {
-            modalOption: {
-                /**
+  name: 'IgbModalToolComponent',
+  data () {
+    return {
+      modalOption: {
+        /**
                  * 标题
                  * String|slot
                  */
-                title: "",
-                /**
+        title: '',
+        /**
                  * 对话框是否可见 (v-model)
                  * Boolean
                  */
-                visible: false,
-                /**
+        visible: false,
+        /**
                  * 取消按钮文字
                  * String| slot
                  */
-                cancelText: "取消",
-                /**
+        cancelText: '取消',
+        /**
                  * 是否显示取消按钮
                  */
-                cancelTextShow: false,
-                /**
+        cancelTextShow: false,
+        /**
                  * 确认按钮文字
                  * String|slot
                  */
-                okText: "确定",
-                /**
+        okText: '确定',
+        /**
                  * 是否显示确定按钮
                  */
-                okTextShow: false,
-                /**
+        okTextShow: false,
+        /**
                  * 确认按钮类型
                  * String
                  */
-                okType: "primary",
-                /**
+        okType: 'primary',
+        /**
                  * 垂直居中展示 Modal
                  * Boolean
                  */
-                centered: true,
-                /**
+        centered: true,
+        /**
                  * 是否显示右上角的关闭按钮
                  * Boolean
                  */
-                closable: false,
-                /**
+        closable: false,
+        /**
                  * 自定义关闭图标
                  * VNode | slot
                  */
-                closeIcon: null,
-                /**
+        closeIcon: null,
+        /**
                  * 确定按钮 loading
                  * Boolean
                  */
-                confirmLoading: false,
-                /**
+        confirmLoading: false,
+        /**
                  * 关闭时销毁 Modal 里的子元素
                  * Boolean
                  */
-                destroyOnClose: false,
-                /**
+        destroyOnClose: false,
+        /**
                  * 强制渲染 Modal
                  * Boolean
                  */
-                forceRender: false,
-                /**
+        forceRender: false,
+        /**
                  * 指定 Modal 挂载的 HTML 节点
                  * (instance): HTMLElement
                  */
-                getContainer: () => document.body,
-                /**
+        getContainer: () => document.body,
+        /**
                  * ok 按钮 props, 遵循 jsx规范
                  */
-                okButtonProps: {},
-                /**
+        okButtonProps: {},
+        /**
                  * cancel 按钮 props, 遵循 jsx规范
                  */
-                cancelButtonProps: {},
-                /**
+        cancelButtonProps: {},
+        /**
                  * 是否支持键盘 esc 关闭
                  * Boolean
                  */
-                keyboard: true,
-                /**
+        keyboard: true,
+        /**
                  * 是否展示遮罩
                  * Boolean
                  */
-                mask: false,
-                /**
+        mask: false,
+        /**
                  * 点击蒙层是否允许关闭
                  * Boolean
                  */
-                maskClosable: false,
-                /**
+        maskClosable: false,
+        /**
                  * 遮罩样式
                  * Object
                  */
-                maskStyle: {},
+        maskStyle: {},
 
-                /**
+        /**
                  * 宽度
                  * String|Number
                  */
-                width: 800,
-                /**
+        width: 800,
+        /**
                  * 对话框外层容器的类名
                  * String
                  */
-                wrapClassName: "",
-                /**
+        wrapClassName: '',
+        /**
                  * 设置 Modal 的 z-index
                  * Number
                  */
-                zIndex: 1000,
-                /**
+        zIndex: 1000,
+        /**
                  * 内容
                  * String
                  */
-                content: "",
-                /**
+        content: '',
+        /**
                  * 组件名称
                  * Object
                  */
-                componentName: null,
-                /**
+        componentName: null,
+        /**
                  * 组件参数
                  * Object
                  */
-                params: {},
-                output: {},
-                /**
+        params: {},
+        output: {},
+        /**
                  * 点击遮罩层或右上角叉或取消按钮的回调
                  */
-                cancelHandller: options => {},
-                /**
+        cancelHandller: options => {},
+        /**
                  * 点击确定回调
                  */
-                okHandller: (options, close) => {}
-            }
-        };
-    },
-    methods: {
-        /**
+        okHandller: (options, close) => {}
+      }
+    }
+  },
+  methods: {
+    /**
          * 关闭回调
          */
-        closeHandller() {
-            this.modalOption.visible = false;
-        },
-        /**
+    closeHandller () {
+      this.modalOption.visible = false
+    },
+    /**
          * 点击遮罩层或右上角叉或取消按钮的回调
          */
-        cancelHandller() {
-            this.closeHandller();
-            this.modalOption.cancelHandller(this.modalOption);
-        },
-        /**
+    cancelHandller () {
+      this.closeHandller()
+      this.modalOption.cancelHandller(this.modalOption)
+    },
+    /**
          * 点击确定回调
          */
-        okHandller(event) {
-            this.modalOption.output.okResult = event;
-            this.modalOption.okHandller(this.modalOption, this.closeHandller);
-        }
+    okHandller (event) {
+      this.modalOption.output.okResult = event
+      this.modalOption.okHandller(this.modalOption, this.closeHandller)
     }
-};
+  }
+}
 </script>

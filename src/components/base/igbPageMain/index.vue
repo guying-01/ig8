@@ -93,16 +93,17 @@ export default {
     position: relative;
     // margin: calc-attr(27.5) auto auto auto;
     .ig8-layout-content {
-      padding: calc-attr(27.5) calc-attr(40) calc-attr(109 + 27.5);
+      padding: calc-attr(27.5) calc-attr(0) calc-attr(109 + 27.5);
       position: absolute;
-      left: 0;
+      left: calc-attr(40);
+      right:calc-attr(40);
       top: 0;
-      background: rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
       overflow: hidden;
       height: 100%;
-      width: 100%;
+      // $value / 1920 * 10000) /100 * 1vw
+      width: 100vw - (100vw / 1920) * 80 ;
     }
 
     h1 {
@@ -110,7 +111,7 @@ export default {
       line-height: calc-attr(72);
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       padding-left: calc-attr(10);
       margin: 0px;
 
@@ -141,11 +142,12 @@ export default {
 
     .form-content {
       // width: calc(100% - 34px);
+      background: rgba(255, 255, 255, 0.05);
       flex: 1;
       padding: 0 calc-attr(17);
       //   height: 100%;
     //   overflow: hidden;
-      margin: 0 auto;
+      // margin: 0 auto;
       overflow-y: auto;
       @include scroll-bar(8px);
     }

@@ -13,7 +13,7 @@
     <div class="foo-controller">
         <!--歌曲信息-->
         <div class="singer-info">
-            <img src="../../../assets/images/song-avatar.png" width="80" height="80" />
+            <img src="../../../assets/images/song-avatar.png"  />
             <div>
                 <h2>南方姑娘</h2>
                 <a href="javascript:;">赵雷</a>
@@ -302,6 +302,8 @@ export default {
             width:calc-attr(388);
 
             img {
+              width:calc-attr(80);
+              height:calc-attr(80);
                 border: 2px solid rgba(255, 255, 255, 0.09803921568627452);
                 border-radius: 4px;
                 -webkit-border-radius: 4px;

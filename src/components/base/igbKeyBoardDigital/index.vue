@@ -1,31 +1,53 @@
 <template>
-<div class="igb-key-board-digital-base-component">
+  <div class="igb-key-board-digital-base-component">
     <div class="digital digital-one">
-        <span v-for="(item,index) in list.one" :key="index" @click="digitalChange(item);" :class="{'key-item':!item.icon,'key-item-icon':item.icon}">
-            {{item.value===0?'':item.label}}
-            <input type="text" v-if="item.value===0" />
-            <img v-if="item.icon" :src="`${require(`../../../assets/images/${item.icon}`)}`" />
-        </span>
+      <span
+        v-for="(item, index) in list.one"
+        :key="index"
+        @click="digitalChange(item)"
+        :class="{ 'key-item': !item.icon, 'key-item-icon': item.icon }"
+      >
+        {{ item.value === 0 ? "" : item.label }}
+        <input type="text" v-if="item.value === 0" />
+        <img
+          v-if="item.icon"
+          :src="`${require(`../../../assets/images/${item.icon}`)}`"
+        />
+      </span>
     </div>
     <div class="digital digital-two">
-        <span v-for="(item,index) in list.two" :key="index" @click="digitalChange(item);" :class="{'key-item':!item.icon,'key-item-icon':item.icon}">
-            {{item.label}}
-            <img v-if="item.icon" :src="`${require(`../../../assets/images/${item.icon}`)}`" />
-        </span>
+      <span
+        v-for="(item, index) in list.two"
+        :key="index"
+        @click="digitalChange(item)"
+        :class="{ 'key-item': !item.icon, 'key-item-icon': item.icon }"
+      >
+        {{ item.label }}
+        <img
+          v-if="item.icon"
+          :src="`${require(`../../../assets/images/${item.icon}`)}`"
+        />
+      </span>
     </div>
     <div class="digital digital-three">
-        <span v-for="(item,index) in list.three" :key="index" @click="digitalChange(item);" :class="{'key-item':!item.icon,'key-item-icon':item.icon}">
-            {{item.label}}
-            <img v-if="item.icon" :src="`${require(`../../../assets/images/${item.icon}`)}`" />
-        </span>
+      <span
+        v-for="(item, index) in list.three"
+        :key="index"
+        @click="digitalChange(item)"
+        :class="{ 'key-item': !item.icon, 'key-item-icon': item.icon }"
+      >
+        {{ item.label }}
+        <img
+          v-if="item.icon"
+          :src="`${require(`../../../assets/images/${item.icon}`)}`"
+        />
+      </span>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
-import {
-  DigitalChangeEnum
-} from '../../../enum/key.board.enum'
+import { DigitalChangeEnum } from '../../../enum/key.board.enum'
 export default {
   name: 'IgbKeyBoardDigitalBaseComponent',
   data () {
@@ -64,24 +86,6 @@ export default {
         this.list.three.push(element)
       }
     })
-
-    this.$nextTick(() => {
-      let height = 0
-      let itemList = document.getElementsByClassName('key-item')
-      if (itemList.length > 0) {
-        itemList.forEach(element => {
-          let itemWidth = element.offsetWidth / parseFloat((element.offsetWidth / 72)).toFixed(2)
-          element.style.height = `${itemWidth}px`
-          height = element.offsetHeight
-        })
-      }
-      let itemList1 = document.getElementsByClassName('key-item-icon')
-      if (itemList1.length > 0) {
-        itemList1.forEach(element => {
-          element.style.height = `${height}px`
-        })
-      }
-    })
   },
   methods: {
     digitalChange (item) {
@@ -106,150 +110,149 @@ export default {
 
 <style lang="scss" scoped>
 .igb-key-board-digital-base-component {
-    padding: 0 calc-attr(93);
-    // width: calc(100% - 186px);
+  padding: 0 calc-attr(93);
+  // width: calc(100% - 186px);
+  margin: 0 auto;
+
+  .digital {
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .key-item,
+    .key-item-icon {
+      height: calc-attr(72);
+    }
+    &.digital-one {
+      margin-top: calc-attr(30);
+      margin-bottom: calc-attr(12);
 
-    .digital {
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      span {
+        &:first-child {
+          width: calc(87.65% - 12px);
+          background: none !important;
+          box-shadow: none !important;
 
-        &.digital-one {
-            margin-top: calc-attr(31);
-            margin-bottom: calc-attr(15);
+          &:hover {
+            background: none !important;
+            box-shadow: none !important;
+          }
 
-            span {
-                &:first-child {
-                    width: calc(87.65% - 12px);
-                    background: none !important;
-                    box-shadow: none !important;
+          &:active {
+            background: none !important;
+            box-shadow: none !important;
+          }
 
-                    &:hover {
-                        background: none !important;
-                        box-shadow: none !important;
-                    }
-
-                    &:active {
-                        background: none !important;
-                        box-shadow: none !important;
-                    }
-
-                    input {
-                        outline: none;
-                        width: 100%;
-                        height: 90%;
-                        background: rgba(36, 40, 67, .98);
-                        border: 2px solid rgba(54, 66, 88, .98);
-                        border-radius: 18px;
-                        padding: 0px calc-attr(31);
-
-                        font-size: calc-attr(30);
-                        font-weight: 400;
-                        color: rgba(255, 142, 50, 1);
-                        letter-spacing: 0.1em;
-
-                    }
-
-                }
-
-                &:last-child {
-                    width: 12.35%;
-                }
-
-                img {
-                    width: calc-attr(30.65);
-                    height: calc-attr(20.81);
-                }
-            }
-        }
-
-        &.digital-two {
-            margin-bottom: calc-attr(15);
-
-            span {
-                width: calc(8% - 12px);
-
-                &:last-child {
-                    width: 19.69%;
-                }
-
-                img {
-                    width: calc-attr(25);
-                    height: calc-attr(18.89);
-                }
-            }
-
-        }
-
-        &.digital-three {
-            margin-bottom: calc-attr(27);
-
-            span {
-                width: calc(8% - 12px);
-
-                //159
-                &:first-child {
-                    width: calc(11.45% - 12px);
-                }
-
-                //270
-                &:nth-child(5) {
-                    width: calc(18.86% - 12px);
-                }
-
-                //167
-                &:nth-child(8) {
-                    width: calc(12% - 12px);
-                }
-
-                //263
-                &:last-child {
-                    width: 17.63%;
-                }
-
-                img {
-                    width: calc-attr(30.16);
-                    height: calc-attr(15.08);
-                }
-            }
-        }
-
-        span {
-            width: auto;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(54, 58, 90, 1);
-            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+          input {
+            outline: none;
+            width: 100%;
+            height: 90%;
+            background: rgba(36, 40, 67, 0.98);
+            border: 2px solid rgba(54, 66, 88, 0.98);
             border-radius: 18px;
-            text-align: center;
-            margin-right: calc-attr(12);
+            padding: 0px calc-attr(31);
 
-            font-size: calc-attr(24);
-            font-family: "PingFang-SC-Regular";
+            font-size: calc-attr(30);
             font-weight: 400;
             color: rgba(255, 142, 50, 1);
-
-            &:last-child {
-                margin-right: 0px;
-            }
-
-            cursor: pointer;
-
-            &:hover {
-                background: rgba(49, 53, 88, 1);
-                box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
-            }
-
-            &:active {
-                background: rgba(32, 36, 67, .5);
-                box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
-            }
+            letter-spacing: 0.1em;
+          }
         }
+
+        &:last-child {
+          width: 12.35%;
+        }
+
+        img {
+          width: calc-attr(30.65);
+          height: calc-attr(20.81);
+        }
+      }
     }
 
+    &.digital-two {
+      margin-bottom: calc-attr(12);
+
+      span {
+        width: calc(8% - 12px);
+
+        &:last-child {
+          width: 19.69%;
+        }
+
+        img {
+          width: calc-attr(25);
+          height: calc-attr(18.89);
+        }
+      }
+    }
+
+    &.digital-three {
+      margin-bottom: calc-attr(27);
+
+      span {
+        width: calc(8% - 12px);
+
+        //159
+        &:first-child {
+          width: calc(11.45% - 12px);
+        }
+
+        //270
+        &:nth-child(5) {
+          width: calc(18.86% - 12px);
+        }
+
+        //167
+        &:nth-child(8) {
+          width: calc(12% - 12px);
+        }
+
+        //263
+        &:last-child {
+          width: 17.63%;
+        }
+
+        img {
+          width: calc-attr(30.16);
+          height: calc-attr(15.08);
+        }
+      }
+    }
+
+    span {
+      width: auto;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(54, 58, 90, 1);
+      box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+      border-radius: 18px;
+      text-align: center;
+      margin-right: calc-attr(12);
+
+      font-size: calc-attr(24);
+      font-family: "PingFang-SC-Regular";
+      font-weight: 400;
+      color: rgba(255, 142, 50, 1);
+
+      &:last-child {
+        margin-right: 0px;
+      }
+
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(49, 53, 88, 1);
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+      }
+
+      &:active {
+        background: rgba(32, 36, 67, 0.5);
+        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
 }
 </style>

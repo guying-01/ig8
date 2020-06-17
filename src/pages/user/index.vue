@@ -11,34 +11,34 @@
                         </div>
                     </div>
                     <div class="form-list-item">
-                        <div>用户类型</div>
+                        <div class="title">用户类型</div>
                         <div>
                             <igb-radio-block :dataSource="userTypeData"></igb-radio-block>
                         </div>
                     </div>
                     <div class="form-list-item">
-                        <div>会所名称</div>
+                        <div class="title">会所名称</div>
                         <div>
                             <input type="text" name="clubName" autocomplete="off" :class="{'input-text':params.clubName,'input-error':params.clubNameError}" v-model="params.clubName" @input="inputChange($event)" @blur="inputBlurChange($event)" placeholder="请填写会所名称" />
                             <div class="err" v-if="params.clubNameError"><i></i>会所名称字段为必填项</div>
                         </div>
                     </div>
                     <div class="form-list-item">
-                        <div>订座电话</div>
+                        <div class="title">订座电话</div>
                         <div>
                             <input type="text" name="phone" autocomplete="off" :class="{'input-text':params.phone,'input-error':params.phoneError}" v-model="params.phone" @input="inputChange($event)" @blur="inputBlurChange($event)" placeholder="请填写订座电话" />
                             <div class="err" v-if="params.phoneError"><i></i>订座电话字段为必填项</div>
                         </div>
                     </div>
                     <div class="form-list-item form-list-item-lig">
-                        <div>会所介绍</div>
+                        <div class="title">会所介绍</div>
                         <div>
                             <textarea name="clibDes" :class="{'input-text':params.clibDes}" v-model="params.clibDes" placeholder="请填写会所介绍"></textarea>
                             <div class="des">客人将在点歌界面的用户信息页面中看到此介绍，限100字。</div>
                         </div>
                     </div>
                     <div class="form-list-item form-list-item-lig">
-                        <div>背景照片</div>
+                        <div class="title">背景照片</div>
                         <div>
                             <igb-upload></igb-upload>
                             <div class="des">设置一张广告插图，客人在切歌的时候或者缓冲的时候好会在电视上看到它。</div>
@@ -145,6 +145,9 @@ export default {
             .form-list-item {
                 display: flex;
                 padding-bottom:calc-attr(29);
+                .title{
+                  opacity: 0.7;
+                }
                 &.form-list-item-lig {
                     align-items: flex-start;
 

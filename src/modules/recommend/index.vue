@@ -1,12 +1,21 @@
 <template>
   <div class="igb-modules-recommend-page">
-    <igb-swiper style="margin-top:41.5px;"></igb-swiper>
+    <igb-swiper class="swiper"></igb-swiper>
 
-    <igb-song-card-list style="margin-top:33.5px;" showType :dataSource="list"></igb-song-card-list>
+    <igb-song-card-list
+      showType
+      :dataSource="list"
+      class="list"
+    ></igb-song-card-list>
 
-    <igb-line style="margin-top:18.5px;"></igb-line>
+    <igb-line class="line"></igb-line>
 
-    <igb-song-card-list style="margin-top:19.5px;" showType :type="1" :dataSource="list1"></igb-song-card-list>
+    <igb-song-card-list
+      showType
+      :type="1"
+      :dataSource="list1"
+      class="card-list"
+    ></igb-song-card-list>
   </div>
 </template>
 
@@ -120,3 +129,20 @@ export default {
   mounted () {}
 }
 </script>
+
+<style lang="scss" scoped>
+.igb-modules-recommend-page {
+  .swiper {
+    margin-top: calc-attr(41.5);
+  }
+  .line {
+    margin-top: calc-attr(18.5);
+  }
+  .list {
+    margin-top: calc-attr(33.5);
+  }
+  .card-list {
+    margin-top: calc-attr(19.5);
+  }
+}
+</style>

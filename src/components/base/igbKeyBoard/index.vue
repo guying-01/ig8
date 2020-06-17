@@ -1,8 +1,8 @@
 <!--
  * @Author: gy
  * @Date: 2020-05-28 10:35:21
- * @LastEditors: gy
- * @LastEditTime: 2020-06-08 15:41:38
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-06-13 18:20:01
 -->
 <template>
 <div class="igb-key-board-base-component">
@@ -40,7 +40,7 @@ export default {
     padding-right:calc-attr(238);
     box-sizing: border-box;
     // width: calc(100% - 238px);
-    height: auto;
+    height: calc-attr(294);
     border-top: 2px solid rgba(255, 151, 39, 0.3);
     background: rgba(42, 45, 69, 1);
     box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.35);

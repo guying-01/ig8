@@ -7,104 +7,111 @@
     </div>
 
     <div class="order-button-list">
-        <span class="btn btn-share-song" @click="btnShareHandller" v-if="current===0"></span>
+        <span class="btn btn-share-song" @click="btnShareHandller" v-if="current===0"></span><!--禁用按钮加样式class="dis"-->
         <span class="btn btn-loop" v-if="current===0"></span>
-        <span class="btn btn-share-song dis" @click="btnShareHandller" v-if="current===0"></span>
-        <span class="btn btn-loop dis" v-if="current===0"></span>
+        <!--<span class="btn btn-share-song dis" @click="btnShareHandller" v-if="current===0"></span>
+        <span class="btn btn-loop dis" v-if="current===0"></span>-->
         <span class="icon icon-del"></span>
     </div>
     </div>
 
-    <div class="order-content">
-    <div class="list-order" v-if="current===0">
-        <table class="table">
-            <tbody>
-                <tr v-for="(item,index) in tableList" :key="index" :class="{'current':item.current,'play':item.play}">
-                    <td>
-                        <span>{{item.value}}</span>
-                        <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-                    </td>
-                    <td>
-                        <div>
-                            <h2>{{item.songName}}</h2>
-                            <igb-tag :type="item.tag"></igb-tag>
-                        </div>
-                        <i class="icon-leing"></i>
-                    </td>
-                    <td>
-                        <div>
-                            <i class="icon-collect" :class="{'icon-collect-ok':item.collect}"></i>
-                            <i class="icon-order-by-desc"></i>
-                            <i class="icon-order-by-aes"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <span>{{item.singerName}}</span>
-                    </td>
-                    <td>
-                        <div>
-                            <i></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <span>{{item.time}}</span>
-                            <i class="icon-del"></i>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <div ref="viewBox" class="order-content" :class="{'sep': current===0}">
+        <igbScroll v-bind:boxHeight="viewBoxHeight">
+            <div class="list-order" v-if="current===0">
+                <table class="table">
+                    <tbody>
+                        <tr v-for="(item,index) in tableList" :key="index" :class="{'current':item.current,'play':item.play}">
+                            <td>
+                                <span>{{item.value}}</span>
+                                <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+                            </td>
+                            <td>
+                                <div>
+                                    <h2>{{item.songName}}</h2>
+                                    <igb-tag :type="item.tag"></igb-tag>
+                                </div>
+                                <i class="icon-leing"></i>
+                            </td>
+                            <td>
+                                <div>
+                                    <i class="icon-collect" :class="{'icon-collect-ok':item.collect}"></i>
+                                    <i class="icon-order-by-desc"></i>
+                                    <i class="icon-order-by-aes"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <span>{{item.singerName}}</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <i></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>{{item.time}}</span>
+                                    <i class="icon-del"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    <div class="list-song" v-if="current===1">
-        <table class="table">
-            <tbody>
-                <tr v-for="(item,index) in tableList1" :key="index" :class="{'current':item.current,'play':item.play}">
-                    <td>
-                        <span>{{item.value}}</span>
-                        <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-                    </td>
-                    <td>
-                        <div>
-                            <h2>{{item.songName}}</h2>
-                            <igb-tag :type="item.tag"></igb-tag>
-                        </div>
-                        <i class="icon-leing"></i>
-                    </td>
-                    <td>
-                        <div>
-                            <i class="icon-collect"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <span>{{item.singerName}}</span>
-                    </td>
-                    <td>
-                        <div>
-                            <i></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <span>{{item.time}}</span>
-                            <i class="icon-del"></i>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="list-song" v-if="current===1">
+                <table class="table">
+                    <tbody>
+                        <tr v-for="(item,index) in tableList1" :key="index" :class="{'current':item.current,'play':item.play}">
+                            <td>
+                                <span>{{item.value}}</span>
+                                <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+                            </td>
+                            <td>
+                                <div>
+                                    <h2>{{item.songName}}</h2>
+                                    <igb-tag :type="item.tag"></igb-tag>
+                                </div>
+                                <i class="icon-leing"></i>
+                            </td>
+                            <td>
+                                <div>
+                                    <i class="icon-collect"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <span>{{item.singerName}}</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <i></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <span>{{item.time}}</span>
+                                    <i class="icon-del"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </igbScroll>
     </div>
-    </div>
-
 </div>
 </template>
 
 <script>
+import igbScroll from '../../tools/igbScroll/index'
 export default {
   name: 'IgbOrderListBaseComponent',
+  components: {
+    igbScroll
+  },
   data () {
     return {
+      viewBoxHeight: '100%',
+
       current: 0,
       tabs: [{
         value: 0,
@@ -121,8 +128,7 @@ export default {
         time: '01:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '02',
         songName: '死了都要爱',
         tag: 0,
@@ -130,8 +136,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '03',
         songName: '成都',
         tag: 0,
@@ -139,8 +144,7 @@ export default {
         time: '02:00',
         current: true,
         play: true
-      },
-      {
+      }, {
         value: '04',
         songName: '我不是真正的快乐',
         tag: 0,
@@ -148,8 +152,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '05',
         songName: '你的答案',
         tag: 0,
@@ -158,8 +161,7 @@ export default {
         current: false,
         play: false,
         collect: true
-      },
-      {
+      }, {
         value: '06',
         songName: '我不是真正的快乐',
         tag: 0,
@@ -167,8 +169,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '07',
         songName: '你的答案',
         tag: 0,
@@ -176,8 +177,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '08',
         songName: '死了都要爱',
         tag: 0,
@@ -186,8 +186,7 @@ export default {
         current: false,
         play: false,
         collect: true
-      },
-      {
+      }, {
         value: '09',
         songName: '死了都要爱',
         tag: 0,
@@ -195,8 +194,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '10',
         songName: '死了都要爱',
         tag: 0,
@@ -214,8 +212,7 @@ export default {
         time: '01:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '02',
         songName: '死了都要爱',
         tag: 0,
@@ -223,8 +220,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '03',
         songName: '成都',
         tag: 0,
@@ -232,8 +228,7 @@ export default {
         time: '02:00',
         current: true,
         play: true
-      },
-      {
+      }, {
         value: '04',
         songName: '我不是真正的快乐',
         tag: 0,
@@ -241,8 +236,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '05',
         songName: '你的答案',
         tag: 0,
@@ -251,8 +245,7 @@ export default {
         current: false,
         play: false,
         collect: false
-      },
-      {
+      }, {
         value: '06',
         songName: '我不是真正的快乐',
         tag: 0,
@@ -260,8 +253,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '07',
         songName: '你的答案',
         tag: 0,
@@ -269,8 +261,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      },
-      {
+      }, {
         value: '08',
         songName: '死了都要爱',
         tag: 0,
@@ -279,8 +270,7 @@ export default {
         current: false,
         play: false,
         collect: false
-      },
-      {
+      }, {
         value: '09',
         songName: '死了都要爱',
         tag: 0,
@@ -288,8 +278,7 @@ export default {
         time: '02:00',
         current: false,
         play: false
-      }
-      ]
+      }]
     }
   },
   methods: {
@@ -302,6 +291,12 @@ export default {
     changeHandller (item) {
       this.current = item.value
     }
+  },
+  mounted () { // 主要解决滚动条在客户端中无法正确配置高度问题
+    this.viewBoxHeight = this.$refs.viewBox.offsetHeight + 'px'
+    window.onresize = () => {
+      this.viewBoxHeight = this.$refs.viewBox.offsetHeight + 'px'
+    }
   }
 }
 </script>
@@ -309,20 +304,38 @@ export default {
 <style lang="scss" scoped>
 @import "../../../assets/scss/ddd/mixin.scss";
 
+// Vue进入离开动画
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
 .igb-order-list-base-component {
     position: relative;
     padding-top: calc-attr(39);
     height:100%;
     box-sizing: border-box;
-    overflow: hidden;
+    //overflow: hidden;
     background: url("../../../assets/images/k/yd-bg.png") no-repeat center;
-    background-size: cover;
+    //background-size: cover;
+    background-size: 100% 100%;
+    z-index: 9999;
+    //overflow: hidden;
     display: flex;
     flex-direction: column;
     .order-content{
+        margin-bottom: 10px;
         flex: 1;
-        overflow-y: auto;
-        @include scroll-bar(5px);
+        position: relative;
+        overflow-y: hidden;
+        //@include scroll-bar(0);
+
+        &.sep{
+            border-top: 1px solid rgba(255, 255, 255, .1);
+        }
     }
     .btn-close {
         position: absolute;
@@ -375,7 +388,7 @@ export default {
     .order-button-list {
         display: flex;
         align-items: center;
-        height: calc-attr(32);
+        height: calc-attr(33);
         padding-left: calc-attr(31);
         margin-top: calc-attr(38);
         margin-bottom: calc-attr(13);
@@ -460,6 +473,9 @@ export default {
                     height: calc-attr(79);
                     line-height: calc-attr(79);
                     cursor: pointer;
+                    &:not(:first-child) {
+                        border-top: 1px solid rgba(49, 54, 78, 1);
+                    }
 
                     &:nth-child(7) {
                         border-top: 1px solid rgba(249, 118, 71, .5);
@@ -469,6 +485,7 @@ export default {
                         outline: calc-attr(10) solid rgba(49, 52, 78, 1);
                         background: rgba(49, 52, 78, 1);
                         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
+                        z-index: -9999;
                     }
 
                     &:hover {
@@ -561,6 +578,19 @@ export default {
                         }
                     }*/
 
+                    i.icon-del {
+                        display: none;
+                        width: calc-attr(36);
+                        height: calc-attr(36);
+                        background: url("../../../assets/images/table/t-del.png") no-repeat center;
+                        background-size: 100%;
+
+                        &:hover {
+                            background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
+                            background-size: 100%;
+                        }
+                    }
+
                     td {
                         position: relative;
 
@@ -617,7 +647,8 @@ export default {
                                     height: calc-attr(24);
                                     line-height: calc-attr(24);
                                     font-size: calc-attr(18);
-                                    font-weight: 500;
+                                    font-family: "PingFang SC";
+                                    font-weight: normal;
                                     color: rgba(255, 255, 255, .8);
                                     padding: 0px;
                                     margin: 0px;
@@ -744,19 +775,6 @@ export default {
                                     font-size: calc-attr(14);
                                     color: rgba(255, 255, 255, .5);
                                 }
-
-                                i {
-                                    display: none;
-                                    width: calc-attr(19.39);
-                                    height: calc-attr(25);
-                                    background: url("../../../assets/images/table/t-del.png") no-repeat center;
-                                    background-size: 100%;
-
-                                    &:hover {
-                                        background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
-                                        background-size: calc-attr(19.39) calc-attr(20.67);
-                                    }
-                                }
                             }
                         }
                     }
@@ -850,6 +868,19 @@ export default {
                                     background-size: calc-attr(16) calc-attr(17);
                                 }
                             }
+                        }
+                    }
+
+                    i.icon-del {
+                        display: none;
+                        width: calc-attr(36);
+                        height: calc-attr(36);
+                        background: url("../../../assets/images/table/t-del.png") no-repeat center;
+                        background-size: 100%;
+
+                        &:hover {
+                            background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
+                            background-size: 100%;
                         }
                     }
 
@@ -1010,19 +1041,6 @@ export default {
                                     display: block;
                                     font-size: calc-attr(14);
                                     color: rgba(255, 255, 255, .5);
-                                }
-
-                                i {
-                                    display: none;
-                                    width: calc-attr(19.39);
-                                    height: calc-attr(25);
-                                    background: url("../../../assets/images/table/t-del.png") no-repeat center;
-                                    background-size: 100%;
-
-                                    &:hover {
-                                        background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
-                                        background-size: calc-attr(19.39) calc-attr(20.67);
-                                    }
                                 }
                             }
                         }

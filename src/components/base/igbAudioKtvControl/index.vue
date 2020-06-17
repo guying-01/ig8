@@ -41,7 +41,9 @@
         >
           <i></i><span>播放</span>
         </div>
-        <div class="contr contr-reset"><i></i><span>重唱</span></div>
+        <div class="contr contr-reset">
+              <i></i><span id="test111">重唱</span>
+          </div>
         <div class="contr contr-cut"><i></i><span>切歌</span></div>
       </div>
       <!--音量控制-->
@@ -122,6 +124,7 @@ export default {
     }
   },
   mounted () {
+    this.showmessage()
     this.$nextTick(() => {
       let w = window.screen.width
       if (w < 1440) {

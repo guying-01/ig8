@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
  * @LastEditors  : gy
- * @LastEditTime : 2020-06-04 23:46:10
+ * @LastEditTime : 2020-06-17 23:10:14
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -25,6 +25,7 @@ import {
 import 'ant-design-vue/dist/antd.css'
 import './assets/scss/index.scss'
 import '../node_modules/font-awesome/scss/font-awesome.scss'
+import Message from './components/tools/igbMessage/index'
 // ((\.|-|\d){0,})px
 Vue.use(VueAxios, router)
 Vue.use(Antd)

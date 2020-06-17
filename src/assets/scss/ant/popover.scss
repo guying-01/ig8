@@ -2,17 +2,20 @@
 .order-ktv-popover {
     width: calc-attr(920);
     height: 100vh;
-    padding-bottom: calc-attr(109 + 61);
+    //height: calc-attr(920);
     // height:calc-attr(100vh -61px -109px);
-    left: initial !important;
+    padding-bottom: calc-attr(109 + 48);
+    left: auto !important;
     right: calc-attr(17);
-    top: calc-attr(61) !important;
-    // background: url("../images/k/yd-bg.png") no-repeat center;
-    // background-size: calc-attr(920) calc-attr(920);
+    top: calc-attr(60) !important;
+    box-shadow:0px 3px 24px rgba(0,0,0,0.5);
+    //background: url('../images/k/yd-bg.png') no-repeat center;
+    //background-size: calc-attr(920) calc-attr(920);
     .ant-popover-content {
         background: transparent;
         height: 100%;
-        overflow: hidden;
+        //overflow: hidden;
+        border-radius: 4px;
         .ant-popover-arrow {
             display: none;
         }

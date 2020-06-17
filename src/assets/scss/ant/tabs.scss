@@ -52,7 +52,7 @@
                         border-radius: 36px;
                         font-size: calc-attr(20);
                         font-family: 'PingFang-SC-Regular' !important;
-                        font-weight: 400;
+                        font-weight: normal;
                         color: rgba(255, 255, 255, .8);
                         text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
                         text-align: center;
@@ -71,7 +71,7 @@
                             background: url("../images/btn-tab-select.png") no-repeat center;
                             background-size: 100%;
                             color: rgba(255, 142, 49, 1);
-                            font-family: "PingFang-SC-MediumCoarse" !important;
+                            font-family: "PingFang SC" !important;
                         }
                     }
                     .ant-tabs-ink-bar {

@@ -121,7 +121,7 @@ export default {
 
 <style lang="scss" scoped>
 .igb-key-board-handwriting-base-component {
-  padding: 0 calc-attr(93);
+  padding: 0 calc-attr(92) 0 calc-attr(104);
   // width: calc(100% - 186px);
   margin: 0 auto;
   display: flex;
@@ -144,10 +144,10 @@ export default {
     left: calc-attr(98);
 
     span {
-      margin-right: calc-attr(35);
+      margin-right: calc-attr(30);
 
       font-size: calc-attr(24);
-      font-weight: 400;
+      font-weight: normal;
       color: rgba(255, 142, 50, 1);
 
       cursor: pointer;
@@ -160,7 +160,8 @@ export default {
 
   //680
   .handwriting-panel {
-    // width: calc(45.46% - 21px);
+    //width: calc(45.46% - 21px);
+      width: calc-attr(680);
     padding: 0 calc-attr(10.5);
     background: rgba(36, 40, 67, 1);
     border: 2px solid rgba(54, 58, 90, 1);
@@ -177,14 +178,14 @@ export default {
       width: calc-attr(680);
       height: calc-attr(240);
       background-image: url("../../../assets/images/ige8.png");
-      background-size: contain;
+      //background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
     }
   }
 
   .handwriting-keys {
-    width: 54.54%;
+    //width: 54.54%;
     margin-left: calc-attr(21);
 
     .handwriting {
@@ -202,11 +203,12 @@ export default {
         margin-bottom: calc-attr(12);
 
         span {
-          width: calc(15.48% - 12px);
+          //width: calc(15.48% - 12px);
 
           //184
           &:last-child {
-            width: 22.56%;
+            //width: 22.56%;
+              width: calc-attr(184);
           }
 
           img {
@@ -220,11 +222,12 @@ export default {
         margin-bottom: calc-attr(12);
 
         span {
-          width: calc(15.67% - 12px);
+          //width: calc(15.67% - 12px);
 
           //304
           &:last-child {
-            width: 37.31%;
+            //width: 37.31%;
+              width: calc-attr(304);
           }
 
           img {
@@ -239,8 +242,11 @@ export default {
 
         span {
           //228
+            margin-right: calc-attr(13);
           &:first-child {
-            width: calc(29.47% - 12px);
+            //width: calc(29.47% - 12px);
+              width: calc-attr(228);
+              margin-right: calc-attr(17);
 
             img {
               margin-right: calc-attr(11);
@@ -251,17 +257,20 @@ export default {
 
           //136
           &:nth-child(2) {
-            width: calc(18.2% - 12px);
+            //width: calc(18.2% - 12px);
+              width: calc-attr(136);
           }
 
           //114
           &:nth-child(3) {
-            width: calc(15.5% - 12px);
+            //width: calc(15.5% - 12px);
+              width: calc-attr(114);
           }
 
           //263
           &:last-child {
-            width: 36.83%;
+            //width: 36.83%;
+              width: calc-attr(263);
 
             img {
               width: calc-attr(30.16);
@@ -272,7 +281,7 @@ export default {
       }
 
       span {
-        width: auto;
+          width: calc-attr(108);
         height: auto;
         display: flex;
         align-items: center;

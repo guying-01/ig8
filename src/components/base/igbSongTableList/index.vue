@@ -108,7 +108,7 @@ export default {
                 align-items: center;
                 justify-content: center;
                 font-size: calc-attr(16);
-                font-weight: 400;
+                font-weight: normal;
                 height: calc-attr(80);
                 font-family: 'PingFang-SC-Regular';
                 text-align: center;
@@ -166,7 +166,7 @@ export default {
                         height: calc-attr(24);
                         line-height: calc-attr(24);
                         font-size: calc-attr(18);
-                        font-weight: 500;
+                        font-weight: normal;
                         color: rgba(255, 255, 255, .8);
                         padding: 0px;
                         margin: 0px;

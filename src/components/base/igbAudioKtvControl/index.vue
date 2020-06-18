@@ -22,11 +22,7 @@
     <div class="foo-controller">
       <!--歌曲信息-->
       <div class="singer-info">
-        <img
-          src="../../../assets/images/song-avatar.png"
-          width="80"
-          height="80"
-        />
+        <img src="../../../assets/images/song-avatar.png"/>
         <div>
           <h2>南方姑娘</h2>
           <a href="javascript:;">赵雷</a>
@@ -174,7 +170,7 @@ export default {
         let btnWidth = this.$refs.btnProgress.offsetWidth
         let progress = (currTime / musicTime) * 100
         this.progress = `${progress}%`
-        if (playWidth > btnWidth) {
+        if (playWidth > btnWidth/2) {
           this.btnProgress = true
         }
         this.getPlayerTime(currTime, 'curr')
@@ -318,6 +314,7 @@ export default {
         -moz-border-radius: 12px;
         -ms-border-radius: 12px;
         -o-border-radius: 12px;
+          margin-right: -24px;
       }
     }
 
@@ -355,10 +352,10 @@ export default {
     }
 
     .singer-info {
-      width:calc-attr(515);
+      width:calc-attr(522);
 
       img {
-        border: 2px solid rgba(255, 255, 255, 0.09803921568627452);
+        border: 4px solid rgba(255, 255, 255, 0.09803921568627452);
         border-radius: 4px;
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
@@ -366,9 +363,11 @@ export default {
         -o-border-radius: 4px;
         margin-right: calc-attr(20);
         margin-left: calc-attr(40);
+          width: calc-attr(88);
+          height: calc-attr(88);
 
         &:hover {
-          border: 2px solid rgba(255, 255, 255, 0.2);
+          border: 4px solid rgba(255, 255, 255, 0.2);
         }
       }
 
@@ -401,9 +400,10 @@ export default {
     /* 播放控制 */
     .player-controller {
       .contr {
-        width:calc-attr(40);
-        margin-right:calc-attr(45);
+        //width:calc-attr(30);
+        margin-right:calc-attr(51);
         cursor: pointer;
+          text-align: center;
 
         &:last-child {
           margin-right: 0px;
@@ -412,6 +412,8 @@ export default {
         i {
           display: block;
           margin: 0 auto;
+            width:calc-attr(36);
+            height:calc-attr(36);
         }
 
         span {
@@ -419,7 +421,8 @@ export default {
           font-size:calc-attr(14);
           font-weight: 500;
           color: rgba(255, 153, 37, 1);
-          padding-top:calc-attr(9);
+          padding-top:calc-attr(2);
+            padding-bottom:calc-attr(8);
         }
 
         &:hover {
@@ -431,8 +434,6 @@ export default {
 
       .contr-play {
         i {
-          width:calc-attr(19.77);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-play.png") no-repeat
             center center;
           background-size: 100%;
@@ -449,8 +450,6 @@ export default {
 
       .contr-pause {
         i {
-          width:calc-attr(19.77);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-pause.png") no-repeat
             center center;
           background-size: 100%;
@@ -466,9 +465,8 @@ export default {
       }
 
       .contr-reset {
+          margin-right:calc-attr(54);
         i {
-          width:calc-attr(24.82);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-reset.png") no-repeat
             center;
           background-size: 100%;
@@ -485,8 +483,6 @@ export default {
 
       .contr-cut {
         i {
-          width:calc-attr(21.87);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-cut.png") no-repeat center;
           background-size: 100%;
         }
@@ -503,11 +499,10 @@ export default {
 
     /* 音量控制 */
     .volume-controller {
-      margin-left:calc-attr(120);
+      margin-left:calc-attr(121);
 
       .contr {
-        width:calc-attr(40);
-        margin-right:calc-attr(45);
+        margin-right:calc-attr(52);
         cursor: pointer;
 
         &:last-child {
@@ -517,6 +512,8 @@ export default {
         i {
           display: block;
           margin: 0 auto;
+            width:calc-attr(36);
+            height:calc-attr(36);
         }
 
         span {
@@ -524,7 +521,9 @@ export default {
           font-size:calc-attr(14);
           font-weight: 500;
           color: rgba(255, 153, 37, 1);
-          padding-top:calc-attr(9);
+          padding-top:calc-attr(2);
+            padding-bottom: calc-attr(8);
+            text-align: center;
         }
 
         &:hover {
@@ -536,8 +535,6 @@ export default {
 
       .contr-nov {
         i {
-          width:calc-attr(26.44);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-nov.png") no-repeat center
             center;
           background-size: 100%;
@@ -553,13 +550,12 @@ export default {
       }
 
       .contr-ova {
+          margin-right:calc-attr(56);
         > span {
           padding: 0px !important;
         }
 
         i {
-          width:calc-attr(30.85);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-ova.png") no-repeat center;
           background-size: 100%;
         }
@@ -579,8 +575,6 @@ export default {
         }
 
         i {
-          width:calc-attr(30.85);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-ovd.png") no-repeat center;
           background-size: 100%;
         }
@@ -597,11 +591,10 @@ export default {
 
     /* 歌曲控制 */
     .song-controller {
-      margin-left:calc-attr(120);
+      margin-left:calc-attr(113);
 
       .contr {
-        width:calc-attr(40);
-        margin-right:calc-attr(45);
+        margin-right:calc-attr(55);
         position: relative;
         cursor: pointer;
 
@@ -611,8 +604,8 @@ export default {
           line-height:calc-attr(24);
           text-align: center;
           position: absolute;
-          right:calc-attr(-15);
-          top:calc-attr(-15);
+          right:calc-attr(-14);
+          top:calc-attr(-9);
           background: url("../../../assets/images/d.png") no-repeat center;
           background-size: 100% 100%;
           font-size:calc-attr(14);
@@ -629,6 +622,8 @@ export default {
         i {
           display: block;
           margin: 0 auto;
+            width:calc-attr(36);
+            height:calc-attr(36);
         }
 
         span {
@@ -636,7 +631,9 @@ export default {
           font-size:calc-attr(14);
           font-weight: 500;
           color: rgba(255, 153, 37, 1);
-          padding-top:calc-attr(9);
+          padding-top:calc-attr(2);
+            padding-bottom: calc-attr(8);
+            text-align: center;
         }
 
         &:hover {
@@ -648,8 +645,6 @@ export default {
 
       .contr-ly {
         i {
-          width:calc-attr(26.97);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-ly.png") no-repeat center
             center;
           background-size: 100%;
@@ -665,9 +660,8 @@ export default {
       }
 
       .contr-sc {
+          margin-right:calc-attr(51);
         i {
-          width:calc-attr(27.35);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-sc.png") no-repeat center;
           background-size: 100%;
         }
@@ -682,9 +676,8 @@ export default {
       }
 
       .contr-qf {
+          margin-right:calc-attr(52);
         i {
-          width:calc-attr(27.09);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-qf.png") no-repeat center;
           background-size: 100%;
         }
@@ -704,8 +697,6 @@ export default {
         }
 
         i {
-          width:calc-attr(24.49);
-          height:calc-attr(27);
           background: url("../../../assets/images/k/k-yd.png") no-repeat center;
           background-size: 100%;
         }
@@ -722,7 +713,7 @@ export default {
 
     .song-switch {
       align-items: center;
-      margin-left:calc-attr(70);
+      margin-left:calc-attr(73);
 
       &:hover {
         span {

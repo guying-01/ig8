@@ -110,7 +110,7 @@ export default {
 
 <style lang="scss" scoped>
 .igb-key-board-digital-base-component {
-  padding: 0 calc-attr(93);
+  padding: 0 calc-attr(97);
   // width: calc(100% - 186px);
   margin: 0 auto;
 
@@ -129,7 +129,8 @@ export default {
 
       span {
         &:first-child {
-          width: calc(87.65% - 12px);
+          //width: calc(87.65% - 12px);
+            width: calc-attr(1296);
           background: none !important;
           box-shadow: none !important;
 
@@ -160,7 +161,7 @@ export default {
         }
 
         &:last-child {
-          width: 12.35%;
+          width: calc-attr(184);
         }
 
         img {
@@ -174,10 +175,12 @@ export default {
       margin-bottom: calc-attr(12);
 
       span {
-        width: calc(8% - 12px);
+        //width: calc(8% - 12px);
+          width: calc-attr(108);
 
         &:last-child {
-          width: 19.69%;
+          //width: 19.69%;
+            width: calc-attr(294);
         }
 
         img {
@@ -191,26 +194,31 @@ export default {
       margin-bottom: calc-attr(27);
 
       span {
-        width: calc(8% - 12px);
+        //width: calc(8% - 12px);
+          width: calc-attr(108);
 
         //159
         &:first-child {
-          width: calc(11.45% - 12px);
+          //width: calc(11.45% - 12px);
+            width: calc-attr(159);
         }
 
         //270
         &:nth-child(5) {
-          width: calc(18.86% - 12px);
+          //width: calc(18.86% - 12px);
+            width: calc-attr(270);
         }
 
         //167
         &:nth-child(8) {
-          width: calc(12% - 12px);
+          //width: calc(12% - 12px);
+            width: calc-attr(167);
         }
 
         //263
         &:last-child {
-          width: 17.63%;
+          //width: 17.63%;
+            width: calc-attr(263);
         }
 
         img {

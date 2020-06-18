@@ -135,7 +135,7 @@ export default {
 
 <style lang="scss" scoped>
 .igb-key-board-letter-base-component {
-  padding: 0 calc-attr(93);
+  padding: 0 calc-attr(92) 0 calc-attr(95);
   width: 100%;
   // width: calc(100% - 186px);
   margin: 0 auto;
@@ -194,7 +194,7 @@ export default {
     .result-line {
       width: 0px;
       height: calc-attr(24);
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-left: 2px solid rgba(255, 255, 255, 0.1);
       margin: 0px calc-attr(45) 0px calc-attr(50);
     }
   }
@@ -207,6 +207,7 @@ export default {
 
     .key-item,
     .key-item-icon {
+        width: calc-attr(108);
       height: calc-attr(72);
     }
 
@@ -215,7 +216,6 @@ export default {
       margin-bottom: calc-attr(12);
 
       span {
-        width: calc(8% - 12px);
 
         &.disabled {
           background: rgba(54, 58, 90, 1);
@@ -225,7 +225,8 @@ export default {
 
         //293
         &:last-child {
-          width: calc(20.4% - 12px);
+          //width: calc(20.4% - 12px);
+            width: calc-attr(293);
         }
 
         img {
@@ -239,8 +240,6 @@ export default {
       margin-bottom: calc-attr(12);
 
       span {
-        width: calc(8% - 12px);
-
         &.disabled {
           background: rgba(54, 58, 90, 1);
           color: rgba(255, 255, 255, 0.2);
@@ -249,7 +248,8 @@ export default {
 
         //360
         &:last-child {
-          width: calc(24.9% - 12px);
+          //width: calc(24.9% - 12px);
+            width: calc-attr(360);
         }
 
         img {
@@ -263,8 +263,6 @@ export default {
       margin-bottom: calc-attr(27);
 
       span {
-        width: calc(8% - 12px);
-
         &.disabled {
           background: rgba(54, 58, 90, 1);
           color: rgba(255, 255, 255, 0.2);
@@ -273,17 +271,20 @@ export default {
 
         //159
         &:first-child {
-          width: calc(11.4% - 12px);
+          //width: calc(11.4% - 12px);
+            width: calc-attr(159);
         }
 
         //167
         &:nth-child(9) {
-          width: calc(12% - 12px);
+          //width: calc(12% - 12px);
+            width: calc-attr(167);
         }
 
         //306
         &:last-child {
-          width: calc(21.3% - 12px);
+          //width: calc(21.3% - 12px);
+            width: calc-attr(306);
         }
 
         img {

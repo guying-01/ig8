@@ -71,7 +71,7 @@ export default {
         {
           name: '周杰伦',
           type: '华语男星',
-          current: true
+          current: false
         },
         {
           name: '韩红',
@@ -208,7 +208,7 @@ export default {
       background-size: 100%;
       font-size: calc-attr(24);
       font-family: "PingFang-SC-Regular";
-      font-weight: 400;
+      font-weight: normal;
       color: rgba(255, 255, 255, 0.8);
       text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
       cursor: pointer;
@@ -226,7 +226,7 @@ export default {
         background: url("../../assets/images/tab/a2s.png") no-repeat center;
         background-size: 100%;
         color: rgba(252, 144, 45, 1);
-        font-weight: 600;
+        font-weight: 400;
       }
 
       &:first-child {
@@ -244,7 +244,7 @@ export default {
           background: url("../../assets/images/tab/l2s.png") no-repeat center;
           background-size: 100%;
           color: rgba(252, 144, 45, 1);
-          font-weight: 600;
+          font-weight: 400;
         }
       }
 
@@ -262,7 +262,7 @@ export default {
           background: url("../../assets/images/tab/r2s.png") no-repeat center;
           background-size: 100%;
           color: rgba(252, 144, 45, 1);
-          font-weight: 600;
+          font-weight: 400;
         }
       }
     }

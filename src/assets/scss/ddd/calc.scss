@@ -5,3 +5,9 @@
   $res:  round($value / 1920 * 10000) /100 * 1vw;
   @return #{$res};
 }
+
+@function calc-card-width($value){
+    $res:  round($value / 1920 * 10000) /100 * 1vw;
+    $res: calc((#{$res} - 8px)/5);
+    @return #{$res};
+}

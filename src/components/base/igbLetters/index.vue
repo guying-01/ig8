@@ -183,7 +183,7 @@ export default {
         width: calc-attr(60);
         height: auto;
         font-size: calc-attr(20);
-        font-family: Source Han Sans CN;
+        font-family: Arial;
         font-weight: 400;
         color: rgba(255, 255, 255, .5);
         text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
@@ -202,52 +202,4 @@ export default {
         }
     }
 }
-
-// @media (max-width : 1680px) {
-//     .igb-letters-base-component {
-//         span {
-//             font-size: 18px;
-//         }
-//     }
-// }
-
-// @media (max-width : 1600px) {
-//     .igb-letters-base-component {
-//         span {
-//             font-size: 18px;
-//         }
-//     }
-// }
-
-// @media (max-width : 1440px) {
-//     .igb-letters-base-component {
-//         span {
-//             font-size: 16px;
-//         }
-//     }
-// }
-
-// @media (max-width : 1366px) {
-//     .igb-letters-base-component {
-//         span {
-//             font-size: 12px;
-//         }
-//     }
-// }
-
-// @media (max-width : 1280px) {
-//     .igb-letters-base-component {
-//         span {
-//             font-size: 12px;
-//         }
-//     }
-// }
-
-// @media (max-width : 1024px) {
-//     .igb-letters-base-component {
-//         span {
-//             font-size: 12px;
-//         }
-//     }
-// }
 </style>

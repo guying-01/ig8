@@ -4,6 +4,7 @@
             display: none;
         }
         .ant-tooltip-inner {
+            min-width: 10px;
             width: calc-attr(35);
             height: calc-attr(162);
             background: url("../images/k/vom-bg.png") no-repeat center;
@@ -30,3 +31,4 @@
         }
     }
 }
+.ant-tooltip-placement-top, .ant-tooltip-placement-topLeft, .ant-tooltip-placement-topRight{padding-bottom: calc-attr(7);}

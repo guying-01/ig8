@@ -117,8 +117,8 @@ export default {
 
                 i {
                     flex: 1;
-                    width: calc-attr(14);
-                    height: calc-attr(14);
+                    width: calc-attr(15);
+                    height: calc-attr(15);
                     background: url("../../../assets/images/form-error.png") no-repeat center right;
                     background-size: calc-attr(14) calc-attr(14);
                     margin-right: calc-attr(9);

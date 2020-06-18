@@ -100,12 +100,13 @@ export default {
 
   > div {
     height: calc-attr(136);
-    padding-top: calc-attr(26);
-    padding-left: calc-attr(27);
-    width: calc-attr(320);
+    padding-top: calc-attr(27);
+    padding-left: calc-attr(16);
+    width: calc-card-width(1609);
+    //width: calc-attr(320);
     // width: calc(20% - 2px);
     margin-bottom: 2px;
-    margin-right: calc-attr(2);
+    margin-right: 2px;
     background: rgba(255, 255, 255, 0.06);
     opacity: 1;
 
@@ -125,13 +126,14 @@ export default {
       background-size: cover;
 
       .item-box {
-        width: calc(100% - 71px) !important;
-        height: calc-attr(48);
-        margin: 0 auto auto auto !important;
-        margin-top: calc-attr(37);
+        //width: calc(100% - 71px) !important;
+        height: calc-attr(49);
+        //margin: 0 auto auto auto !important;
+          margin-left: calc-attr(20);
+          margin-top: calc-attr(10);
         background: url("../../../assets/images/xingepaihangbang.png") no-repeat
           center;
-        background-size: 100%;
+        background-size: calc-attr(249) calc-attr(48);
       }
     }
 
@@ -140,12 +142,11 @@ export default {
       background-size: cover;
 
       .item-box {
-        width: calc(100% - 71px) !important;
-        height: calc-attr(48);
-        margin: 0 auto auto auto !important;
-        margin-top: calc-attr(37);
+        height: calc-attr(49);
+          margin-left: calc-attr(20);
+          margin-top: calc-attr(10);
         background: url("../../../assets/images/huayubang.png") no-repeat center;
-        background-size: 100%;
+        background-size: calc-attr(249) calc-attr(48);
       }
     }
 
@@ -221,23 +222,30 @@ export default {
             }*/
 
       .item-box {
-        width: calc(100% - 32px);
+        //width: calc(100% - 32px);
+          //width: calc-attr(249);
         // margin: 25px auto auto auto;
         display: flex;
         position: relative;
 
         &.item-box-not-num {
-          width: calc(100% - 58px);
+            padding-left: calc-attr(11);
+            .icon-collect {
+                right: calc-attr(26) !important;
+            }
+          //width: calc(100% - 58px);
         }
 
         .number {
           font-size: calc-attr(18);
-          font-family: "PingFang-SC-Regular";
-          font-weight: 400;
+          font-family: "Arial";
           height: calc-attr(27);
           width: calc-attr(27);
           color: rgba(255, 255, 255, 0.4);
-          padding-right: calc-attr(11);
+          padding-right: calc-attr(9);
+          span{
+              font-family: "Arial";
+          }
 
           img {
             width: calc-attr(15.77);
@@ -251,8 +259,8 @@ export default {
             width: calc-attr(135);
             line-height: calc-attr(27);
             font-size: calc-attr(20);
-            font-family: "PingFang-SC-Regular";
-            font-weight: 500;
+            font-family: "PingFang SC";
+            font-weight: normal;
             color: rgba(255, 255, 255, 0.8);
             overflow: hidden;
             text-overflow: ellipsis;
@@ -262,7 +270,7 @@ export default {
           p {
             font-size: calc-attr(14);
             font-family: "PingFang-SC-Regular";
-            font-weight: 400;
+            font-weight: normal;
             color: rgba(255, 255, 255, 0.7);
             //opacity: 0.7;
             margin-top: 6px;
@@ -307,7 +315,7 @@ export default {
             background-size: 100%;
 
             position: absolute;
-            right: 0;
+            right: calc-attr(45);
             bottom: 0;
             z-index: 10;
             opacity: 0.5;
@@ -324,264 +332,4 @@ export default {
     }
   }
 }
-
-// @media (max-width: 1680px) {
-//   .igb-song-card-list-base-component {
-//     > div {
-//       &.song-card-list-item {
-//         .item-box {
-//           .number {
-//             font-size: 16px;
-//           }
-
-//           .info {
-//             h3 {
-//               font-size: 18px;
-//               width: 170px;
-//               height: 20px;
-//               line-height: 20px;
-//             }
-
-//             p {
-//               font-size: 12px;
-//               margin-top: 6px;
-//               height: 16px;
-//               line-height: 16px;
-
-//               span {
-//                 height: 16px;
-//                 line-height: 16px;
-
-//                 &:first-child {
-//                   max-width: 110px;
-//                 }
-//               }
-//             }
-
-//             span.tag {
-//               margin-top: 6px;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 1600px) {
-//   .igb-song-card-list-base-component {
-//     > div {
-//       &.song-card-list-item {
-//         .item-box {
-//           .number {
-//             font-size: 16px;
-//           }
-
-//           .info {
-//             h3 {
-//               font-size: 18px;
-//               width: 170px;
-//               height: 20px;
-//               line-height: 20px;
-//             }
-
-//             p {
-//               font-size: 12px;
-//               margin-top: 6px;
-//               height: 16px;
-//               line-height: 16px;
-
-//               span {
-//                 height: 16px;
-//                 line-height: 16px;
-
-//                 &:first-child {
-//                   max-width: 110px;
-//                 }
-//               }
-//             }
-
-//             span.tag {
-//               margin-top: 6px;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 1440px) {
-//   .igb-song-card-list-base-component {
-//     > div {
-//       &.song-card-list-item {
-//         .item-box {
-//           .number {
-//             font-size: 16px;
-//           }
-
-//           .info {
-//             h3 {
-//               font-size: 16px;
-//               width: 170px;
-//               height: 20px;
-//               line-height: 20px;
-//             }
-
-//             p {
-//               font-size: 12px;
-//               margin-top: 4px;
-//               height: 16px;
-//               line-height: 16px;
-
-//               span {
-//                 height: 16px;
-//                 line-height: 16px;
-
-//                 &:first-child {
-//                   max-width: 110px;
-//                 }
-//               }
-//             }
-
-//             span.tag {
-//               margin-top: 3px;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 1366px) {
-//   .igb-song-card-list-base-component {
-//     > div {
-//       &.song-card-list-item {
-//         .item-box {
-//           .number {
-//             font-size: 16px;
-//           }
-
-//           .info {
-//             h3 {
-//               font-size: 16px;
-//               width: 150px;
-//               height: 20px;
-//               line-height: 20px;
-//             }
-
-//             p {
-//               font-size: 12px;
-//               margin-top: 4px;
-//               height: 16px;
-//               line-height: 16px;
-
-//               span {
-//                 height: 16px;
-//                 line-height: 16px;
-
-//                 &:first-child {
-//                   max-width: 80px;
-//                 }
-//               }
-//             }
-
-//             span.tag {
-//               margin-top: 3px;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 1280px) {
-//   .igb-song-card-list-base-component {
-//     > div {
-//       &.song-card-list-item {
-//         .item-box {
-//           .number {
-//             font-size: 16px;
-//           }
-
-//           .info {
-//             h3 {
-//               font-size: 16px;
-//               width: 140px;
-//               height: 20px;
-//               line-height: 20px;
-//             }
-
-//             p {
-//               font-size: 12px;
-//               margin-top: 4px;
-//               height: 16px;
-//               line-height: 16px;
-
-//               span {
-//                 height: 16px;
-//                 line-height: 16px;
-
-//                 &:first-child {
-//                   max-width: 80px;
-//                 }
-//               }
-//             }
-
-//             span.tag {
-//               margin-top: 3px;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 1024px) {
-//   .igb-song-card-list-base-component {
-//     > div {
-//       width: calc(25% - 2px);
-
-//       &.song-card-list-item {
-//         .item-box {
-//           .number {
-//             font-size: 14px;
-//           }
-
-//           .info {
-//             h3 {
-//               font-size: 16px;
-//               width: 130px;
-//               height: 20px;
-//               line-height: 20px;
-//             }
-
-//             p {
-//               font-size: 12px;
-//               margin-top: 4px;
-//               height: 16px;
-//               line-height: 16px;
-
-//               span {
-//                 height: 16px;
-//                 line-height: 16px;
-
-//                 &:first-child {
-//                   max-width: 60px;
-//                 }
-//               }
-//             }
-
-//             span.tag {
-//               margin-top: 3px;
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
 </style>

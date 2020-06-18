@@ -66,8 +66,8 @@ export default {
       visible: false,
       isPlay: false,
       totalProgress: '80%',
-      progress: '0%',
-      btnProgress: false,
+      progress: '20%',
+      btnProgress: true,
       btnWidth: 0,
       totalTime: '00:00',
       currentTotalTime: '00:00',
@@ -129,7 +129,7 @@ export default {
         let btnWidth = this.$refs.btnProgress.offsetWidth
         let progress = (currTime / musicTime) * 100
         this.progress = `${progress}%`
-        if (playWidth > btnWidth) {
+        if (playWidth > btnWidth/2) {
           this.btnProgress = true
         }
         this.getPlayerTime(currTime, 'curr')
@@ -261,6 +261,8 @@ export default {
                 -moz-border-radius: 12px;
                 -ms-border-radius: 12px;
                 -o-border-radius: 12px;
+                cursor: pointer;
+                margin-right: -24px;
             }
         }
 
@@ -280,8 +282,8 @@ export default {
         align-items: center;
         height: 100%;
         min-height: 100%;
-        justify-content: space-between;
-        padding-right:calc-attr(23);
+        //justify-content: space-between;
+        //padding-right:calc-attr(23);
         img {
             cursor: pointer;
         }
@@ -299,7 +301,7 @@ export default {
         }
 
         .singer-info {
-            width:calc-attr(388);
+            width:calc-attr(361);
 
             img {
               width:calc-attr(80);
@@ -352,25 +354,25 @@ export default {
 
                 i {
                     display: block;
-                    width:calc-attr(60);
-                    height:calc-attr(60);
+                    width:calc-attr(114);
+                    height:calc-attr(114);
                     cursor: pointer;
 
                 }
             }
 
             .contr-prev {
-                margin-right:calc-attr(54);
+                margin-right:calc-attr(7);
 
                 i {
-                    width:calc-attr(17.39);
-                    height:calc-attr(19.24);
-                    background: url("../../../assets/images/p/play-left.png") no-repeat center;
-                    background-size: 100%;
+                    width:calc-attr(55);
+                    height:calc-attr(56);
+                    background: url("../../../assets/images/p/play-left.png") no-repeat center center;
+                    background-size: calc-attr(17.39)calc-attr(19.24);
 
                     &:hover {
-                        box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.45);
-                        background: rgba(255, 136, 56, .1) url("../../../assets/images/p/play-left-hover.png") no-repeat center;
+                        //box-shadow: 0px 0px 18px rgba(255, 136, 56, 0.45);
+                        background: url("../../../assets/images/p/play-left-hover.png") no-repeat center center;
                         background-size: 100%;
                     }
                 }
@@ -380,21 +382,21 @@ export default {
                 position: relative;
 
                 i {
-                    background: url("../../../assets/images/p/play-start.png") no-repeat center;
-                    background-size: 100%;
+                    background: url("../../../assets/images/p/play-start.png") no-repeat center center;
+                    background-size: calc-attr(60)calc-attr(60);
 
                     &:hover {
-                        background: url("../../../assets/images/p/play-start-hover.png") no-repeat center;
+                        background: url("../../../assets/images/p/play-start-hover.png") no-repeat center center;
                         background-size: 100%;
 
                         &::after {
                             content: " ";
                             border-radius: 50%;
                             display: block;
-                            width:calc-attr(60);
-                            height:calc-attr(60);
+                            width:calc-attr(114);
+                            height:calc-attr(114);
                             border: 1px solid transparent;
-                            box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.45);
+                            //box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.45);
                             position: absolute;
                             top: 0px;
                             left: 0px;
@@ -412,23 +414,23 @@ export default {
 
                     &:hover {
                         background: url("../../../assets/images/p/play-end-hover.png") no-repeat center;
-                        background-size:calc-attr(60)calc-attr(60);
+                        background-size:100%;
                     }
                 }
             }
 
             .contr-next {
-                margin-left:calc-attr(54);
+                margin-left:calc-attr(7);
 
                 i {
-                    width:calc-attr(17.39);
-                    height:calc-attr(19.24);
-                    background: url("../../../assets/images/p/play-right.png") no-repeat center;
-                    background-size: 100%;
+                    width:calc-attr(55);
+                    height:calc-attr(56);
+                    background: url("../../../assets/images/p/play-right.png") no-repeat center center;
+                    background-size: calc-attr(17.39)calc-attr(19.24);
 
                     &:hover {
-                        box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.45);
-                        background: rgba(255, 136, 56, 0.1) url("../../../assets/images/p/play-right-hover.png") no-repeat center;
+                        //box-shadow: 0px 0px calc-attr(18) rgba(255, 136, 56, 0.45);
+                        background:url("../../../assets/images/p/play-right-hover.png") no-repeat center center;
                         background-size: 100%;
                     }
                 }
@@ -445,18 +447,18 @@ export default {
             }
 
             .contr-vom {
-                margin-left:calc-attr(238);
+                margin-left:calc-attr(222);
 
                 i {
                     display: block;
-                    width:calc-attr(22.96);
-                    height:calc-attr(23.33);
+                    width:calc-attr(24);
+                    height:calc-attr(24);
                     background: url("../../../assets/images/p/play-yinliang.png") no-repeat center;
-                    background-size:calc-attr(22.96)calc-attr(23.33);
+                    background-size:calc-attr(22)calc-attr(23.33);
 
                     &:hover {
                         background: url("../../../assets/images/p/play-yinliang-hover.png") no-repeat center;
-                        background-size:calc-attr(22.96)calc-attr(23.33);
+                        background-size:calc-attr(22)calc-attr(23.33);
                     }
                 }
             }
@@ -472,7 +474,7 @@ export default {
 
         /* 歌曲控制 */
         .song-controller {
-            margin-left:calc-attr(145);
+            margin-left:calc-attr(146);
 
             .contr {
                 position: relative;
@@ -480,7 +482,7 @@ export default {
 
                 i {
                     display: block;
-                    height:calc-attr(27);
+                    height:calc-attr(36);
                 }
 
                 span {
@@ -489,7 +491,8 @@ export default {
                     line-height:calc-attr(20);
                     font-size:calc-attr(14);
                     color: rgba(255, 255, 255, .7);
-                    margin-top:calc-attr(8);
+                    margin-top:calc-attr(2);
+                    text-align: center;
                 }
 
                 .d {
@@ -498,8 +501,8 @@ export default {
                     line-height:calc-attr(24);
                     text-align: center;
                     position: absolute;
-                    right:calc-attr(-15);
-                    top:calc-attr(-15);
+                    right:calc-attr(-10);
+                    top:calc-attr(-10);
                     background: url("../../../assets/images/d.png") no-repeat center;
                     background-size: 100% 100%;
                     font-size:calc-attr(14);
@@ -512,18 +515,17 @@ export default {
             }
 
             .contr-cc {
-                padding-right:calc-attr(20);
+                margin-right:calc-attr(37);
 
                 i {
-                    width:calc-attr(24.82);
-                    background: url("../../../assets/images/p/play-cc.png") no-repeat;
+                    width:calc-attr(36);
+                    background: url("../../../assets/images/p/play-cc.png") no-repeat center center;
                     background-size: 100%;
-
                 }
 
                 &:hover {
                     i {
-                        background: url("../../../assets/images/p/play-cc-h.png") no-repeat;
+                        background: url("../../../assets/images/p/play-cc-h.png") no-repeat center center;
                         background-size: 100%;
                     }
 
@@ -534,17 +536,17 @@ export default {
             }
 
             .contr-ly {
-                padding-right:calc-attr(20);
+                margin-right:calc-attr(37);
 
                 i {
-                    width:calc-attr(26.97);
-                    background: url("../../../assets/images/p/play-ly.png") no-repeat;
+                    width:calc-attr(36);
+                    background: url("../../../assets/images/p/play-ly.png") no-repeat center center;
                     background-size: 100%;
                 }
 
                 &:hover {
                     i {
-                        background: url("../../../assets/images/p/play-ly-h.png") no-repeat;
+                        background: url("../../../assets/images/p/play-ly-h.png") no-repeat center center;
                         background-size: 100%;
                     }
 
@@ -555,17 +557,17 @@ export default {
             }
 
             .contr-sc {
-                padding-right:calc-attr(20);
+                margin-right:calc-attr(37);
 
                 i {
-                    width:calc-attr(27.35);
-                    background: url("../../../assets/images/p/play-sc.png") no-repeat;
+                    width:calc-attr(36);
+                    background: url("../../../assets/images/p/play-sc.png") no-repeat center center;
                     background-size: 100%;
                 }
 
                 &:hover {
                     i {
-                        background: url("../../../assets/images/p/play-sc-h.png") no-repeat;
+                        background: url("../../../assets/images/p/play-sc-h.png") no-repeat center center;
                         background-size: 100%;
                     }
 
@@ -576,17 +578,17 @@ export default {
             }
 
             .contr-xh {
-                padding-right:calc-attr(20);
+                margin-right:calc-attr(37);
 
                 i {
-                    width:calc-attr(26.97);
-                    background: url("../../../assets/images/p/play-xh.png") no-repeat;
+                    width:calc-attr(36);
+                    background: url("../../../assets/images/p/play-xh.png") no-repeat center center;
                     background-size: 100%;
                 }
 
                 &:hover {
                     i {
-                        background: url("../../../assets/images/p/play-xh-h.png") no-repeat;
+                        background: url("../../../assets/images/p/play-xh-h.png") no-repeat center center;
                         background-size: 100%;
                     }
 
@@ -606,14 +608,14 @@ export default {
                 }
 
                 i {
-                    width:calc-attr(24.49);
-                    background: url("../../../assets/images/p/play-yd.png") no-repeat;
+                    width:calc-attr(36);
+                    background: url("../../../assets/images/p/play-yd.png") no-repeat center center;
                     background-size: 100%;
                 }
 
                 &:hover {
                     i {
-                        background: url("../../../assets/images/p/play-yd-h.png") no-repeat;
+                        background: url("../../../assets/images/p/play-yd-h.png") no-repeat center center;
                         background-size: 100%;
                     }
 
@@ -676,1411 +678,4 @@ export default {
         }
     }
 }
-
-// @media (max-width : 1680px) {
-//     .igb-audio-family-control-base-component {
-//         width: 100%;
-//         height: 100%;
-//         min-height: 100%;
-//         position: relative;
-
-//         .singer-progress {
-//             position: relative;
-//             width: 100%;
-//             height: 2px;
-//             margin-top: -1px;
-
-//             .progress-box {
-//                 width: 100%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2000;
-//             }
-
-//             .progress-singer {
-//                 width: 80%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.2;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2001;
-//             }
-
-//             .progress-play {
-//                 width: 60%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                 opacity: 1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2002;
-
-//                 .progress-btn {
-//                     width: auto;
-//                     height: auto;
-//                     min-height: auto;
-//                     padding: 0px 8px;
-//                     background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                     opacity: 1;
-//                     border-radius: 12px;
-//                     text-align: center;
-//                     font-size: 12px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     color: rgba(34, 42, 55, 1);
-//                     margin-top: -9px;
-//                     -webkit-border-radius: 12px;
-//                     -moz-border-radius: 12px;
-//                     -ms-border-radius: 12px;
-//                     -o-border-radius: 12px;
-//                 }
-//             }
-
-//             .progress-time {
-//                 position: absolute;
-//                 right: 10px;
-//                 top: 10px;
-//                 font-size: 12px;
-//                 font-family: 'PingFang-SC-Regular';
-//                 color: rgba(255, 255, 255, 1);
-//                 opacity: 0.5;
-//             }
-//         }
-
-//         .foo-controller {
-//             display: flex;
-//             align-items: center;
-//             height: 100%;
-//             min-height: 100%;
-
-//             img {
-//                 cursor: pointer;
-//             }
-
-//             /* 歌曲信息样式 */
-//             .singer-info,
-//             .player-controller,
-//             .volume-controller,
-//             .singer-controller {
-//                 display: flex;
-//                 align-items: center;
-//                 height: 100%;
-//                 min-height: 100%;
-//             }
-
-//             .singer-info {
-//                 width: 20%;
-
-//                 img {
-//                     border: 2px solid #2C2734;
-//                     border-radius: 4px;
-//                     -webkit-border-radius: 4px;
-//                     -moz-border-radius: 4px;
-//                     -ms-border-radius: 4px;
-//                     -o-border-radius: 4px;
-//                     margin-right: 20px;
-//                     margin-left: 40px;
-//                 }
-
-//                 h2 {
-//                     max-width: 160px;
-//                     height: 25px;
-//                     line-height: 25px;
-//                     font-size: 18px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.8;
-//                     overflow: hidden;
-//                     text-overflow: ellipsis;
-//                     white-space: nowrap;
-//                 }
-
-//                 p {
-//                     font-size: 14px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.5;
-//                     margin: 0px;
-//                     padding: 0px;
-//                 }
-//             }
-
-//             /* 播放控制 */
-//             .player-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 .player-pp {
-//                     margin: 0px 40px;
-//                 }
-//             }
-
-//             /* 音量控制 */
-//             .volume-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 img {
-//                     margin-right: 10px;
-//                 }
-
-//                 .ant-slider {
-//                     width: 120px;
-//                 }
-//             }
-
-//             /* 歌曲控制 */
-//             .singer-controller {
-//                 width: 40%;
-//                 justify-content: center;
-
-//                 div {
-//                     width: 14%;
-//                     text-align: center;
-//                     cursor: pointer;
-
-//                     img {
-//                         display: block;
-//                         width: 36px;
-//                         height: 36px;
-//                         margin: 0 auto;
-
-//                         &.normal {
-//                             display: block;
-//                         }
-
-//                         &.through {
-//                             display: none;
-//                         }
-//                     }
-
-//                     &:hover {
-//                         img {
-//                             &.normal {
-//                                 display: none;
-//                             }
-
-//                             &.through {
-//                                 display: block;
-//                             }
-//                         }
-
-//                         span {
-//                             color: rgba(255, 128, 66, 1);
-//                         }
-//                     }
-
-//                     span {
-//                         display: block;
-//                         width: 100%;
-//                         text-align: center;
-//                         font-size: 14px;
-//                         font-family: 'PingFang-SC-Regular';
-//                         color: rgba(255, 255, 255, 1);
-//                         opacity: 0.7;
-//                     }
-
-//                     &:last-child {
-//                         width: 20%;
-//                         display: flex;
-//                         align-items: center;
-//                         justify-content: flex-end !important;
-
-//                         span {
-//                             width: auto !important;
-//                             margin-left: 10px;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1600px) {
-//     .igb-audio-family-control-base-component {
-//         width: 100%;
-//         height: 100%;
-//         min-height: 100%;
-//         position: relative;
-
-//         .singer-progress {
-//             position: relative;
-//             width: 100%;
-//             height: 2px;
-//             margin-top: -1px;
-
-//             .progress-box {
-//                 width: 100%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2000;
-//             }
-
-//             .progress-singer {
-//                 width: 80%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.2;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2001;
-//             }
-
-//             .progress-play {
-//                 width: 60%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                 opacity: 1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2002;
-
-//                 .progress-btn {
-//                     width: auto;
-//                     height: auto;
-//                     min-height: auto;
-//                     padding: 0px 8px;
-//                     background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                     opacity: 1;
-//                     border-radius: 12px;
-//                     text-align: center;
-//                     font-size: 12px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     color: rgba(34, 42, 55, 1);
-//                     margin-top: -9px;
-//                     -webkit-border-radius: 12px;
-//                     -moz-border-radius: 12px;
-//                     -ms-border-radius: 12px;
-//                     -o-border-radius: 12px;
-//                 }
-//             }
-
-//             .progress-time {
-//                 position: absolute;
-//                 right: 10px;
-//                 top: 10px;
-//                 font-size: 12px;
-//                 font-family: 'PingFang-SC-Regular';
-//                 color: rgba(255, 255, 255, 1);
-//                 opacity: 0.5;
-//             }
-//         }
-
-//         .foo-controller {
-//             display: flex;
-//             align-items: center;
-//             height: 100%;
-//             min-height: 100%;
-
-//             img {
-//                 cursor: pointer;
-//             }
-
-//             /* 歌曲信息样式 */
-//             .singer-info,
-//             .player-controller,
-//             .volume-controller,
-//             .singer-controller {
-//                 display: flex;
-//                 align-items: center;
-//                 height: 100%;
-//                 min-height: 100%;
-//             }
-
-//             .singer-info {
-//                 width: 20%;
-
-//                 img {
-//                     border: 2px solid #2C2734;
-//                     border-radius: 4px;
-//                     -webkit-border-radius: 4px;
-//                     -moz-border-radius: 4px;
-//                     -ms-border-radius: 4px;
-//                     -o-border-radius: 4px;
-//                     margin-right: 20px;
-//                     margin-left: 40px;
-//                 }
-
-//                 h2 {
-//                     max-width: 160px;
-//                     height: 25px;
-//                     line-height: 25px;
-//                     font-size: 18px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.8;
-//                     overflow: hidden;
-//                     text-overflow: ellipsis;
-//                     white-space: nowrap;
-//                 }
-
-//                 p {
-//                     font-size: 14px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.5;
-//                     margin: 0px;
-//                     padding: 0px;
-//                 }
-//             }
-
-//             /* 播放控制 */
-//             .player-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 .player-pp {
-//                     margin: 0px 40px;
-//                 }
-//             }
-
-//             /* 音量控制 */
-//             .volume-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 img {
-//                     margin-right: 10px;
-//                 }
-
-//                 .ant-slider {
-//                     width: 120px;
-//                 }
-//             }
-
-//             /* 歌曲控制 */
-//             .singer-controller {
-//                 width: 40%;
-//                 justify-content: center;
-
-//                 div {
-//                     width: 14%;
-//                     text-align: center;
-//                     cursor: pointer;
-
-//                     img {
-//                         display: block;
-//                         width: 36px;
-//                         height: 36px;
-//                         margin: 0 auto;
-
-//                         &.normal {
-//                             display: block;
-//                         }
-
-//                         &.through {
-//                             display: none;
-//                         }
-//                     }
-
-//                     &:hover {
-//                         img {
-//                             &.normal {
-//                                 display: none;
-//                             }
-
-//                             &.through {
-//                                 display: block;
-//                             }
-//                         }
-
-//                         span {
-//                             color: rgba(255, 128, 66, 1);
-//                         }
-//                     }
-
-//                     span {
-//                         display: block;
-//                         width: 100%;
-//                         text-align: center;
-//                         font-size: 14px;
-//                         font-family: 'PingFang-SC-Regular';
-//                         color: rgba(255, 255, 255, 1);
-//                         opacity: 0.7;
-//                     }
-
-//                     &:last-child {
-//                         width: 20%;
-//                         display: flex;
-//                         align-items: center;
-//                         justify-content: flex-end !important;
-
-//                         span {
-//                             width: auto !important;
-//                             margin-left: 10px;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1440px) {
-//     .igb-audio-family-control-base-component {
-//         width: 100%;
-//         height: 100%;
-//         min-height: 100%;
-//         position: relative;
-
-//         .singer-progress {
-//             position: relative;
-//             width: 100%;
-//             height: 2px;
-//             margin-top: -1px;
-
-//             .progress-box {
-//                 width: 100%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2000;
-//             }
-
-//             .progress-singer {
-//                 width: 80%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.2;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2001;
-//             }
-
-//             .progress-play {
-//                 width: 60%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                 opacity: 1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2002;
-
-//                 .progress-btn {
-//                     width: auto;
-//                     height: auto;
-//                     min-height: auto;
-//                     padding: 0px 8px;
-//                     background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                     opacity: 1;
-//                     border-radius: 12px;
-//                     text-align: center;
-//                     font-size: 12px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     color: rgba(34, 42, 55, 1);
-//                     margin-top: -9px;
-//                     -webkit-border-radius: 12px;
-//                     -moz-border-radius: 12px;
-//                     -ms-border-radius: 12px;
-//                     -o-border-radius: 12px;
-//                 }
-//             }
-
-//             .progress-time {
-//                 position: absolute;
-//                 right: 10px;
-//                 top: 10px;
-//                 font-size: 12px;
-//                 font-family: 'PingFang-SC-Regular';
-//                 color: rgba(255, 255, 255, 1);
-//                 opacity: 0.5;
-//             }
-//         }
-
-//         .foo-controller {
-//             display: flex;
-//             align-items: center;
-//             height: 100%;
-//             min-height: 100%;
-
-//             img {
-//                 cursor: pointer;
-//             }
-
-//             /* 歌曲信息样式 */
-//             .singer-info,
-//             .player-controller,
-//             .volume-controller,
-//             .singer-controller {
-//                 display: flex;
-//                 align-items: center;
-//                 height: 100%;
-//                 min-height: 100%;
-//             }
-
-//             .singer-info {
-//                 width: 20%;
-
-//                 img {
-//                     border: 2px solid #2C2734;
-//                     border-radius: 4px;
-//                     -webkit-border-radius: 4px;
-//                     -moz-border-radius: 4px;
-//                     -ms-border-radius: 4px;
-//                     -o-border-radius: 4px;
-//                     margin-right: 20px;
-//                     margin-left: 40px;
-//                 }
-
-//                 h2 {
-//                     max-width: 100px;
-//                     height: 25px;
-//                     line-height: 25px;
-//                     font-size: 18px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.8;
-//                     overflow: hidden;
-//                     text-overflow: ellipsis;
-//                     white-space: nowrap;
-//                 }
-
-//                 p {
-//                     font-size: 14px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.5;
-//                     margin: 0px;
-//                     padding: 0px;
-//                 }
-//             }
-
-//             /* 播放控制 */
-//             .player-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 .player-pp {
-//                     margin: 0px 40px;
-//                 }
-//             }
-
-//             /* 音量控制 */
-//             .volume-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 img {
-//                     margin-right: 10px;
-//                 }
-
-//                 .ant-slider {
-//                     width: 120px;
-//                 }
-//             }
-
-//             /* 歌曲控制 */
-//             .singer-controller {
-//                 width: 40%;
-//                 justify-content: center;
-
-//                 div {
-//                     width: 14%;
-//                     text-align: center;
-//                     cursor: pointer;
-
-//                     img {
-//                         display: block;
-//                         width: 36px;
-//                         height: 36px;
-//                         margin: 0 auto;
-
-//                         &.normal {
-//                             display: block;
-//                         }
-
-//                         &.through {
-//                             display: none;
-//                         }
-//                     }
-
-//                     &:hover {
-//                         img {
-//                             &.normal {
-//                                 display: none;
-//                             }
-
-//                             &.through {
-//                                 display: block;
-//                             }
-//                         }
-
-//                         span {
-//                             color: rgba(255, 128, 66, 1);
-//                         }
-//                     }
-
-//                     span {
-//                         display: block;
-//                         width: 100%;
-//                         text-align: center;
-//                         font-size: 14px;
-//                         font-family: 'PingFang-SC-Regular';
-//                         color: rgba(255, 255, 255, 1);
-//                         opacity: 0.7;
-//                     }
-
-//                     &:last-child {
-//                         width: 20%;
-//                         display: flex;
-//                         align-items: center;
-//                         justify-content: flex-end !important;
-
-//                         span {
-//                             width: auto !important;
-//                             margin-left: 10px;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1366px) {
-//     .igb-audio-family-control-base-component {
-//         width: 100%;
-//         height: 100%;
-//         min-height: 100%;
-//         position: relative;
-
-//         .singer-progress {
-//             position: relative;
-//             width: 100%;
-//             height: 2px;
-//             margin-top: -1px;
-
-//             .progress-box {
-//                 width: 100%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2000;
-//             }
-
-//             .progress-singer {
-//                 width: 80%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.2;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2001;
-//             }
-
-//             .progress-play {
-//                 width: 60%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                 opacity: 1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2002;
-
-//                 .progress-btn {
-//                     width: auto;
-//                     height: auto;
-//                     min-height: auto;
-//                     padding: 0px 8px;
-//                     background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                     opacity: 1;
-//                     border-radius: 12px;
-//                     text-align: center;
-//                     font-size: 12px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     color: rgba(34, 42, 55, 1);
-//                     margin-top: -9px;
-//                     -webkit-border-radius: 12px;
-//                     -moz-border-radius: 12px;
-//                     -ms-border-radius: 12px;
-//                     -o-border-radius: 12px;
-//                 }
-//             }
-
-//             .progress-time {
-//                 position: absolute;
-//                 right: 10px;
-//                 top: 10px;
-//                 font-size: 12px;
-//                 font-family: 'PingFang-SC-Regular';
-//                 color: rgba(255, 255, 255, 1);
-//                 opacity: 0.5;
-//             }
-//         }
-
-//         .foo-controller {
-//             display: flex;
-//             align-items: center;
-//             height: 100%;
-//             min-height: 100%;
-
-//             img {
-//                 cursor: pointer;
-//             }
-
-//             /* 歌曲信息样式 */
-//             .singer-info,
-//             .player-controller,
-//             .volume-controller,
-//             .singer-controller {
-//                 display: flex;
-//                 align-items: center;
-//                 height: 100%;
-//                 min-height: 100%;
-//             }
-
-//             .singer-info {
-//                 width: 20%;
-
-//                 img {
-//                     border: 2px solid #2C2734;
-//                     border-radius: 4px;
-//                     -webkit-border-radius: 4px;
-//                     -moz-border-radius: 4px;
-//                     -ms-border-radius: 4px;
-//                     -o-border-radius: 4px;
-//                     margin-right: 20px;
-//                     margin-left: 40px;
-//                 }
-
-//                 h2 {
-//                     max-width: 100px;
-//                     height: 25px;
-//                     line-height: 25px;
-//                     font-size: 18px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.8;
-//                     overflow: hidden;
-//                     text-overflow: ellipsis;
-//                     white-space: nowrap;
-//                 }
-
-//                 p {
-//                     font-size: 14px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.5;
-//                     margin: 0px;
-//                     padding: 0px;
-//                 }
-//             }
-
-//             /* 播放控制 */
-//             .player-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 .player-pp {
-//                     margin: 0px 40px;
-//                 }
-//             }
-
-//             /* 音量控制 */
-//             .volume-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 img {
-//                     margin-right: 10px;
-//                 }
-
-//                 .ant-slider {
-//                     width: 120px;
-//                 }
-//             }
-
-//             /* 歌曲控制 */
-//             .singer-controller {
-//                 width: 40%;
-//                 justify-content: center;
-
-//                 div {
-//                     width: 14%;
-//                     text-align: center;
-//                     cursor: pointer;
-
-//                     img {
-//                         display: block;
-//                         width: 36px;
-//                         height: 36px;
-//                         margin: 0 auto;
-
-//                         &.normal {
-//                             display: block;
-//                         }
-
-//                         &.through {
-//                             display: none;
-//                         }
-//                     }
-
-//                     &:hover {
-//                         img {
-//                             &.normal {
-//                                 display: none;
-//                             }
-
-//                             &.through {
-//                                 display: block;
-//                             }
-//                         }
-
-//                         span {
-//                             color: rgba(255, 128, 66, 1);
-//                         }
-//                     }
-
-//                     span {
-//                         display: block;
-//                         width: 100%;
-//                         text-align: center;
-//                         font-size: 14px;
-//                         font-family: 'PingFang-SC-Regular';
-//                         color: rgba(255, 255, 255, 1);
-//                         opacity: 0.7;
-//                     }
-
-//                     &:last-child {
-//                         width: 20%;
-//                         display: flex;
-//                         align-items: center;
-//                         justify-content: flex-end !important;
-
-//                         span {
-//                             width: auto !important;
-//                             margin-left: 10px;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1280px) {
-//     .igb-audio-family-control-base-component {
-//         width: 100%;
-//         height: 100%;
-//         min-height: 100%;
-//         position: relative;
-
-//         .singer-progress {
-//             position: relative;
-//             width: 100%;
-//             height: 2px;
-//             margin-top: -1px;
-
-//             .progress-box {
-//                 width: 100%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2000;
-//             }
-
-//             .progress-singer {
-//                 width: 80%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.2;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2001;
-//             }
-
-//             .progress-play {
-//                 width: 60%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                 opacity: 1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2002;
-
-//                 .progress-btn {
-//                     width: auto;
-//                     height: auto;
-//                     min-height: auto;
-//                     padding: 0px 8px;
-//                     background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                     opacity: 1;
-//                     border-radius: 12px;
-//                     text-align: center;
-//                     font-size: 12px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     color: rgba(34, 42, 55, 1);
-//                     margin-top: -9px;
-//                     -webkit-border-radius: 12px;
-//                     -moz-border-radius: 12px;
-//                     -ms-border-radius: 12px;
-//                     -o-border-radius: 12px;
-//                 }
-//             }
-
-//             .progress-time {
-//                 position: absolute;
-//                 right: 10px;
-//                 top: 10px;
-//                 font-size: 12px;
-//                 font-family: 'PingFang-SC-Regular';
-//                 color: rgba(255, 255, 255, 1);
-//                 opacity: 0.5;
-//             }
-//         }
-
-//         .foo-controller {
-//             display: flex;
-//             align-items: center;
-//             height: 100%;
-//             min-height: 100%;
-
-//             img {
-//                 cursor: pointer;
-//             }
-
-//             /* 歌曲信息样式 */
-//             .singer-info,
-//             .player-controller,
-//             .volume-controller,
-//             .singer-controller {
-//                 display: flex;
-//                 align-items: center;
-//                 height: 100%;
-//                 min-height: 100%;
-//             }
-
-//             .singer-info {
-//                 width: 20%;
-
-//                 img {
-//                     border: 2px solid #2C2734;
-//                     border-radius: 4px;
-//                     -webkit-border-radius: 4px;
-//                     -moz-border-radius: 4px;
-//                     -ms-border-radius: 4px;
-//                     -o-border-radius: 4px;
-//                     margin-right: 20px;
-//                     margin-left: 40px;
-//                 }
-
-//                 h2 {
-//                     max-width: 80px;
-//                     height: 19px;
-//                     line-height: 19px;
-//                     font-size: 16px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.8;
-//                     overflow: hidden;
-//                     text-overflow: ellipsis;
-//                     white-space: nowrap;
-//                 }
-
-//                 p {
-//                     font-size: 14px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.5;
-//                     margin: 0px;
-//                     padding: 0px;
-//                 }
-//             }
-
-//             /* 播放控制 */
-//             .player-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 .player-pp {
-//                     margin: 0px 25px;
-
-//                     img {
-//                         width: 50px;
-//                         height: 50px;
-//                     }
-//                 }
-//             }
-
-//             /* 音量控制 */
-//             .volume-controller {
-//                 justify-content: center;
-//                 width: 20%;
-
-//                 img {
-//                     margin-right: 10px;
-//                 }
-
-//                 .ant-slider {
-//                     width: 90px;
-//                 }
-//             }
-
-//             /* 歌曲控制 */
-//             .singer-controller {
-//                 width: 40%;
-//                 justify-content: center;
-
-//                 div {
-//                     width: 15.5%;
-//                     text-align: center;
-//                     cursor: pointer;
-
-//                     img {
-//                         display: block;
-//                         width: 30px;
-//                         height: 30px;
-//                         margin: 0 auto;
-
-//                         &.normal {
-//                             display: block;
-//                         }
-
-//                         &.through {
-//                             display: none;
-//                         }
-//                     }
-
-//                     &:hover {
-//                         img {
-//                             &.normal {
-//                                 display: none;
-//                             }
-
-//                             &.through {
-//                                 display: block;
-//                             }
-//                         }
-
-//                         span {
-//                             color: rgba(255, 128, 66, 1);
-//                         }
-//                     }
-
-//                     span {
-//                         display: block;
-//                         width: 100%;
-//                         text-align: center;
-//                         font-size: 12px;
-//                         font-family: 'PingFang-SC-Regular';
-//                         color: rgba(255, 255, 255, 1);
-//                         opacity: 0.7;
-//                     }
-
-//                     &:last-child {
-//                         width: 20%;
-//                         display: flex;
-//                         align-items: center;
-//                         justify-content: flex-end !important;
-
-//                         span {
-//                             width: auto !important;
-//                             margin-left: 10px;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1024px) {
-//     .igb-audio-family-control-base-component {
-//         width: 100%;
-//         height: 100%;
-//         min-height: 100%;
-//         position: relative;
-
-//         .singer-progress {
-//             position: relative;
-//             width: 100%;
-//             height: 2px;
-//             margin-top: -1px;
-
-//             .progress-box {
-//                 width: 100%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2000;
-//             }
-
-//             .progress-singer {
-//                 width: 80%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: rgba(255, 255, 255, 1);
-//                 opacity: 0.2;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2001;
-//             }
-
-//             .progress-play {
-//                 width: 60%;
-//                 height: 2px;
-//                 min-height: 2px;
-//                 background: linear-gradient(45deg, rgba(255, 181, 7, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                 opacity: 1;
-//                 position: absolute;
-//                 top: 0px;
-//                 left: 0px;
-//                 z-index: 2002;
-
-//                 .progress-btn {
-//                     width: auto;
-//                     height: auto;
-//                     min-height: auto;
-//                     padding: 0px 8px;
-//                     background: linear-gradient(45deg, rgba(255, 183, 4, 1) 0%, rgba(255, 114, 81, 1) 100%);
-//                     opacity: 1;
-//                     border-radius: 12px;
-//                     text-align: center;
-//                     font-size: 12px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     color: rgba(34, 42, 55, 1);
-//                     margin-top: -9px;
-//                     -webkit-border-radius: 12px;
-//                     -moz-border-radius: 12px;
-//                     -ms-border-radius: 12px;
-//                     -o-border-radius: 12px;
-//                 }
-//             }
-
-//             .progress-time {
-//                 position: absolute;
-//                 right: 10px;
-//                 top: 10px;
-//                 font-size: 12px;
-//                 font-family: 'PingFang-SC-Regular';
-//                 color: rgba(255, 255, 255, 1);
-//                 opacity: 0.5;
-//             }
-//         }
-
-//         .foo-controller {
-//             display: flex;
-//             align-items: center;
-//             height: 100%;
-//             min-height: 100%;
-
-//             img {
-//                 cursor: pointer;
-//             }
-
-//             /* 歌曲信息样式 */
-//             .singer-info,
-//             .player-controller,
-//             .volume-controller,
-//             .singer-controller {
-//                 display: flex;
-//                 align-items: center;
-//                 height: 100%;
-//                 min-height: 100%;
-//             }
-
-//             .singer-info {
-//                 width: 20%;
-
-//                 img {
-//                     border: 2px solid #2C2734;
-//                     border-radius: 4px;
-//                     -webkit-border-radius: 4px;
-//                     -moz-border-radius: 4px;
-//                     -ms-border-radius: 4px;
-//                     -o-border-radius: 4px;
-//                     margin-right: 10px;
-//                     margin-left: 35px;
-//                     width: 60px;
-//                     height: 60px;
-//                 }
-
-//                 h2 {
-//                     max-width: 50px;
-//                     height: 19px;
-//                     line-height: 19px;
-//                     font-size: 14px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.8;
-//                     overflow: hidden;
-//                     text-overflow: ellipsis;
-//                     white-space: nowrap;
-//                 }
-
-//                 p {
-//                     font-size: 12px;
-//                     font-family: 'PingFang-SC-Regular';
-//                     font-weight: 400;
-//                     color: rgba(255, 255, 255, 1);
-//                     opacity: 0.5;
-//                     margin: 0px;
-//                     padding: 0px;
-//                 }
-//             }
-
-//             /* 播放控制 */
-//             .player-controller {
-//                 justify-content: center;
-//                 width: 18%;
-
-//                 .player-prev,
-//                 .player-next {
-//                     img {
-//                         width: 15px;
-//                         height: 16px;
-//                     }
-//                 }
-
-//                 .player-pp {
-//                     margin: 0px 20px;
-
-//                     img {
-//                         width: 40px;
-//                         height: 40px;
-//                     }
-//                 }
-//             }
-
-//             /* 音量控制 */
-//             .volume-controller {
-//                 justify-content: center;
-//                 width: 15%;
-
-//                 img {
-//                     margin-right: 5px;
-//                 }
-
-//                 .ant-slider {
-//                     width: 70px;
-//                 }
-//             }
-
-//             /* 歌曲控制 */
-//             .singer-controller {
-
-//                 width: 45%;
-//                 justify-content: center;
-
-//                 div {
-//                     width: 15.5%;
-//                     text-align: center;
-//                     cursor: pointer;
-
-//                     img {
-//                         display: block;
-//                         width: 25px;
-//                         height: 25px;
-//                         margin: 0 auto;
-
-//                         &.normal {
-//                             display: block;
-//                         }
-
-//                         &.through {
-//                             display: none;
-//                         }
-//                     }
-
-//                     &:hover {
-//                         img {
-//                             &.normal {
-//                                 display: none;
-//                             }
-
-//                             &.through {
-//                                 display: block;
-//                             }
-//                         }
-
-//                         span {
-//                             color: rgba(255, 128, 66, 1);
-//                         }
-//                     }
-
-//                     span {
-//                         display: block;
-//                         width: 100%;
-//                         text-align: center;
-//                         font-size: 12px;
-//                         font-family: 'PingFang-SC-Regular';
-//                         color: rgba(255, 255, 255, 1);
-//                         opacity: 0.7;
-//                     }
-
-//                     &:last-child {
-//                         width: 20%;
-//                         display: flex;
-//                         align-items: center;
-//                         justify-content: flex-end !important;
-
-//                         span {
-//                             width: auto !important;
-//                             margin-left: 10px;
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
 </style>

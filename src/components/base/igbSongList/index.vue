@@ -161,7 +161,7 @@ export default {
           bottom: calc-attr(0);
           display: block;
           width: calc-attr(18.18);
-          height: calc-attr(17.46);
+          height: calc-attr(18);
           background: url("../../../assets/images/ic.png") no-repeat center;
           background-size: 100%;
           z-index: 9;
@@ -189,8 +189,8 @@ export default {
         font-size: calc-attr(16);
         height: calc-attr(22);
         line-height: calc-attr(22);
-        font-family: "PingFang-SC-Regular";
-        font-weight: 500;
+        font-family: "PingFang SC";
+        font-weight: normal;
         color: rgba(255, 255, 255, 0.8);
         margin: calc-attr(12) auto auto auto;
         overflow: hidden;
@@ -204,7 +204,7 @@ export default {
         margin-top: calc-attr(10);
 
         span {
-          // width: 32px;
+           width: calc-attr(32);
           height: calc-attr(16);
           line-height: calc-attr(16);
           background: rgba(253, 129, 74, 0.2);
@@ -219,201 +219,4 @@ export default {
     }
   }
 }
-
-// @media (max-width : 1680px) {
-//     .igb-song-list-base-component {
-
-//         .song-list-item {
-//             .card-info {
-
-//                 h3,
-//                 p {
-//                     padding: 0px;
-//                     width: calc(100% - 30px);
-//                     margin: 0 auto;
-//                 }
-
-//                 h3 {
-//                     height: 20px;
-//                     line-height: 20px;
-//                     font-size: 14px;
-//                     margin: 8px auto;
-//                 }
-
-//                 p {
-//                     span {
-//                         font-size: 12px;
-//                         margin-right: 5px;
-//                         padding: 0px 4px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1600px) {
-//     .igb-song-list-base-component {
-
-//         .song-list-item {
-//             .card-info {
-
-//                 h3,
-//                 p {
-//                     padding: 0px;
-//                     width: calc(100% - 30px);
-//                     margin: 0 auto;
-//                 }
-
-//                 h3 {
-//                     height: 20px;
-//                     line-height: 20px;
-//                     font-size: 14px;
-//                     margin: 5px auto;
-//                 }
-
-//                 p {
-//                     span {
-//                         font-size: 12px;
-//                         margin-right: 5px;
-//                         padding: 0px 4px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1440px) {
-//     .igb-song-list-base-component {
-//         .song-list-item {
-//             width: calc(18% - 30px);
-
-//             .card-info {
-
-//                 h3,
-//                 p {
-//                     padding: 0px;
-//                     width: calc(100% - 30px);
-//                     margin: 0 auto;
-//                 }
-
-//                 h3 {
-//                     height: 20px;
-//                     line-height: 20px;
-//                     font-size: 14px;
-//                     margin: 3px auto;
-//                 }
-
-//                 p {
-//                     span {
-//                         font-size: 12px;
-//                         margin-right: 5px;
-//                         padding: 0px 4px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1366px) {
-//     .igb-song-list-base-component {
-
-//         .song-list-item {
-//             width: calc(18% - 30px);
-
-//             .card-info {
-
-//                 h3,
-//                 p {
-//                     padding: 0px;
-//                     width: calc(100% - 30px);
-//                     margin: 0 auto;
-//                 }
-
-//                 h3 {
-//                     height: 20px;
-//                     line-height: 20px;
-//                     font-size: 14px;
-//                     margin: 2.5px auto;
-//                 }
-
-//                 p {
-//                     span {
-//                         font-size: 12px;
-//                         margin-right: 5px;
-//                         padding: 0px 4px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1280px) {
-//     .igb-song-list-base-component {
-//         .song-list-item {
-//             width: calc(18% - 30px);
-
-//             .card-info {
-
-//                 h3,
-//                 p {
-//                     padding: 0px;
-//                     width: calc(100% - 30px);
-//                     margin: 0 auto;
-//                 }
-
-//                 h3 {
-//                     height: 20px;
-//                     line-height: 20px;
-//                     font-size: 14px;
-//                     margin: 2px auto;
-//                 }
-
-//                 p {
-//                     span {
-//                         font-size: 12px;
-//                         margin-right: 5px;
-//                         padding: 0px 4px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (max-width : 1024px) {
-//     .igb-song-list-base-component {
-//         .song-list-item {
-//             width: calc(23% - 30px);
-
-//             .card-info {
-
-//                 h3,
-//                 p {
-//                     padding: 0px;
-//                     width: calc(100% - 30px);
-//                     margin: 0 auto;
-//                 }
-
-//                 h3 {
-//                     height: 20px;
-//                     line-height: 20px;
-//                     font-size: 14px;
-//                     margin: 2px auto auto auto;
-//                 }
-
-//                 p {
-//                     span {
-//                         font-size: 12px;
-//                         margin-right: 5px;
-//                         padding: 0px 4px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
 </style>

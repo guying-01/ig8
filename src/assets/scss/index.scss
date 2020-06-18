@@ -5,27 +5,31 @@
 
 .app-recommend,
 .app-index {
-    background: url('../images/app-recommend-bg.png') no-repeat;
-    background-size: 100% 100%;
+    background: url('../images/app-recommend-bg.png') no-repeat, linear-gradient(to bottom right, #171629, #171839);
+    background-size: 102% 102%;
+    background-position: 9px 9px;
     cursor: default;
 }
 
 .app-singer,
 .app-songByAlbum,
 .app-songByList {
-    background: url('../images/app-singer-bg.png') no-repeat;
-    background-size: 100% 100%;
+    background: url('../images/app-singer-bg.png') no-repeat, linear-gradient(to bottom right, #171629, #171839);
+    background-size: 102% 102%;
+    background-position: 9px 9px;
     cursor: default;
 }
 
 .app-classification {
-    background: url('../images/app-classification-bg.png') no-repeat;
-    background-size: 100% 100%;
+    background: url('../images/app-classification-bg.png') no-repeat, linear-gradient(to bottom right, #171629, #171839);
+    background-size: 102% 102%;
+    background-position: 9px 9px;
     cursor: default;
 }
 
 .app-collect {
-    background: url('../images/app-collect-bg.png') no-repeat;
-    background-size: 100% 100%;
+    background: url('../images/app-collect-bg.png') no-repeat, linear-gradient(to bottom right, #171629, #171839);
+    background-size: 102% 102%;
+    background-position: 9px 9px;
     cursor: default;
 }

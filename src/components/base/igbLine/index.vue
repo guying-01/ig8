@@ -12,7 +12,7 @@ export default {
 .igb-line-base-component {
     width: 100%;
     height: 0px;
-    border: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
     margin: 0 auto;
 }
 </style>

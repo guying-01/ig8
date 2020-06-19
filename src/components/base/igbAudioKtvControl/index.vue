@@ -37,14 +37,14 @@
         >
           <i></i><span>播放</span>
         </div>
-        <div class="contr contr-reset">
-              <i></i><span id="test111">重唱</span>
+        <div class="contr contr-reset"  id="reference-contr-reset">
+              <i></i><span>重唱</span>
           </div>
-        <div class="contr contr-cut"><i></i><span>切歌</span></div>
+        <div class="contr contr-cut"  id="reference-contr-cut"><i></i><span>切歌</span></div>
       </div>
       <!--音量控制-->
       <div class="volume-controller">
-        <div class="contr contr-nov"><i></i><span>静音</span></div>
+        <div class="contr contr-nov" id="refrence-contr-nov"><i></i><span>静音</span></div>
         <div class="contr contr-ova">
           <a-tooltip placement="top" overlayClassName="tip-vom tip-voma">
             <template slot="title">
@@ -66,7 +66,7 @@
       </div>
       <!--歌曲控制-->
       <div class="song-controller">
-        <div class="contr contr-ly"><i></i><span>录音</span></div>
+        <div class="contr contr-ly"  id="refrence-contr-ly"><i></i><span>录音</span></div>
         <div class="contr contr-sc"><i></i><span>收藏</span></div>
         <div class="contr contr-qf"><i></i><span>气氛</span></div>
         <div class="contr contr-yd">
@@ -88,7 +88,7 @@
         </div>
       </div>
       <!--切换-->
-      <div class="song-switch">
+      <div class="song-switch" id="refrence-switch">
         <p
           class="btn-switch"
           :class="{ 'btn-switch-on': sw, 'btn-switch-off': !sw }"
@@ -120,7 +120,6 @@ export default {
     }
   },
   mounted () {
-    this.showmessage()
     this.$nextTick(() => {
       let w = window.screen.width
       if (w < 1440) {
@@ -173,7 +172,7 @@ export default {
         let btnWidth = this.$refs.btnProgress.offsetWidth
         let progress = (currTime / musicTime) * 100
         this.progress = `${progress}%`
-        if (playWidth > btnWidth/2) {
+        if (playWidth > btnWidth / 2) {
           this.btnProgress = true
         }
         this.getPlayerTime(currTime, 'curr')

@@ -2,12 +2,66 @@
  * @Author: gy
  * @Date: 2020-06-18 14:34:13
  * @LastEditors: gy
- * @LastEditTime: 2020-06-18 14:35:23
+ * @LastEditTime: 2020-06-19 17:54:05
  */
 
-import Bus from '@/utils/bus'
-function showMessage () {
-  Bus.$emit('popper-show', true)
+import { createPopper } from '@popperjs/core'
+
+let refrenceMap = {
+  1: 'refrence-contr-nov', // 静音
+  2: 'reference-contr-reset', // 重唱
+  3: 'refrence-contr-ly', // 录音
+  4: 'refrence-contr-xh', // 播放顺序
+  5: 'reference-contr-cut', // 切歌
+  6: 'refrence-switch' // 原伴唱
+
+}
+let iconMap = {
+  1: 'icon-success',
+  2: 'icon-error',
+  3: 'icon-loading'
+}
+function ShowHint (Type = 0, Text, AutoClose = 0, For = 0) {
+  // 如果已存在，则移除
+  if (document.querySelectorAll('.message-popper').length > 0) {
+    document.querySelector('body').removeChild(document.querySelector('.message-popper'))
+  }
+  // 如果没有Text参数，退出
+  if (!Text) return
+  let refrence = For == 0 ? document.querySelector('body') : document.querySelector(`#${refrenceMap[For]}`)
+  if (!refrence) return console.log(`${refrenceMap[For]}`)
+  let ele = document.createElement('div')
+  let clsName = 'message-popper'
+  let str = ''
+  if (Type) {
+    clsName += ` ${iconMap[Type]}`
+    str += `<i></i>`
+  }
+
+  if (!For) {
+    clsName += ' center-popper'
+  }
+  ele.className = clsName
+  str += `<div class="message-box">${Text}</div>`
+  ele.innerHTML = str
+  document.querySelector('body').appendChild(ele)
+  let instance = createPopper(refrence, ele, {
+    placement: 'top',
+    modifiers: [
+      {
+        name: 'arrow',
+        options: {
+          padding: 5 // 5px from the edges of the popper
+        }
+      }
+    ]
+  })
+
+  setTimeout(() => {
+    document.querySelector('body').removeChild(document.querySelector('.message-popper'))
+  }, (AutoClose > 0 ? AutoClose : 1) * 1000)
 }
 
-window.showMessage = showMessage
+window.ApplicationUI = {
+  ShowHint
+}

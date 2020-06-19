@@ -34,10 +34,10 @@
         </div>
         <!--歌曲控制-->
         <div class="song-controller">
-            <div class="contr contr-cc"><i></i><span>重唱</span></div>
-            <div class="contr contr-ly"><i></i><span>录音</span></div>
+            <div class="contr contr-cc"   id="reference-contr-reset"><i></i><span>重唱</span></div>
+            <div class="contr contr-ly" id="refrence-contr-ly"><i></i><span>录音</span></div>
             <div class="contr contr-sc"><i></i><span>收藏</span></div>
-            <div class="contr contr-xh"><i></i><span>循环</span></div>
+            <div class="contr contr-xh" id="refrence-contr-xh"><i></i><span>循环</span></div>
             <div class="contr contr-yd">
                 <a-popover v-model="visible" trigger="click" placement="topRight" overlayClassName="order-ktv-popover">
                     <i></i><span>已点</span>
@@ -49,7 +49,7 @@
             </div>
         </div>
         <!--切换-->
-        <div class="song-switch">
+        <div class="song-switch"  id="refrence-switch">
             <p class="btn-switch" :class="{'btn-switch-on':sw,'btn-switch-off':!sw}" @click="btnSwitch"></p>
             <span>{{sw?"伴唱":"原唱"}}</span>
         </div>
@@ -129,7 +129,7 @@ export default {
         let btnWidth = this.$refs.btnProgress.offsetWidth
         let progress = (currTime / musicTime) * 100
         this.progress = `${progress}%`
-        if (playWidth > btnWidth/2) {
+        if (playWidth > btnWidth / 2) {
           this.btnProgress = true
         }
         this.getPlayerTime(currTime, 'curr')

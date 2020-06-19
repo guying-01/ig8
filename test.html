@@ -1,0 +1,48 @@
+<!--
+ * @Author: gy
+ * @Date: 2020-06-19 18:23:29
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-19 19:12:16
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .btn {
+                width: 198px;
+                height: 55px;
+                background:linear-gradient(249deg,rgba(69,96,194,0.9) 0%,rgba(201,77,243,0.9) 100%);
+                opacity: 1;
+                border-radius: 20px 20px 20px 0;
+                position: relative;
+            }
+            .btn:after{
+              content:'';
+              display: block;
+              position:absolute;
+              transform: rotate(270deg);
+              bottom:0px;
+              left: -10px;
+              border-width: 20px 20px 0 20px;
+                border-style: solid;
+                border-color: rgb(201, 78, 243) transparent transparent transparent;
+                width: 0;
+                height: 0;
+                z-index: -1;
+            }
+            .triangle {
+                border-width:  60px  60px 100px 0;
+                border-style: solid;
+                border-color: #57af1a #fff #fff #fff;
+                width: 0;
+                height: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="btn"></div>
+    </body>
+</html>

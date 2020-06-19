@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-06-18 14:34:13
- * @LastEditors: gy
- * @LastEditTime: 2020-06-19 17:54:05
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-06-19 23:14:42
  */
 
 import { createPopper } from '@popperjs/core'
@@ -21,6 +21,8 @@ let iconMap = {
   2: 'icon-error',
   3: 'icon-loading'
 }
+
+// 提示消息
 function ShowHint (Type = 0, Text, AutoClose = 0, For = 0) {
   // 如果已存在，则移除
   if (document.querySelectorAll('.message-popper').length > 0) {
@@ -62,6 +64,47 @@ function ShowHint (Type = 0, Text, AutoClose = 0, For = 0) {
   }, (AutoClose > 0 ? AutoClose : 1) * 1000)
 }
 
+// 中央弹框
+function ShowMessage (Text, Button = 0, Default) {
+  // 如果已存在，则移除
+  if (document.querySelectorAll('.dialog-popper').length > 0) {
+    document.querySelector('body').removeChild(document.querySelector('.dialog-popper'))
+  }
+  // 如果没有Text参数，退出
+  if (!Text) return
+  let refrence = document.querySelector('body')
+  let ele = document.createElement('div')
+  let clsName = 'dialog-popper'
+  let str = ''
+  ele.className = clsName
+  // 拼接关闭icon
+  str += '<div class="popper-wrap">'
+  str += '<div class="icon-close" onclick="ApplicationUI.destroyDialogPopper()"></div>'
+  str += `<div class="message-box">${Text}</div>`
+  // 拼接button
+  if (Button.length > 0) {
+    str += '<div class="btn-box">'
+    Button.map((item, index) => {
+      str += `<div class="item-btn ${index == Default ? 'active' : ''}">${item}</div>`
+    })
+    str += '</div>'
+  }
+  str += '</div></div>'
+  ele.innerHTML = str
+  document.querySelector('body').appendChild(ele)
+  let instance = createPopper(refrence, ele, {
+    placement: 'top'
+  })
+}
+
+function destroyDialogPopper () {
+  if (document.querySelectorAll('.dialog-popper').length > 0) {
+    document.querySelector('body').removeChild(document.querySelector('.dialog-popper'))
+  }
+}
+
 window.ApplicationUI = {
-  ShowHint
+  ShowHint,
+  ShowMessage,
+  destroyDialogPopper
 }

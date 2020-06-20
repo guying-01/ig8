@@ -1,56 +1,34 @@
-.message-popper {
-    min-width: calc-attr(240);
-    max-width: calc-attr(480);
-    padding: calc-attr(20);
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 4px;
-    color: rgba(255, 255, 255, 1);
-    font-size: calc-attr(16);
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .message-box{
-        word-break: break-word;
-    }
-    i {
-        width: calc-attr(24);
-        height: calc-attr(24);
-        margin-right: calc-attr(13);
-        flex-shrink: 0;
-    }
-    &.center-popper {
-        position: absolute;
-        left: 50% !important;
-        top: 50% !important;
-        bottom: auto !important;
-        transform: translate(-50%, -50%) !important;
-    }
-    &.icon-success {
-        i {
-            // &:after {
-            background: rgba(0, 0, 0, 0.7) url("../images/message-success.png")
-                no-repeat center;
-            background-size: 100%;
-            // }
-        }
-    }
-    &.icon-loading {
-        i {
-            background: rgba(0, 0, 0, 0.7) url("../images/message-load.png")
-                no-repeat center;
-            background-size: 100%;
-        }
-    }
-    &.icon-error {
-        i {
-            background: rgba(0, 0, 0, 0.7) url("../images/message-error.png")
-                no-repeat center;
-            background-size: 100%;
-        }
-    }
-}
+<!--
+ * @Author: gy
+ * @Date: 2020-06-20 10:02:00
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-20 10:35:31
+-->
+<template>
+  <div class="popover-popper dialog-popper">
+    <div class="popover-wrap">
+      <div class="message-box">
+        123321
+      </div>
+    </div>
+  </div>
+</template>
 
+<script>
+export default {
+  name: 'IgbPopoverToolComponent',
+  data () {
+    return {}
+  },
+  mounted () {
+    // setTimeout(this.destroy, 3000)
+  },
+  methods: {
+
+  }
+}
+</script>
+<style lang="scss" scoped>
 .dialog-popper {
     width: calc-attr(396);
     position: absolute;
@@ -75,8 +53,8 @@
             top: calc-attr(15);
             width: calc-attr(14);
             height: calc-attr(14);
-            background: rgba(0, 0, 0, 0.7) url("../images/icon-close.png")
-                no-repeat center;
+            // background: rgba(0, 0, 0, 0.7) url("../images/icon-close.png")
+            //     no-repeat center;
             background-size: 100%;
         }
         .message-box {
@@ -117,3 +95,4 @@
         }
     }
 }
+</style>

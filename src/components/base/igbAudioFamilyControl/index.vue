@@ -23,11 +23,11 @@
         <div class="player-controller">
             <div class="contr contr-prev"><i></i></div>
             <div class="contr contr-play" :class="{'contr-pause':isPlay}" @click="playHandller"><i></i></div>
-            <div class="contr contr-next"><i></i></div>
+            <div class="contr contr-next" id="reference-contr-cut"><i></i></div>
         </div>
         <!--音量控制-->
         <div class="volume-controller">
-            <div class="contr contr-vom"><i></i></div>
+            <div class="contr contr-vom" id="refrence-contr-nov"><i></i></div>
             <div class="contr contr-vom-slider">
                 <a-slider :min="0" :max="1" :step="0.1" :defaultValue="0.5" :tipFormatter="null" @change="volumeHandller" />
             </div>

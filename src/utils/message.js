@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-06-18 14:34:13
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-19 23:14:42
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-20 15:12:06
  */
 
 import { createPopper } from '@popperjs/core'
@@ -21,6 +21,8 @@ let iconMap = {
   2: 'icon-error',
   3: 'icon-loading'
 }
+
+let timeInt = {}
 
 // 提示消息
 function ShowHint (Type = 0, Text, AutoClose = 0, For = 0) {
@@ -47,19 +49,26 @@ function ShowHint (Type = 0, Text, AutoClose = 0, For = 0) {
   str += `<div class="message-box">${Text}</div>`
   ele.innerHTML = str
   document.querySelector('body').appendChild(ele)
+
+  // 处理偏移距离
+  function calcAttr (px) {
+    let winWidth = document.documentElement.clientWidth
+    return winWidth * px / 1920
+  }
   let instance = createPopper(refrence, ele, {
     placement: 'top',
-    modifiers: [
-      {
-        name: 'arrow',
-        options: {
-          padding: 5 // 5px from the edges of the popper
-        }
+    modifiers: [{
+      name: 'offset',
+      // 向上偏移10px
+      options: {
+        offset: [0, calcAttr(10)]
       }
-    ]
+    }]
+
   })
 
-  setTimeout(() => {
+  clearTimeout(timeInt.messageInt)
+  timeInt.messageInt = setTimeout(() => {
     document.querySelector('body').removeChild(document.querySelector('.message-popper'))
   }, (AutoClose > 0 ? AutoClose : 1) * 1000)
 }
@@ -97,6 +106,7 @@ function ShowMessage (Text, Button = 0, Default) {
   })
 }
 
+// 中央弹框销毁
 function destroyDialogPopper () {
   if (document.querySelectorAll('.dialog-popper').length > 0) {
     document.querySelector('body').removeChild(document.querySelector('.dialog-popper'))

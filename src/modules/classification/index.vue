@@ -435,9 +435,9 @@ export default {
       this.mode = event.type
     },
     songTableChange (event) {
-      this.$router.push({
-        path: '/pages/detail/songByList'
-      })
+      // this.$router.push({
+      //   path: '/pages/detail/songByList'
+      // })
     },
     songListChange (event) {
       this.$router.push({

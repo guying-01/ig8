@@ -12,19 +12,9 @@
 
     <div class="my-pack">
         <div class="list">
-            <div class="my-pack-item current">
-                <h2>连续包年</h2>
-                <h3><span>￥</span>178<span>每月13元</span></h3>
-                <i class="icon-tuij"></i>
-            </div>
-            <div class="my-pack-item">
-                <h2>连续包季</h2>
-                <h3><span>￥</span>45<span>每月11元</span></h3>
-                <i class="icon-tuij"></i>
-            </div>
-            <div class="my-pack-item">
-                <h2>连续包月</h2>
-                <h3><span>￥</span>30<span>每月3毛</span></h3>
+            <div class="my-pack-item" v-for="(item,index) in packList" :key="index" @click="selectMode(index)" :class="[current == index ? 'current' : '']">
+                <h2>{{item.title}}</h2>
+                <h3><span>￥</span>{{item.total}}<span>{{item.unit}}</span></h3>
                 <i class="icon-tuij"></i>
             </div>
         </div>
@@ -58,7 +48,29 @@ export default {
   name: 'IgbPagesDepositComponent',
   data () {
     return {
-      check: true
+      check: true,
+      current: 0, // 选择包月模式
+      packList: [
+        {
+          title: '连续包年',
+          total: '178',
+          unit: '每月13元'
+        },
+        {
+          title: '连续包季',
+          total: '45',
+          unit: '每月11元'
+        }, {
+          title: '连续包月',
+          total: '30',
+          unit: '每月3毛'
+        }
+      ]
+    }
+  },
+  methods: {
+    selectMode (index) {
+      this.current = index
     }
   }
 }

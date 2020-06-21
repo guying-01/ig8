@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors: gy
- * @LastEditTime: 2020-06-20 10:15:00
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-06-21 22:51:09
  */
 import { igbAntDesignInstall } from './ant/index'
 // ============================
@@ -31,6 +31,9 @@ import { igbOrderListBaseInstall } from './base/igbOrderList/index'
 // ============================
 import { igbModalToolInstall } from './tools/igbModal/index'
 import { igbPopoverToolInstall } from './tools/igbPopover/index'
+import { igbConfirmToolInstall } from './tools/igbConfirm/index'
+import { igbMessageToolInstall } from './tools/igbMessage/index'
+
 /**
  * 注册组件
  * @param {*} Vue
@@ -64,4 +67,6 @@ export const IgbComponentInstall = Vue => {
 
   igbModalToolInstall(Vue)
   igbPopoverToolInstall(Vue)
+  igbConfirmToolInstall(Vue)
+  igbMessageToolInstall(Vue)
 }

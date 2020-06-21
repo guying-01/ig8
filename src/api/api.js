@@ -1,14 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-01-08 14:30:36
- * @LastEditors  : zjh
- * @LastEditTime : 2020-01-13 18:55:33
- */
-/*
- * @Author: gy
- * @Date: 2019-09-09 15:43:39
  * @LastEditors  : gy
- * @LastEditTime : 2020-01-08 11:35:03
+ * @LastEditTime : 2020-06-21 15:46:17
  */
 import {
   getAction,
@@ -18,3 +12,4 @@ import {
 } from '@/api/manage'
 
 export * from './modules/music-list'
+export * from './modules/user'

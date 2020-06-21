@@ -5,12 +5,12 @@
         <div class="avatar">
             <img src="../assets/images/avatar.jpg" @click="myInfoHandller" />
         </div>
-        <p class="user-name">周杰伦</p>
-        <p class="user-vip">
+        <p class="user-name">{{userInfo.userName}}</p>
+        <p class="user-vip" v-if="isLogin">
             <img src="../assets/images/vip.png" />
         </p>
         <p class="user-setting">
-            <a-dropdown :trigger="['click']" overlayClassName="sidebar-user-setting-menu">
+            <a-dropdown :trigger="['click']" overlayClassName="sidebar-user-setting-menu"  id="refrence-user-setting">
                 <a class="ant-dropdown-link" @click="e => e.preventDefault()"></a>
                 <a-menu slot="overlay" @click="menuClickHandller">
                     <a-menu-item key="0">
@@ -67,10 +67,15 @@ import localStorageService from '../ddd/localStorage.service'
 import IgbPagesModalLoginLayoutComponent from '../pages/modalLoginLayout/index.vue'
 import IgbPagesMyInfoComponent from '../pages/modal/my/index.vue'
 import IgbPagesDepositComponent from '../pages/modal/deposit/index.vue'
+import {DO_LOGIN} from '@/api/api'
 export default {
   name: 'IgbLayoutSidebarComponent',
   data () {
     return {
+      isLogin: false,
+      userInfo: {
+        userName: '未登录'
+      },
       settingList: [{
         id: 1,
         label: '设置',
@@ -228,24 +233,25 @@ export default {
 
       let item = this.settingList.find(e => e.id === index)
       if (item.id === 1) {
-        this.igbModal$({
-          visible: true,
-          wrapClassName: 'login-modal',
-          // width: 420,
-          componentName: IgbPagesModalLoginLayoutComponent,
-          params: {},
-          okHandller: (options, close) => {
-            let okResult = options.output.okResult
-            if (okResult.key === 'ok') {
-              close()
-              setTimeout(() => {
-                this.$router.push({
-                  path: this.settingList.find(e => e.id === index).url
-                })
-              }, 0)
-            }
-          }
+        this.$router.push({
+          path: this.settingList.find(e => e.id === index).url
         })
+        // this.igbModal$({
+        //   visible: true,
+        //   wrapClassName: 'login-modal',
+        //   // width: 420,
+        //   componentName: IgbPagesModalLoginLayoutComponent,
+        //   params: {},
+        //   okHandller: (options, close) => {
+        //     let okResult = options.output.okResult
+        //     if (okResult.key === 'ok') {
+        //       close()
+        //       setTimeout(() => {
+
+        //       }, 0)
+        //     }
+        //   }
+        // })
       }
 
       if (item.id === 5) {
@@ -289,20 +295,50 @@ export default {
       })
     },
     myInfoHandller () {
-      this.igbModal$({
-        visible: true,
-        wrapClassName: 'my-info-modal',
-        width: 687,
-        componentName: IgbPagesMyInfoComponent,
-        params: {},
-        okHandller: (options, close) => {
-          let okResult = options.output.okResult
-          if (okResult.key === 'deposit') {
-            close()
-            this.depositHandller()
+      if (!localStorageService.getItem('isLogin')) {
+        this.igbModal$({
+          visible: true,
+          wrapClassName: 'login-modal',
+          // width: 420,
+          componentName: IgbPagesModalLoginLayoutComponent,
+          params: {},
+          okHandller: (options, close) => {
+            this.$router.push({
+              path: '/pages/user/index'
+            })
+            let okResult = options.output.okResult
+            let {userName, userPass} = options.output.okResult
+            console.log(userName, userPass, okResult)
+            if (okResult.key === 'ok') {
+              DO_LOGIN({AccountName: userName, Password: userPass}).then(res => {
+                if (res.code == 0) {
+                  localStorageService.setItem('isLogin', true)
+                  close()
+                }
+              })
+              // close()
+            // setTimeout(() => {
+
+            // }, 0)
+            }
           }
-        }
-      })
+        })
+      }
+
+      // this.igbModal$({
+      //   visible: true,
+      //   wrapClassName: 'my-info-modal',
+      //   width: 687,
+      //   componentName: IgbPagesMyInfoComponent,
+      //   params: {},
+      //   okHandller: (options, close) => {
+      //     let okResult = options.output.okResult
+      //     if (okResult.key === 'deposit') {
+      //       close()
+      //       this.depositHandller()
+      //     }
+      //   }
+      // })
     },
     depositHandller () {
       this.igbModal$({

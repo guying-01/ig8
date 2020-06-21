@@ -38,6 +38,7 @@ export default {
     backHandller () {
       let KEY = 'BACK-URL'
       let url = localStorageService.getItem(KEY)
+
       this.$router.push({
         path: url
       })

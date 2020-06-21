@@ -13,7 +13,7 @@
     <div class="foo-controller">
         <!--歌曲信息-->
         <div class="singer-info">
-            <img src="../../../assets/images/song-avatar.png"  />
+            <img src="../../../assets/images/song-avatar.png"   id="refrence-contr-singer"/>
             <div>
                 <h2>南方姑娘</h2>
                 <a href="javascript:;">赵雷</a>
@@ -38,7 +38,7 @@
             <div class="contr contr-ly" id="refrence-contr-ly"><i></i><span>录音</span></div>
             <div class="contr contr-sc"><i></i><span>收藏</span></div>
             <div class="contr contr-xh" id="refrence-contr-xh"><i></i><span>循环</span></div>
-            <div class="contr contr-yd">
+            <div class="contr contr-yd" id="refrence-contr-yd">
                 <a-popover v-model="visible" trigger="click" placement="topRight" overlayClassName="order-ktv-popover">
                     <i></i><span>已点</span>
                     <p class="d">09</p>

@@ -16,8 +16,8 @@
             <div>
                 <span class="phone">135****6767</span>
                 <span class="reset-phone">更换手机号</span>
-                <span class="btn">修改个人信息</span>
-                <span class="btn">修改密码</span>
+                <span class="btn" @click="goUserInfo">修改个人信息</span>
+                <span class="btn" @click="changePassword">修改密码</span>
             </div>
         </div>
     </div>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import IgbPagesModalLoginLayoutComponent from '@/pages/modalLoginLayout/index.vue'
 export default {
   name: 'IgbPagesSettingLoginComponent',
   data () {
@@ -36,6 +37,26 @@ export default {
   methods: {
     btnSwitch () {
       this.sw = !this.sw
+    },
+    goUserInfo () {
+      this.$router.push('/pages/user/index')
+    },
+    changePassword () {
+      this.igbModal$({
+        visible: true,
+        wrapClassName: 'login-modal pass-modal',
+        // width: 420,
+        componentName: IgbPagesModalLoginLayoutComponent,
+        params: {
+          page: 'pass'
+        },
+        okHandller: (options, close) => {
+          let okResult = options.output.okResult
+          if (okResult.key === 'ok') {
+            close()
+          }
+        }
+      })
     }
   }
 }

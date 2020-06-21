@@ -6,7 +6,7 @@
             <div v-if="close" :class="{'right-one':close}">
                 <span>15秒</span>
                 <span>|</span>
-                <span>VIP可关闭广告</span>
+                <span @click="openVip" class="cursor-pointer">VIP可关闭广告</span>
                 <i class="icon-close" @click="closeHandller"></i>
             </div>
             <div v-if="!close" :class="{'right-two':!close}">
@@ -37,20 +37,23 @@ export default {
     }
   },
   mounted () {
-    this.igbModal$({
-      visible: true,
-      width: 800,
-      wrapClassName: 'deposit-modal',
-      componentName: IgbPagesDepositComponent,
-      params: {}
-    })
+
   },
   methods: {
     closeHandller () {
-      this.close = false
+      this.openVip()
     },
     hideVideoHandller () {
       this.$router.go(-1)
+    },
+    openVip () {
+      this.igbModal$({
+        visible: true,
+        width: 800,
+        wrapClassName: 'deposit-modal',
+        componentName: IgbPagesDepositComponent,
+        params: {}
+      })
     }
   }
 }
@@ -74,7 +77,9 @@ export default {
             margin: 0 auto;
             display: flex;
             align-items: center;
-
+            .cursor-pointer{
+              cursor: pointer;
+            }
             div {
 
                 &:first-child {

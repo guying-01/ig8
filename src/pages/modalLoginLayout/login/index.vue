@@ -76,7 +76,9 @@ export default {
     clickHandller (page) {
       this.$emit('next', {
         key: page,
-        value: true
+        value: true,
+        userName: this.params.userName,
+        userPass: this.params.userPass
       })
     }
   }

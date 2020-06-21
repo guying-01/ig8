@@ -1,97 +1,154 @@
 <!--
  * @Author: gy
  * @Date: 2020-06-20 10:02:00
- * @LastEditors: gy
- * @LastEditTime: 2020-06-20 10:35:31
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-06-21 22:47:21
 -->
 <template>
-  <div class="popover-popper dialog-popper">
-    <div class="popover-wrap">
-      <div class="message-box">
-        123321
-      </div>
+    <div class="popover-popper" :class="[isCenter ? 'center-popper' : '']">
+        <div class="popover-wrap" :data-for="options.For">
+            <div class="message-box">
+                <div>
+                    {{ options.Text }}
+                </div>
+                <i
+                    class="icon-close"
+                    v-if="options.CanClose == 1"
+                    @click="destroy"
+                ></i>
+            </div>
+            <div class="btn" @click="destroy" v-if="options.IKnow == 1">我知道了</div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
   name: 'IgbPopoverToolComponent',
   data () {
-    return {}
-  },
-  mounted () {
-    // setTimeout(this.destroy, 3000)
+    return {
+      isCenter: false,
+      isShow: true,
+      timeInt: null
+    }
   },
   methods: {
-
+  },
+  watch: {
+    'options.For': {
+      handler (val) {
+        if ([0, 1, 2, 3].includes(val)) {
+          this.isCenter = false
+        } else {
+          this.isCenter = true
+        }
+      },
+      immediate: true
+    },
+    'options.AutoClose': {
+      handler (val) {
+        clearTimeout(this.timeInt)
+        if (this.options.AutoClose > 0 && this.options.IKnow != 1) {
+          this.timeInt = setTimeout(this.destroy, +this.options.AutoClose * 1000)
+        }
+      },
+      immediate: true
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
-.dialog-popper {
+.popover-popper {
     width: calc-attr(396);
     position: absolute;
-    left: 50% !important;
-    top: 50% !important;
-    bottom: auto !important;
-    transform: translate(-50%, -50%) !important;
-    font-size: calc-attr(16);
-    background: rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.49);
-    border-radius: 4px;
+    &.center-popper {
+        left: 50% !important;
+        top: 50% !important;
+        bottom: auto !important;
+        transform: translate(-50%, -50%) !important;
+    }
+    font-size: calc-attr(14);
+
     z-index: 99999;
 
-    .popper-wrap {
+    .popover-wrap {
         padding: calc-attr(33) calc-attr(20) calc-attr(20);
         position: relative;
-        .icon-close {
-            cursor: pointer;
+        background: linear-gradient(
+            249deg,
+            rgba(69, 96, 194, 0.9) 0%,
+            rgba(201, 77, 243, 0.9) 100%
+        );
+        border-radius: 20px 20px 20px 0;
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        &[data-for="2"] {
+            border-radius: 20px 20px 0 20px;
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                bottom: -9px;
+                right: 0;
+                left: auto;
+                border-width: 10px 0 0 10px;
+                border-style: solid;
+                border-color: #5857ba transparent;
+                width: 0;
+                height: 0;
+                z-index: -1;
+            }
+        }
+        &:before {
+            content: "";
             display: block;
             position: absolute;
-            right: calc-attr(15);
-            top: calc-attr(15);
-            width: calc-attr(14);
-            height: calc-attr(14);
-            // background: rgba(0, 0, 0, 0.7) url("../images/icon-close.png")
-            //     no-repeat center;
-            background-size: 100%;
+            bottom: -9px;
+            left: 0;
+            border-width: 0 0 10px 10px;
+            border-style: solid;
+            border-color: transparent #b84ce3;
+            width: 0;
+            height: 0;
+            z-index: -1;
         }
         .message-box {
             color: #fff;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            i {
+                width: calc-attr(19);
+                height: calc-attr(19);
+                background: url("../../../assets/images/icon-modal-close.png")
+                    no-repeat center;
+                background-size: 100%;
+                flex-shrink: 0;
+                cursor: pointer;
+            }
         }
 
-        .btn-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: calc-attr(25);
-            .item-btn {
-                cursor: pointer;
+        .btn {
+            cursor: pointer;
+            float: right;
+            margin-top: calc-attr(19);
+            width: calc-attr(70);
+            height: calc-attr(20);
+            border: 1px solid rgba(255, 255, 255, 1);
+            // width:56px;
+            // height:20px;
+            font-size: calc-attr(14);
 
-                border: 1px solid rgba(112, 112, 112, 1);
-                border-radius: 16px;
-                width: calc-attr(72);
-                height: calc-attr(32);
-                text-align: center;
-                font-size: calc-attr(12);
-                color: #fff;
-                opacity: 0.7;
-                margin-right: calc-attr(14);
-                &.active {
-                    color: #232c39;
-                    opacity: 1;
-                    border: none;
-                    background: linear-gradient(
-                        315deg,
-                        rgba(255, 186, 0, 1) 0%,
-                        rgba(255, 107, 88, 1) 100%
-                    );
-                    opacity: 1;
-                    border-radius: 24px;
-                }
-            }
+            font-size: 14px;
+            font-weight: 400;
+            line-height: calc-attr(20);
+            color: rgba(255, 255, 255, 1);
+            border-radius: 20px;
+            text-align: center;
+            opacity: 1;
         }
     }
 }

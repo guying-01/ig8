@@ -22,6 +22,7 @@ let refrenceMap = {
 
 }
 export const igbMessageToolInstall = (Vue, PluginOptions = {}) => {
+  if (!window.ApplicationUI) window.ApplicationUI = {}
   window.ApplicationUI.ShowHint = (Type = 0, Text, AutoClose = 0, For = 0) => {
     if (!Text) return
     isAppend && Instance.destroy()

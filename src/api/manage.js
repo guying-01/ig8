@@ -2,15 +2,15 @@
  * @Author: gy
  * @Date: 2020-05-30 13:19:24
  * @LastEditors: gy
- * @LastEditTime: 2020-05-30 13:55:21
+ * @LastEditTime: 2020-06-22 10:27:22
  */
 import {
   axios
 } from '@/utils/request'
 import QS from 'qs'
 
-//post
-export function postAction(url, parameter) {
+// post
+export function postAction (url, parameter) {
   return axios({
     url: url,
     method: 'post',
@@ -18,8 +18,8 @@ export function postAction(url, parameter) {
   })
 }
 
-//post method= {post | put}
-export function httpAction(url, parameter, method) {
+// post method= {post | put}
+export function httpAction (url, parameter, method) {
   if (method == 'get' || !method) {
     return getAction(url, parameter)
   } else if (method == 'post') {
@@ -31,8 +31,8 @@ export function httpAction(url, parameter, method) {
   }
 }
 
-//put
-export function putAction(url, parameter) {
+// put
+export function putAction (url, parameter) {
   return axios({
     url: url,
     method: 'put',
@@ -40,8 +40,8 @@ export function putAction(url, parameter) {
   })
 }
 
-//get
-export function getAction(url, params = {}) {
+// get
+export function getAction (url, params = {}) {
   return axios({
     url: Object.keys(params).length == 0 ? url : url + '?' + QS.stringify(params),
     method: 'get'
@@ -49,8 +49,8 @@ export function getAction(url, params = {}) {
   })
 }
 
-//restful get
-export function restFulGetAction(url, params = {}) {
+// restful get
+export function restFulGetAction (url, params = {}) {
   let str = ''
   for (let i in params) {
     str += '/' + params[i]
@@ -62,8 +62,8 @@ export function restFulGetAction(url, params = {}) {
   })
 }
 
-//deleteAction
-export function deleteAction(url, parameter) {
+// deleteAction
+export function deleteAction (url, parameter) {
   return axios({
     url: url,
     method: 'delete',

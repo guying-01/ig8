@@ -5,7 +5,7 @@
         <div class="avatar">
             <img src="../assets/images/avatar.jpg" @click="myInfoHandller" />
         </div>
-        <p class="user-name">{{userInfo.userName}}</p>
+        <p class="user-name">{{userInfo.UserName}}</p>
         <p class="user-vip" v-if="isLogin">
             <img src="../assets/images/vip.png" />
         </p>
@@ -74,7 +74,7 @@ export default {
     return {
       isLogin: false,
       userInfo: {
-        userName: '未登录'
+        UserName: '未登录'
       },
       settingList: [{
         id: 1,
@@ -165,6 +165,11 @@ export default {
     } else {
       this.mode = parseInt(localStorageService.getItem('CONTR-MODE'))
     }
+
+    let isLogin = localStorageService.getItem('isLogin')
+    if (isLogin) this.isLogin = true
+    let userInfo = localStorageService.getItem('userInfo')
+    this.userInfo = JSON.parse(userInfo)
 
     if (this.mode === 0) {
       this.defaultSelectedKeys = []
@@ -303,42 +308,40 @@ export default {
           componentName: IgbPagesModalLoginLayoutComponent,
           params: {},
           okHandller: (options, close) => {
-            this.$router.push({
-              path: '/pages/user/index'
-            })
+            // this.$router.push({
+            //   path: '/pages/user/index'
+            // })
             let okResult = options.output.okResult
             let {userName, userPass} = options.output.okResult
-            console.log(userName, userPass, okResult)
             if (okResult.key === 'ok') {
               DO_LOGIN({AccountName: userName, Password: userPass}).then(res => {
-                if (res.code == 0) {
+                if (res.Result == 1) {
                   localStorageService.setItem('isLogin', true)
+                  localStorageService.setItem('userInfo', JSON.stringify(res.Description))
+                  this.userInfo = res.Description
+                  this.isLogin = true
                   close()
                 }
               })
-              // close()
-            // setTimeout(() => {
-
-            // }, 0)
+            }
+          }
+        })
+      } else {
+        this.igbModal$({
+          visible: true,
+          wrapClassName: 'my-info-modal',
+          width: 687,
+          componentName: IgbPagesMyInfoComponent,
+          params: {},
+          okHandller: (options, close) => {
+            let okResult = options.output.okResult
+            if (okResult.key === 'deposit') {
+              close()
+              this.depositHandller()
             }
           }
         })
       }
-
-      // this.igbModal$({
-      //   visible: true,
-      //   wrapClassName: 'my-info-modal',
-      //   width: 687,
-      //   componentName: IgbPagesMyInfoComponent,
-      //   params: {},
-      //   okHandller: (options, close) => {
-      //     let okResult = options.output.okResult
-      //     if (okResult.key === 'deposit') {
-      //       close()
-      //       this.depositHandller()
-      //     }
-      //   }
-      // })
     },
     depositHandller () {
       this.igbModal$({

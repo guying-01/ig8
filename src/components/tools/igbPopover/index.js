@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-06-20 10:02:00
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-21 22:46:41
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-22 09:40:37
  */
 import IgbPopover from './index.vue'
 import { createPopper } from '@popperjs/core'
@@ -19,6 +19,7 @@ let ForMap = {
 let Instance = '' // 缓存
 let isAppend = false // 是否已存在
 export const igbPopoverToolInstall = (Vue, PluginOptions = {}) => {
+  if (!window.ApplicationUI) window.ApplicationUI = {}
   window.ApplicationUI.ShowPopper = (Text, IKnow, CanClose, AutoClose, For) => {
     if (!Text) return
     isAppend && Instance.destroy()

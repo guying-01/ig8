@@ -19,8 +19,12 @@
 
         <div class="other-info">
             <p>
-                会员级别：<span>免费用户</span
-                ><button class="btn" @click="okHandller('deposit')">
+                会员级别：<span>{{ VipName }}</span
+                ><button
+                    class="btn"
+                    @click="okHandller('deposit')"
+                    v-if="!VipId"
+                >
                     开通
                 </button>
             </p>
@@ -31,8 +35,15 @@
 </template>
 
 <script>
+import localStorageService from '../../../ddd/localStorage.service'
 export default {
   name: 'IgbPagesMyInfoComponent',
+  data () {
+    return {
+      VipId: '',
+      VipName: '免费用户'
+    }
+  },
   methods: {
     okHandller (page) {
       this.$emit('ok', {
@@ -40,6 +51,12 @@ export default {
         value: true
       })
     }
+  },
+  mounted () {
+    let userInfo = JSON.parse(localStorageService.getItem('userInfo'))
+    let { VipId, VipName } = userInfo
+    this.VipId = VipId
+    this.VipName = VipName
   }
 }
 </script>

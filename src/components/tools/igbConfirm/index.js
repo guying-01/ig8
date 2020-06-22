@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-06-20 10:02:00
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-21 23:23:07
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-22 09:41:16
  */
 import IgbConfirm from './index.vue'
 import { createPopper } from '@popperjs/core'
@@ -13,6 +13,7 @@ import { createPopper } from '@popperjs/core'
 let Instance = '' // 缓存
 let isAppend = false // 是否已存在
 export const igbConfirmToolInstall = (Vue, PluginOptions = {}) => {
+  if (!window.ApplicationUI) window.ApplicationUI = {}
   window.ApplicationUI.ShowMessage = (Text, Button = 0, Default) => {
     if (!Text) return
     isAppend && Instance.destroy()

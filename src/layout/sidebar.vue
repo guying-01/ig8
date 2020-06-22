@@ -167,9 +167,11 @@ export default {
     }
 
     let isLogin = localStorageService.getItem('isLogin')
-    if (isLogin) this.isLogin = true
-    let userInfo = localStorageService.getItem('userInfo')
-    this.userInfo = JSON.parse(userInfo)
+    if (isLogin) {
+      this.isLogin = true
+      let userInfo = localStorageService.getItem('userInfo')
+      this.userInfo = JSON.parse(userInfo)
+    }
 
     if (this.mode === 0) {
       this.defaultSelectedKeys = []

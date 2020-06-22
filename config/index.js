@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:11
  * @LastEditors: gy
- * @LastEditTime: 2020-05-30 14:12:37
+ * @LastEditTime: 2020-06-22 14:12:11
  */
 'use strict'
 // Template version: 1.3.1
@@ -47,7 +47,7 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help

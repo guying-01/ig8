@@ -323,6 +323,8 @@ export default {
                   this.userInfo = res.Description
                   this.isLogin = true
                   close()
+                } else {
+                  this.$bus.emit('login_error', res.Description)
                 }
               })
             }

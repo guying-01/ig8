@@ -1,8 +1,8 @@
 <!--
  * @Author: gy
  * @Date: 2020-06-20 10:02:00
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-21 23:23:41
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-23 20:14:18
 -->
 <template>
     <div
@@ -10,7 +10,7 @@
         :class="[isCenter ? 'center-popper' : '', iconClass]"
         :data-for="options.For"
     >
-        <i></i>
+        <i v-if="hasIcon"></i>
 
         <div class="message-box">
             {{ options.Text }}
@@ -26,6 +26,7 @@ export default {
       isCenter: false,
       isShow: true,
       timeInt: null,
+      hasIcon: false,
       iconMap: {
         1: 'icon-success',
         2: 'icon-error',
@@ -47,7 +48,13 @@ export default {
     },
     'options.Type': {
       handler (val) {
-        this.iconClass = this.iconMap[val]
+        if ([1, 2, 3].includes(val)) {
+          this.iconClass = this.iconMap[val]
+          this.hasIcon = true
+        } else {
+          this.iconClass = ''
+          this.hasIcon = false
+        }
       },
       immediate: true
     },

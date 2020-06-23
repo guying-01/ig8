@@ -1,8 +1,8 @@
 <!--
  * @Author       : gy
  * @Date         : 2020-06-01 22:08:15
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-21 15:58:17
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-23 19:54:38
  * @FilePath     : /ig8/src/pages/modalLoginLayout/index.vue
  * @Description  : 页面描述
 -->

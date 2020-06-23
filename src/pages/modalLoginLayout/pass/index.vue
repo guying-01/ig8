@@ -142,7 +142,7 @@ export default {
                     font-weight: 400;
                     color: rgba(255, 142, 50, 1);
 
-                    &:last-child {
+                    &:nth-of-type(3n) {
                         margin-right: 0px;
                     }
 

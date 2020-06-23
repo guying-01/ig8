@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-21 23:30:39
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-23 20:01:23
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -29,6 +29,21 @@ Vue.use(Antd)
 IgbComponentInstall(Vue)
 
 Vue.config.productionTip = false
+
+// bus
+Vue.prototype.$bus = new Vue({
+  methods: {
+    emit (event, ...args) {
+      this.$emit(event, ...args)
+    },
+    on (event, fn) {
+      this.$on(event, fn)
+    },
+    off (event, fn) {
+      this.$ff(event, fn)
+    }
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

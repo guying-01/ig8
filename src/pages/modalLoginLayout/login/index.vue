@@ -16,6 +16,7 @@
                 </template>
             </a-input>
             <div class="err" v-if="params.userPassError"><i></i>密码字段为必填</div>
+            <div class="err" v-if="params.isError"><i></i>{{params.errorMsg}}</div>
             <p class="auto-login">
                 <igb-check-box v-model="check">下次自动登录</igb-check-box>
             </p>
@@ -41,7 +42,9 @@ export default {
         userNameError: false,
         userPass: '',
         userPassType: 'text',
-        userPassError: false
+        userPassError: false,
+        isError: false,
+        errorMsg: ''
       }
     }
   },
@@ -50,8 +53,19 @@ export default {
       this.params.userName = ''
       this.params.userPass = ''
     })
+
+    this.$bus.on('login_error', this.onLoginError)
+  },
+  beforeDestroy () {
+    this.$bus.off('login_error', this.onLoginError)
   },
   methods: {
+    onLoginError (msg) {
+      if (msg) {
+        this.params.isError = true
+        this.params.errorMsg = msg
+      }
+    },
     inputChangeHandller (event) {
       if (event.target.dataset.tag === 'user-name') {
         this.params.userNameError = this.params.userName.length === 0

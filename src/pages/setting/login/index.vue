@@ -48,7 +48,7 @@ export default {
         // width: 420,
         componentName: IgbPagesModalLoginLayoutComponent,
         params: {
-          page: 'pass'
+          page: 'forget'
         },
         okHandller: (options, close) => {
           let okResult = options.output.okResult

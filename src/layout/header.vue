@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
  * @LastEditors: gy
- * @LastEditTime: 2020-06-22 13:20:48
+ * @LastEditTime: 2020-06-23 20:41:58
 -->
 <template>
     <div class="igb-layout-header">
@@ -17,9 +17,16 @@
                 v-if="isHome"
                 @click="backHandller()"
             ></div>
-            <div class="header-search" @click="searchHandller">
+            <a-input
+                placeholder="搜索：成都-赵雷"
+                @search="onSearch"
+                class="header-search"
+                >
+               <a-icon slot="prefix" type="search" />
+            </a-input>
+            <!-- <div class="header-search" @click="searchHandller">
                 <span>搜索：成都-赵雷</span>
-            </div>
+            </div> -->
         </div>
         <i class="icon icon-touping"></i>
     </div>
@@ -38,6 +45,7 @@ export default {
     return {}
   },
   methods: {
+    onSearch () {},
     /**
          * 返回回调事件
          */

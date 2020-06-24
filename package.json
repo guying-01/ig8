@@ -21,6 +21,7 @@
     "font-awesome": "^4.7.0",
     "lib-flexible": "^0.3.2",
     "regenerator-runtime": "^0.13.5",
+    "sortablejs": "^1.10.2",
     "swiper": "^5.3.7",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^4.1.0",

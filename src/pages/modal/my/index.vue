@@ -2,7 +2,7 @@
     <div class="igb-pages-my-info">
         <div class="my-info">
             <div class="header">
-                <img src="../../../assets/images/touxiang.png" />
+                <img src="../../../assets/images/touxiang.png"  @click="okHandller('modify')"/>
                 <p class="molay">修改头像</p>
             </div>
             <div class="info">
@@ -12,7 +12,7 @@
                     ><span @click="okHandller('setting')">设置</span>
                 </p>
                 <div class="modify-avatar">
-                    <p>修改头像</p>
+                    <p @click="okHandller('modify')">修改头像</p>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 ><button
                     class="btn"
                     @click="okHandller('deposit')"
-                    v-if="!VipId"
+                    v-if="VipId <= 0"
                 >
                     开通
                 </button>

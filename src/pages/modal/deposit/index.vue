@@ -12,9 +12,9 @@
 
     <div class="my-pack">
         <div class="list">
-            <div class="my-pack-item" v-for="(item,index) in packList" :key="index" @click="selectMode(index)" :class="[current == index ? 'current' : '']">
-                <h2>{{item.title}}</h2>
-                <h3><span>￥</span>{{item.total}}<span>{{item.unit}}</span></h3>
+            <div class="my-pack-item" v-for="(item,index) in packList" :key="index" @click="selectMode(index)" :class="[current == index ? 'current' : '',item['IsRecommend'] == 1 ? 'recommend' : '']">
+                <h2>{{item.GoodsName}}</h2>
+                <h3><span>￥</span>{{item.Price}}<span>{{item.Description}}</span></h3>
                 <i class="icon-tuij"></i>
             </div>
         </div>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import {GET_GOODS} from '@/api/api'
 export default {
   name: 'IgbPagesDepositComponent',
   data () {
@@ -52,9 +53,13 @@ export default {
       current: 0, // 选择包月模式
       packList: [
         {
-          title: '连续包年',
-          total: '178',
-          unit: '每月13元'
+          'GoodsID': '3',
+          'GoodsName': 'VIP包年会员',
+          'VipId': '1',
+          'Price': '299',
+          'Unit': '年',
+          'IsRecommend': '1',
+          'Description': '平均每月24.9元'
         },
         {
           title: '连续包季',
@@ -72,6 +77,11 @@ export default {
     selectMode (index) {
       this.current = index
     }
+  },
+  mounted () {
+    GET_GOODS().then(res => {
+      this.packList = res
+    })
   }
 }
 </script>
@@ -175,7 +185,7 @@ export default {
                     }
                 }
 
-                &.current {
+                &.recommend {
 
                     // background-color: linear-gradient(225deg, rgba(255, 185, 1, 1) 0%, rgba(255, 108, 87, 1) 100%) !important;
                     // background-image: url("../../../assets/images/float-tuijian.png");

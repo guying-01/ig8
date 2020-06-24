@@ -6,7 +6,7 @@
             <img src="../assets/images/avatar.jpg" @click="myInfoHandller" />
         </div>
         <p class="user-name">{{userInfo.UserName}}</p>
-        <p class="user-vip" v-if="isLogin">
+        <p class="user-vip" v-if="userInfo.VipId > 0">
             <img src="../assets/images/vip.png" />
         </p>
         <p class="user-setting">
@@ -171,6 +171,8 @@ export default {
       this.isLogin = true
       let userInfo = localStorageService.getItem('userInfo')
       this.userInfo = JSON.parse(userInfo)
+    } else {
+      this.userInfo['VipId'] = 0
     }
 
     if (this.mode === 0) {
@@ -342,6 +344,12 @@ export default {
             if (okResult.key === 'deposit') {
               close()
               this.depositHandller()
+            } else if (okResult.key === 'modify') {
+              close()
+              this.$router.push({path: '/pages/user/index'})
+            } else if (okResult.key === 'setting') {
+              close()
+              this.$router.push({path: '/pages/setting/index'})
             }
           }
         })

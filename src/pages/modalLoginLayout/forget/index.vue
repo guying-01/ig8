@@ -6,7 +6,7 @@
             <div class="err" v-if="params.userNameError"><i></i>手机号字段为必填</div>
         </div>
         <div class="form-list-item">
-            <a-input :type="userPassType" class="form-list-item-input" autocomplete="off" data-tag="user-pass" v-model="params.userPass" placeholder="密码不少于6位" @focus="inputFocusHandller($event)" @blur="inputBlurHandller($event)" @input="inputChangeHandller($event)" allow-clear></a-input>
+            <a-input :type="params.userPassType" class="form-list-item-input" autocomplete="off" data-tag="user-pass" v-model="params.userPass" placeholder="密码不少于6位" @focus="inputFocusHandller($event)" @blur="inputBlurHandller($event)" @input="inputChangeHandller($event)" allow-clear></a-input>
             <div class="err" v-if="params.userPassError"><i></i>密码字段为必填</div>
         </div>
         <div class="form-list-item">

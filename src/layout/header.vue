@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
  * @LastEditors: gy
- * @LastEditTime: 2020-06-23 20:41:58
+ * @LastEditTime: 2020-06-24 16:00:05
 -->
 <template>
     <div class="igb-layout-header">
@@ -21,6 +21,7 @@
                 placeholder="搜索：成都-赵雷"
                 @search="onSearch"
                 class="header-search"
+                @focus="searchHandller"
                 >
                <a-icon slot="prefix" type="search" />
             </a-input>

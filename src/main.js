@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
  * @LastEditors: gy
- * @LastEditTime: 2020-06-23 20:01:23
+ * @LastEditTime: 2020-06-24 10:42:09
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -40,7 +40,7 @@ Vue.prototype.$bus = new Vue({
       this.$on(event, fn)
     },
     off (event, fn) {
-      this.$ff(event, fn)
+      this.$off(event, fn)
     }
   }
 })

@@ -1,108 +1,143 @@
 <template>
-<div class="igb-order-list-base-component">
-    <p class="btn-close" @click="closeHandller"></p>
-    <div>
-    <div class="order-tabs-list">
-        <span v-for="(item,index) in tabs" :key="index" :class="{'current':item.value===current}" @click="changeHandller(item)">{{item.label}}</span>
-    </div>
+    <div class="igb-order-list-base-component">
+        <p class="btn-close" @click="closeHandller"></p>
+        <div>
+            <div class="order-tabs-list">
+                <span
+                    v-for="(item, index) in tabs"
+                    :key="index"
+                    :class="{ current: item.value === current }"
+                    @click="changeHandller(item)"
+                    >{{ item.label }}</span
+                >
+            </div>
 
-    <div class="order-button-list">
-        <span class="btn btn-share-song" @click="btnShareHandller" v-if="current===0"></span><!--禁用按钮加样式class="dis"-->
-        <span class="btn btn-loop" v-if="current===0"></span>
-        <!--<span class="btn btn-share-song dis" @click="btnShareHandller" v-if="current===0"></span>
+            <div class="order-button-list">
+                <span
+                    class="btn btn-share-song"
+                    @click="btnShareHandller"
+                    v-if="current === 0"
+                ></span
+                ><!--禁用按钮加样式class="dis"-->
+                <span class="btn btn-loop" v-if="current === 0"></span>
+                <!--<span class="btn btn-share-song dis" @click="btnShareHandller" v-if="current===0"></span>
         <span class="btn btn-loop dis" v-if="current===0"></span>-->
-        <span class="icon icon-del"></span>
-    </div>
-    </div>
-
-    <div ref="viewBox" class="order-content" :class="{'sep': current===0}">
-        <igbScroll v-bind:boxHeight="viewBoxHeight">
-            <div class="list-order" v-if="current===0">
-                <table class="table">
-                    <tbody>
-                        <tr v-for="(item,index) in tableList" :key="index" :class="{'current':item.current,'play':item.play}">
-                            <td>
-                                <span>{{item.value}}</span>
-                                <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-                            </td>
-                            <td>
-                                <div>
-                                    <h2>{{item.songName}}</h2>
-                                    <igb-tag :type="item.tag"></igb-tag>
-                                </div>
-                                <i class="icon-leing"></i>
-                            </td>
-                            <td>
-                                <div>
-                                    <i class="icon-collect" :class="{'icon-collect-ok':item.collect}"></i>
-                                    <i class="icon-order-by-desc"></i>
-                                    <i class="icon-order-by-aes"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <span>{{item.singerName}}</span>
-                            </td>
-                            <td>
-                                <div>
-                                    <i></i>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <span>{{item.time}}</span>
-                                    <i class="icon-del"></i>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <span class="icon icon-del"></span>
             </div>
+        </div>
 
-            <div class="list-song" v-if="current===1">
-                <table class="table">
-                    <tbody>
-                        <tr v-for="(item,index) in tableList1" :key="index" :class="{'current':item.current,'play':item.play}">
-                            <td>
-                                <span>{{item.value}}</span>
-                                <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-                            </td>
-                            <td>
-                                <div>
-                                    <h2>{{item.songName}}</h2>
-                                    <igb-tag :type="item.tag"></igb-tag>
-                                </div>
-                                <i class="icon-leing"></i>
-                            </td>
-                            <td>
-                                <div>
-                                    <i class="icon-collect"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <span>{{item.singerName}}</span>
-                            </td>
-                            <td>
-                                <div>
-                                    <i></i>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <span>{{item.time}}</span>
-                                    <i class="icon-del"></i>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </igbScroll>
+        <div
+            ref="viewBox"
+            class="order-content"
+            :class="{ sep: current === 0 }"
+        >
+            <igbScroll v-bind:boxHeight="viewBoxHeight">
+                <div class="list-order" v-show="current === 0">
+                    <table class="table">
+                        <tbody ref="order-list">
+                            <tr
+                                v-for="(item, index) in tableList"
+                                :key="index"
+                                :class="{
+                                    current: item.current,
+                                    play: item.play
+                                }"
+                            >
+                                <td>
+                                    <span>{{ item.value }}</span>
+                                    <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+                                </td>
+                                <td>
+                                    <div>
+                                        <h2>{{ item.songName }}</h2>
+                                        <igb-tag :type="item.tag"></igb-tag>
+                                    </div>
+                                    <i class="icon-leing"></i>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i
+                                            class="icon-collect"
+                                            :class="{
+                                                'icon-collect-ok': item.collect
+                                            }"
+                                        ></i>
+                                        <i class="icon-order-by-desc" @click="tableRowDesc(tableList,index)"></i>
+                                        <i class="icon-order-by-aes" @click="tableRowAsc(tableList,index)"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>{{ item.singerName }}</span>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span>{{ item.time }}</span>
+                                        <i class="icon-del"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="list-song" v-show="current === 1">
+                    <table class="table">
+                        <tbody ref="song-list">
+                            <tr
+                                v-for="(item, index) in tableList1"
+                                :key="index"
+                                :class="{
+                                    current: item.current,
+                                    play: item.play
+                                }"
+                            >
+                                <td>
+                                    <span>{{ item.value }}</span>
+                                    <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+                                </td>
+                                <td>
+                                    <div>
+                                        <h2>{{ item.songName }}</h2>
+                                        <igb-tag :type="item.tag"></igb-tag>
+                                    </div>
+                                    <i class="icon-leing"></i>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="icon-collect"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>{{ item.singerName }}</span>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span>{{ item.time }}</span>
+                                        <i class="icon-del"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </igbScroll>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
 import igbScroll from '../../tools/igbScroll/index'
+import Sortable from 'sortablejs'
 export default {
   name: 'IgbOrderListBaseComponent',
   components: {
@@ -111,174 +146,197 @@ export default {
   data () {
     return {
       viewBoxHeight: '100%',
-
+      songListSortable: false,
       current: 0,
-      tabs: [{
-        value: 0,
-        label: '已点(20)'
-      }, {
-        value: 1,
-        label: '已唱(20)'
-      }],
-      tableList: [{
-        value: '01',
-        songName: '你的答案',
-        tag: 0,
-        singerName: '郭富城',
-        time: '01:00',
-        current: false,
-        play: false
-      }, {
-        value: '02',
-        songName: '死了都要爱',
-        tag: 0,
-        singerName: '信乐团',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '03',
-        songName: '成都',
-        tag: 0,
-        singerName: '赵雷',
-        time: '02:00',
-        current: true,
-        play: true
-      }, {
-        value: '04',
-        songName: '我不是真正的快乐',
-        tag: 0,
-        singerName: '阿信',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '05',
-        songName: '你的答案',
-        tag: 0,
-        singerName: '郭富城',
-        time: '02:00',
-        current: false,
-        play: false,
-        collect: true
-      }, {
-        value: '06',
-        songName: '我不是真正的快乐',
-        tag: 0,
-        singerName: '阿信',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '07',
-        songName: '你的答案',
-        tag: 0,
-        singerName: '郭富城',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '08',
-        songName: '死了都要爱',
-        tag: 0,
-        singerName: '信乐团',
-        time: '02:00',
-        current: false,
-        play: false,
-        collect: true
-      }, {
-        value: '09',
-        songName: '死了都要爱',
-        tag: 0,
-        singerName: '信乐团',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '10',
-        songName: '死了都要爱',
-        tag: 0,
-        singerName: '信乐团',
-        time: '02:00',
-        current: false,
-        play: false
-      }
+      tabs: [
+        {
+          value: 0,
+          label: '已点(20)'
+        },
+        {
+          value: 1,
+          label: '已唱(20)'
+        }
       ],
-      tableList1: [{
-        value: '01',
-        songName: '你的答案',
-        tag: 0,
-        singerName: '郭富城',
-        time: '01:00',
-        current: false,
-        play: false
-      }, {
-        value: '02',
-        songName: '死了都要爱',
-        tag: 0,
-        singerName: '信乐团',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '03',
-        songName: '成都',
-        tag: 0,
-        singerName: '赵雷',
-        time: '02:00',
-        current: true,
-        play: true
-      }, {
-        value: '04',
-        songName: '我不是真正的快乐',
-        tag: 0,
-        singerName: '阿信',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '05',
-        songName: '你的答案',
-        tag: 0,
-        singerName: '郭富城',
-        time: '02:00',
-        current: false,
-        play: false,
-        collect: false
-      }, {
-        value: '06',
-        songName: '我不是真正的快乐',
-        tag: 0,
-        singerName: '阿信',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '07',
-        songName: '你的答案',
-        tag: 0,
-        singerName: '郭富城',
-        time: '02:00',
-        current: false,
-        play: false
-      }, {
-        value: '08',
-        songName: '死了都要爱',
-        tag: 0,
-        singerName: '信乐团',
-        time: '02:00',
-        current: false,
-        play: false,
-        collect: false
-      }, {
-        value: '09',
-        songName: '死了都要爱',
-        tag: 0,
-        singerName: '信乐团',
-        time: '02:00',
-        current: false,
-        play: false
-      }]
+      tableList: [
+        {
+          value: '01',
+          songName: '你的答案',
+          tag: 0,
+          singerName: '郭富城',
+          time: '01:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '02',
+          songName: '死了都要爱',
+          tag: 0,
+          singerName: '信乐团',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '03',
+          songName: '成都',
+          tag: 0,
+          singerName: '赵雷',
+          time: '02:00',
+          current: true,
+          play: true
+        },
+        {
+          value: '04',
+          songName: '我不是真正的快乐',
+          tag: 0,
+          singerName: '阿信',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '05',
+          songName: '你的答案',
+          tag: 0,
+          singerName: '郭富城',
+          time: '02:00',
+          current: false,
+          play: false,
+          collect: true
+        },
+        {
+          value: '06',
+          songName: '我不是真正的快乐',
+          tag: 0,
+          singerName: '阿信',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '07',
+          songName: '你的答案',
+          tag: 0,
+          singerName: '郭富城',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '08',
+          songName: '死了都要爱',
+          tag: 0,
+          singerName: '信乐团',
+          time: '02:00',
+          current: false,
+          play: false,
+          collect: true
+        },
+        {
+          value: '09',
+          songName: '死了都要爱',
+          tag: 0,
+          singerName: '信乐团',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '10',
+          songName: '死了都要爱',
+          tag: 0,
+          singerName: '信乐团',
+          time: '02:00',
+          current: false,
+          play: false
+        }
+      ],
+      tableList1: [
+        {
+          value: '01',
+          songName: '你的答案',
+          tag: 0,
+          singerName: '郭富城',
+          time: '01:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '02',
+          songName: '死了都要爱',
+          tag: 0,
+          singerName: '信乐团',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '03',
+          songName: '成都',
+          tag: 0,
+          singerName: '赵雷',
+          time: '02:00',
+          current: true,
+          play: true
+        },
+        {
+          value: '04',
+          songName: '我不是真正的快乐',
+          tag: 0,
+          singerName: '阿信',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '05',
+          songName: '你的答案',
+          tag: 0,
+          singerName: '郭富城',
+          time: '02:00',
+          current: false,
+          play: false,
+          collect: false
+        },
+        {
+          value: '06',
+          songName: '我不是真正的快乐',
+          tag: 0,
+          singerName: '阿信',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '07',
+          songName: '你的答案',
+          tag: 0,
+          singerName: '郭富城',
+          time: '02:00',
+          current: false,
+          play: false
+        },
+        {
+          value: '08',
+          songName: '死了都要爱',
+          tag: 0,
+          singerName: '信乐团',
+          time: '02:00',
+          current: false,
+          play: false,
+          collect: false
+        },
+        {
+          value: '09',
+          songName: '死了都要爱',
+          tag: 0,
+          singerName: '信乐团',
+          time: '02:00',
+          current: false,
+          play: false
+        }
+      ]
     }
   },
   methods: {
@@ -290,12 +348,41 @@ export default {
     },
     changeHandller (item) {
       this.current = item.value
+    },
+    tableRowDesc (list, index) {
+      if (index + 1 > list.length) return
+      let arr = list[index]
+      this.$set(list, index, list[index + 1])
+      this.$set(list, index + 1, arr)
+    },
+    tableRowAsc (list, index) {
+      if (index == 0) return
+      let arr = list[index]
+      this.$set(list, index, list[index - 1])
+      this.$set(list, index - 1, arr)
     }
   },
-  mounted () { // 主要解决滚动条在客户端中无法正确配置高度问题
+  mounted () {
+    // 主要解决滚动条在客户端中无法正确配置高度问题
     this.viewBoxHeight = this.$refs.viewBox.offsetHeight + 'px'
     window.onresize = () => {
       this.viewBoxHeight = this.$refs.viewBox.offsetHeight + 'px'
+    }
+
+    var el = this.$refs['order-list']
+    Sortable.create(el)
+  },
+  watch: {
+    current: {
+      handler (val) {
+        let el = ''
+        if (val == 1 && !this.songListSortable) {
+          el = this.$refs['song-list']
+          Sortable.create(el)
+          this.songListSortable = true
+        }
+      },
+      immediate: false
     }
   }
 }
@@ -305,18 +392,20 @@ export default {
 @import "../../../assets/scss/ddd/mixin.scss";
 
 // Vue进入离开动画
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
     opacity: 0;
 }
 
 .igb-order-list-base-component {
     position: relative;
     padding-top: calc-attr(39);
-    height:100%;
+    height: 100%;
     box-sizing: border-box;
     //overflow: hidden;
     background: url("../../../assets/images/k/yd-bg.png") no-repeat center;
@@ -326,15 +415,15 @@ export default {
     //overflow: hidden;
     display: flex;
     flex-direction: column;
-    .order-content{
+    .order-content {
         margin-bottom: 10px;
         flex: 1;
         position: relative;
         overflow-y: hidden;
         //@include scroll-bar(0);
 
-        &.sep{
-            border-top: 1px solid rgba(255, 255, 255, .1);
+        &.sep {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
     }
     .btn-close {
@@ -343,14 +432,16 @@ export default {
         right: calc-attr(28);
         width: calc-attr(18);
         height: calc-attr(18);
-        background: url("../../../assets/images/icon-modal-close.png") no-repeat center;
+        background: url("../../../assets/images/icon-modal-close.png") no-repeat
+            center;
         background-size: calc-attr(18) calc-attr(18);
         margin: 0px;
         padding: 0px;
         cursor: pointer;
 
         &:hover {
-            background: url("../../../assets/images/icon-modal-close-hover.png") no-repeat center;
+            background: url("../../../assets/images/icon-modal-close-hover.png")
+                no-repeat center;
             background-size: calc-attr(18) calc-attr(18);
         }
     }
@@ -363,23 +454,31 @@ export default {
         display: flex;
         align-items: center;
         border-radius: 30px;
-        background: rgba(206, 206, 206, .1);
+        background: rgba(206, 206, 206, 0.1);
 
         span {
             width: 50%;
             text-align: center;
             font-size: calc-attr(14);
             font-weight: 400;
-            color: rgba(255, 255, 255, .7);
+            color: rgba(255, 255, 255, 0.7);
             cursor: pointer;
 
             &.current {
-                background: linear-gradient(315deg, rgba(255, 186, 0, 1) 0%, rgba(255, 107, 88, 1) 100%);
+                background: linear-gradient(
+                    315deg,
+                    rgba(255, 186, 0, 1) 0%,
+                    rgba(255, 107, 88, 1) 100%
+                );
                 border-radius: 30px;
                 color: rgba(31, 40, 53, 1);
 
                 &:hover {
-                    background: linear-gradient(315deg, rgba(255, 197, 41, 1) 0%, rgba(255, 125, 108, 1) 100%);
+                    background: linear-gradient(
+                        315deg,
+                        rgba(255, 197, 41, 1) 0%,
+                        rgba(255, 125, 108, 1) 100%
+                    );
                 }
             }
         }
@@ -404,41 +503,49 @@ export default {
             }
 
             &.btn-share-song {
-                background: url("../../../assets/images/table/t-btn2.png") no-repeat center;
+                background: url("../../../assets/images/table/t-btn2.png")
+                    no-repeat center;
                 background-size: 100%;
 
                 &:hover {
-                    background: url("../../../assets/images/table/t-btn2-h.png") no-repeat center;
+                    background: url("../../../assets/images/table/t-btn2-h.png")
+                        no-repeat center;
                     background-size: 100%;
                 }
 
                 &:active {
-                    background: url("../../../assets/images/table/t-btn2-s.png") no-repeat center;
+                    background: url("../../../assets/images/table/t-btn2-s.png")
+                        no-repeat center;
                     background-size: 100%;
                 }
 
                 &.dis {
-                    background: url("../../../assets/images/table/t-btn2-d.png") no-repeat center;
+                    background: url("../../../assets/images/table/t-btn2-d.png")
+                        no-repeat center;
                     background-size: 100%;
                 }
             }
 
             &.btn-loop {
-                background: url("../../../assets/images/table/t-btn1.png") no-repeat center;
+                background: url("../../../assets/images/table/t-btn1.png")
+                    no-repeat center;
                 background-size: 100%;
 
                 &:hover {
-                    background: url("../../../assets/images/table/t-btn1-h.png") no-repeat center;
+                    background: url("../../../assets/images/table/t-btn1-h.png")
+                        no-repeat center;
                     background-size: 100%;
                 }
 
                 &:active {
-                    background: url("../../../assets/images/table/t-btn1-s.png") no-repeat center;
+                    background: url("../../../assets/images/table/t-btn1-s.png")
+                        no-repeat center;
                     background-size: 100%;
                 }
 
                 &.dis {
-                    background: url("../../../assets/images/table/t-btn1-d.png") no-repeat center;
+                    background: url("../../../assets/images/table/t-btn1-d.png")
+                        no-repeat center;
                     background-size: 100%;
                 }
             }
@@ -447,14 +554,16 @@ export default {
         span.icon {
             width: calc-attr(32);
             height: calc-attr(32);
-            background: url("../../../assets/images/btn-del.png") no-repeat center;
+            background: url("../../../assets/images/btn-del.png") no-repeat
+                center;
             background-size: cover;
             margin-left: auto;
             margin-right: calc-attr(31);
             cursor: pointer;
 
             &:hover {
-                background: url("../../../assets/images/btn-del-hover.png") no-repeat center;
+                background: url("../../../assets/images/btn-del-hover.png")
+                    no-repeat center;
                 background-size: cover;
             }
         }
@@ -478,7 +587,7 @@ export default {
                     }
 
                     &:nth-child(7) {
-                        border-top: 1px solid rgba(249, 118, 71, .5);
+                        border-top: 1px solid rgba(249, 118, 71, 0.5);
                     }
 
                     &:nth-child(8) {
@@ -489,7 +598,7 @@ export default {
                     }
 
                     &:hover {
-                        background: rgba(255, 255, 255, .03);
+                        background: rgba(255, 255, 255, 0.03);
                         td {
                             &:nth-child(3),
                             &:nth-child(5) {
@@ -512,13 +621,13 @@ export default {
                         }
                     }
                     &.current {
-                        background: rgba(255, 255, 255, .05);
+                        background: rgba(255, 255, 255, 0.05);
                         td {
                             .icon-leing {
                                 display: block;
                             }
                             &:nth-child(1) {
-                                box-shadow:inset 4px 0 0 0 #FD814A;
+                                box-shadow: inset 4px 0 0 0 #fd814a;
                             }
                             &:nth-child(3),
                             &:nth-child(5) {
@@ -545,7 +654,8 @@ export default {
                             &:nth-child(1) {
                                 span {
                                     color: rgba(255, 255, 255, 0);
-                                    background: url("../../../assets/images/icon-play-lide.png") no-repeat center center;
+                                    background: url("../../../assets/images/icon-play-lide.png")
+                                        no-repeat center center;
                                     background-size: calc-attr(16) calc-attr(17);
                                 }
                             }
@@ -582,11 +692,13 @@ export default {
                         display: none;
                         width: calc-attr(36);
                         height: calc-attr(36);
-                        background: url("../../../assets/images/table/t-del.png") no-repeat center;
+                        background: url("../../../assets/images/table/t-del.png")
+                            no-repeat center;
                         background-size: 100%;
 
                         &:hover {
-                            background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
+                            background: url("../../../assets/images/table/t-del-h.png")
+                                no-repeat center;
                             background-size: 100%;
                         }
                     }
@@ -602,7 +714,8 @@ export default {
                             z-index: 1;
                             width: calc-attr(200);
                             height: calc-attr(200);
-                            background: url("../../../assets/images/singer-hover-bg.png") no-repeat center;
+                            background: url("../../../assets/images/singer-hover-bg.png")
+                                no-repeat center;
                             background-size: cover;
                             pointer-events: none;
                         }
@@ -624,7 +737,7 @@ export default {
                             span {
                                 font-size: calc-attr(18);
                                 font-weight: 400;
-                                color: rgba(255, 255, 255, .4);
+                                color: rgba(255, 255, 255, 0.4);
                                 margin-left: calc-attr(31);
                             }
 
@@ -649,7 +762,7 @@ export default {
                                     font-size: calc-attr(18);
                                     font-family: "PingFang SC";
                                     font-weight: normal;
-                                    color: rgba(255, 255, 255, .8);
+                                    color: rgba(255, 255, 255, 0.8);
                                     padding: 0px;
                                     margin: 0px;
                                     overflow: hidden;
@@ -681,44 +794,52 @@ export default {
 
                                     &.icon-collect {
                                         width: calc-attr(22.87);
-                                        background: url("../../../assets/images/table/t-c.png") no-repeat center;
+                                        background: url("../../../assets/images/table/t-c.png")
+                                            no-repeat center;
                                         background-size: 100%;
 
                                         &:hover {
-                                            background: url("../../../assets/images/table/t-c-h.png") no-repeat center;
+                                            background: url("../../../assets/images/table/t-c-h.png")
+                                                no-repeat center;
                                             background-size: 100%;
                                         }
                                     }
 
                                     &.icon-collect-ok {
                                         width: calc-attr(22.87);
-                                        background: url("../../../assets/images/table/t-c-s.png") no-repeat center;
+                                        background: url("../../../assets/images/table/t-c-s.png")
+                                            no-repeat center;
                                         background-size: 100%;
 
                                         &:hover {
-                                            background: url("../../../assets/images/table/t-c-s-h.png") no-repeat center;
+                                            background: url("../../../assets/images/table/t-c-s-h.png")
+                                                no-repeat center;
                                             background-size: 100%;
                                         }
                                     }
 
                                     &.icon-order-by-desc {
                                         width: calc-attr(23.41);
-                                        background: url("../../../assets/images/table/t-od.png") no-repeat center;
+                                        background: url("../../../assets/images/table/t-od.png")
+                                            no-repeat center;
                                         background-size: 100%;
 
                                         &:hover {
-                                            background: url("../../../assets/images/table/t-od-h.png") no-repeat center;
+                                            background: url("../../../assets/images/table/t-od-h.png")
+                                                no-repeat center;
                                             background-size: 100%;
                                         }
                                     }
 
                                     &.icon-order-by-aes {
                                         width: calc-attr(23.41);
-                                        background: url("../../../assets/images/table/t-oa.png") no-repeat center;
+                                        background: url("../../../assets/images/table/t-oa.png")
+                                            no-repeat center;
                                         background-size: 100%;
 
                                         &:hover {
-                                            background: url("../../../assets/images/table/t-oa-h.png") no-repeat center;
+                                            background: url("../../../assets/images/table/t-oa-h.png")
+                                                no-repeat center;
                                             background-size: 100%;
                                         }
                                     }
@@ -730,7 +851,7 @@ export default {
                             span {
                                 height: calc-attr(20);
                                 font-size: calc-attr(14);
-                                color: rgba(255, 255, 255, .7);
+                                color: rgba(255, 255, 255, 0.7);
                             }
                         }
 
@@ -752,12 +873,15 @@ export default {
                                         margin-right: 0px;
                                     }
 
-                                    background: url("../../../assets/images/table/t-link.png") no-repeat center;
+                                    background: url("../../../assets/images/table/t-link.png")
+                                        no-repeat center;
                                     background-size: 100%;
 
                                     &:hover {
-                                        background: url("../../../assets/images/table/t-link-h.png") no-repeat center;
-                                        background-size: calc-attr(20.67) calc-attr(20.67);
+                                        background: url("../../../assets/images/table/t-link-h.png")
+                                            no-repeat center;
+                                        background-size: calc-attr(20.67)
+                                            calc-attr(20.67);
                                     }
                                 }
                             }
@@ -773,7 +897,7 @@ export default {
                                 span {
                                     display: block;
                                     font-size: calc-attr(14);
-                                    color: rgba(255, 255, 255, .5);
+                                    color: rgba(255, 255, 255, 0.5);
                                 }
                             }
                         }
@@ -805,7 +929,7 @@ export default {
                     cursor: pointer;
 
                     &:hover {
-                        background: rgba(255, 255, 255, .05);
+                        background: rgba(255, 255, 255, 0.05);
                         td {
                             &:nth-child(3),
                             &:nth-child(5) {
@@ -829,7 +953,7 @@ export default {
                     }
 
                     &.current {
-                        background: rgba(255, 255, 255, .05);
+                        background: rgba(255, 255, 255, 0.05);
 
                         td {
                             .icon-leing {
@@ -837,7 +961,7 @@ export default {
                             }
 
                             &:nth-child(1) {
-                                box-shadow:inset 4px 0 0 0 #FD814A;
+                                box-shadow: inset 4px 0 0 0 #fd814a;
                             }
                             &:nth-child(3),
                             &:nth-child(5) {
@@ -864,7 +988,8 @@ export default {
                             &:nth-child(1) {
                                 span {
                                     color: rgba(255, 255, 255, 0);
-                                    background: url("../../../assets/images/icon-play-lide.png") no-repeat center center;
+                                    background: url("../../../assets/images/icon-play-lide.png")
+                                        no-repeat center center;
                                     background-size: calc-attr(16) calc-attr(17);
                                 }
                             }
@@ -875,11 +1000,13 @@ export default {
                         display: none;
                         width: calc-attr(36);
                         height: calc-attr(36);
-                        background: url("../../../assets/images/table/t-del.png") no-repeat center;
+                        background: url("../../../assets/images/table/t-del.png")
+                            no-repeat center;
                         background-size: 100%;
 
                         &:hover {
-                            background: url("../../../assets/images/table/t-del-h.png") no-repeat center;
+                            background: url("../../../assets/images/table/t-del-h.png")
+                                no-repeat center;
                             background-size: 100%;
                         }
                     }
@@ -895,7 +1022,8 @@ export default {
                             z-index: 1;
                             width: calc-attr(200);
                             height: calc-attr(200);
-                            background: url("../../../assets/images/singer-hover-bg.png") no-repeat center;
+                            background: url("../../../assets/images/singer-hover-bg.png")
+                                no-repeat center;
                             background-size: cover;
                         }
 
@@ -916,7 +1044,7 @@ export default {
                             span {
                                 font-size: calc-attr(18);
                                 font-weight: 400;
-                                color: rgba(255, 255, 255, .4);
+                                color: rgba(255, 255, 255, 0.4);
                                 margin-left: calc-attr(31);
                             }
 
@@ -938,7 +1066,7 @@ export default {
                                     max-width: calc-attr(150);
                                     font-size: calc-attr(18);
                                     font-weight: 500;
-                                    color: rgba(255, 255, 255, .8);
+                                    color: rgba(255, 255, 255, 0.8);
                                     padding: 0px;
                                     margin: 0px;
                                     overflow: hidden;
@@ -970,22 +1098,26 @@ export default {
 
                                     &.icon-collect {
                                         width: calc-attr(22.87);
-                                        background: url("../../../assets/images/table/t-c.png") no-repeat center;
+                                        background: url("../../../assets/images/table/t-c.png")
+                                            no-repeat center;
                                         background-size: 100%;
 
                                         &:hover {
-                                            background: url("../../../assets/images/table/t-c-h.png") no-repeat center;
+                                            background: url("../../../assets/images/table/t-c-h.png")
+                                                no-repeat center;
                                             background-size: 100%;
                                         }
                                     }
 
                                     &.icon-collect-ok {
                                         width: calc-attr(22.87);
-                                        background: url("../../../assets/images/table/t-c-s.png") no-repeat center;
+                                        background: url("../../../assets/images/table/t-c-s.png")
+                                            no-repeat center;
                                         background-size: 100%;
 
                                         &:hover {
-                                            background: url("../../../assets/images/table/t-c-s-h.png") no-repeat center;
+                                            background: url("../../../assets/images/table/t-c-s-h.png")
+                                                no-repeat center;
                                             background-size: 100%;
                                         }
                                     }
@@ -997,7 +1129,7 @@ export default {
                             span {
                                 height: calc-attr(20);
                                 font-size: calc-attr(14);
-                                color: rgba(255, 255, 255, .7);
+                                color: rgba(255, 255, 255, 0.7);
                             }
                         }
 
@@ -1019,12 +1151,15 @@ export default {
                                         margin-right: 0px;
                                     }
 
-                                    background: url("../../../assets/images/table/t-link-s.png") no-repeat center;
+                                    background: url("../../../assets/images/table/t-link-s.png")
+                                        no-repeat center;
                                     background-size: 100%;
 
                                     &:hover {
-                                        background: url("../../../assets/images/table/t-link-h.png") no-repeat center;
-                                        background-size: calc-attr(20.67) calc-attr(20.67);
+                                        background: url("../../../assets/images/table/t-link-h.png")
+                                            no-repeat center;
+                                        background-size: calc-attr(20.67)
+                                            calc-attr(20.67);
                                     }
                                 }
                             }
@@ -1040,7 +1175,7 @@ export default {
                                 span {
                                     display: block;
                                     font-size: calc-attr(14);
-                                    color: rgba(255, 255, 255, .5);
+                                    color: rgba(255, 255, 255, 0.5);
                                 }
                             }
                         }

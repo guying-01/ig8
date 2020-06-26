@@ -1,74 +1,84 @@
 <template>
-  <div class="igb-key-board-letter-base-component">
-    <div class="letter-key-board-result">
-      <div class="result-input">
-        cheng
-      </div>
-      <div class="result-line"></div>
-      <div class="result-list">
-        <span>成</span>
-        <span class="result-current">程</span>
-        <span>撑</span>
-      </div>
+    <div class="igb-key-board-letter-base-component">
+        <div class="letter-key-board-result" v-show="input">
+            <div class="result-input">
+                {{ input }}
+            </div>
+            <div class="result-line" v-show="associatedWordList.length != 0"></div>
+            <div class="result-list">
+                <span
+                    v-for="(item, index) in associatedWordList"
+                    :key="index"
+                    @click="letterChange({ label: item, labelType: 'zh' })"
+                >
+                    {{ item }}
+                </span>
+            </div>
+        </div>
+        <div class="letter letter-one">
+            <span
+                v-for="(item, index) in list.one"
+                :key="index"
+                @click="letterChange(item)"
+                :class="{
+                    'key-item': !item.icon,
+                    'key-item-icon': item.icon,
+                    disabled: item.disabled
+                }"
+            >
+                {{ item.icon ? "" : item.label }}
+                <img
+                    v-if="item.icon"
+                    :class="item.icon"
+                    :src="
+                        `${require(`../../../assets/images/${item.icon}.png`)}`
+                    "
+                />
+            </span>
+        </div>
+        <div class="letter letter-two">
+            <span
+                v-for="(item, index) in list.two"
+                :key="index"
+                @click="letterChange(item)"
+                :class="{
+                    'key-item': !item.icon,
+                    'key-item-icon': item.icon,
+                    disabled: item.disabled
+                }"
+            >
+                {{ item.icon ? "" : item.label }}
+                <img
+                    v-if="item.icon"
+                    :class="item.icon"
+                    :src="
+                        `${require(`../../../assets/images/${item.icon}.png`)}`
+                    "
+                />
+            </span>
+        </div>
+        <div class="letter letter-three">
+            <span
+                v-for="(item, index) in list.three"
+                :key="index"
+                @click="letterChange(item)"
+                :class="{
+                    'key-item': !item.icon,
+                    'key-item-icon': item.icon,
+                    disabled: item.disabled
+                }"
+            >
+                {{ item.icon ? "" : item.label }}
+                <img
+                    v-if="item.icon"
+                    :class="item.icon"
+                    :src="
+                        `${require(`../../../assets/images/${item.icon}.png`)}`
+                    "
+                />
+            </span>
+        </div>
     </div>
-    <div class="letter letter-one">
-      <span
-        v-for="(item, index) in list.one"
-        :key="index"
-        @click="letterChange(item)"
-        :class="{
-          'key-item': !item.icon,
-          'key-item-icon': item.icon,
-          disabled: item.disabled
-        }"
-      >
-        {{ item.label }}
-        <img
-          v-if="item.icon"
-          :class="item.icon"
-          :src="`${require(`../../../assets/images/${item.icon}.png`)}`"
-        />
-      </span>
-    </div>
-    <div class="letter letter-two">
-      <span
-        v-for="(item, index) in list.two"
-        :key="index"
-        @click="letterChange(item)"
-        :class="{
-          'key-item': !item.icon,
-          'key-item-icon': item.icon,
-          disabled: item.disabled
-        }"
-      >
-        {{ item.label }}
-        <img
-          v-if="item.icon"
-          :class="item.icon"
-          :src="`${require(`../../../assets/images/${item.icon}.png`)}`"
-        />
-      </span>
-    </div>
-    <div class="letter letter-three">
-      <span
-        v-for="(item, index) in list.three"
-        :key="index"
-        @click="letterChange(item)"
-        :class="{
-          'key-item': !item.icon,
-          'key-item-icon': item.icon,
-          disabled: item.disabled
-        }"
-      >
-        {{ item.label }}
-        <img
-          v-if="item.icon"
-          :class="item.icon"
-          :src="`${require(`../../../assets/images/${item.icon}.png`)}`"
-        />
-      </span>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -81,7 +91,8 @@ export default {
         one: [],
         two: [],
         three: []
-      }
+      },
+      associatedWordList: [] // 联想词list
     }
   },
   mounted () {
@@ -91,9 +102,9 @@ export default {
 
     // 拼音數據初始化
     LetterEnum.forEach(element => {
-      if (element.icon) {
-        element.label = ''
-      }
+      // if (element.icon) {
+      //   element.label = ''
+      // }
 
       if (!element.width) {
         element.width = 108
@@ -112,6 +123,63 @@ export default {
       }
     })
   },
+  computed: {
+    enabledLetters () {
+      return this.$store.state.keyboard.disableList['EnbledLetters']
+    },
+    associatedWord () {
+      return this.$store.state.keyboard.disableList['AssociatedWords']
+    },
+    input () {
+      return this.$store.state.keyboard.input
+    }
+  },
+  watch: {
+    enabledLetters: {
+      handler (val) {
+        // 禁用第一行
+        this.list.one.map((item, index) => {
+          let listIndex = val.findIndex(word => {
+            return item['label'] == word
+          })
+          if (listIndex == -1 && this.list.one[index]['canDisable']) {
+            this.$set(this.list.one[index], 'disabled', true)
+          } else {
+            this.$set(this.list.one[index], 'disabled', false)
+          }
+        })
+        // 禁用第二行
+        this.list.two.map((item, index) => {
+          let listIndex = val.findIndex(word => {
+            return item['label'] == word
+          })
+          if (listIndex == -1 && this.list.two[index]['canDisable']) {
+            this.$set(this.list.two[index], 'disabled', true)
+          } else {
+            this.$set(this.list.two[index], 'disabled', false)
+          }
+        })
+        // 禁用第三行
+        this.list.three.map((item, index) => {
+          let listIndex = val.findIndex(word => {
+            return item['label'] == word
+          })
+          if (
+            listIndex == -1 && this.list.three[index]['canDisable']
+          ) {
+            this.$set(this.list.three[index], 'disabled', true)
+          } else {
+            this.$set(this.list.three[index], 'disabled', false)
+          }
+        })
+      },
+      deep: true
+    },
+    // 联想词
+    associatedWord (val) {
+      this.associatedWordList = val
+    }
+  },
   methods: {
     letterChange (item) {
       switch (item.value) {
@@ -127,6 +195,8 @@ export default {
             model: 2
           })
           break
+        default:
+          this.$bus.emit('letter-change', item)
       }
     }
   }
@@ -134,199 +204,209 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/ddd/mixin.scss";
+
 .igb-key-board-letter-base-component {
-  padding: 0 calc-attr(92) 0 calc-attr(95);
-  width: 100%;
-  // width: calc(100% - 186px);
-  margin: 0 auto;
-  box-sizing: border-box;
-
-  .letter-key-board-result {
-    height: calc-attr(65);
-    display: flex;
-    align-items: center;
-
-    background: rgba(54, 58, 90, 0.98);
-    box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.35);
-    border-radius: 4px;
-
-    position: absolute;
-    top: calc-attr(-76);
-    left: calc-attr(98);
-
-    .result-input,
-    .result-list {
-      font-size: calc-attr(24);
-      font-weight: 400;
-      color: rgba(255, 142, 50, 1);
-      opacity: 1;
-    }
-
-    .result-input {
-      padding-left: calc-attr(59);
-    }
-
-    .result-list {
-      padding-right: calc-attr(54);
-      display: flex;
-      align-items: center;
-
-      span {
-        width: calc-attr(48);
-        height: calc-attr(48);
-        line-height: calc-attr(48);
-        text-align: center;
-        margin-right: 1px;
-
-        cursor: pointer;
-
-        &:last-child {
-          margin-right: 0px;
-        }
-
-        &.result-current {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 4px;
-        }
-      }
-    }
-
-    .result-line {
-      width: 0px;
-      height: calc-attr(24);
-      border-left: 2px solid rgba(255, 255, 255, 0.1);
-      margin: 0px calc-attr(45) 0px calc-attr(50);
-    }
-  }
-
-  .letter {
+    padding: 0 calc-attr(92) 0 calc-attr(95);
+    width: 100%;
+    // width: calc(100% - 186px);
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    box-sizing: border-box;
 
-    .key-item,
-    .key-item-icon {
-        width: calc-attr(108);
-      height: calc-attr(72);
+    .letter-key-board-result {
+        height: calc-attr(65);
+        display: flex;
+        align-items: center;
+
+        background: rgba(54, 58, 90, 0.98);
+        box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.35);
+        border-radius: 4px;
+
+        position: absolute;
+        top: calc-attr(-76);
+        left: calc-attr(98);
+
+        .result-input,
+        .result-list {
+            font-size: calc-attr(24);
+            font-weight: 400;
+            color: rgba(255, 142, 50, 1);
+            opacity: 1;
+        }
+
+        .result-input {
+            padding-left: calc-attr(59);
+        }
+
+        .result-list {
+            padding-right: calc-attr(54);
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            max-width: calc-attr(800);
+            white-space: nowrap;
+            @include scroll-bar(2);
+
+            span {
+                // width: calc-attr(48);
+                height: calc-attr(48);
+                line-height: calc-attr(48);
+                text-align: center;
+                margin-right: 1px;
+                padding:0 calc-attr(10);
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 4px;
+                }
+                cursor: pointer;
+
+                &:last-child {
+                    margin-right: 0px;
+                }
+
+                &.result-current {
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 4px;
+                }
+            }
+        }
+
+        .result-line {
+            width: 0px;
+            height: calc-attr(24);
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            margin: 0px calc-attr(45) 0px calc-attr(50);
+        }
     }
 
-    &.letter-one {
-      margin-top: calc-attr(27);
-      margin-bottom: calc-attr(12);
+    .letter {
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
 
-      span {
-
-        &.disabled {
-          background: rgba(54, 58, 90, 1);
-          color: rgba(255, 255, 255, 0.2);
-          cursor: not-allowed;
+        .key-item,
+        .key-item-icon {
+            width: calc-attr(108);
+            height: calc-attr(72);
         }
 
-        //293
-        &:last-child {
-          //width: calc(20.4% - 12px);
-            width: calc-attr(293);
+        &.letter-one {
+            margin-top: calc-attr(27);
+            margin-bottom: calc-attr(12);
+
+            span {
+                &.disabled {
+                    background: rgba(54, 58, 90, 1);
+                    color: rgba(255, 255, 255, 0.2);
+                    cursor: not-allowed;
+                }
+
+                //293
+                &:last-child {
+                    //width: calc(20.4% - 12px);
+                    width: calc-attr(293);
+                }
+
+                img {
+                    width: calc-attr(30.65);
+                    height: calc-attr(20.81);
+                }
+            }
         }
 
-        img {
-          width: calc-attr(30.65);
-          height: calc-attr(20.81);
+        &.letter-two {
+            margin-bottom: calc-attr(12);
+
+            span {
+                &.disabled {
+                    background: rgba(54, 58, 90, 1);
+                    color: rgba(255, 255, 255, 0.2);
+                    cursor: not-allowed;
+                }
+
+                //360
+                &:last-child {
+                    //width: calc(24.9% - 12px);
+                    width: calc-attr(360);
+                }
+
+                img {
+                    width: calc-attr(25);
+                    height: calc-attr(18.89);
+                }
+            }
         }
-      }
+
+        &.letter-three {
+            margin-bottom: calc-attr(27);
+
+            span {
+                &.disabled {
+                    background: rgba(54, 58, 90, 1);
+                    color: rgba(255, 255, 255, 0.2);
+                    cursor: not-allowed;
+                }
+
+                //159
+                &:first-child {
+                    //width: calc(11.4% - 12px);
+                    width: calc-attr(159);
+                }
+
+                //167
+                &:nth-child(9) {
+                    //width: calc(12% - 12px);
+                    width: calc-attr(167);
+                }
+
+                //306
+                &:last-child {
+                    //width: calc(21.3% - 12px);
+                    width: calc-attr(306);
+                }
+
+                img {
+                    width: calc-attr(30.16);
+                    height: calc-attr(15.08);
+                }
+            }
+        }
+
+        span {
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(54, 58, 90, 1);
+            box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+            border-radius: 18px;
+            text-align: center;
+            margin-right: calc-attr(12);
+
+            font-size: calc-attr(24);
+            font-family: "PingFang-SC-Regular";
+            font-weight: 400;
+            color: rgba(255, 142, 50, 1);
+
+            &:last-child {
+                margin-right: 0px !important;
+            }
+
+            cursor: pointer;
+
+            &:hover {
+                background: rgba(49, 53, 88, 1);
+                box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+            }
+
+            &:active {
+                background: rgba(32, 36, 67, 0.5);
+                box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
+            }
+        }
     }
-
-    &.letter-two {
-      margin-bottom: calc-attr(12);
-
-      span {
-        &.disabled {
-          background: rgba(54, 58, 90, 1);
-          color: rgba(255, 255, 255, 0.2);
-          cursor: not-allowed;
-        }
-
-        //360
-        &:last-child {
-          //width: calc(24.9% - 12px);
-            width: calc-attr(360);
-        }
-
-        img {
-          width: calc-attr(25);
-          height: calc-attr(18.89);
-        }
-      }
-    }
-
-    &.letter-three {
-      margin-bottom: calc-attr(27);
-
-      span {
-        &.disabled {
-          background: rgba(54, 58, 90, 1);
-          color: rgba(255, 255, 255, 0.2);
-          cursor: not-allowed;
-        }
-
-        //159
-        &:first-child {
-          //width: calc(11.4% - 12px);
-            width: calc-attr(159);
-        }
-
-        //167
-        &:nth-child(9) {
-          //width: calc(12% - 12px);
-            width: calc-attr(167);
-        }
-
-        //306
-        &:last-child {
-          //width: calc(21.3% - 12px);
-            width: calc-attr(306);
-        }
-
-        img {
-          width: calc-attr(30.16);
-          height: calc-attr(15.08);
-        }
-      }
-    }
-
-    span {
-      width: auto;
-      height: auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(54, 58, 90, 1);
-      box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
-      border-radius: 18px;
-      text-align: center;
-      margin-right: calc-attr(12);
-
-      font-size: calc-attr(24);
-      font-family: "PingFang-SC-Regular";
-      font-weight: 400;
-      color: rgba(255, 142, 50, 1);
-
-      &:last-child {
-        margin-right: 0px !important;
-      }
-
-      cursor: pointer;
-
-      &:hover {
-        background: rgba(49, 53, 88, 1);
-        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
-      }
-
-      &:active {
-        background: rgba(32, 36, 67, 0.5);
-        box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15);
-      }
-    }
-  }
 }
 </style>

@@ -336,7 +336,7 @@ export default {
         this.igbModal$({
           visible: true,
           wrapClassName: 'my-info-modal',
-          width: 687,
+          width: 800,
           componentName: IgbPagesMyInfoComponent,
           params: {},
           okHandller: (options, close) => {

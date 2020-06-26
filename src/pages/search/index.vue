@@ -2,8 +2,8 @@
 <div class="igb-pages-search">
     <div class="singer-main">
         <h3>歌手</h3>
-        <igb-singer-list :dataSource="singerList"></igb-singer-list>
-        <span class="btn-more">更多<img src="../../assets/images/icon-more.png" /></span>
+        <igb-singer-list :dataSource="showSingerList"></igb-singer-list>
+        <span class="btn-more" @click="loadMore" v-show="!isLoadedMore">更多<img src="../../assets/images/icon-more.png" /></span>
     </div>
 
     <div class="song-main">
@@ -24,31 +24,110 @@ export default {
     return {
       show: false,
       model: 0,
-      singerList: [{
-        name: '郭富城',
-        type: '华语男星',
-        search: true
-      },
-      {
-        name: '周杰伦',
-        type: '华语男星',
-        search: true
-      },
-      {
-        name: '韩红',
-        type: '华语女星',
-        search: true
-      },
-      {
-        name: '李文文',
-        type: '华语男星',
-        search: true
-      },
-      {
-        name: '周杰伦',
-        type: '华语男星',
-        search: true
-      }
+      isLoadedMore: false,
+      showSingerList: [
+        {
+          name: '郭富城',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '韩红',
+          type: '华语女星',
+          search: true
+        },
+        {
+          name: '李文文',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        }
+      ],
+      singerList: [
+        {
+          name: '郭富城',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '韩红',
+          type: '华语女星',
+          search: true
+        },
+        {
+          name: '李文文',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '郭富城',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '韩红',
+          type: '华语女星',
+          search: true
+        },
+        {
+          name: '李文文',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '郭富城',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '韩红',
+          type: '华语女星',
+          search: true
+        },
+        {
+          name: '李文文',
+          type: '华语男星',
+          search: true
+        },
+        {
+          name: '周杰伦',
+          type: '华语男星',
+          search: true
+        }
       ],
       songList: [{
         value: '01',
@@ -91,14 +170,38 @@ export default {
     }
   },
   mounted () {
+    // 监听关闭键盘
+    this.$bus.on('letter-change', this.toggleKeyboard)
+    this.$bus.on('keyboard-open', this.toggleKeyboard)
+
     // 软键盘显示动画
     this.$nextTick(() => {
       setTimeout(() => {
         this.show = !this.show
       }, 0)
     })
+
+    document.onkeydown = (e) => {
+      if (e.keyCode == 81) {
+        this.$store.dispatch('setInputMode')
+      }
+    }
   },
   methods: {
+    toggleKeyboard (res) {
+      let flag = false
+      if (res.label && res.label == 'Yes') {
+        flag = false
+      } else {
+        flag = true
+      }
+
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.show = flag
+        }, 0)
+      })
+    },
     modelHandller (event) {
       this.show = false
       // 软键盘显示动画
@@ -108,7 +211,16 @@ export default {
           this.model = event.model
         }, 0)
       })
+    },
+    loadMore () {
+      this.showSingerList = this.singerList
+      this.isLoadedMore = true
     }
+  },
+  beforeDestroy () {
+    document.onkeydown = null
+    this.$bus.off('letter-change', this.toggleKeyboard)
+    this.$bus.off('keyboard-open', this.toggleKeyboard)
   }
 }
 </script>

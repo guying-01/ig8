@@ -140,6 +140,7 @@
 
 .deposit-modal {
   .ant-modal-content {
+    width: calc-attr(800);
     .ant-modal-body {
       width: calc-attr(800) !important;
       height: calc-attr(510.05) !important;

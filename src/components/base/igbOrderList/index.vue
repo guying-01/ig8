@@ -1,136 +1,161 @@
 <template>
     <div class="igb-order-list-base-component">
-        <p class="btn-close" @click="closeHandller"></p>
-        <div>
-            <div class="order-tabs-list">
-                <span
-                    v-for="(item, index) in tabs"
-                    :key="index"
-                    :class="{ current: item.value === current }"
-                    @click="changeHandller(item)"
-                    >{{ item.label }}</span
-                >
-            </div>
+        <div class="igb-order-list-wrap">
+            <p class="btn-close" @click="closeHandller"></p>
+            <div>
+                <div class="order-tabs-list">
+                    <span
+                        v-for="(item, index) in tabs"
+                        :key="index"
+                        :class="{ current: item.value === current }"
+                        @click="changeHandller(item)"
+                        >{{ item.label }}</span
+                    >
+                </div>
 
-            <div class="order-button-list">
-                <span
-                    class="btn btn-share-song"
-                    @click="btnShareHandller"
-                    v-if="current === 0"
-                ></span
-                ><!--禁用按钮加样式class="dis"-->
-                <span class="btn btn-loop" v-if="current === 0"></span>
-                <!--<span class="btn btn-share-song dis" @click="btnShareHandller" v-if="current===0"></span>
+                <div class="order-button-list">
+                    <span
+                        class="btn btn-share-song"
+                        @click="btnShareHandller"
+                        v-if="current === 0"
+                    ></span
+                    ><!--禁用按钮加样式class="dis"-->
+                    <span class="btn btn-loop" v-if="current === 0"></span>
+                    <!--<span class="btn btn-share-song dis" @click="btnShareHandller" v-if="current===0"></span>
         <span class="btn btn-loop dis" v-if="current===0"></span>-->
-                <span class="icon icon-del"></span>
+                    <span class="icon icon-del"></span>
+                </div>
             </div>
-        </div>
 
-        <div
-            ref="viewBox"
-            class="order-content"
-            :class="{ sep: current === 0 }"
-        >
-            <igbScroll v-bind:boxHeight="viewBoxHeight">
-                <div class="list-order" v-show="current === 0">
-                    <table class="table">
-                        <tbody ref="order-list">
-                            <tr
-                                v-for="(item, index) in tableList"
-                                :key="index"
-                                :class="{
-                                    current: item.current,
-                                    play: item.play
-                                }"
-                            >
-                                <td>
-                                    <span>{{ item.value }}</span>
-                                    <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-                                </td>
-                                <td>
-                                    <div>
-                                        <h2>{{ item.songName }}</h2>
-                                        <igb-tag :type="item.tag"></igb-tag>
-                                    </div>
-                                    <i class="icon-leing"></i>
-                                </td>
-                                <td>
-                                    <div>
-                                        <i
-                                            class="icon-collect"
-                                            :class="{
-                                                'icon-collect-ok': item.collect
-                                            }"
-                                        ></i>
-                                        <i class="icon-order-by-desc" @click="tableRowDesc(tableList,index)"></i>
-                                        <i class="icon-order-by-aes" @click="tableRowAsc(tableList,index)"></i>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span>{{ item.singerName }}</span>
-                                </td>
-                                <td>
-                                    <div>
-                                        <i></i>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <span>{{ item.time }}</span>
-                                        <i class="icon-del"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div
+                ref="viewBox"
+                class="order-content"
+                :class="{ sep: current === 0 }"
+            >
+                <igbScroll v-bind:boxHeight="viewBoxHeight">
+                    <div class="list-order" v-show="current === 0">
+                        <table class="table">
+                            <tbody ref="order-list">
+                                <tr
+                                    v-for="(item, index) in tableList"
+                                    :key="item.order"
+                                    :class="{
+                                        current: item.current,
+                                        play: item.play
+                                    }"
+                                    class="handler"
+                                    v-dragging="{
+                                        item: item,
+                                        list: tableList,
+                                        group: 'color'
+                                    }"
+                                >
+                                    <td>
+                                        <span>{{ item.value }}</span>
+                                        <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <h2>{{ item.songName }}</h2>
+                                            <igb-tag :type="item.tag"></igb-tag>
+                                        </div>
+                                        <i class="icon-leing"></i>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <i
+                                                class="icon-collect"
+                                                :class="{
+                                                    'icon-collect-ok':
+                                                        item.collect
+                                                }"
+                                            ></i>
+                                            <i
+                                                class="icon-order-by-desc"
+                                                @click="
+                                                    tableRowDesc(
+                                                        tableList,
+                                                        index
+                                                    )
+                                                "
+                                            ></i>
+                                            <i
+                                                class="icon-order-by-aes"
+                                                @click="
+                                                    tableRowAsc(
+                                                        tableList,
+                                                        index
+                                                    )
+                                                "
+                                            ></i>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span>{{ item.singerName }}</span>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <i></i>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>{{ item.time }}</span>
+                                            <i class="icon-del"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div class="list-song" v-show="current === 1">
-                    <table class="table">
-                        <tbody ref="song-list">
-                            <tr
-                                v-for="(item, index) in tableList1"
-                                :key="index"
-                                :class="{
-                                    current: item.current,
-                                    play: item.play
-                                }"
-                            >
-                                <td>
-                                    <span>{{ item.value }}</span>
-                                    <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
-                                </td>
-                                <td>
-                                    <div>
-                                        <h2>{{ item.songName }}</h2>
-                                        <igb-tag :type="item.tag"></igb-tag>
-                                    </div>
-                                    <i class="icon-leing"></i>
-                                </td>
-                                <td>
-                                    <div>
-                                        <i class="icon-collect"></i>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span>{{ item.singerName }}</span>
-                                </td>
-                                <td>
-                                    <div>
-                                        <i></i>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <span>{{ item.time }}</span>
-                                        <i class="icon-del"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </igbScroll>
+                    <div class="list-song" v-show="current === 1">
+                        <table class="table">
+                            <tbody ref="song-list">
+                                <tr
+                                    v-for="(item, index) in tableList1"
+                                    :key="index"
+                                    :class="{
+                                        current: item.current,
+                                        play: item.play
+                                    }"
+                                >
+                                    <td>
+                                        <span>{{ item.value }}</span>
+                                        <!--<img v-if="item.play" src="../../../assets/images/icon-play-lide.png" />-->
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <h2>{{ item.songName }}</h2>
+                                            <igb-tag :type="item.tag"></igb-tag>
+                                        </div>
+                                        <i class="icon-leing"></i>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <i class="icon-collect"></i>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span>{{ item.singerName }}</span>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <i></i>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>{{ item.time }}</span>
+                                            <i class="icon-del"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </igbScroll>
+            </div>
         </div>
     </div>
 </template>
@@ -141,7 +166,8 @@ import Sortable from 'sortablejs'
 export default {
   name: 'IgbOrderListBaseComponent',
   components: {
-    igbScroll
+    igbScroll,
+    Sortable
   },
   data () {
     return {
@@ -161,12 +187,14 @@ export default {
       tableList: [
         {
           value: '01',
-          songName: '你的答案',
+          songName: '你的答案1',
           tag: 0,
           singerName: '郭富城',
           time: '01:00',
           current: false,
-          play: false
+          play: false,
+          order: 1,
+          fixed: false
         },
         {
           value: '02',
@@ -175,7 +203,9 @@ export default {
           singerName: '信乐团',
           time: '02:00',
           current: false,
-          play: false
+          order: 2,
+          play: false,
+          fixed: false
         },
         {
           value: '03',
@@ -184,7 +214,8 @@ export default {
           singerName: '赵雷',
           time: '02:00',
           current: true,
-          play: true
+          play: true,
+          order: 3
         },
         {
           value: '04',
@@ -193,7 +224,8 @@ export default {
           singerName: '阿信',
           time: '02:00',
           current: false,
-          play: false
+          play: false,
+          order: 4
         },
         {
           value: '05',
@@ -203,7 +235,8 @@ export default {
           time: '02:00',
           current: false,
           play: false,
-          collect: true
+          collect: true,
+          order: 5
         },
         {
           value: '06',
@@ -212,7 +245,8 @@ export default {
           singerName: '阿信',
           time: '02:00',
           current: false,
-          play: false
+          play: false,
+          order: 6
         },
         {
           value: '07',
@@ -221,7 +255,8 @@ export default {
           singerName: '郭富城',
           time: '02:00',
           current: false,
-          play: false
+          play: false,
+          order: 7
         },
         {
           value: '08',
@@ -231,7 +266,8 @@ export default {
           time: '02:00',
           current: false,
           play: false,
-          collect: true
+          collect: true,
+          order: 8
         },
         {
           value: '09',
@@ -240,7 +276,8 @@ export default {
           singerName: '信乐团',
           time: '02:00',
           current: false,
-          play: false
+          play: false,
+          order: 9
         },
         {
           value: '10',
@@ -249,7 +286,8 @@ export default {
           singerName: '信乐团',
           time: '02:00',
           current: false,
-          play: false
+          play: false,
+          order: 10
         }
       ],
       tableList1: [
@@ -370,7 +408,14 @@ export default {
     }
 
     var el = this.$refs['order-list']
-    Sortable.create(el)
+    Sortable.create(el, {
+      ghostClass: 'sortable-ghost', // drop placeholder的css类名
+      chosenClass: 'sortable-chosen', // 被选中项的css 类名
+      dragClass: 'sortable-drag'
+    })
+  },
+  beforeDestroy () {
+    window.onresize = null
   },
   watch: {
     current: {
@@ -403,18 +448,29 @@ export default {
 }
 
 .igb-order-list-base-component {
-    position: relative;
-    padding-top: calc-attr(39);
-    height: 100%;
+    position: fixed;
+    right: calc-attr(24);
+    bottom: 0;
+    width: calc-attr(920);
+    padding-bottom: calc-attr(109 + 57 - 10);
+    height: 100vh;
     box-sizing: border-box;
+    top: calc-attr(57);
     //overflow: hidden;
-    background: url("../../../assets/images/k/yd-bg.png") no-repeat center;
     //background-size: cover;
-    background-size: 100% 100%;
     z-index: 9999;
     //overflow: hidden;
-    display: flex;
-    flex-direction: column;
+
+    .igb-order-list-wrap {
+        padding-top: calc-attr(39);
+        background: url("../../../assets/images/k/yd-bg.png") no-repeat center;
+        background-size: 100% 100%;
+        box-shadow: 0px 3px calc-attr(24) rgba(0, 0, 0, 0.5);
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
     .order-content {
         margin-bottom: 10px;
         flex: 1;
@@ -586,17 +642,6 @@ export default {
                         border-top: 1px solid rgba(49, 54, 78, 1);
                     }
 
-                    &:nth-child(7) {
-                        border-top: 1px solid rgba(249, 118, 71, 0.5);
-                    }
-
-                    &:nth-child(8) {
-                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
-                        background: rgba(49, 52, 78, 1);
-                        box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
-                        z-index: -9999;
-                    }
-
                     &:hover {
                         background: rgba(255, 255, 255, 0.03);
                         td {
@@ -648,6 +693,27 @@ export default {
                                 }
                             }
                         }
+                    }
+                    &.sortable-ghost {
+                        border-top: 1px solid rgba(249, 118, 71, 0.5);
+                        outline: none!important;
+                        box-shadow: none!important;
+
+                    }
+                    &.sortable-chosen {
+                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
+                        background: rgba(49, 52, 78, 1);
+                        box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
+                        // z-index: -9999;
+                        // border:none;
+                    }
+                    &.dragging {
+                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
+                        background: rgba(49, 52, 78, 1);
+                        box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
+
+                        // border:none;
+                        // z-index: -9999;
                     }
                     &.play {
                         td {

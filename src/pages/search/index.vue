@@ -168,7 +168,7 @@ export default {
       }
       ]
     }
-  },y
+  },
   mounted () {
     // 监听关闭键盘
     this.$bus.on('keyboard-toggle', this.toggleKeyboard)

@@ -1,8 +1,8 @@
 <!--
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-26 13:09:12
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-27 18:05:04
 -->
 <template>
     <div class="igb-layout-header">
@@ -114,24 +114,31 @@ export default {
          */
     searchHandller () {
       if (this.$route.path == '/pages/search/index') {
-        return this.$bus.emit('keyboard-open', true)
+        return this.$bus.emit('keyboard-toggle', true)
       }
       this.$router.push({
         path: '/pages/search/index'
       })
     }
   },
-  watch: {
-    input: {handler (val) {
-      console.log(val)
-      if (val == null) return
-      // 防抖
-      clearTimeout(this.timeInt.searchInt)
-      this.timeInt.searchInt = setTimeout(() => {
-
-      }, this.delay)
+  computed: {
+    inputValue () {
+      return this.$store.state.keyboard.input
     },
-    immediate: true}
+    inputMode () {
+      return this.$store.state.keyboard.mode
+    }
+  },
+  watch: {
+    inputValue (val) {
+      this.input = val
+      // 中文模式继续查询
+      if (this.inputMode == 1) {
+        GET_INPHLP({InputText: this.input, InputMode: this.$store.state.keyboard.mode }).then(res => {
+          this.$store.dispatch('setDisableList', res)
+        })
+      }
+    }
   }
 }
 </script>

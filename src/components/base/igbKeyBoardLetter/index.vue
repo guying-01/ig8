@@ -4,12 +4,15 @@
             <div class="result-input">
                 {{ input }}
             </div>
-            <div class="result-line" v-show="associatedWordList.length != 0"></div>
+            <div
+                class="result-line"
+                v-show="associatedWordList.length != 0"
+            ></div>
             <div class="result-list">
                 <span
                     v-for="(item, index) in associatedWordList"
                     :key="index"
-                    @click="letterChange({ label: item, labelType: 'zh' })"
+                    @click="handleSelect({ label: item, labelType: 'zh' })"
                 >
                     {{ item }}
                 </span>
@@ -83,10 +86,13 @@
 
 <script>
 import { LetterEnum } from '../../../enum/key.board.enum'
+import { GET_INPHLP } from '@/api/api'
+
 export default {
   name: 'IgbKeyBoardLetterBaseComponent',
   data () {
     return {
+      input: '',
       list: {
         one: [],
         two: [],
@@ -130,7 +136,10 @@ export default {
     associatedWord () {
       return this.$store.state.keyboard.disableList['AssociatedWords']
     },
-    input () {
+    inputMode () {
+      return this.$store.state.keyboard.mode
+    },
+    targetInputValue () {
       return this.$store.state.keyboard.input
     }
   },
@@ -165,7 +174,8 @@ export default {
             return item['label'] == word
           })
           if (
-            listIndex == -1 && this.list.three[index]['canDisable']
+            listIndex == -1 &&
+                        this.list.three[index]['canDisable']
           ) {
             this.$set(this.list.three[index], 'disabled', true)
           } else {
@@ -178,17 +188,28 @@ export default {
     // 联想词
     associatedWord (val) {
       this.associatedWordList = val
+    },
+    // 中英文切换
+    inputMode () {
+      this.associatedWordList = []
     }
   },
   methods: {
+    // 选中候选区
+    handleSelect (item) {
+      this.$store.dispatch('inputAddLetter', item.label)
+      this.input = ''
+    },
     letterChange (item) {
       switch (item.value) {
+        // 数字键盘
         case 21:
           this.$emit('model', {
             item: item,
             model: 1
           })
           break
+          // 手写键盘
         case 29:
           this.$emit('model', {
             item: item,
@@ -196,7 +217,38 @@ export default {
           })
           break
         default:
-          this.$bus.emit('letter-change', item)
+          this.inputChange(item)
+      }
+    },
+    inputChange (item) {
+      // 如果被禁用
+      if (item.disabled) return
+      // 如果是删除键
+      if (item.label == 'Del') {
+        return (this.input = this.input.substr(
+          0,
+          this.input.length - 1
+        ))
+      } else if (item.label == 'Space') {
+        return (this.input += ' ')
+      } else if (item.label == 'Yes') {
+        return this.$bus.emit('keyboard-toggle', false)
+      } else if (item.label == 'Enter') {
+        return
+      } else {
+        this.input += item.label
+      }
+
+      // 如果是中文模式，查联想词
+      if (this.inputMode == 1) {
+        GET_INPHLP({
+          InputText: item.label,
+          InputMode: this.$store.state.keyboard.mode
+        }).then(res => {
+          this.$store.dispatch('setDisableList', res)
+        })
+      } else {
+        this.$store.dispatch('inputAddLetter', item.label)
       }
     }
   }
@@ -253,7 +305,7 @@ export default {
                 line-height: calc-attr(48);
                 text-align: center;
                 margin-right: 1px;
-                padding:0 calc-attr(10);
+                padding: 0 calc-attr(10);
 
                 &:hover {
                     background: rgba(255, 255, 255, 0.05);

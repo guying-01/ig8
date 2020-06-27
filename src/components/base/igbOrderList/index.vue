@@ -44,11 +44,6 @@
                                         play: item.play
                                     }"
                                     class="handler"
-                                    v-dragging="{
-                                        item: item,
-                                        list: tableList,
-                                        group: 'color'
-                                    }"
                                 >
                                     <td>
                                         <span>{{ item.value }}</span>
@@ -411,7 +406,9 @@ export default {
     Sortable.create(el, {
       ghostClass: 'sortable-ghost', // drop placeholder的css类名
       chosenClass: 'sortable-chosen', // 被选中项的css 类名
-      dragClass: 'sortable-drag'
+      dragClass: 'sortable-drag',
+      group: 'shared', // set both lists to same group
+      animation: 150
     })
   },
   beforeDestroy () {
@@ -643,8 +640,11 @@ export default {
                     }
 
                     &:hover {
-                        background: rgba(255, 255, 255, 0.03);
+                        background: rgba(255, 255, 255, 0.05);
                         td {
+                            &:nth-child(1) {
+                                box-shadow: inset 4px 0 0 0 #fd814a;
+                            }
                             &:nth-child(3),
                             &:nth-child(5) {
                                 div {
@@ -671,9 +671,6 @@ export default {
                             .icon-leing {
                                 display: block;
                             }
-                            &:nth-child(1) {
-                                box-shadow: inset 4px 0 0 0 #fd814a;
-                            }
                             &:nth-child(3),
                             &:nth-child(5) {
                                 div {
@@ -696,9 +693,8 @@ export default {
                     }
                     &.sortable-ghost {
                         border-top: 1px solid rgba(249, 118, 71, 0.5);
-                        outline: none!important;
-                        box-shadow: none!important;
-
+                        outline: none !important;
+                        box-shadow: none !important;
                     }
                     &.sortable-chosen {
                         outline: calc-attr(10) solid rgba(49, 52, 78, 1);
@@ -707,10 +703,13 @@ export default {
                         // z-index: -9999;
                         // border:none;
                     }
-                    &.dragging {
-                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
-                        background: rgba(49, 52, 78, 1);
-                        box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
+                    &.sortable-drag {
+                        box-shadow: none !important;
+                        filter:none!important;
+                        // outline: calc-attr(10) solid rgba(49, 52, 78, 1);
+                        // box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
+                        opacity: 1!important;
+                        outline: none !important;
 
                         // border:none;
                         // z-index: -9999;

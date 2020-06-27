@@ -1,8 +1,8 @@
 /*
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-26 14:13:24
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-27 09:42:22
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
@@ -16,7 +16,6 @@ import router from './router'
 import Antd from 'ant-design-vue/es'
 import store from './store'
 import '@/directives/clickoutside' // clickoutside
-import VueDND from 'awe-dnd'
 import {
   VueAxios
 } from '@/utils/request'
@@ -27,7 +26,6 @@ import 'ant-design-vue/dist/antd.css'
 import './assets/scss/index.scss'
 import '../node_modules/font-awesome/scss/font-awesome.scss'
 
-Vue.use(VueDND)
 // ((\.|-|\d){0,})px
 Vue.use(VueAxios, router)
 Vue.use(Antd)

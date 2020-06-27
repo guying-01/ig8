@@ -1,8 +1,8 @@
 /*
  * @Author       : gy
  * @Date         : 2020-06-25 00:08:00
- * @LastEditors  : gy
- * @LastEditTime : 2020-06-26 13:27:26
+ * @LastEditors: gy
+ * @LastEditTime: 2020-06-27 17:30:14
  * @FilePath     : /ig8/src/store/modules/keyboard.js
  * @Description  : 页面描述
  */
@@ -32,6 +32,12 @@ const keyboard = {
       } else {
         window.ApplicationUI.ShowHint(0, '已切换为中文模式')
       }
+    },
+    input_add_letter (state, val) {
+      state.input += val
+    },
+    input_del_letter (state, val) {
+      state.input = state.input.substr(0, state.input.length - 1)
     }
   },
   actions: {
@@ -40,6 +46,12 @@ const keyboard = {
     },
     setInput ({commit}, val) {
       commit('set_input', val)
+    },
+    inputAddLetter ({commit}, val) {
+      commit('input_add_letter', val)
+    },
+    inputDelLetter ({commit}, val) {
+      commit('input_del_letter', val)
     },
     setInputMode ({commit}) {
       commit('set_input_mode')

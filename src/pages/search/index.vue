@@ -168,11 +168,10 @@ export default {
       }
       ]
     }
-  },
+  },y
   mounted () {
     // 监听关闭键盘
-    this.$bus.on('letter-change', this.toggleKeyboard)
-    this.$bus.on('keyboard-open', this.toggleKeyboard)
+    this.$bus.on('keyboard-toggle', this.toggleKeyboard)
 
     // 软键盘显示动画
     this.$nextTick(() => {
@@ -182,20 +181,13 @@ export default {
     })
 
     document.onkeydown = (e) => {
-      if (e.keyCode == 81) {
+      if (e.keyCode == 118) {
         this.$store.dispatch('setInputMode')
       }
     }
   },
   methods: {
-    toggleKeyboard (res) {
-      let flag = false
-      if (res.label && res.label == 'Yes') {
-        flag = false
-      } else {
-        flag = true
-      }
-
+    toggleKeyboard (flag = true) {
       this.$nextTick(() => {
         setTimeout(() => {
           this.show = flag
@@ -219,8 +211,7 @@ export default {
   },
   beforeDestroy () {
     document.onkeydown = null
-    this.$bus.off('letter-change', this.toggleKeyboard)
-    this.$bus.off('keyboard-open', this.toggleKeyboard)
+    this.$bus.off('keyboard-toggle', this.toggleKeyboard)
   }
 }
 </script>

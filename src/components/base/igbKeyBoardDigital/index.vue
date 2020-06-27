@@ -7,8 +7,8 @@
                 @click="digitalChange(item)"
                 :class="{ 'key-item': !item.icon, 'key-item-icon': item.icon }"
             >
-                {{ item.value === 0 ? "" : item.icon ? '' : item.label }}
-                <input type="text" v-if="item.value === 0" />
+                {{ item.value === 0 ? "" : item.icon ? "" : item.label }}
+                <input type="text" v-if="item.value === 0" v-model="input" />
                 <img
                     v-if="item.icon"
                     :src="`${require(`../../../assets/images/${item.icon}`)}`"
@@ -23,10 +23,10 @@
                 :class="{
                     'key-item': !item.icon,
                     'key-item-icon': item.icon,
-                    'disabled': item.disabled
+                    disabled: item.disabled
                 }"
             >
-                {{ item.icon ? '' : item.label}}
+                {{ item.icon ? "" : item.label }}
                 <img
                     v-if="item.icon"
                     :src="`${require(`../../../assets/images/${item.icon}`)}`"
@@ -40,7 +40,7 @@
                 @click="digitalChange(item)"
                 :class="{ 'key-item': !item.icon, 'key-item-icon': item.icon }"
             >
-                {{ item.icon ? '' : item.label}}
+                {{ item.icon ? "" : item.label }}
                 <img
                     v-if="item.icon"
                     :src="`${require(`../../../assets/images/${item.icon}`)}`"
@@ -56,6 +56,7 @@ export default {
   name: 'IgbKeyBoardDigitalBaseComponent',
   data () {
     return {
+      input: '',
       list: {
         one: [],
         two: [],
@@ -94,21 +95,31 @@ export default {
   computed: {
     enabledLetters () {
       return this.$store.state.keyboard.disableList['EnbledLetters']
+    },
+    targetInputValue () {
+      return this.$store.state.keyboard.input
     }
   },
   watch: {
-    enabledLetters: { handler (val) {
-      console.log(val)
-      this.list.two.map((item, index) => {
-        let listIndex = val.findIndex(word => {
-          return item['label'] == word
+    enabledLetters: {
+      handler (val) {
+        console.log(val)
+        this.list.two.map((item, index) => {
+          let listIndex = val.findIndex(word => {
+            return item['label'] == word
+          })
+          if (listIndex == -1 && this.list.two[index]['canDisable']) {
+            this.$set(this.list.two[index], 'disabled', true)
+          }
         })
-        if (listIndex == -1 && this.list.two[index]['canDisable']) {
-          this.$set(this.list.two[index], 'disabled', true)
-        }
-      })
+      },
+      deep: true
     },
-    deep: true
+    targetInputValue: {
+      handler (val) {
+        this.input = val
+      },
+      immediate: true
     }
     // this.list.two.map((item, index) => {
     //   val.map(word => {
@@ -118,7 +129,6 @@ export default {
     //     }
     //   })
     // })
-
   },
   methods: {
     digitalChange (item) {
@@ -134,9 +144,14 @@ export default {
             item: item,
             model: 2
           })
+          this.input = ''
           break
         default:
-          this.$bus.emit('letter-change', item)
+          this.$store.dispatch('inputAddLetter', item)
+      }
+
+      if (item.label == 'Yes') {
+        return this.$bus.emit('keyboard-toggle', false)
       }
     },
     disableBtn (res) {

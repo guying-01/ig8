@@ -132,6 +132,11 @@ export default {
   },
   methods: {
     digitalChange (item) {
+      if (item.label == 'Yes') {
+        return this.$bus.emit('keyboard-toggle', false)
+      } else if (item.label == 'Del') {
+        return this.$store.dispatch('inputDelLetter')
+      }
       switch (item.value) {
         case 13:
           this.$emit('model', {
@@ -147,13 +152,7 @@ export default {
           this.input = ''
           break
         default:
-          this.$store.dispatch('inputAddLetter', item)
-      }
-
-      if (item.label == 'Yes') {
-        return this.$bus.emit('keyboard-toggle', false)
-      } else if (item.label == 'Del') {
-        this.$store.dispath('inputDelLetter')
+          this.$store.dispatch('inputAddLetter', item.label)
       }
     },
     disableBtn (res) {

@@ -201,23 +201,46 @@ export default {
       this.input = ''
     },
     letterChange (item) {
-      switch (item.value) {
-        // 数字键盘
-        case 21:
-          this.$emit('model', {
-            item: item,
-            model: 1
-          })
-          break
-          // 手写键盘
-        case 29:
-          this.$emit('model', {
-            item: item,
-            model: 2
-          })
-          break
-        default:
-          this.inputChange(item)
+      // 如果被禁用
+      if (item.disabled) return
+      // 如果是删除键
+      if (item.label == 'Del') {
+        if (this.input.length == 0) {
+          this.$store.dispatch('inputDelLetter')
+        } else {
+          this.input = this.input.substr(0, this.input.length - 1)
+        }
+        return
+      } else if (item.label == 'Space') {
+        return (this.input += ' ')
+      } else if (item.label == 'Yes') {
+        return this.$bus.emit('keyboard-toggle', false)
+      } else if (item.label == 'Enter') {
+        return
+      } else if (item.value == '21') {
+        return this.$emit('model', {
+          item: item,
+          model: 1
+        })
+      } else if (item.value == '29') {
+        return this.$emit('model', {
+          item: item,
+          model: 2
+        })
+      } else {
+        this.input += item.label
+      }
+
+      // 如果是中文模式，查联想词
+      if (this.inputMode == 1) {
+        GET_INPHLP({
+          InputText: item.label,
+          InputMode: this.$store.state.keyboard.mode
+        }).then(res => {
+          this.$store.dispatch('setDisableList', res)
+        })
+      } else {
+        // this.$store.dispatch('inputAddLetter', item.label)
       }
     },
     inputChange (item) {
@@ -226,7 +249,7 @@ export default {
       // 如果是删除键
       if (item.label == 'Del') {
         if (this.input.length == 0) {
-          this.$store.dispath('inputDelLetter')
+          this.$store.dispatch('inputDelLetter')
         } else {
           this.input = this.input.substr(0, this.input.length - 1)
         }

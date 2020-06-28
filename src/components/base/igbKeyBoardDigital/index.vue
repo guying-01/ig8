@@ -152,6 +152,8 @@ export default {
 
       if (item.label == 'Yes') {
         return this.$bus.emit('keyboard-toggle', false)
+      } else if (item.label == 'Del') {
+        this.$store.dispath('inputDelLetter')
       }
     },
     disableBtn (res) {

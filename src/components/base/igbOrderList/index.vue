@@ -1,5 +1,5 @@
 <template>
-    <div class="igb-order-list-base-component">
+    <div class="igb-order-list-base-component" ref="wrapper">
         <div class="igb-order-list-wrap">
             <p class="btn-close" @click="closeHandller"></p>
             <div>
@@ -187,9 +187,7 @@ export default {
           singerName: '郭富城',
           time: '01:00',
           current: false,
-          play: false,
-          order: 1,
-          fixed: false
+          play: false
         },
         {
           value: '02',
@@ -198,9 +196,7 @@ export default {
           singerName: '信乐团',
           time: '02:00',
           current: false,
-          order: 2,
-          play: false,
-          fixed: false
+          play: false
         },
         {
           value: '03',
@@ -209,8 +205,7 @@ export default {
           singerName: '赵雷',
           time: '02:00',
           current: true,
-          play: true,
-          order: 3
+          play: true
         },
         {
           value: '04',
@@ -219,8 +214,7 @@ export default {
           singerName: '阿信',
           time: '02:00',
           current: false,
-          play: false,
-          order: 4
+          play: false
         },
         {
           value: '05',
@@ -230,8 +224,7 @@ export default {
           time: '02:00',
           current: false,
           play: false,
-          collect: true,
-          order: 5
+          collect: true
         },
         {
           value: '06',
@@ -240,8 +233,7 @@ export default {
           singerName: '阿信',
           time: '02:00',
           current: false,
-          play: false,
-          order: 6
+          play: false
         },
         {
           value: '07',
@@ -250,8 +242,7 @@ export default {
           singerName: '郭富城',
           time: '02:00',
           current: false,
-          play: false,
-          order: 7
+          play: false
         },
         {
           value: '08',
@@ -261,8 +252,7 @@ export default {
           time: '02:00',
           current: false,
           play: false,
-          collect: true,
-          order: 8
+          collect: true
         },
         {
           value: '09',
@@ -271,8 +261,7 @@ export default {
           singerName: '信乐团',
           time: '02:00',
           current: false,
-          play: false,
-          order: 9
+          play: false
         },
         {
           value: '10',
@@ -281,8 +270,7 @@ export default {
           singerName: '信乐团',
           time: '02:00',
           current: false,
-          play: false,
-          order: 10
+          play: false
         }
       ],
       tableList1: [
@@ -393,22 +381,35 @@ export default {
       let arr = list[index]
       this.$set(list, index, list[index - 1])
       this.$set(list, index - 1, arr)
+    },
+    calcAttr (px) {
+      const clientWidth = window.innerWidth
+      return (1920 * px) / clientWidth
+    },
+    computedWrapperHeight () {
+      let wrapper = this.$refs['wrapper']
+      const height = window.innerHeight
+      wrapper.style.height = height - this.calcAttr(109 + 57 - 10) + 'px'
+      // 主要解决滚动条在客户端中无法正确配置高度问题
+      this.viewBoxHeight = height - this.calcAttr(109 + 57 + 167) + 'px'
     }
   },
   mounted () {
-    // 主要解决滚动条在客户端中无法正确配置高度问题
-    this.viewBoxHeight = this.$refs.viewBox.offsetHeight + 'px'
+    this.computedWrapperHeight()
     window.onresize = () => {
-      this.viewBoxHeight = this.$refs.viewBox.offsetHeight + 'px'
+      this.computedWrapperHeight()
     }
 
     var el = this.$refs['order-list']
     Sortable.create(el, {
       ghostClass: 'sortable-ghost', // drop placeholder的css类名
       chosenClass: 'sortable-chosen', // 被选中项的css 类名
-      dragClass: 'sortable-drag',
+      dragClass: 'current',
       group: 'shared', // set both lists to same group
-      animation: 150
+      animation: 150,
+      onChoose: (evt) => {
+        console.log(evt.oldIndex, evt.newIndex, evt.item)
+      }
     })
   },
   beforeDestroy () {
@@ -449,8 +450,8 @@ export default {
     right: calc-attr(24);
     bottom: 0;
     width: calc-attr(920);
-    padding-bottom: calc-attr(109 + 57 - 10);
-    height: 100vh;
+    // padding-bottom: calc-attr(109 + 57 - 10);
+    // height: 100vh;
     box-sizing: border-box;
     top: calc-attr(57);
     //overflow: hidden;
@@ -704,15 +705,10 @@ export default {
                         // border:none;
                     }
                     &.sortable-drag {
-                        box-shadow: none !important;
-                        filter:none!important;
-                        // outline: calc-attr(10) solid rgba(49, 52, 78, 1);
-                        // box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
-                        opacity: 1!important;
-                        outline: none !important;
+                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
+                        box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
+                        opacity: 1 !important;
 
-                        // border:none;
-                        // z-index: -9999;
                     }
                     &.play {
                         td {
@@ -913,6 +909,7 @@ export default {
                         }
 
                         &:nth-child(4) {
+                            width: calc-attr(120) ;
                             span {
                                 height: calc-attr(20);
                                 font-size: calc-attr(14);
@@ -922,7 +919,6 @@ export default {
 
                         &:nth-child(5) {
                             width: 20%;
-
                             div {
                                 visibility: hidden;
                                 display: flex;
@@ -953,6 +949,7 @@ export default {
                         }
 
                         &:nth-child(6) {
+                            width: calc-attr(106) ;
                             div {
                                 width: 100%;
                                 display: flex;

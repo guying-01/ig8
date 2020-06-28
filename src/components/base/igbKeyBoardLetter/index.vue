@@ -225,10 +225,11 @@ export default {
       if (item.disabled) return
       // 如果是删除键
       if (item.label == 'Del') {
-        return (this.input = this.input.substr(
-          0,
-          this.input.length - 1
-        ))
+        if (this.input.length == 0) {
+          this.$store.dispath('inputDelLetter')
+        } else {
+          this.input = this.input.substr(0, this.input.length - 1)
+        }
       } else if (item.label == 'Space') {
         return (this.input += ' ')
       } else if (item.label == 'Yes') {

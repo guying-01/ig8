@@ -127,6 +127,7 @@ export default {
       if (element.type === 2) {
         this.list.three.push(element)
       }
+      this.cancelDisabled()
     })
   },
   computed: {
@@ -146,7 +147,6 @@ export default {
   watch: {
     enabledLetters: {
       handler (val) {
-        console.log(val)
         // 禁用第一行
         this.list.one.map((item, index) => {
           let listIndex = val.findIndex(word => {
@@ -197,10 +197,7 @@ export default {
     input (val) {
       // 取消所有禁用
       if (val.length == 0) {
-        this.$store.dispatch('setDisableList', {
-          EnbledLetters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-          AssociatedWords: []
-        })
+        this.cancelDisabled()
       }
     }
   },
@@ -209,6 +206,13 @@ export default {
     handleSelect (item) {
       this.$store.dispatch('inputAddLetter', item.label)
       this.input = ''
+    },
+    // 取消禁用
+    cancelDisabled () {
+      this.$store.dispatch('setDisableList', {
+        EnbledLetters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        AssociatedWords: []
+      })
     },
     letterChange (item) {
       // 如果被禁用

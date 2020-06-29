@@ -181,7 +181,8 @@ export default {
     })
 
     document.onkeydown = (e) => {
-      if (e.keyCode == 118) {
+      console.log(e.keyCode)
+      if (e.keyCode == 81) {
         this.$store.dispatch('setInputMode')
       }
     }

@@ -109,6 +109,8 @@ export default {
           })
           if (listIndex == -1 && this.list.two[index]['canDisable']) {
             this.$set(this.list.two[index], 'disabled', true)
+          } else {
+            this.$set(this.list.two[index], 'disabled', false)
           }
         })
       },
@@ -130,10 +132,7 @@ export default {
         this.$store.dispatch('inputDelLetter')
         if (this.targetInputValue.length == 0) {
           // 取消所有禁用
-          this.$store.dispatch('setDisableList', {
-            EnbledLetters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-            AssociatedWords: []
-          })
+          this.cancelDisabled()
         }
         return false
       } else if (item.label == 'Space') {
@@ -156,16 +155,11 @@ export default {
         this.$store.dispatch('inputAddLetter', item.label)
       }
     },
-    disableBtn (res) {
-      if (res.HintWords) {
-        this.list.two.map(item => {
-          res.HintWords.map(word => {
-            if (item['label'] == word) {
-              item.disable = true
-            }
-          })
-        })
-      }
+    cancelDisabled () {
+      this.$store.dispatch('setDisableList', {
+        EnbledLetters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        AssociatedWords: []
+      })
     }
   }
 }

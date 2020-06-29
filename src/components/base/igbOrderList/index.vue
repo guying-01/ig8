@@ -384,7 +384,7 @@ export default {
     },
     calcAttr (px) {
       const clientWidth = window.innerWidth
-      return (1920 * px) / clientWidth
+      return (clientWidth * px) / 1920
     },
     computedWrapperHeight () {
       let wrapper = this.$refs['wrapper']
@@ -404,10 +404,10 @@ export default {
     Sortable.create(el, {
       ghostClass: 'sortable-ghost', // drop placeholder的css类名
       chosenClass: 'sortable-chosen', // 被选中项的css 类名
-      dragClass: 'current',
+      dragClass: 'sortable-drag',
       group: 'shared', // set both lists to same group
       animation: 150,
-      onChoose: (evt) => {
+      onChoose: evt => {
         console.log(evt.oldIndex, evt.newIndex, evt.item)
       }
     })
@@ -653,6 +653,16 @@ export default {
                                 }
                             }
 
+                                                        &:nth-child(5) {
+                                div {
+                                    i {
+                                        background: url("../../../assets/images/table/t-link-s.png")
+                                            no-repeat center;
+                                        background-size: 100%;
+                                    }
+                                }
+                            }
+
                             &:last-child {
                                 div {
                                     span {
@@ -701,14 +711,39 @@ export default {
                         outline: calc-attr(10) solid rgba(49, 52, 78, 1);
                         background: rgba(49, 52, 78, 1);
                         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
-                        // z-index: -9999;
-                        // border:none;
+                        td {
+                            &:nth-child(1) {
+                                box-shadow: none;
+                            }
+                        }
                     }
                     &.sortable-drag {
                         outline: calc-attr(10) solid rgba(49, 52, 78, 1);
                         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
                         opacity: 1 !important;
+                        td {
+                            .icon-leing {
+                                display: none;
+                            }
+                            &:nth-child(3),
+                            &:nth-child(5) {
+                                div {
+                                    visibility: visible;
+                                }
+                            }
 
+                            &:last-child {
+                                div {
+                                    span {
+                                        display: none;
+                                    }
+
+                                    i {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
                     }
                     &.play {
                         td {
@@ -909,7 +944,7 @@ export default {
                         }
 
                         &:nth-child(4) {
-                            width: calc-attr(120) ;
+                            width: calc-attr(120);
                             span {
                                 height: calc-attr(20);
                                 font-size: calc-attr(14);
@@ -949,7 +984,7 @@ export default {
                         }
 
                         &:nth-child(6) {
-                            width: calc-attr(106) ;
+                            width: calc-attr(106);
                             div {
                                 width: 100%;
                                 display: flex;
@@ -1029,6 +1064,16 @@ export default {
                             &:nth-child(5) {
                                 div {
                                     visibility: visible;
+                                }
+                            }
+
+                            &:nth-child(5) {
+                                div {
+                                    i {
+                                        background: url("../../../assets/images/table/t-link-s.png")
+                                            no-repeat center;
+                                        background-size: 100%;
+                                    }
                                 }
                             }
 

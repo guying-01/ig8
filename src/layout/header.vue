@@ -2,7 +2,7 @@
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
  * @LastEditors: gy
- * @LastEditTime: 2020-06-27 18:05:04
+ * @LastEditTime: 2020-06-29 15:57:15
 -->
 <template>
     <div class="igb-layout-header">
@@ -22,11 +22,11 @@
                 v-model="input"
                 class="header-search"
                 @focus="searchHandller"
-                >
-                <template slot="prefix" >
-                  <i></i>
+            >
+                <template slot="prefix">
+                    <i></i>
                 </template>
-               <!-- <a-icon slot="prefix" type="search" /> -->
+                <!-- <a-icon slot="prefix" type="search" /> -->
             </a-input>
             <!-- <div class="header-search" @click="searchHandller">
                 <span>搜索：成都-赵雷</span>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import {GET_PACGS, GET_SONGS, GET_INPHLP} from '@/api/api'
+import { GET_PACGS, GET_SONGS, GET_INPHLP } from '@/api/api'
 export default {
   name: 'IgbLayoutHeaderComponent',
   props: {
@@ -50,38 +50,12 @@ export default {
     return {
       input: '', // 键盘输入值
       timeInt: {},
-      delay: 500// 防抖延时
+      delay: 500 // 防抖延时
     }
   },
   mounted () {
-    this.$bus.on('letter-change', this.keyboard)
-  },
-  beforeDestroy () {
-    this.$bus.off('letter-change', this.keyboard)
   },
   methods: {
-    keyboard (item) {
-      // 如果被禁用
-      if (item.disabled) return
-      // 如果是删除键
-      if (item.label == 'Del') {
-        this.input = this.input.substr(0, this.input.length - 1)
-      } else if (item.label == 'Space') {
-        this.input += ' '
-      } else if (item.label == 'Yes') {
-
-      } else if (item.label == 'Enter') {
-
-      } else {
-        this.input += item.label
-      }
-      this.$store.dispatch('setInput', this.input)
-      GET_INPHLP({InputText: this.input, InputMode: this.$store.state.keyboard.mode }).then(res => {
-        this.$store.dispatch('setDisableList', res)
-      })
-
-      // this.getPacgs()
-    },
     // getPacgs () {
     //   if (this.input == null) return
     //   // 防抖
@@ -134,7 +108,10 @@ export default {
       this.input = val
       // 中文模式继续查询
       if (this.inputMode == 1) {
-        GET_INPHLP({InputText: this.input, InputMode: this.$store.state.keyboard.mode }).then(res => {
+        GET_INPHLP({
+          InputText: this.input,
+          InputMode: this.$store.state.keyboard.mode
+        }).then(res => {
           this.$store.dispatch('setDisableList', res)
         })
       }

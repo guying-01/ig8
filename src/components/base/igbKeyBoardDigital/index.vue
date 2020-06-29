@@ -103,7 +103,6 @@ export default {
   watch: {
     enabledLetters: {
       handler (val) {
-        console.log(val)
         this.list.two.map((item, index) => {
           let listIndex = val.findIndex(word => {
             return item['label'] == word
@@ -121,42 +120,43 @@ export default {
       },
       immediate: true
     }
-    // this.list.two.map((item, index) => {
-    //   val.map(word => {
-    //     if (item['label'] != word && item['canDisable']) {
-    //       console.log(item['label'], word)
-    //       item.disabled = true
-    //     }
-    //   })
-    // })
   },
   methods: {
     digitalChange (item) {
-      if (item.label == 'Yes') {
+      // 如果被禁用
+      if (item.disabled) return
+      // 如果是删除键
+      if (item.label == 'Del') {
+        this.$store.dispatch('inputDelLetter')
+        if (this.targetInputValue.length == 0) {
+          // 取消所有禁用
+          this.$store.dispatch('setDisableList', {
+            EnbledLetters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            AssociatedWords: []
+          })
+        }
+        return false
+      } else if (item.label == 'Space') {
+        return this.$store.dispatch('inputAddLetter', ' ')
+      } else if (item.label == 'Yes') {
         return this.$bus.emit('keyboard-toggle', false)
-      } else if (item.label == 'Del') {
-        return this.$store.dispatch('inputDelLetter')
-      }
-      switch (item.value) {
-        case 13:
-          this.$emit('model', {
-            item: item,
-            model: 0
-          })
-          break
-        case 20:
-          this.$emit('model', {
-            item: item,
-            model: 2
-          })
-          this.input = ''
-          break
-        default:
-          this.$store.dispatch('inputAddLetter', item.label)
+      } else if (item.label == 'Enter') {
+
+      } else if (item.value == '13') {
+        return this.$emit('model', {
+          item: item,
+          model: 0
+        })
+      } else if (item.value == '20') {
+        return this.$emit('model', {
+          item: item,
+          model: 2
+        })
+      } else {
+        this.$store.dispatch('inputAddLetter', item.label)
       }
     },
     disableBtn (res) {
-      console.log(res)
       if (res.HintWords) {
         this.list.two.map(item => {
           res.HintWords.map(word => {
@@ -166,7 +166,6 @@ export default {
           })
         })
       }
-      console.log(res, this.list.two)
     }
   }
 }

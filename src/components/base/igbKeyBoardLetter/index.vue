@@ -146,6 +146,7 @@ export default {
   watch: {
     enabledLetters: {
       handler (val) {
+        console.log(val)
         // 禁用第一行
         this.list.one.map((item, index) => {
           let listIndex = val.findIndex(word => {
@@ -192,6 +193,15 @@ export default {
     // 中英文切换
     inputMode () {
       this.associatedWordList = []
+    },
+    input (val) {
+      // 取消所有禁用
+      if (val.length == 0) {
+        this.$store.dispatch('setDisableList', {
+          EnbledLetters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+          AssociatedWords: []
+        })
+      }
     }
   },
   methods: {
@@ -234,40 +244,9 @@ export default {
       // 如果是中文模式，查联想词
       if (this.inputMode == 1) {
         GET_INPHLP({
-          InputText: item.label,
-          InputMode: this.$store.state.keyboard.mode
-        }).then(res => {
-          this.$store.dispatch('setDisableList', res)
-        })
-      } else {
-        // this.$store.dispatch('inputAddLetter', item.label)
-      }
-    },
-    inputChange (item) {
-      // 如果被禁用
-      if (item.disabled) return
-      // 如果是删除键
-      if (item.label == 'Del') {
-        if (this.input.length == 0) {
-          this.$store.dispatch('inputDelLetter')
-        } else {
-          this.input = this.input.substr(0, this.input.length - 1)
-        }
-      } else if (item.label == 'Space') {
-        return (this.input += ' ')
-      } else if (item.label == 'Yes') {
-        return this.$bus.emit('keyboard-toggle', false)
-      } else if (item.label == 'Enter') {
-        return
-      } else {
-        this.input += item.label
-      }
-
-      // 如果是中文模式，查联想词
-      if (this.inputMode == 1) {
-        GET_INPHLP({
-          InputText: item.label,
-          InputMode: this.$store.state.keyboard.mode
+          InputText: this.$store.state.keyboard.input,
+          InputMode: this.$store.state.keyboard.mode,
+          ImeInput: item.label
         }).then(res => {
           this.$store.dispatch('setDisableList', res)
         })

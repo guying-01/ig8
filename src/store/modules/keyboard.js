@@ -2,7 +2,7 @@
  * @Author       : gy
  * @Date         : 2020-06-25 00:08:00
  * @LastEditors: gy
- * @LastEditTime: 2020-06-27 17:30:14
+ * @LastEditTime: 2020-06-29 15:46:27
  * @FilePath     : /ig8/src/store/modules/keyboard.js
  * @Description  : 页面描述
  */
@@ -14,7 +14,7 @@ const keyboard = {
       EnbledLetters: []
     },
     mode: 0, // 中英文模式 0英文 1中文
-    input: ''// 用户输入
+    input: ''// 搜索栏输入
   },
   mutations: {
     set_disable_list (state, data) {

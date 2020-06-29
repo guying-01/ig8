@@ -653,7 +653,7 @@ export default {
                                 }
                             }
 
-                                                        &:nth-child(5) {
+                            &:nth-child(5) {
                                 div {
                                     i {
                                         background: url("../../../assets/images/table/t-link-s.png")

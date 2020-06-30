@@ -4,8 +4,9 @@
          @mouseenter="handleMouseEnter"
          @mouseleave="handleMouseLeave">
         <transition name="fade">
+                 <!-- :style="{ 'height': barHeight + 'px'}" -->
+
             <div v-show="show" :class="['scrollbar', { force: force }]" ref="bar"
-                 :style="{ 'height': barHeight + 'px'}"
                  @mousedown="handleMouseDown"></div>
         </transition>
         <slot></slot>
@@ -41,6 +42,10 @@ export default {
     document.addEventListener('mousemove', this.handleMouseMove)
   },
   methods: {
+    calcAttr (px) {
+      const clientWidth = window.innerWidth
+      return (clientWidth * px) / 1920
+    },
     /**
              * 鼠标滚轮事件
              * @param {object} e 事件
@@ -88,8 +93,8 @@ export default {
 
       if (this.box.scrollHeight > this.box.offsetHeight) {
         // 修正进度条高度和位置(建议通过事件触发)
-        this.barHeight = this.box.offsetHeight ** 2 / this.box.scrollHeight
-        this.ratio = (this.box.scrollHeight - this.box.offsetHeight) / (this.box.offsetHeight - this.barHeight)
+        // this.barHeight = this.box.offsetHeight ** 2 / this.box.scrollHeight
+        this.ratio = (this.box.scrollHeight - this.box.offsetHeight) / (this.box.offsetHeight - this.calcAttr(213))
 
         this.bar.style.transform = 'translateY(' + (this.box.scrollTop + this.box.scrollTop / this.ratio) + 'px)'
         // 显示滚动条
@@ -121,7 +126,7 @@ export default {
     }
     .scrollbar {
         width: $scrollbar-width;
-        height: 213px;
+        height: calc-attr(213);
         background-color: #505D72;
         position: absolute;
         right: 11px;

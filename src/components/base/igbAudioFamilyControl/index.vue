@@ -93,7 +93,7 @@
                             @share="btnShareHandller"
                             @close="btnCloseHandller"
                             v-if="visible"
-                             v-clickoutside="btnCloseHandller"
+                             v-clickoutside="closeOrderListHandler"
                         ></igb-order-list>
                     </transition>
                 </div>
@@ -142,6 +142,13 @@ export default {
   methods: {
     btnSwitch () {
       this.sw = !this.sw
+    },
+    closeOrderListHandller (evt) {
+      let ktvCtrlEl = document.querySelector('.igb-audio-family-control-base-component')
+      let orderListEL = document.querySelector('.igb-order-list-base-component')
+      if (!ktvCtrlEl.contains(evt.target) && !orderListEL.contains(evt.target)) {
+        this.btnCloseHandller()
+      }
     },
     btnCloseHandller () {
       this.$nextTick(() => {

@@ -103,6 +103,13 @@ export default {
   watch: {
     enabledLetters: {
       handler (val) {
+        // 取消禁用
+        if (this.targetInputValue.length == 0) {
+          this.list.two.map((item, index) => {
+            this.$set(this.list.two[index], 'disabled', false)
+          })
+          return
+        }
         this.list.two.map((item, index) => {
           let listIndex = val.findIndex(word => {
             return item['label'] == word
@@ -130,16 +137,15 @@ export default {
       // 如果是删除键
       if (item.label == 'Del') {
         this.$store.dispatch('inputDelLetter')
-        if (this.targetInputValue.length == 0) {
-          // 取消所有禁用
-          this.cancelDisabled()
-        }
+
         return false
       } else if (item.label == 'Space') {
         return this.$store.dispatch('inputAddLetter', ' ')
       } else if (item.label == 'Yes') {
         return this.$bus.emit('keyboard-toggle', false)
       } else if (item.label == 'Enter') {
+
+      } else if (item.label == 'Input') {
 
       } else if (item.value == '13') {
         return this.$emit('model', {

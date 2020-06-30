@@ -1,13 +1,13 @@
 /*
  * @Author: gy
  * @Date: 2020-05-28 10:35:22
- * @LastEditors: gy
- * @LastEditTime: 2020-06-27 09:42:22
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-07-01 00:41:08
  */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
-import '@babel/polyfill'
+// import '@babel/polyfill'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import Vue from 'vue'
@@ -26,7 +26,6 @@ import 'ant-design-vue/dist/antd.css'
 import './assets/scss/index.scss'
 import '../node_modules/font-awesome/scss/font-awesome.scss'
 
-// ((\.|-|\d){0,})px
 Vue.use(VueAxios, router)
 Vue.use(Antd)
 IgbComponentInstall(Vue)

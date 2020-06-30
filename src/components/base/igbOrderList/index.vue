@@ -389,7 +389,7 @@ export default {
     computedWrapperHeight () {
       let wrapper = this.$refs['wrapper']
       const height = window.innerHeight
-      wrapper.style.height = height - this.calcAttr(109 + 57 - 10) + 'px'
+      wrapper.style.height = height - this.calcAttr(109 + 57 - 18) + 'px'
       // 主要解决滚动条在客户端中无法正确配置高度问题
       this.viewBoxHeight = height - this.calcAttr(109 + 57 + 167) + 'px'
     }
@@ -650,18 +650,21 @@ export default {
                             &:nth-child(5) {
                                 div {
                                     visibility: visible;
-                                }
-                            }
-
-                            &:nth-child(5) {
-                                div {
                                     i {
-                                        background: url("../../../assets/images/table/t-link-s.png")
-                                            no-repeat center;
-                                        background-size: 100%;
+                                        visibility: visible;
                                     }
                                 }
                             }
+
+                            // &:nth-child(5) {
+                            //     div {
+                            //         i {
+                            //             background: url("../../../assets/images/table/t-link-s.png")
+                            //                 no-repeat center;
+                            //             background-size: 100%;
+                            //         }
+                            //     }
+                            // }
 
                             &:last-child {
                                 div {
@@ -686,6 +689,10 @@ export default {
                             &:nth-child(5) {
                                 div {
                                     visibility: visible;
+
+                                    i {
+                                        visibility: visible;
+                                    }
                                 }
                             }
 
@@ -704,21 +711,23 @@ export default {
                     }
                     &.sortable-ghost {
                         border-top: 1px solid rgba(249, 118, 71, 0.5);
-                        outline: none !important;
-                        box-shadow: none !important;
+                        // outline: none !important;
+                        // box-shadow: none !important;
                     }
                     &.sortable-chosen {
-                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
-                        background: rgba(49, 52, 78, 1);
-                        box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
-                        td {
-                            &:nth-child(1) {
-                                box-shadow: none;
-                            }
-                        }
+                        // outline: calc-attr(10) solid rgba(49, 52, 78, 1);
+                        // background: rgba(49, 52, 78, 1);
+                        // box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
+                        // td {
+                        //     &:nth-child(1) {
+                        //         box-shadow: none;
+                        //     }
+                        // }
                     }
                     &.sortable-drag {
-                        outline: calc-attr(10) solid rgba(49, 52, 78, 1);
+                        height: calc-attr(98);
+                        outline: calc-attr(10) solid rgba(49, 52, 78, 1) !important;
+                        background: rgba(49, 52, 78, 1);
                         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.2);
                         opacity: 1 !important;
                         td {
@@ -729,6 +738,9 @@ export default {
                             &:nth-child(5) {
                                 div {
                                     visibility: visible;
+                                    i {
+                                        visibility: visible;
+                                    }
                                 }
                             }
 
@@ -876,11 +888,12 @@ export default {
                             width: calc-attr(185);
 
                             div {
-                                visibility: hidden;
                                 display: flex;
                                 align-items: center;
 
                                 i {
+                                    visibility: hidden;
+
                                     height: calc-attr(25);
                                     margin-right: calc-attr(23.4);
 
@@ -902,11 +915,11 @@ export default {
                                     }
 
                                     &.icon-collect-ok {
+                                        visibility: visible !important;
                                         width: calc-attr(22.87);
                                         background: url("../../../assets/images/table/t-c-s.png")
                                             no-repeat center;
                                         background-size: 100%;
-
                                         &:hover {
                                             background: url("../../../assets/images/table/t-c-s-h.png")
                                                 no-repeat center;
@@ -974,7 +987,7 @@ export default {
                                     background-size: 100%;
 
                                     &:hover {
-                                        background: url("../../../assets/images/table/t-link-h.png")
+                                        background: url("../../../assets/images/table/t-link-s.png")
                                             no-repeat center;
                                         background-size: calc-attr(20.67)
                                             calc-attr(20.67);
@@ -1032,6 +1045,9 @@ export default {
                             &:nth-child(5) {
                                 div {
                                     visibility: visible;
+                                    i {
+                                        visibility: visible;
+                                    }
                                 }
                             }
 
@@ -1064,13 +1080,16 @@ export default {
                             &:nth-child(5) {
                                 div {
                                     visibility: visible;
+                                    i {
+                                        visibility: visible;
+                                    }
                                 }
                             }
 
                             &:nth-child(5) {
                                 div {
                                     i {
-                                        background: url("../../../assets/images/table/t-link-s.png")
+                                        background: url("../../../assets/images/table/t-link-h.png")
                                             no-repeat center;
                                         background-size: 100%;
                                     }
@@ -1191,11 +1210,11 @@ export default {
                             width: calc-attr(185);
 
                             div {
-                                visibility: hidden;
                                 display: flex;
                                 align-items: center;
 
                                 i {
+                                    visibility: hidden;
                                     height: calc-attr(25);
                                     margin-right: calc-attr(23.4);
 
@@ -1217,6 +1236,7 @@ export default {
                                     }
 
                                     &.icon-collect-ok {
+                                        visibility: visible !important;
                                         width: calc-attr(22.87);
                                         background: url("../../../assets/images/table/t-c-s.png")
                                             no-repeat center;
@@ -1258,15 +1278,14 @@ export default {
                                         margin-right: 0px;
                                     }
 
-                                    background: url("../../../assets/images/table/t-link-s.png")
+                                    background: url("../../../assets/images/table/t-link.png")
                                         no-repeat center;
                                     background-size: 100%;
 
                                     &:hover {
-                                        background: url("../../../assets/images/table/t-link-h.png")
+                                        background: url("../../../assets/images/table/t-link-s.png")
                                             no-repeat center;
-                                        background-size: calc-attr(20.67)
-                                            calc-attr(20.67);
+                                        background-size: 100%;
                                     }
                                 }
                             }

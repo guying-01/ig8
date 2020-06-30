@@ -1,8 +1,8 @@
 /*
  * @Author       : gy
  * @Date         : 2020-06-25 00:08:00
- * @LastEditors: gy
- * @LastEditTime: 2020-06-29 15:46:27
+ * @LastEditors  : gy
+ * @LastEditTime : 2020-07-01 00:58:56
  * @FilePath     : /ig8/src/store/modules/keyboard.js
  * @Description  : 页面描述
  */
@@ -25,7 +25,6 @@ const keyboard = {
       state.input = val
     },
     set_input_mode (state) {
-      console.log(state.mode, +!state.mode)
       state.mode = +!state.mode
       if (state.mode == 0) {
         window.ApplicationUI.ShowHint(0, '已切换为英文模式')
@@ -50,8 +49,12 @@ const keyboard = {
     inputAddLetter ({commit}, val) {
       commit('input_add_letter', val)
     },
-    inputDelLetter ({commit}, val) {
-      commit('input_del_letter', val)
+    inputDelLetter ({commit, state}, val) {
+      return new Promise(resolve => {
+        state.input = state.input.substr(0, state.input.length - 1)
+        commit('input_del_letter', val)
+        resolve(state)
+      })
     },
     setInputMode ({commit}) {
       commit('set_input_mode')

@@ -198,6 +198,14 @@ export default {
       // 取消所有禁用
       if (val.length == 0) {
         this.cancelDisabled()
+      } else {
+        GET_INPHLP({
+          InputText: this.$store.state.keyboard.input,
+          InputMode: this.$store.state.keyboard.mode,
+          ImeInput: this.input
+        }).then(res => {
+          this.$store.dispatch('setDisableList', res)
+        })
       }
     }
   },
@@ -222,6 +230,9 @@ export default {
         if (this.input.length == 0) {
           this.$store.dispatch('inputDelLetter')
         } else {
+          if (this.inputMode == 0) {
+            this.$store.dispatch('inputDelLetter')
+          }
           this.input = this.input.substr(0, this.input.length - 1)
         }
         return
@@ -242,19 +253,11 @@ export default {
           model: 2
         })
       } else {
-        this.input += item.label
+        this.input += this.inputMode == 1 ? item.label.toLowerCase() : item.label
       }
 
-      // 如果是中文模式，查联想词
-      if (this.inputMode == 1) {
-        GET_INPHLP({
-          InputText: this.$store.state.keyboard.input,
-          InputMode: this.$store.state.keyboard.mode,
-          ImeInput: item.label
-        }).then(res => {
-          this.$store.dispatch('setDisableList', res)
-        })
-      } else {
+      // 如果是英文模式，直接添加到搜索栏
+      if (this.inputMode == 0) {
         this.$store.dispatch('inputAddLetter', item.label)
       }
     }
@@ -276,7 +279,7 @@ export default {
         height: calc-attr(65);
         display: flex;
         align-items: center;
-
+        max-width: calc(100% - 98 - 95);
         background: rgba(54, 58, 90, 0.98);
         box-shadow: 0px 3px 24px rgba(0, 0, 0, 0.35);
         border-radius: 4px;
